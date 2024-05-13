@@ -66,7 +66,7 @@ Estes recursos são recomendados para todos os membros da equipe, especialmente 
 ## Code review
 
 [!WARNING]
-Atenção: Somente será feito o merge de PRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao PR que deverá ter ao menos dois .
+Atenção: Somente será feito o merge de PRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao PR que deverá ter ao menos dois.
 
 Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Github durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:.
