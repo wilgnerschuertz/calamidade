@@ -39,7 +39,7 @@ As liberações de recursos são feitas parcialmente, acompanhadas de comprovant
 
 ## Como Contribuir
 
-Contribuições são bem-vindas! Siga os passos descritos na seção "Como Contribuir" acima para saber como você pode ajudar.
+Contribuições são bem-vindas! Siga os passos descritos na seção "Como Contribuir" acima para saber como você pode ajudar. (Sessão a ser adicionada)
 
 Não esqueça de dar um Sync Fork para pegar as atualizações já que estamos fazendo fork do projeto.
 
