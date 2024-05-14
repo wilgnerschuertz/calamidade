@@ -5,6 +5,16 @@ class AskHelpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('askHelpPage'),
+      ),
+      body: const Column(
+        children: [
+          Placeholder(),
+          Text('list of help requests will be shown here.')
+        ],
+      ),
+    );
   }
 }

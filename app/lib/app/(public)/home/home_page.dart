@@ -5,6 +5,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('HomePage'),
+      ),
+      body: Column(
+        children: [
+          const Placeholder(),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/ask_help/new_ask_help');
+              },
+              child: const Text('New ask help')),
+        ],
+      ),
+    );
   }
 }

@@ -6,6 +6,22 @@ class RegisterPage extends StatelessWidget {
 
    @override
    Widget build(BuildContext context) {
-        return const Placeholder();
+        return Scaffold(
+      appBar: AppBar(
+        title: const Text('RegisterPage'),
+      ),
+      body: Column(
+        children: [
+          const Placeholder(),
+          Center(
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
+                child: const Text('HomePage')),
+          ),
+        ],
+      ),
+    );
   }
 }

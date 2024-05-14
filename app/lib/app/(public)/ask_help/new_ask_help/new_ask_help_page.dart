@@ -5,6 +5,20 @@ class NewAskHelpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('NewAskHelpPage'),
+      ),
+      body: Column(
+        children: [
+          const Placeholder(),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/ask_help');
+              },
+              child: const Text('AskHelpPage')),
+        ],
+      ),
+    );
   }
 }
