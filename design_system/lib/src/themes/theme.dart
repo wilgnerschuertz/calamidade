@@ -13,6 +13,10 @@ ThemeData lightTheme(BuildContext context) {
     textTheme: GoogleFonts.interTextTheme(textTheme),
     extensions: const [
       CoopartilharColorsExtension(
+        primary: Color(0xff129166),
+        secondary: Color(0xfffcb900),
+        tertiary: Color(0xff84cc6d),
+        error: Color(0xffEB5757),
         black: Color(0xff0D3F67),
         black2: Color(0xff255276),
         middleGrey: Color(0xffb6c5d1),
@@ -29,6 +33,10 @@ ThemeData lightTheme(BuildContext context) {
 
 class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExtension> {
   const CoopartilharColorsExtension({
+    required this.primary,
+    required this.secondary,
+    required this.tertiary,
+    required this.error,
     required this.success,
     required this.otherYellow,
     required this.otherGreen,
@@ -40,7 +48,11 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
     required this.white,
   });
 
+  final Color primary;
+  final Color secondary;
   final Color success;
+  final Color tertiary;
+  final Color error;
   final Color otherYellow;
   final Color otherGreen;
   final Color black;
@@ -50,8 +62,16 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
   final Color lightGrey;
   final Color white;
 
+  static CoopartilharColorsExtension of(BuildContext context) {
+    return Theme.of(context).extension<CoopartilharColorsExtension>()!;
+  }
+
   @override
   ThemeExtension<CoopartilharColorsExtension> copyWith({
+    Color? primary,
+    Color? secondary,
+    Color? tertiary,
+    Color? error,
     Color? success,
     Color? otherYellow,
     Color? otherGreen,
@@ -63,6 +83,10 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
     Color? white,
   }) {
     return CoopartilharColorsExtension(
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      tertiary: tertiary ?? this.tertiary,
+      error: error ?? this.error,
       success: success ?? this.success,
       otherYellow: otherYellow ?? this.otherYellow,
       otherGreen: otherGreen ?? this.otherGreen,
@@ -85,6 +109,10 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
     }
 
     return CoopartilharColorsExtension(
+      primary: Color.lerp(primary, other.primary, t)!,
+      secondary: Color.lerp(secondary, other.secondary, t)!,
+      tertiary: Color.lerp(tertiary, other.tertiary, t)!,
+      error: Color.lerp(error, other.error, t)!,
       success: Color.lerp(success, other.success, t)!,
       otherYellow: Color.lerp(otherYellow, other.otherYellow, t)!,
       otherGreen: Color.lerp(otherGreen, other.otherGreen, t)!,
