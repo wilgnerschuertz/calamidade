@@ -53,8 +53,8 @@ List<RouteEntity> get routes => [
     ),
   ),
   RouteEntity(
-    key: '/splash',
-    uri: Uri.parse('/splash'),
+    key: '/',
+    uri: Uri.parse('/'),
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
@@ -75,5 +75,5 @@ const routePaths = (
     register: '/auth/register',
   ),
   home: '/home',
-  splash: '/splash',
+  splash: '/',
 );
