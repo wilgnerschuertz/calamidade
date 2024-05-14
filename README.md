@@ -63,6 +63,7 @@ Para ajudar os desenvolvedores a se familiarizarem com as tecnologias e pacotes 
 
 Estes recursos são recomendados para todos os membros da equipe, especialmente aqueles novos nas bibliotecas e frameworks utilizados.
 
+
 ## Nomenclatura
 
 - **Diretórios e Arquivos**: 
