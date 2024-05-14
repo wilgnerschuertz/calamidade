@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      theme: lightTheme,
+      theme: lightTheme(context),
       routerConfig: Routefly.routerConfig(routes: routes),
     );
   }
