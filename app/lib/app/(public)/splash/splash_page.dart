@@ -1,3 +1,5 @@
+import 'package:core_module/core_module.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -10,6 +12,8 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
+    final colors = CoopartilharColors.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('SplashPage'),
@@ -17,12 +21,11 @@ class _SplashPageState extends State<SplashPage> {
       body: Column(
         children: [
           const Placeholder(),
-          Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/auth/login');
-                },
-                child: const Text('Login')),
+          CooButton(
+            label: 'Login',
+            onPressed: () {
+              Routefly.navigate('/auth/login');
+            },
           ),
         ],
       ),
