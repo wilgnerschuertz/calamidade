@@ -1,4 +1,5 @@
 import 'package:either_dart/either.dart';
-import 'package:app/app/core/errors/errors.dart';
+
+import '../errors/base_exception.dart';
 
 typedef Output<T> = Either<BaseException, T>;

@@ -35,9 +35,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
 
-  auto_injector: ^2.0.4
-  routefly: ^1.0.9
-  either_dart: ^1.0.0
+  core_module:
+    path: ../core_module
+  design_system: 
+    path: ../design_system
 
 dev_dependencies:
   flutter_test:

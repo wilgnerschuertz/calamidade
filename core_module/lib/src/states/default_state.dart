@@ -1,4 +1,4 @@
-import 'package:app/app/core/errors/errors.dart';
+import '../errors/base_exception.dart';
 
 sealed class DefaultState {}
 
