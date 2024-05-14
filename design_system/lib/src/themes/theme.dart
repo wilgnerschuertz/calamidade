@@ -12,7 +12,7 @@ ThemeData lightTheme(BuildContext context) {
     ),
     textTheme: GoogleFonts.interTextTheme(textTheme),
     extensions: const [
-      CoopartilharColorsExtension(
+      CoopartilharColors(
         primary: Color(0xff129166),
         secondary: Color(0xfffcb900),
         tertiary: Color(0xff84cc6d),
@@ -31,8 +31,8 @@ ThemeData lightTheme(BuildContext context) {
   );
 }
 
-class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExtension> {
-  const CoopartilharColorsExtension({
+class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
+  const CoopartilharColors({
     required this.primary,
     required this.secondary,
     required this.tertiary,
@@ -62,12 +62,12 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
   final Color lightGrey;
   final Color white;
 
-  static CoopartilharColorsExtension of(BuildContext context) {
-    return Theme.of(context).extension<CoopartilharColorsExtension>()!;
+  static CoopartilharColors of(BuildContext context) {
+    return Theme.of(context).extension<CoopartilharColors>()!;
   }
 
   @override
-  ThemeExtension<CoopartilharColorsExtension> copyWith({
+  ThemeExtension<CoopartilharColors> copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -82,7 +82,7 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
     Color? lightGrey,
     Color? white,
   }) {
-    return CoopartilharColorsExtension(
+    return CoopartilharColors(
       primary: primary ?? this.primary,
       secondary: secondary ?? this.secondary,
       tertiary: tertiary ?? this.tertiary,
@@ -100,15 +100,15 @@ class CoopartilharColorsExtension extends ThemeExtension<CoopartilharColorsExten
   }
 
   @override
-  ThemeExtension<CoopartilharColorsExtension> lerp(
-    covariant ThemeExtension<CoopartilharColorsExtension>? other,
+  ThemeExtension<CoopartilharColors> lerp(
+    covariant ThemeExtension<CoopartilharColors>? other,
     double t,
   ) {
-    if (other is! CoopartilharColorsExtension) {
+    if (other is! CoopartilharColors) {
       return this;
     }
 
-    return CoopartilharColorsExtension(
+    return CoopartilharColors(
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
       tertiary: Color.lerp(tertiary, other.tertiary, t)!,

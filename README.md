@@ -315,7 +315,7 @@ dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para 
 Todas as cores podem ser acessadas usando o código:
 
 ```dart
-final colors = CoopartilharColorsExtension.of(context);
+final colors = CoopartilharColors.of(context);
 ```
 
 ## Convenção de Commits
