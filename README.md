@@ -41,7 +41,7 @@ As liberações de recursos são feitas parcialmente, acompanhadas de comprovant
 
 Você pode contribuir com o projeto de várias maneiras, incluindo:
 
-- Fazer o fork do repositório do github 
+- Fazer o fork do repositório do github
 
 - Criar uma branch para a feature que deseja implementar
 
@@ -49,9 +49,9 @@ Você pode contribuir com o projeto de várias maneiras, incluindo:
 
 ### Como executar o projeto
 
-- Certifique-se de que sua versão do dart seja >= 3.3.3 
+- Certifique-se de que sua versão do dart seja >= 3.3.3
 
-- Certifique-se de que sua versão do flutter seja >= 3.19.5 
+- Certifique-se de que sua versão do flutter seja >= 3.19.5
 
 - Para executar o seu projeto você deve clonar o projeto que você acabou de fazer o fork
 
@@ -63,19 +63,20 @@ git clone https://github.com/seu_usuario/calamidade.git
 
 ```dart
 cd calamidade/app
-```	
+```
 
 - Instale as dependências
 
 ```dart
 flutter pub get
-```	
+```
 
 - Execute o projeto
 
 ```dart
 flutter run
-```	
+```
+
 Como fazer o Sync Fork:
 
 ![Como fazer o Sync Fork](doc/sync_fork.png)
@@ -133,23 +134,6 @@ class UserImpl implements IUser {}
 
 //bad
 class UserImplements implements IUser {}
-```
-
-### Padrão para classes de models
-
-#### definição: modelo vai replicar o que a api do backend espera
-
-```dart
-//good
-class UserModel{
-    final String name;
-}
-
-//bad
-class User{
-    final String n;
-}
-```
 
 ### Padrão para classes de entity
 
@@ -296,10 +280,14 @@ UI - toda parta visual da feature se trata da tela em si.
 
 Interactor - aqui ficarão as entidades, o Interactor que tem a regra de négocios e a gerenciamento de estados e também as interfaces que a camada data deve implementar.
 
-Data - Implementação dos contratos, e os Adapters que seriam as serialização dos dados.
+Data - Implementação dos contratos, e os Adapters que devem retornar entity que seriam as serialização dos dados.
 
 - **App todo minicore**:
   [App usando Minicore de exemplo](https://github.com/EdsonMello-code/todoapp)
+
+## Uso de Adapters
+
+Os adapters recebem um Map e devem retornar entity, podem existir também adapters que recebem uma Entity e retornam outra.
 
 ## Como adicionar um package
 
@@ -348,19 +336,12 @@ obs: esse #10 é uma referencia a issue.
 
 - `Atenção`: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
 
-<<<<<<< HEAD
-- *Todo código deverá passar por Code Review através da feature "Merge Request (MR)" do Github durante o processo de merge da branch de "feature" para a branch alvo.
-É recomendado que durante o desenvolvimento da feature seja criado um Merge Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da MR é prefixado de WIP:*.
-=======
-
 - *Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:*.
 
 ## Acesse nossa comunidade no discord
 
 Entrar no servidor do [Discord](https://discord.gg/BMKxRGnEmT) para discutir ideias e colaborar com outros membros da equipe.
-
->>>>>>> 7dbfc9da5c809922351dd30bb922e0bdcefb1982
 
 ## Licença
 
