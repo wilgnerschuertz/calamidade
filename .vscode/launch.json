@@ -8,7 +8,7 @@
             "name": "Dev app",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main_dev.dart",
+            "program": "app/lib/main_dev.dart",
             "toolArgs": [
                 "--dart-define-from-file",
                 "dev.env",
@@ -18,7 +18,7 @@
             "name": "Prod app",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main_prod.dart",
+            "program": "app/lib/main_prod.dart",
             "toolArgs": [
                 "--dart-define-from-file",
                 ".env",
