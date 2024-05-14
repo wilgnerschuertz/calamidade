@@ -33,19 +33,11 @@ class CardButton extends StatelessWidget {
                     children: [
                       Text(
                         labelPrimary,
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Theme.of(context)
-                                .extension<CoopartilharColorsExtension>()!
-                                .black),
+                        style: TextStyle(fontSize: 16, color: CoopartilharColors.of(context).black),
                       ),
                       Text(
                         labelSecondary,
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Theme.of(context)
-                                .extension<CoopartilharColorsExtension>()!
-                                .grey),
+                        style: TextStyle(fontSize: 12, color: CoopartilharColors.of(context).grey),
                       ),
                     ],
                   ),
