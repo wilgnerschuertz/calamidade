@@ -308,8 +308,9 @@ dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para 
 
 - `Atenção`: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
 
-- *Todo código deverá passar por Code Review através da feature "Merge Request (MR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
-É recomendado que durante o desenvolvimento da feature seja criado um Merge Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da MR é prefixado de WIP:*.
+
+- *Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
+É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:*.
 
 ## Licença
 
