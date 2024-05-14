@@ -41,7 +41,7 @@ As liberações de recursos são feitas parcialmente, acompanhadas de comprovant
 
 Você pode contribuir com o projeto de várias maneiras, incluindo:
 
-- Fazer o fork do repositório do github 
+- Fazer o fork do repositório do github
 
 - Criar uma branch para a feature que deseja implementar
 
@@ -49,9 +49,9 @@ Você pode contribuir com o projeto de várias maneiras, incluindo:
 
 ### Como executar o projeto
 
-- Certifique-se de que sua versão do dart seja >= 3.3.3 
+- Certifique-se de que sua versão do dart seja >= 3.3.3
 
-- Certifique-se de que sua versão do flutter seja >= 3.19.5 
+- Certifique-se de que sua versão do flutter seja >= 3.19.5
 
 - Para executar o seu projeto você deve clonar o projeto que você acabou de fazer o fork
 
@@ -63,19 +63,20 @@ git clone https://github.com/seu_usuario/calamidade.git
 
 ```dart
 cd calamidade/app
-```	
+```
 
 - Instale as dependências
 
 ```dart
 flutter pub get
-```	
+```
 
 - Execute o projeto
 
 ```dart
 flutter run
-```	
+```
+
 Como fazer o Sync Fork:
 
 ![Como fazer o Sync Fork](doc/sync_fork.png)
@@ -133,23 +134,6 @@ class UserImpl implements IUser {}
 
 //bad
 class UserImplements implements IUser {}
-```
-
-### Padrão para classes de models
-
-#### definição: modelo vai replicar o que a api do backend espera
-
-```dart
-//good
-class UserModel{
-    final String name;
-}
-
-//bad
-class User{
-    final String n;
-}
-```
 
 ### Padrão para classes de entity
 
@@ -169,13 +153,13 @@ class User {}
   [Aprenda State Pattern](https://blog.flutterando.com.br/entendendo-state-pattern-flutter-b0318bab77c3)
 
 ```dart
-sealed class DefaultState {}
+sealed class BasetState {}
 
-class InitialState implements DefaultState {}
+class InitialState implements BasetState {}
 
-class LoadingState implements DefaultState {}
+class LoadingState implements BasetState {}
 
-class SuccessState<R> implements DefaultState {
+class SuccessState<R> implements BasetState {
   const SuccessState({
     required this.data,
   });
@@ -183,7 +167,7 @@ class SuccessState<R> implements DefaultState {
   final R data;
 }
 
-class ErrorState<T> implements DefaultState {
+class ErrorState<T> implements BasetState {
   const ErrorState({
     required this.exception,
   });
@@ -296,28 +280,43 @@ UI - toda parta visual da feature se trata da tela em si.
 
 Interactor - aqui ficarão as entidades, o Interactor que tem a regra de négocios e a gerenciamento de estados e também as interfaces que a camada data deve implementar.
 
-Data - Implementação dos contratos, e os Adapters que seriam as serialização dos dados.
+Data - Implementação dos contratos, e os Adapters que devem retornar entity que seriam as serialização dos dados.
 
 - **App todo minicore**:
   [App usando Minicore de exemplo](https://github.com/EdsonMello-code/todoapp)
 
+## Uso de Adapters
+
+Os adapters recebem um Map e devem retornar entity, podem existir também adapters que recebem uma Entity e retornam outra.
+
 ## Como adicionar um package
 
+forma para adicionar packages no app
 Os packages devem ficar dentro de core/shared/services/
 
 Criar um diretorio com o nome do package e deve conter um contrato que deve ser usada pelo projeto e sua implementação feita com determinado package, o contrato e a implementação devem ficar no mesmo arquivo.
 
-Os packages que são usados pelos 2 projetos ficarão no core_module que vai lidar
+caso o package adicionado seja compartilhado ele deve ficar no core_module
+
+e também deve ter um contrato e sua implementação.
 
 ## Core Module
 
 O core module é uma lib interna que serve para compartilhar o código entre os 2 projetos que temos, o app e o dashboard
-ele vai lidar com temas os packages compartilhados os contratos e estados que também serão usados nos dois apps.
+ele vai lidar com packages compartilhados os contratos e estados que também serão usados nos dois apps.
 
 ## Design system
 
-O design system é uma lib interna que vai ter todos components compartilhados, eles ficarão divididos em diretorios exemplo:
+O design system é uma lib interna que vai ter todos components compartilhados e temas, eles ficarão divididos em diretorios exemplo:
 dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para toda criação de components.
+
+### Theme Color
+
+Todas as cores podem ser acessadas usando o código:
+
+```dart
+final colors = CoopartilharColors.of(context);
+```
 
 ## Convenção de Commits
 
@@ -337,12 +336,13 @@ dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para 
 
 **exemplo**: `feat/#10-nova-tela-de-usuario`
 
+obs: esse #10 é uma referencia a issue.
+
 ## Code review
 
 **[!WARNING]**
 
 - `Atenção`: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
-
 
 - *Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:*.
@@ -351,6 +351,14 @@ dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para 
 
 Entrar no servidor do [Discord](https://discord.gg/BMKxRGnEmT) para discutir ideias e colaborar com outros membros da equipe.
 
+## Variáveis de ambiente
+As keys de desenvolvimento estão em `dev.env`
+
+Para usar a key:
+`String.fromEnvironment(CHAVE_DA_VARIAVEL);`
+
+Por questões de segurança, para prod é necessário criar um arquivo local `.env` e adiconar à root de `app/`, seguir o padrão de `dev.env`
+As keys podem ser fornecidas pelos participantes do projeto, entrar em contato com Flutterando caso seja necessário debugar o app prod
 
 ## Licença
 
