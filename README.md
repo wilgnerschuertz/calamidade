@@ -310,6 +310,14 @@ ele vai lidar com packages compartilhados os contratos e estados que também ser
 O design system é uma lib interna que vai ter todos components compartilhados e temas, eles ficarão divididos em diretorios exemplo:
 dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para toda criação de components.
 
+### Theme Color
+
+Todas as cores podem ser acessadas usando o código:
+
+```dart
+final colors = CoopartilharColorsExtension.of(context);
+```
+
 ## Convenção de Commits
 
 - **Commits**:
