@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../../../design_system.dart';
 
-class CooButton extends StatelessWidget {
+class CooButtonIcon extends StatelessWidget {
   final Color? backgroundColor;
   final bool isLoading;
   final VoidCallback onPressed;
   final Color? textColor;
   final String label;
   final bool enable;
+  final Icon icon;
 
-  const CooButton({
+  const CooButtonIcon({
     super.key,
     required this.label,
     required this.onPressed,
@@ -18,6 +19,7 @@ class CooButton extends StatelessWidget {
     this.enable = true,
     this.backgroundColor,
     this.isLoading = false,
+    required this.icon,
   });
 
   @override
@@ -33,18 +35,29 @@ class CooButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
           ),
           minimumSize: const Size.fromHeight(44),
-          maximumSize: const Size.fromHeight(56),
+          maximumSize: const Size.fromHeight(50),
           elevation: 0,
         ),
         onPressed: onPressed,
+        // icon: icon,
+        // iconAlignment: IconAlignment.end,
         child: isLoading
             ? const CircularProgressIndicator()
-            : Text(
-                label,
-                style: TextStyle(
-                  color: textColor ?? colors.white,
-                ),
-              ),
+            : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: textColor ?? colors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  icon
+              ],
+            ),
       ),
     );
   }

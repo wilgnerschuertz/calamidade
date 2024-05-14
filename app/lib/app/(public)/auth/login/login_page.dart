@@ -1,3 +1,4 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,11 +19,18 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           const Placeholder(),
           Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/auth/register');
-                },
-                child: const Text('ResgisterPage')),
+            child: Column(
+              children: [
+                CooButton(label: 'Entrar', onPressed: () {}),
+                CooButtonIcon(label: 'Entrar com Icone', onPressed: () {}, icon: const Icon(Icons.arrow_right_alt, color: Colors.white,),),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/auth/register');
+                  },
+                  child: const Text('ResgisterPage'),
+                ),
+              ],
+            ),
           ),
         ],
       ),
