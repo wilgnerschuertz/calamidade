@@ -351,6 +351,15 @@ obs: esse #10 é uma referencia a issue.
 
 Entrar no servidor do [Discord](https://discord.gg/BMKxRGnEmT) para discutir ideias e colaborar com outros membros da equipe.
 
+## Variáveis de ambiente
+As keys de desenvolvimento estão em `dev.env`
+
+Para usar a key:
+`String.fromEnvironment(CHAVE_DA_VARIAVEL);`
+
+Por questões de segurança, para prod é necessário criar um arquivo local `.env` e adiconar à root de `app/`, seguir o padrão de `dev.env`
+As keys podem ser fornecidas pelos participantes do projeto, entrar em contato com Flutterando caso seja necessário debugar o app prod
+
 ## Licença
 
 Este projeto é distribuído sob a Licença MIT, o que permite o uso, cópia, modificação, fusão, publicação, distribuição, sublicenciação, e/ou venda de cópias do software, desde que as cópias do software sejam acompanhadas pelo aviso de direitos autorais e este aviso de permissão.
