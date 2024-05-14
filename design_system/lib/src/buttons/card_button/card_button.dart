@@ -16,39 +16,42 @@ class CardButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Card(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            children: [
-              icon,
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      labelPrimary,
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Theme.of(context)
-                              .extension<CoopartilharColorsExtension>()!
-                              .black),
-                    ),
-                    Text(
-                      labelSecondary,
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Theme.of(context)
-                              .extension<CoopartilharColorsExtension>()!
-                              .grey),
-                    ),
-                  ],
-                ),
-              )
-            ],
+          padding: const EdgeInsets.all(8.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                icon,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        labelPrimary,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Theme.of(context)
+                                .extension<CoopartilharColorsExtension>()!
+                                .black),
+                      ),
+                      Text(
+                        labelSecondary,
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Theme.of(context)
+                                .extension<CoopartilharColorsExtension>()!
+                                .grey),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
