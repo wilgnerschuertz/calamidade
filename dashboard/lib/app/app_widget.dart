@@ -1,5 +1,5 @@
-import 'package:app/routes.dart';
 import 'package:core_module/core_module.dart';
+import 'package:dashboard/routes.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
