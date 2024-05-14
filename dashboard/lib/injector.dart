@@ -1,5 +1,7 @@
-import 'package:auto_injector/auto_injector.dart';
+import 'package:core_module/core_module.dart';
 
 final injector = AutoInjector(
-  on: (injector) {},
+  on: (injector) {
+    injector.addInjector(coreModule);
+  },
 );
