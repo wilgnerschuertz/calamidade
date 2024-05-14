@@ -134,13 +134,13 @@ class User {}
   [Aprenda State Pattern](https://blog.flutterando.com.br/entendendo-state-pattern-flutter-b0318bab77c3)
 
 ```dart
-sealed class DefaultState {}
+sealed class BasetState {}
 
-class InitialState implements DefaultState {}
+class InitialState implements BasetState {}
 
-class LoadingState implements DefaultState {}
+class LoadingState implements BasetState {}
 
-class SuccessState<R> implements DefaultState {
+class SuccessState<R> implements BasetState {
   const SuccessState({
     required this.data,
   });
@@ -148,7 +148,7 @@ class SuccessState<R> implements DefaultState {
   final R data;
 }
 
-class ErrorState<T> implements DefaultState {
+class ErrorState<T> implements BasetState {
   const ErrorState({
     required this.exception,
   });
@@ -268,20 +268,23 @@ Data - Implementação dos contratos, e os Adapters que seriam as serialização
 
 ## Como adicionar um package
 
+forma para adicionar packages no app
 Os packages devem ficar dentro de core/shared/services/
 
 Criar um diretorio com o nome do package e deve conter um contrato que deve ser usada pelo projeto e sua implementação feita com determinado package, o contrato e a implementação devem ficar no mesmo arquivo.
 
-Os packages que são usados pelos 2 projetos ficarão no core_module que vai lidar
+caso o package adicionado seja compartilhado ele deve ficar no core_module
+
+e também deve ter um contrato e sua implementação.
 
 ## Core Module
 
 O core module é uma lib interna que serve para compartilhar o código entre os 2 projetos que temos, o app e o dashboard
-ele vai lidar com temas os packages compartilhados os contratos e estados que também serão usados nos dois apps.
+ele vai lidar com packages compartilhados os contratos e estados que também serão usados nos dois apps.
 
 ## Design system
 
-O design system é uma lib interna que vai ter todos components compartilhados, eles ficarão divididos em diretorios exemplo:
+O design system é uma lib interna que vai ter todos components compartilhados e temas, eles ficarão divididos em diretorios exemplo:
 dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para toda criação de components.
 
 ## Convenção de Commits
@@ -302,13 +305,15 @@ dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para 
 
 **exemplo**: `feat/#10-nova-tela-de-usuario`
 
+obs: esse #10 é uma referencia a issue.
+
 ## Code review
 
 **[!WARNING]**
 
 - `Atenção`: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
 
-- *Todo código deverá passar por Code Review através da feature "Merge Request (MR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
+- *Todo código deverá passar por Code Review através da feature "Merge Request (MR)" do Github durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Merge Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da MR é prefixado de WIP:*.
 
 ## Licença
