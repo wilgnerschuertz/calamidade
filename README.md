@@ -39,9 +39,44 @@ As liberações de recursos são feitas parcialmente, acompanhadas de comprovant
 
 ## Como Contribuir
 
-Contribuições são bem-vindas! Siga os passos descritos na seção "Como Contribuir" acima para saber como você pode ajudar. (Sessão a ser adicionada)
+Você pode contribuir com o projeto de várias maneiras, incluindo:
 
-Não esqueça de dar um Sync Fork para pegar as atualizações já que estamos fazendo fork do projeto.
+- Fazer o fork do repositório do github 
+
+- Criar uma branch para a feature que deseja implementar
+
+- Após a implementação, faça um pull request para a branch de desenvolvimento.
+
+### Como executar o projeto
+
+- Certifique-se de que sua versão do dart seja >= 3.3.3 
+
+- Certifique-se de que sua versão do flutter seja >= 3.19.5 
+
+- Para executar o seu projeto você deve clonar o projeto que você acabou de fazer o fork
+
+```dart
+git clone https://github.com/seu_usuario/calamidade.git
+```
+
+- Acesse a pasta do projeto
+
+```dart
+cd calamidade/app
+```	
+
+- Instale as dependências
+
+```dart
+flutter pub get
+```	
+
+- Execute o projeto
+
+```dart
+flutter run
+```	
+Como fazer o Sync Fork:
 
 ![Como fazer o Sync Fork](doc/sync_fork.png)
 
@@ -311,6 +346,11 @@ dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para 
 
 - *Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:*.
+
+## Acesse nossa comunidade no discord
+
+Entrar no servidor do [Discord](https://discord.gg/BMKxRGnEmT) para discutir ideias e colaborar com outros membros da equipe.
+
 
 ## Licença
 
