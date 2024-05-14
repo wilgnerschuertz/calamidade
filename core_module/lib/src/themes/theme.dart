@@ -8,7 +8,17 @@ final lightTheme = ThemeData(
     error: Color(0xffEB5757),
   ),
   extensions: const [
-    CoopartilharColorsExtension(),
+    CoopartilharColorsExtension(
+      black: Color(0xff0D3F67),
+      black2: Color(0xff255276),
+      middleGrey: Color(0xffb6c5d1),
+      grey: Color(0xffb6c5d1),
+      lightGrey: Color(0xffF2F2F7),
+      white: Color(0xffFFFFFF),
+      success: Color(0xff00FF85),
+      otherYellow: Color(0xffffc745),
+      otherGreen: Color(0xff00b050),
+    ),
   ],
 );
 
