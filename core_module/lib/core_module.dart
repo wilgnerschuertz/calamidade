@@ -12,6 +12,7 @@ export 'src/errors/errors.dart';
 export 'src/states/default_state.dart';
 export 'src/themes/theme.dart';
 export 'src/types/types.dart';
+export 'src/client/client.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {},
