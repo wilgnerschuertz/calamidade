@@ -63,15 +63,23 @@ Para ajudar os desenvolvedores a se familiarizarem com as tecnologias e pacotes 
 
 Estes recursos são recomendados para todos os membros da equipe, especialmente aqueles novos nas bibliotecas e frameworks utilizados.
 
-## Code review
-
-[!WARNING]
-Atenção: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
-
-Todo código deverá passar por Code Review através da feature "Merge Request (MR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
-É recomendado que durante o desenvolvimento da feature seja criado um Merge Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da MR é prefixado de WIP:.
 
 ## Nomenclatura
+
+- **Diretórios e Arquivos**: 
+  - **Classes**: PascalCase
+  - **Variaveis**: Funções e métodos: camelCase
+  - **Interfaces**: Começam com um `I`, por ex. `IRepository`
+  - **Implementação**: Termina com `Impl`, por ex. `RepositoryImpl`
+  
+- **Snake Case**:
+  - Use o estilo snake_case para nomes de arquivos.
+  - Todas as letras devem ser minúsculas.
+  - Palavras separadas por sublinhado.
+- **Descrição Concisa**:
+  - Mantenha o nome do arquivo descritivo e conciso, refletindo seu conteúdo ou funcionalidade.
+  
+Toda pagina deve ter seu nome mais o sufixo '`_page.dar`t' para a geração de rotas do routefly.
 
 ### Padrão para classes de interface
 
@@ -150,6 +158,93 @@ class ErrorState<T> implements DefaultState {
 }
 ```
 
+- **Exemplo de uso do State Pattern**
+```dart
+abstract interface class ILoginController {
+  ValueNotifier<DefaultState> get state;
+
+  Future<void> login({
+    required String email,
+    required String password,
+  });
+}
+
+class LoginControllerImpl implements ILoginController {
+  final IAuthRepository _repository;
+
+  LoginControllerImpl({
+    required IAuthRepository repository,
+  }) : _repository = repository;
+
+  final _state = ValueNotifier<DefaultState>(InitialState());
+
+  @override
+  ValueNotifier<DefaultState> get state => _state;
+
+  @override
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
+    
+    _state.value = LoadingState();
+
+    final credentials = Credentials(
+      email: email.trim().toLowerCase(),
+      password: password.trim(),
+    );
+
+    final result = await _repository.login(credentials);
+
+    result.fold(
+      (error) => _state.value = ErrorState(exception: error),
+      (success) => _state.value = SuccessState(data: success),
+    );
+  }
+}
+```
+
+## Princípio da inversão de dependências (DIP)
+- É um dos cinco princípios SOLID da programação orientada a objetos. Ele estabelece que:
+  - Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
+  - Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
+
+*Em termos mais simples, o DIP sugere que os módulos de alto nível devem depender de abstrações, não de implementações concretas. Isso permite que você escreva código que seja mais flexível e fácil de manter, pois os módulos de alto nível não estão vinculados a detalhes de implementação específicos dos módulos de baixo nível*.
+
+- **Para aplicar o DIP em um projeto, você precisa seguir algumas práticas**:
+
+  - **Definir abstrações claras**: Identifique as interfaces ou classes abstratas que descrevem os comportamentos que os módulos de alto nível precisam. Essas abstrações devem ser independentes de qualquer implementação concreta.
+  - **Injetar dependências**: Em vez de instanciar objetos diretamente dentro de outros objetos, injete as dependências por meio de construtores, métodos ou propriedades. Isso permite que as implementações concretas sejam substituídas por outras implementações compatíveis sem alterar o código dos módulos de alto nível.
+  - **Seguir o Princípio da Inversão de Controle (IoC)**: No DIP, o controle é invertido para que as implementações concretas dependam das abstrações. Isso é frequentemente alcançado por meio de um contêiner de injeção de dependência que gerencia a criação e resolução de dependências.
+  - **Testar unidades isoladas**: Ao usar abstrações e injetar dependências, você pode escrever testes de unidade mais facilmente, substituindo as implementações reais por mocks ou stubs durante os testes.
+
+*Ao seguir essas práticas, você pode criar um código mais flexível, modular e fácil de manter, alinhado com os princípios do DIP*.
+
+```dart
+  final IAuthRepository _repository;
+
+  LoginControllerImpl({
+    required IAuthRepository repository,
+  }) : _repository = repository;
+```
+
+### Manipulação de Erros e Resultados
+- Ao trabalhar com operações que podem retornar resultados ou erros, podemmos usar o typedef `Output<T>` para representar a saída dessas operações. Este typedef nos permite encapsular tanto o sucesso quanto o fracasso em um único tipo usando `Either`.
+  - Definição de um typedef para representar a saída de uma operação, onde o tipo de dado retornado pode ser um sucesso (T) ou um erro `(BaseException)`.
+  - Este typedef é parametrizado com um tipo genérico T, que representa o tipo de dado retornado em caso de sucesso.
+  - Exemplo de uso: `Output<User>` representa a saída de uma operação que retorna um objeto do tipo User em caso de sucesso, ou uma exceção do tipo `BaseException` em caso de erro.
+
+```dart
+typedef Output<T> = Either<BaseException, T>;
+```
+
+**Exemplo de uso do `Output`**.
+```dart
+abstract class IAuthRepository {
+  Future<Output<void>> login(Credentials credential);
+}
+```
+
 ## Como criar uma nova feature
 
 As features devem ficar no diretorio app/features usando a arquitetura minicore
@@ -174,41 +269,31 @@ Os packages devem ficar dentro de core/shared/services/
 
 Criar um diretorio com o nome do package e deve conter um contrato que deve ser usada pelo projeto e sua implementação feita com determinado package, o contrato e a implementação devem ficar no mesmo arquivo.
 
-## Nomenclatura geral
-
-Diretórios e Arquivos: snake_case
-Classes: PascalCase
-Variaveis, funcões e métodos: camelCase
-Interfaces: comece com um I, por ex. IRepository
-Implementação: termina com Impl, por ex. RepositoryImpl
-
-Toda pagina deve ter seunome mais o sufixo '_page.dart' para a geração de rotas do routefly.
-
-Snake Case:
-Use o estilo snake_case para nomes de arquivos.
-Todas as letras devem ser minúsculas.
-Palavras separadas por sublinhado.
-Descrição Concisa:
-Mantenha o nome do arquivo descritivo e conciso, refletindo seu conteúdo ou funcionalidade.
-
 ## Convenção de Commits
 
-Commits:
-feat, fix, doc, etc.
+- **Commits**:
+  - `feat`, `fix`, `doc`, `etc`.
 
 [Conventianal Commits](https://www.conventionalcommits.org/en/v1.0.0)
 
 ## Convenção de nomenclatura para branches
 
-prefixos utilizados:
+- **prefixos utilizados**:
+  - **feat**: adição de código novo
+  - **fix**: correção de pré-existente
+  - **refact**: mudança de um código pré-existente
+  - **release**: alterações no pubspac
+  - **doc**: alteração na documentação
 
-feat: adição de código novo
-fix: correção de pré-existente
-refact: mudança de um código pré-existente
-release: alterações no pubspac
-doc: alteração na documentação
+**exemplo**: `feat/#10-nova-tela-de-usuario`
 
-exemplo: feat/#10-nova-tela-de-usuario
+## Code review
+
+**[!WARNING]**
+- `Atenção`: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
+
+- *Todo código deverá passar por Code Review através da feature "Merge Request (MR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
+É recomendado que durante o desenvolvimento da feature seja criado um Merge Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da MR é prefixado de WIP:*.
 
 ## Licença
 
