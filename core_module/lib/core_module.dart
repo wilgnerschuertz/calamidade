@@ -9,7 +9,7 @@ export 'package:uicons/uicons.dart';
 
 export 'src/entities/entity.dart';
 export 'src/errors/errors.dart';
-export 'src/states/default_state.dart';
+export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 
 final coreModule = AutoInjector(
