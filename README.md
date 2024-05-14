@@ -63,10 +63,9 @@ Para ajudar os desenvolvedores a se familiarizarem com as tecnologias e pacotes 
 
 Estes recursos são recomendados para todos os membros da equipe, especialmente aqueles novos nas bibliotecas e frameworks utilizados.
 
-
 ## Nomenclatura
 
-- **Diretórios e Arquivos**: 
+- **Diretórios e Arquivos**:
   - **Classes**: PascalCase
   - **Variaveis**: Funções e métodos: camelCase
   - **Interfaces**: Começam com um `I`, por ex. `IRepository`
@@ -159,6 +158,7 @@ class ErrorState<T> implements DefaultState {
 ```
 
 - **Exemplo de uso do State Pattern**
+
 ```dart
 abstract interface class ILoginController {
   ValueNotifier<DefaultState> get state;
@@ -205,6 +205,7 @@ class LoginControllerImpl implements ILoginController {
 ```
 
 ## Princípio da inversão de dependências (DIP)
+
 - É um dos cinco princípios SOLID da programação orientada a objetos. Ele estabelece que:
   - Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
   - Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
@@ -229,6 +230,7 @@ class LoginControllerImpl implements ILoginController {
 ```
 
 ### Manipulação de Erros e Resultados
+
 - Ao trabalhar com operações que podem retornar resultados ou erros, podemmos usar o typedef `Output<T>` para representar a saída dessas operações. Este typedef nos permite encapsular tanto o sucesso quanto o fracasso em um único tipo usando `Either`.
   - Definição de um typedef para representar a saída de uma operação, onde o tipo de dado retornado pode ser um sucesso (T) ou um erro `(BaseException)`.
   - Este typedef é parametrizado com um tipo genérico T, que representa o tipo de dado retornado em caso de sucesso.
@@ -239,6 +241,7 @@ typedef Output<T> = Either<BaseException, T>;
 ```
 
 **Exemplo de uso do `Output`**.
+
 ```dart
 abstract class IAuthRepository {
   Future<Output<void>> login(Credentials credential);
@@ -269,6 +272,18 @@ Os packages devem ficar dentro de core/shared/services/
 
 Criar um diretorio com o nome do package e deve conter um contrato que deve ser usada pelo projeto e sua implementação feita com determinado package, o contrato e a implementação devem ficar no mesmo arquivo.
 
+Os packages que são usados pelos 2 projetos ficarão no core_module que vai lidar
+
+## Core Module
+
+O core module é uma lib interna que serve para compartilhar o código entre os 2 projetos que temos, o app e o dashboard
+ele vai lidar com temas os packages compartilhados os contratos e estados que também serão usados nos dois apps.
+
+## Design system
+
+O design system é uma lib interna que vai ter todos components compartilhados, eles ficarão divididos em diretorios exemplo:
+dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para toda criação de components.
+
 ## Convenção de Commits
 
 - **Commits**:
@@ -290,7 +305,9 @@ Criar um diretorio com o nome do package e deve conter um contrato que deve ser 
 ## Code review
 
 **[!WARNING]**
-- `Atenção`: Somente será feito o merge de PRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao PR que deverá ter ao menos dois.
+
+- `Atenção`: Somente será feito o merge de MRs revisados por múltiplas pessoas. Esse controle será feito através da verificação do número de reações ao MR que deverá ter ao menos dois.
+
 
 - *Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:*.
