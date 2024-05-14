@@ -12,8 +12,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    final colors = CoopartilharColors.of(context);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('SplashPage'),
@@ -21,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Column(
         children: [
           const Placeholder(),
-          CooButton(
+          CooButton.primary(
             label: 'Login',
             onPressed: () {
               Routefly.navigate('/auth/login');

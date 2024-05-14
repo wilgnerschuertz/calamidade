@@ -1,6 +1,15 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 
 import '../../../design_system.dart';
+
+enum ButtonType {
+  primary,
+  secondary,
+  danger,
+  outline,
+}
 
 class CooButton extends StatelessWidget {
   final Color? backgroundColor;
@@ -9,8 +18,8 @@ class CooButton extends StatelessWidget {
   final Color? textColor;
   final String label;
   final bool enable;
-  final bool outline;
   final IconData? icon;
+  final ButtonType? type;
 
   const CooButton({
     super.key,
@@ -20,9 +29,71 @@ class CooButton extends StatelessWidget {
     this.enable = true,
     this.backgroundColor,
     this.isLoading = false,
-    this.outline = false,
     this.icon,
+    this.type = ButtonType.primary,
   });
+
+  factory CooButton.primary({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      backgroundColor: backgroundColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.primary,
+    );
+  }
+
+  factory CooButton.secondary({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      backgroundColor: backgroundColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.secondary,
+    );
+  }
+
+  factory CooButton.danger({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.danger,
+    );
+  }
 
   factory CooButton.outline({
     required String label,
@@ -40,43 +111,47 @@ class CooButton extends StatelessWidget {
       backgroundColor: backgroundColor,
       isLoading: isLoading,
       enable: enable,
-      outline: true,
       icon: icon,
-    );
-  }
-
-  factory CooButton.icon({
-    required String label,
-    required VoidCallback onPressed,
-    required IconData icon,
-    Color? textColor,
-    Color? backgroundColor,
-    bool isLoading = false,
-    bool enable = true,
-  }) {
-    return CooButton(
-      label: label,
-      onPressed: onPressed,
-      textColor: textColor,
-      backgroundColor: backgroundColor,
-      isLoading: isLoading,
-      enable: enable,
-      outline: false,
-      icon: icon,
+      type: ButtonType.outline,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
+    Color? _backgroundColor = backgroundColor;
+    Color? _textColor = textColor;
+
+    switch (type) {
+      case ButtonType.primary:
+        _backgroundColor = colors.primary;
+        _textColor = colors.white;
+        break;
+      case ButtonType.secondary:
+        _backgroundColor = colors.black;
+        _textColor = colors.white;
+        break;
+      case ButtonType.danger:
+        _backgroundColor = colors.error;
+        _textColor = colors.white;
+        break;
+      case ButtonType.outline:
+        _backgroundColor = colors.primary;
+        _textColor = colors.primary;
+        break;
+
+      default:
+        _backgroundColor = backgroundColor ?? colors.primary;
+        _textColor = textColor ?? colors.white;
+    }
 
     return Padding(
       padding: const EdgeInsets.only(right: 10, left: 10),
-      child: outline
+      child: ButtonType.outline == type
           ? OutlinedButton(
               style: OutlinedButton.styleFrom(
                 side: BorderSide(
-                  color: backgroundColor ?? colors.primary,
+                  color: _backgroundColor,
                   width: 1.0,
                 ),
                 shape: RoundedRectangleBorder(
@@ -89,20 +164,19 @@ class CooButton extends StatelessWidget {
                   : _ContentButton(
                       icon: Icon(
                         icon,
-                        color: textColor ?? colors.primary,
+                        color: _backgroundColor,
                       ),
                       label: label,
-                      textColor: textColor ?? colors.primary,
+                      textColor: _backgroundColor,
                       colors: colors,
                     ),
             )
           : ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: backgroundColor ?? colors.primary,
+                backgroundColor: _backgroundColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                elevation: 0,
               ),
               onPressed: enable ? onPressed : null,
               child: isLoading
@@ -110,10 +184,10 @@ class CooButton extends StatelessWidget {
                   : _ContentButton(
                       icon: Icon(
                         icon,
-                        color: textColor ?? colors.white,
+                        color: _textColor,
                       ),
                       label: label,
-                      textColor: textColor ?? colors.white,
+                      textColor: _textColor,
                       colors: colors,
                     ),
             ),
@@ -148,7 +222,7 @@ class _ContentButton extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            color: textColor ?? colors.primary,
+            color: textColor,
           ),
         ),
         icon ?? Container(),
