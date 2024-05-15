@@ -19,7 +19,7 @@ void main() {
   );
 
   group('Rest Client impl', () {
-    test('get', () async {
+    test('should get with success', () async {
       when(
         () => mockDio.get(
           '',
@@ -38,6 +38,36 @@ void main() {
         RestClientRequest(path: ''),
       );
       expect(result.statusCode, 200);
+      expect(result.data, 'test');
+    });
+
+    test('should get with exception', () async {
+      final request = RequestOptions(
+        baseUrl: '',
+      );
+
+      when(
+        () => mockDio.get(
+          '',
+          queryParameters: any(named: 'queryParameters'),
+          options: any(named: 'options'),
+        ),
+      ).thenThrow(
+        DioException(
+          requestOptions: request,
+          response: Response(
+            requestOptions: request,
+            statusCode: 404,
+            statusMessage: 'Error',
+          ),
+        ),
+      );
+
+      try {
+        await restClient.get(RestClientRequest(path: ''));
+      } on RestClientException catch (e) {
+        expect(e.statusCode, 404);
+      }
     });
   });
 }
