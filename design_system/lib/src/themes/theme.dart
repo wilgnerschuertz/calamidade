@@ -1,9 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const _defaultInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderSide: BorderSide.none);
+
 ThemeData lightTheme(BuildContext context) {
   final textTheme = Theme.of(context).textTheme;
   return ThemeData(
+    inputDecorationTheme: const InputDecorationTheme(
+        filled: true,
+        errorStyle: TextStyle(
+          color: Color(0xffEB5757),
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+        fillColor: Color(0xffF2F2F9),
+        labelStyle: TextStyle(
+          color: Color(0xff333333),
+          fontSize: 20,
+          fontWeight: FontWeight.w400,
+        ),
+        border: _defaultInputBorder,
+        focusedBorder: _defaultInputBorder,
+        enabledBorder: _defaultInputBorder,
+        errorBorder: _defaultInputBorder),
     colorScheme: const ColorScheme.light(
       primary: Color(0xff129166),
       secondary: Color(0xfffcb900),
