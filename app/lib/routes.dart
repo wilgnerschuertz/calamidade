@@ -4,6 +4,8 @@ import 'package:app/app/(public)/auth/login/login_page.dart' as a2;
 import 'package:app/app/(public)/auth/register/register_page.dart' as a3;
 import 'package:app/app/(public)/home/home_page.dart' as a4;
 import 'package:app/app/(public)/splash/splash_page.dart' as a5;
+import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart'
+    as a6;
 import 'package:core_module/core_module.dart';
 
 List<RouteEntity> get routes => [
@@ -34,6 +36,15 @@ List<RouteEntity> get routes => [
       const a2.LoginPage(),
     ),
   ),
+      RouteEntity(
+        key: '/auth/not_affiliated',
+        uri: Uri.parse('/auth/not_affiliated'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a6.NotAfilliatedPage(),
+        ),
+      ),
   RouteEntity(
     key: '/auth/register',
     uri: Uri.parse('/auth/register'),

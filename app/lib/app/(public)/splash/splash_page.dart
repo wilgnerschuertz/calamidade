@@ -24,6 +24,16 @@ class _SplashPageState extends State<SplashPage> {
                 },
                 child: const Text('Login')),
           ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/auth/not_affiliated');
+              },
+              child: const Text(
+                'Página não cooperado',
+              ),
+            ),
+          ),
         ],
       ),
     );
