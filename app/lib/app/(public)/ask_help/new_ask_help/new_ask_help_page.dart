@@ -23,8 +23,6 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
   TextEditingController valueController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
-  bool asImagem = false;
-
   @override
   void dispose() {
     titleController.dispose();
@@ -44,10 +42,9 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
       appBar: AppBar(
         title: Text(
           widget.title,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
       ),
       body: Padding(
@@ -68,16 +65,20 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     const SizedBox(height: 30),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 2, horizontal: 8),
+                        vertical: 2,
+                        horizontal: 8,
+                      ),
                       decoration: BoxDecoration(
-                          color: CoopartilharColors.of(context).lightGrey,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8))),
+                        color: CoopartilharColors.of(context).lightGrey,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                      ),
                       child: Text(
                         'R\$ $preApprovedValue',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: CoopartilharColors.of(context).primary),
+                          fontWeight: FontWeight.bold,
+                          color: CoopartilharColors.of(context).primary,
+                        ),
                       ),
                     ),
                   ],
@@ -161,15 +162,15 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                const Text('Enviar arquivo'),
+                const Text('Enviar arquivo*'),
                 InkWell(
                   onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
-                        color: CoopartilharColors.of(context).primary),
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      color: CoopartilharColors.of(context).primary,
+                    ),
                     child: Icon(
                       UIcons.regularStraight.clip,
                       color: CoopartilharColors.of(context).white,
@@ -180,7 +181,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const Text('Breve descrição'),
                 TextFormField(
                   controller: descriptionController,
-                  maxLines: 5,
+                  maxLines: 8,
                   decoration: const InputDecoration(
                     hintText:
                         'Insira uma breve descrição sobre sua solicitação',
@@ -188,10 +189,11 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 ),
                 const SizedBox(height: 50),
                 CooButton(
-                    label: 'Proximo',
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                    })
+                  label: 'Próximo',
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                )
               ],
             ),
           ),
