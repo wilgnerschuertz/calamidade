@@ -1,7 +1,7 @@
 import 'package:coopartilhar/app/features/home/interactor/order_entity.dart';
 
-extension OrderDateExtension on OrderEntity {
-  String formattedData() {
+class DateAdapter {
+  static String dateToString(OrderEntity orderEntity) {
     const Map<int, String> dates = {
       1: 'Janeiro',
       2: 'Fevereiro',
@@ -17,6 +17,6 @@ extension OrderDateExtension on OrderEntity {
       12: 'Dezembro',
     };
 
-    return '${date.day} de ${dates[date.month]} ${date.hour}:h';
+    return '${orderEntity.date.day} de ${dates[orderEntity.date.month]} ${orderEntity.date.hour}:h';
   }
 }
