@@ -5,6 +5,8 @@ import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a2;
 import 'app/(public)/ask_help/ask_help_page.dart' as a3;
 import 'app/(public)/splash/splash_page.dart' as a4;
 import 'app/(public)/home/home_page.dart' as a5;
+import 'app/(public)/success_state/success_state.dart' as a6;
+
 
 List<RouteEntity> get routes => [
       RouteEntity(
@@ -61,6 +63,15 @@ List<RouteEntity> get routes => [
           const a5.HomePage(),
         ),
       ),
+      RouteEntity(
+        key: '/success_state',
+        uri: Uri.parse('/success_state'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a6.SuccessState(),
+        ),
+      ),
     ];
 
 const routePaths = (
@@ -76,4 +87,5 @@ const routePaths = (
   ),
   splash: '/',
   home: '/home',
+  successState: 'success_state'
 );
