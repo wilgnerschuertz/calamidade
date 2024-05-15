@@ -1,5 +1,8 @@
 library core_module;
 
+import 'package:core_module/src/client/dio/rest_client_dio_impl.dart';
+import 'package:dio/dio.dart';
+
 import 'core_module.dart';
 
 import 'src/cache/shared_preferences_impl.dart';
@@ -19,5 +22,7 @@ export 'src/client/client.dart';
 final coreModule = AutoInjector(
   on: (injector) {
     injector.addSingleton<ICache>(SharedPreferencesImpl.new);
+    injector.add<Dio>(DioFactory.dio);
+    injector.add<IRestClient>(RestClientDioImpl.new);
   },
 );
