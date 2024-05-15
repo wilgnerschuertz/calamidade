@@ -21,12 +21,12 @@ class RegisterAssistedController extends BaseController {
 
     final assisted = AssistedEntity(
       '',
-      email.text,
-      name.text,
-      document.text,
-      phone.text,
-      latitude.value,
-      longitude.value,
+      email: email.text,
+      name: name.text,
+      document: document.text,
+      phone: phone.text,
+      latitude: latitude.value,
+      longitude: longitude.value,
     );
 
     final response = await repository.register(assisted: assisted);
