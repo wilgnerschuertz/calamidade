@@ -103,8 +103,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                const Text('Titulo da solicitação*'),
+                const TextInformationExtends(text: 'Titulo da solicitação*'),
                 TextFormField(
                   controller: _titleController,
                   decoration: const InputDecoration(
@@ -117,8 +116,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 20),
-                const Text('CPF do Assistido*'),
+                const TextInformationExtends(text: 'CPF do Assistido*'),
                 TextFormField(
                   controller: _cpfController,
                   keyboardType: TextInputType.number,
@@ -132,24 +130,21 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 20),
-                const Text('Chave pix'),
+                const TextInformationExtends(text: 'Chave pix'),
                 TextFormField(
                   controller: _pixKeyController,
                   decoration: const InputDecoration(
                     hintText: 'Insira a chave pix do Assistido',
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text('Banco'),
+                const TextInformationExtends(text: 'Banco'),
                 TextFormField(
                   controller: _bankController,
                   decoration: const InputDecoration(
                     hintText: 'Insira o banco do Assistido',
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text('Agência'),
+                const TextInformationExtends(text: 'Agência'),
                 TextFormField(
                   controller: _agencyController,
                   keyboardType: TextInputType.number,
@@ -157,8 +152,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     hintText: 'Insira a agência bancária do Assistido',
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text('Conta'),
+                const TextInformationExtends(text: 'Conta'),
                 TextFormField(
                   controller: _accountController,
                   keyboardType: TextInputType.number,
@@ -166,8 +160,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     hintText: 'Insira a conta bancária do Assistido',
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text('Valor*'),
+                const TextInformationExtends(text: 'Valor*'),
                 TextFormField(
                   controller: _valueController,
                   keyboardType: TextInputType.number,
@@ -181,8 +174,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 20),
-                const Text('Enviar arquivo*'),
+                const TextInformationExtends(text: 'Enviar arquivo*'),
                 !asImage
                     ? InkWell(
                         onTap: () {},
@@ -210,8 +202,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                           );
                         },
                       ),
-                const SizedBox(height: 20),
-                const Text('Breve descrição'),
+                const TextInformationExtends(text: 'Breve descrição'),
                 TextFormField(
                   controller: _descriptionController,
                   maxLines: 8,
@@ -232,6 +223,21 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class TextInformationExtends extends StatelessWidget {
+  const TextInformationExtends({super.key, required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        Text(text),
+      ],
     );
   }
 }
