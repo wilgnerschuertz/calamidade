@@ -3,6 +3,12 @@ import 'package:coopartilhar/app/features/register_assisted/repositories/i_regis
 import 'package:core_module/core_module.dart';
 
 class RegisterAssistedRepositoryImpl extends IRegisterAssistedRepository {
+  RegisterAssistedRepositoryImpl({
+    required this.client,
+  });
+
+  final IRestClient client;
+
   @override
   Future<Output<AssistedEntity>> register({
     required AssistedEntity assisted,
