@@ -28,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  /// TODO: mover para o controller
+  /// TODO: mover para o controller quando ele for criado
   void _submit() {
     if (_formKey.currentState!.validate()) {}
   }
@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               const SizedBox(height: 30),
 
-              /// TODO: receber valores do controller
+              /// TODO: receber valores do controller quando ele for criado
 
               const NonEditableRegisterItem(
                 title: 'Nome completo',
@@ -66,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 30),
 
-              /// TODO: receber valores do controller
+              /// TODO: receber valores do controller quando ele for criado
 
               const NonEditableRegisterItem(
                 title: 'Informe o seu CPF/CNPJ',
@@ -78,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _emailController,
                 hint: 'Insira o e-mail',
 
-                /// TODO: mover para controller
+                /// TODO: mover para controller quando ele for criado
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return 'O e-mail não pode estar vazio';
@@ -97,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _passwordController,
                       hint: 'Insira a senha',
 
-                      /// TODO: mover para controller
+                      /// TODO: mover para controller quando ele for criado
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'A senha não pode estar vazia';
@@ -113,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       hint: 'Repetir a senha',
                       controller: _repeatPasswordController,
 
-                      /// TODO: mover para controller
+                      /// TODO: mover para o controller quando ele for criado
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'A senha não pode estar vazia';
