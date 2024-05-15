@@ -1,3 +1,4 @@
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,8 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
   TextEditingController accountController = TextEditingController();
   TextEditingController valueController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
+  bool asImagem = false;
 
   @override
   void dispose() {
@@ -79,23 +82,36 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Titulo da solicitação*'),
                 TextFormField(
                   controller: titleController,
                   decoration: const InputDecoration(
                     hintText: 'Insira o titulo para solicitação',
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Titulo não pode esta vazio';
+                    }
+                    return null;
+                  },
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('CPF do Assistido*'),
                 TextFormField(
                   controller: cpfController,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'Insira o CPF do Assistido',
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'CPF não pode esta vazio';
+                    }
+                    return null;
+                  },
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Chave pix'),
                 TextFormField(
                   controller: pixKeyController,
@@ -103,7 +119,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     hintText: 'Insira a chave pix do Assistido',
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Banco'),
                 TextFormField(
                   controller: bankController,
@@ -111,35 +127,56 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     hintText: 'Insira o banco do Assistido',
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Agência'),
                 TextFormField(
                   controller: agencyController,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'Insira a agência bancária do Assistido',
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Conta'),
                 TextFormField(
                   controller: accountController,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'Insira a conta bancária do Assistido',
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Valor*'),
                 TextFormField(
                   controller: valueController,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'R\$ 14.500,00',
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Valor não pode esta vazio';
+                    }
+                    return null;
+                  },
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text('Enviar arquivo'),
-                IconButton(
-                    onPressed: () {}, icon: Icon(Icons.closed_caption_off)),
-                const SizedBox(height: 10),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        color: CoopartilharColors.of(context).primary),
+                    child: Icon(
+                      UIcons.regularStraight.clip,
+                      color: CoopartilharColors.of(context).white,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
                 const Text('Breve descrição'),
                 TextFormField(
                   controller: descriptionController,
@@ -150,7 +187,11 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                CooButton(label: 'Proximo', onPressed: () {})
+                CooButton(
+                    label: 'Proximo',
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {}
+                    })
               ],
             ),
           ),
