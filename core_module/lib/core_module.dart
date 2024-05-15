@@ -1,6 +1,5 @@
 library core_module;
 
-import 'package:core_module/src/client/dio/rest_client_dio_impl.dart';
 import 'package:dio/dio.dart';
 
 import 'core_module.dart';
