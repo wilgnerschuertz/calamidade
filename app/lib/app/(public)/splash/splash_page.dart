@@ -19,19 +19,10 @@ class _SplashPageState extends State<SplashPage> {
           const Placeholder(),
           Center(
             child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/auth/login');
-                },
-                child: const Text('Login')),
-          ),
-          Center(
-            child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/auth/not_affiliated');
+                Navigator.pushNamed(context, '/auth/login');
               },
-              child: const Text(
-                'Página não cooperado',
-              ),
+              child: const Text('Login'),
             ),
           ),
         ],
