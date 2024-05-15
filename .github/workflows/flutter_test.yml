@@ -22,7 +22,7 @@ jobs:
           channel: "stable"
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.pub-cache
@@ -65,4 +65,4 @@ jobs:
         run: flutter --version
 
       - name: Format code
-        run: dart format --fix .
+        run: dart format --set-exit-if-changed .
