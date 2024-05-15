@@ -10,7 +10,7 @@ class AuthRepositoryImpl implements IAuthRepository {
   final IRestClient client;
 
   @override
-  Future<Output<Either>> login({required CredentialsEntity credentials}) {
+  Future<Output<void>> login({required CredentialsEntity credentials}) {
     // TODO: implement login
     throw UnimplementedError();
   }
