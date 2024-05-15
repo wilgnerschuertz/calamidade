@@ -2,7 +2,7 @@ import 'package:coopartilhar/app/features/auth/data/repositories/i_auth_reposito
 import 'package:coopartilhar/app/features/auth/entities/credentials_entity.dart';
 import 'package:core_module/core_module.dart';
 
-class LoginControllerImpl extends BaseController {
+class LoginControllerImpl<AuthState> extends BaseController {
   final IAuthRepository _repository;
 
   LoginControllerImpl({
