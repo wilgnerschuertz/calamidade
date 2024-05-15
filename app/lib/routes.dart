@@ -4,13 +4,12 @@ import 'app/(public)/affiliated_first_action/presentation/affiliated_first_actio
 import 'app/(public)/ask_help/ask_help_page.dart' as a1;
 import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a2;
 import 'app/(public)/auth/login/login_page.dart' as a3;
-import 'app/(public)/auth/login_page.dart' as a4;
-import 'app/(public)/auth/not_affiliated/not_affiliated_page.dart' as a5;
-import 'app/(public)/auth/register/register_page.dart' as a6;
-import 'app/(public)/home/home_page.dart' as a7;
-import 'app/(public)/onboarding/onboarding_page.dart' as a8;
-import 'app/(public)/splash/splash_page.dart' as a9;
-import 'app/(public)/want_to_help/want_to_help_page.dart' as a10;
+import 'app/(public)/auth/not_affiliated/not_affiliated_page.dart' as a4;
+import 'app/(public)/auth/register/register_page.dart' as a5;
+import 'app/(public)/home/home_page.dart' as a6;
+import 'app/(public)/onboarding/onboarding_page.dart' as a7;
+import 'app/(public)/splash/splash_page.dart' as a8;
+import 'app/(public)/want_to_help/want_to_help_page.dart' as a9;
 
 List<RouteEntity> get routes => [
   RouteEntity(
@@ -50,21 +49,12 @@ List<RouteEntity> get routes => [
     ),
   ),
   RouteEntity(
-    key: '/auth/login',
-    uri: Uri.parse('/auth/login'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a4.LoginPage(),
-    ),
-  ),
-  RouteEntity(
     key: '/auth/not_affiliated',
     uri: Uri.parse('/auth/not_affiliated'),
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a5.NotAfilliatedPage(),
+      const a4.NotAfilliatedPage(),
     ),
   ),
   RouteEntity(
@@ -73,7 +63,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a6.RegisterPage(),
+      const a5.RegisterPage(),
     ),
   ),
   RouteEntity(
@@ -82,7 +72,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a7.HomePage(),
+      const a6.HomePage(),
     ),
   ),
   RouteEntity(
@@ -91,7 +81,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a8.OnboardingPage(),
+      const a7.OnboardingPage(),
     ),
   ),
   RouteEntity(
@@ -100,7 +90,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a9.SplashPage(),
+      const a8.SplashPage(),
     ),
   ),
   RouteEntity(
@@ -109,7 +99,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a10.WantToHelpPage(),
+      const a9.WantToHelpPage(),
     ),
   ),
 ];
