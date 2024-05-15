@@ -19,6 +19,7 @@ ThemeData lightTheme(BuildContext context) {
         error: Color(0xffEB5757),
         black: Color(0xff0D3F67),
         black2: Color(0xff255276),
+        textColor: Color(0xff333333),
         middleGrey: Color(0xffb6c5d1),
         grey: Color(0xffb6c5d1),
         lightGrey: Color(0xffF2F2F7),
@@ -42,6 +43,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     required this.otherGreen,
     required this.black,
     required this.black2,
+    required this.textColor,
     required this.middleGrey,
     required this.grey,
     required this.lightGrey,
@@ -57,6 +59,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
   final Color otherGreen;
   final Color black;
   final Color black2;
+  final Color textColor;
   final Color middleGrey;
   final Color grey;
   final Color lightGrey;
@@ -77,6 +80,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     Color? otherGreen,
     Color? black,
     Color? black2,
+    Color? textColor,
     Color? middleGrey,
     Color? grey,
     Color? lightGrey,
@@ -92,6 +96,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       otherGreen: otherGreen ?? this.otherGreen,
       black: black ?? this.black,
       black2: black2 ?? this.black2,
+      textColor: textColor ?? this.textColor,
       middleGrey: middleGrey ?? this.middleGrey,
       grey: grey ?? this.grey,
       lightGrey: lightGrey ?? this.lightGrey,
@@ -118,6 +123,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       otherGreen: Color.lerp(otherGreen, other.otherGreen, t)!,
       black: Color.lerp(black, other.black, t)!,
       black2: Color.lerp(black2, other.black2, t)!,
+      textColor: Color.lerp(textColor, other.textColor, t)!,
       middleGrey: Color.lerp(middleGrey, other.middleGrey, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
       lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
