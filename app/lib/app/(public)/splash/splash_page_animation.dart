@@ -22,6 +22,7 @@ class _SplashPageAnimation extends State<SplashPageAnimation>
 
   @override
   void initState() {
+    super.initState();
     _animationController = AnimationController(vsync: this, duration: duration)
       ..forward()
       ..addStatusListener((status) {
@@ -36,7 +37,6 @@ class _SplashPageAnimation extends State<SplashPageAnimation>
             curve: Curves.linearToEaseOut,
           ),
         );
-    super.initState();
   }
 
   @override
