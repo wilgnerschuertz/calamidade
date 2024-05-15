@@ -1,9 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const _defaultInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderSide: BorderSide.none);
+
 ThemeData lightTheme(BuildContext context) {
   final textTheme = Theme.of(context).textTheme;
   return ThemeData(
+    inputDecorationTheme: const InputDecorationTheme(
+        filled: true,
+        errorStyle: TextStyle(
+          color: Color(0xffEB5757),
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+        fillColor: Color(0xffF2F2F9),
+        labelStyle: TextStyle(
+          color: Color(0xff333333),
+          fontSize: 20,
+          fontWeight: FontWeight.w400,
+        ),
+        border: _defaultInputBorder,
+        focusedBorder: _defaultInputBorder,
+        enabledBorder: _defaultInputBorder,
+        errorBorder: _defaultInputBorder),
     colorScheme: const ColorScheme.light(
       primary: Color(0xff129166),
       secondary: Color(0xfffcb900),
@@ -17,8 +38,9 @@ ThemeData lightTheme(BuildContext context) {
         secondary: Color(0xfffcb900),
         tertiary: Color(0xff84cc6d),
         error: Color(0xffEB5757),
-        black: Color(0xff0D3F67),
-        black2: Color(0xff255276),
+        black: Color(0xff000000),
+        black2: Color(0xff151515),
+        textColor: Color(0xff333333),
         middleGrey: Color(0xffb6c5d1),
         grey: Color(0xffb6c5d1),
         lightGrey: Color(0xffF2F2F7),
@@ -42,6 +64,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     required this.otherGreen,
     required this.black,
     required this.black2,
+    required this.textColor,
     required this.middleGrey,
     required this.grey,
     required this.lightGrey,
@@ -57,6 +80,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
   final Color otherGreen;
   final Color black;
   final Color black2;
+  final Color textColor;
   final Color middleGrey;
   final Color grey;
   final Color lightGrey;
@@ -77,6 +101,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     Color? otherGreen,
     Color? black,
     Color? black2,
+    Color? textColor,
     Color? middleGrey,
     Color? grey,
     Color? lightGrey,
@@ -92,6 +117,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       otherGreen: otherGreen ?? this.otherGreen,
       black: black ?? this.black,
       black2: black2 ?? this.black2,
+      textColor: textColor ?? this.textColor,
       middleGrey: middleGrey ?? this.middleGrey,
       grey: grey ?? this.grey,
       lightGrey: lightGrey ?? this.lightGrey,
@@ -118,6 +144,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       otherGreen: Color.lerp(otherGreen, other.otherGreen, t)!,
       black: Color.lerp(black, other.black, t)!,
       black2: Color.lerp(black2, other.black2, t)!,
+      textColor: Color.lerp(textColor, other.textColor, t)!,
       middleGrey: Color.lerp(middleGrey, other.middleGrey, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
       lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
