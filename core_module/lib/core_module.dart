@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'core_module.dart';
 
 import 'src/cache/shared_preferences_impl.dart';
+import 'src/client/dio/rest_client_dio_impl.dart';
 
 export 'package:auto_injector/auto_injector.dart';
 export 'package:either_dart/either.dart';
