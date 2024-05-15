@@ -44,8 +44,8 @@ List<RouteEntity> get routes => [
         ),
       ),
       RouteEntity(
-        key: '/splash',
-        uri: Uri.parse('/splash'),
+        key: '/',
+        uri: Uri.parse('/'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
@@ -74,6 +74,6 @@ const routePaths = (
     path: '/ask_help',
     newAskHelp: '/ask_help/new_ask_help',
   ),
-  splash: '/splash',
+  splash: '/',
   home: '/home',
 );
