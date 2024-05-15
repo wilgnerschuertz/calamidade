@@ -55,13 +55,16 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorsTheme = CoopartilharColors.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           widget.title,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: Padding(
@@ -77,7 +80,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                   children: [
                     Text(
                       'Valor pré-aprovado',
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: textTheme.titleMedium,
                     ),
                     const SizedBox(height: 30),
                     Container(
@@ -86,7 +89,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                         horizontal: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: CoopartilharColors.of(context).lightGrey,
+                        color: colorsTheme.lightGrey,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8)),
                       ),
@@ -94,7 +97,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                         'R\$ $preApprovedValue',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: CoopartilharColors.of(context).primary,
+                          color: colorsTheme.primary,
                         ),
                       ),
                     ),
@@ -188,11 +191,11 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                           decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(8)),
-                            color: CoopartilharColors.of(context).primary,
+                            color: colorsTheme.primary,
                           ),
                           child: Icon(
                             UIcons.regularStraight.clip,
-                            color: CoopartilharColors.of(context).white,
+                            color: colorsTheme.white,
                           ),
                         ),
                       )
