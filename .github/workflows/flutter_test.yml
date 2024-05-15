@@ -65,4 +65,4 @@ jobs:
         run: flutter --version
 
       - name: Format code
-        run: flutter format --fix .
+        run: dart format --fix .
