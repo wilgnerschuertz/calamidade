@@ -14,6 +14,9 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
   final _formKey = GlobalKey<FormState>();
   String preApprovedValue = '7.500,00';
 
+  bool asImage = false;
+  String urlImage = '';
+
   TextEditingController titleController = TextEditingController();
   TextEditingController cpfController = TextEditingController();
   TextEditingController pixKeyController = TextEditingController();
@@ -163,20 +166,33 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 ),
                 const SizedBox(height: 20),
                 const Text('Enviar arquivo*'),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
-                      color: CoopartilharColors.of(context).primary,
-                    ),
-                    child: Icon(
-                      UIcons.regularStraight.clip,
-                      color: CoopartilharColors.of(context).white,
-                    ),
-                  ),
-                ),
+                !asImage
+                    ? InkWell(
+                        onTap: () {},
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            color: CoopartilharColors.of(context).primary,
+                          ),
+                          child: Icon(
+                            UIcons.regularStraight.clip,
+                            color: CoopartilharColors.of(context).white,
+                          ),
+                        ),
+                      )
+                    : Image.network(
+                        urlImage,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          }
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                      ),
                 const SizedBox(height: 20),
                 const Text('Breve descrição'),
                 TextFormField(
