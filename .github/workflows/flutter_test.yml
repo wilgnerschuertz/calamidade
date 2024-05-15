@@ -12,6 +12,9 @@ jobs:
   flutter_test:
     name: Run Flutter Test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
