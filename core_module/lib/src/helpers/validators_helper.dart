@@ -21,7 +21,16 @@ abstract class ValidatorsHelper {
   }
 
   static bool documentIsValid(String? document) {
-    //TODO:
-    return document?.isNotEmpty ?? false;
+    const cpfPattern = r'^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$';
+    const cnpjPattern = r'^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$|^\d{14}$';
+
+    final cpfRegex = RegExp(cpfPattern);
+    final cnpjRegex = RegExp(cnpjPattern);
+
+    if (document != null) {
+      return cpfRegex.hasMatch(document) || cnpjRegex.hasMatch(document);
+    }
+
+    return false;
   }
 }
