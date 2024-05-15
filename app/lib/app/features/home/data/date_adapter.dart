@@ -1,7 +1,5 @@
-import 'package:coopartilhar/app/features/home/interactor/order_entity.dart';
-
 class DateAdapter {
-  static String dateToString(OrderEntity orderEntity) {
+  static String dateToString(DateTime dateTime) {
     const Map<int, String> dates = {
       1: 'Janeiro',
       2: 'Fevereiro',
@@ -17,6 +15,6 @@ class DateAdapter {
       12: 'Dezembro',
     };
 
-    return '${orderEntity.date.day} de ${dates[orderEntity.date.month]} ${orderEntity.date.hour}:h';
+    return '${dateTime.day} de ${dates[dateTime.month]} ${dateTime.hour}:h';
   }
 }
