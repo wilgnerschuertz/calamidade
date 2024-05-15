@@ -1,12 +1,13 @@
 import 'package:routefly/routefly.dart';
 
-import 'app/(public)/ask_help/ask_help_page.dart' as a6;
-import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a5;
-import 'app/(public)/auth/login/login_page.dart' as a3;
-import 'app/(public)/auth/register/register_page.dart' as a2;
+import 'app/(public)/ask_help/ask_help_page.dart' as a7;
+import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a6;
+import 'app/(public)/auth/login/login_page.dart' as a4;
+import 'app/(public)/auth/not_affiliated/not_affiliated_page.dart' as a2;
+import 'app/(public)/auth/register/register_page.dart' as a3;
 import 'app/(public)/home/home_page.dart' as a0;
 import 'app/(public)/splash/splash_page.dart' as a1;
-import 'app/(public)/want_to_help/want_to_help_page.dart' as a4;
+import 'app/(public)/want_to_help/want_to_help_page.dart' as a5;
 
 List<RouteEntity> get routes => [
       RouteEntity(
@@ -28,12 +29,21 @@ List<RouteEntity> get routes => [
         ),
       ),
       RouteEntity(
+        key: '/auth/not_affiliated',
+        uri: Uri.parse('/auth/not_affiliated'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a2.NotAfilliatedPage(),
+        ),
+      ),
+      RouteEntity(
         key: '/auth/register',
         uri: Uri.parse('/auth/register'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a2.RegisterPage(),
+          const a3.RegisterPage(),
         ),
       ),
       RouteEntity(
@@ -42,7 +52,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a3.LoginPage(),
+          const a4.LoginPage(),
         ),
       ),
       RouteEntity(
@@ -51,7 +61,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a4.WantToHelpPage(),
+          const a5.WantToHelpPage(),
         ),
       ),
       RouteEntity(
@@ -60,7 +70,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a5.NewAskHelpPage(),
+          const a6.NewAskHelpPage(),
         ),
       ),
       RouteEntity(
@@ -69,7 +79,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a6.AskHelpPage(),
+          const a7.AskHelpPage(),
         ),
       ),
     ];
@@ -80,6 +90,7 @@ const routePaths = (
   splash: '/splash',
   auth: (
     path: '/auth',
+    notAffiliated: '/auth/not_affiliated',
     register: '/auth/register',
     login: '/auth/login',
   ),
