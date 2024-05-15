@@ -11,31 +11,45 @@ class NewAskHelpPage extends StatefulWidget {
 }
 
 class _NewAskHelpPageState extends State<NewAskHelpPage> {
-  final _formKey = GlobalKey<FormState>();
+  late final GlobalKey<FormState> _formKey;
   String preApprovedValue = '7.500,00';
 
   bool asImage = false;
   String urlImage = '';
 
-  TextEditingController titleController = TextEditingController();
-  TextEditingController cpfController = TextEditingController();
-  TextEditingController pixKeyController = TextEditingController();
-  TextEditingController bankController = TextEditingController();
-  TextEditingController agencyController = TextEditingController();
-  TextEditingController accountController = TextEditingController();
-  TextEditingController valueController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
+  late final TextEditingController _titleController;
+  late final TextEditingController _cpfController;
+  late final TextEditingController _pixKeyController;
+  late final TextEditingController _bankController;
+  late final TextEditingController _agencyController;
+  late final TextEditingController _accountController;
+  late final TextEditingController _valueController;
+  late final TextEditingController _descriptionController;
+
+  @override
+  void initState() {
+    super.initState();
+    _formKey = GlobalKey<FormState>();
+    _titleController = TextEditingController();
+    _cpfController = TextEditingController();
+    _pixKeyController = TextEditingController();
+    _bankController = TextEditingController();
+    _agencyController = TextEditingController();
+    _accountController = TextEditingController();
+    _valueController = TextEditingController();
+    _descriptionController = TextEditingController();
+  }
 
   @override
   void dispose() {
-    titleController.dispose();
-    cpfController.dispose();
-    pixKeyController.dispose();
-    bankController.dispose();
-    agencyController.dispose();
-    accountController.dispose();
-    valueController.dispose();
-    descriptionController.dispose();
+    _titleController.dispose();
+    _cpfController.dispose();
+    _pixKeyController.dispose();
+    _bankController.dispose();
+    _agencyController.dispose();
+    _accountController.dispose();
+    _valueController.dispose();
+    _descriptionController.dispose();
     super.dispose();
   }
 
@@ -89,7 +103,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Titulo da solicitação*'),
                 TextFormField(
-                  controller: titleController,
+                  controller: _titleController,
                   decoration: const InputDecoration(
                     hintText: 'Insira o titulo para solicitação',
                   ),
@@ -103,7 +117,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('CPF do Assistido*'),
                 TextFormField(
-                  controller: cpfController,
+                  controller: _cpfController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'Insira o CPF do Assistido',
@@ -118,7 +132,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Chave pix'),
                 TextFormField(
-                  controller: pixKeyController,
+                  controller: _pixKeyController,
                   decoration: const InputDecoration(
                     hintText: 'Insira a chave pix do Assistido',
                   ),
@@ -126,7 +140,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Banco'),
                 TextFormField(
-                  controller: bankController,
+                  controller: _bankController,
                   decoration: const InputDecoration(
                     hintText: 'Insira o banco do Assistido',
                   ),
@@ -134,7 +148,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Agência'),
                 TextFormField(
-                  controller: agencyController,
+                  controller: _agencyController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'Insira a agência bancária do Assistido',
@@ -143,7 +157,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Conta'),
                 TextFormField(
-                  controller: accountController,
+                  controller: _accountController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'Insira a conta bancária do Assistido',
@@ -152,7 +166,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Valor*'),
                 TextFormField(
-                  controller: valueController,
+                  controller: _valueController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     hintText: 'R\$ 14.500,00',
@@ -196,7 +210,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                 const SizedBox(height: 20),
                 const Text('Breve descrição'),
                 TextFormField(
-                  controller: descriptionController,
+                  controller: _descriptionController,
                   maxLines: 8,
                   decoration: const InputDecoration(
                     hintText:
