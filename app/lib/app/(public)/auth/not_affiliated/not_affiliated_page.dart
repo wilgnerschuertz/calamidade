@@ -12,6 +12,7 @@ class NotAfilliatedPage extends StatefulWidget {
 class _NotAfilliatedPageState extends State<NotAfilliatedPage> {
   @override
   Widget build(BuildContext context) {
+    final colors = CoopartilharColors.of(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -39,7 +40,7 @@ class _NotAfilliatedPageState extends State<NotAfilliatedPage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 32,
-                    color: CoopartilharColors.of(context).primary,
+                    color: colors.primary,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -48,7 +49,7 @@ class _NotAfilliatedPageState extends State<NotAfilliatedPage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: CoopartilharColors.of(context).black,
+                    color: colors.black,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
