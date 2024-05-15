@@ -1,10 +1,232 @@
-import 'package:flutter/widgets.dart';
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
+import 'package:flutter/material.dart';
+
+import '../../../design_system.dart';
+
+enum ButtonType {
+  primary,
+  secondary,
+  danger,
+  outline,
+}
 
 class CooButton extends StatelessWidget {
-  const CooButton({super.key});
+  final Color? backgroundColor;
+  final bool isLoading;
+  final VoidCallback onPressed;
+  final Color? textColor;
+  final String label;
+  final bool enable;
+  final IconData? icon;
+  final ButtonType? type;
+
+  const CooButton({
+    super.key,
+    required this.label,
+    required this.onPressed,
+    this.textColor,
+    this.enable = true,
+    this.backgroundColor,
+    this.isLoading = false,
+    this.icon,
+    this.type = ButtonType.primary,
+  });
+
+  factory CooButton.primary({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      backgroundColor: backgroundColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.primary,
+    );
+  }
+
+  factory CooButton.secondary({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      backgroundColor: backgroundColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.secondary,
+    );
+  }
+
+  factory CooButton.danger({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.danger,
+    );
+  }
+
+  factory CooButton.outline({
+    required String label,
+    required VoidCallback onPressed,
+    Color? textColor,
+    Color? backgroundColor,
+    bool isLoading = false,
+    bool enable = true,
+    IconData? icon,
+  }) {
+    return CooButton(
+      label: label,
+      onPressed: onPressed,
+      textColor: textColor,
+      backgroundColor: backgroundColor,
+      isLoading: isLoading,
+      enable: enable,
+      icon: icon,
+      type: ButtonType.outline,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final colors = CoopartilharColors.of(context);
+    Color? _backgroundColor = backgroundColor;
+    Color? _textColor = textColor;
+
+    switch (type) {
+      case ButtonType.primary:
+        _backgroundColor = colors.primary;
+        _textColor = colors.white;
+        break;
+      case ButtonType.secondary:
+        _backgroundColor = colors.black;
+        _textColor = colors.white;
+        break;
+      case ButtonType.danger:
+        _backgroundColor = colors.error;
+        _textColor = colors.white;
+        break;
+      case ButtonType.outline:
+        _backgroundColor = colors.primary;
+        _textColor = colors.primary;
+        break;
+
+      default:
+        _backgroundColor = backgroundColor ?? colors.primary;
+        _textColor = textColor ?? colors.white;
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 10, left: 10),
+      child: ButtonType.outline == type
+          ? OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(
+                  color: _backgroundColor,
+                  width: 1.0,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              onPressed: enable ? onPressed : null,
+              child: isLoading
+                  ? const CircularProgressIndicator()
+                  : _ContentButton(
+                      icon: Icon(
+                        icon,
+                        color: _backgroundColor,
+                      ),
+                      label: label,
+                      textColor: _backgroundColor,
+                      colors: colors,
+                    ),
+            )
+          : ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: _backgroundColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              onPressed: enable ? onPressed : null,
+              child: isLoading
+                  ? const CircularProgressIndicator()
+                  : _ContentButton(
+                      icon: Icon(
+                        icon,
+                        color: _textColor,
+                      ),
+                      label: label,
+                      textColor: _textColor,
+                      colors: colors,
+                    ),
+            ),
+    );
+  }
+}
+
+class _ContentButton extends StatelessWidget {
+  const _ContentButton({
+    required this.icon,
+    required this.label,
+    required this.textColor,
+    required this.colors,
+  });
+
+  final Icon? icon;
+  final String label;
+  final Color? textColor;
+  final CoopartilharColors colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        icon != null
+            ? const SizedBox(
+                height: 10,
+                width: 25,
+              )
+            : Container(),
+        Text(
+          label,
+          style: TextStyle(
+            color: textColor,
+          ),
+        ),
+        icon ?? Container(),
+      ],
+    );
   }
 }
