@@ -1,19 +1,39 @@
-import 'package:core_module/core_module.dart';
-import '/app/(public)/auth/register/register_page.dart' as a0;
-import '/app/(public)/auth/login/login_page.dart' as a1;
-import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a2;
-import 'app/(public)/ask_help/ask_help_page.dart' as a3;
-import 'app/(public)/splash/splash_page.dart' as a4;
-import 'app/(public)/home/home_page.dart' as a5;
+import 'package:routefly/routefly.dart';
+
+import 'app/(public)/ask_help/ask_help_page.dart' as a6;
+import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a5;
+import 'app/(public)/auth/login/login_page.dart' as a3;
+import 'app/(public)/auth/register/register_page.dart' as a2;
+import 'app/(public)/home/home_page.dart' as a0;
+import 'app/(public)/splash/splash_page.dart' as a1;
+import 'app/(public)/want_to_help/want_to_help_page.dart' as a4;
 
 List<RouteEntity> get routes => [
+      RouteEntity(
+        key: '/home',
+        uri: Uri.parse('/home'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a0.HomePage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/splash',
+        uri: Uri.parse('/splash'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a1.SplashPage(),
+        ),
+      ),
       RouteEntity(
         key: '/auth/register',
         uri: Uri.parse('/auth/register'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a0.RegisterPage(),
+          const a2.RegisterPage(),
         ),
       ),
       RouteEntity(
@@ -22,7 +42,16 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a1.LoginPage(),
+          const a3.LoginPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/want_to_help',
+        uri: Uri.parse('/want_to_help'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a4.WantToHelpPage(),
         ),
       ),
       RouteEntity(
@@ -31,7 +60,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a2.NewAskHelpPage(),
+          const a5.NewAskHelpPage(),
         ),
       ),
       RouteEntity(
@@ -40,40 +69,23 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a3.AskHelpPage(),
-        ),
-      ),
-      RouteEntity(
-        key: '/',
-        uri: Uri.parse('/'),
-        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-          ctx,
-          settings,
-          const a4.SplashPage(),
-        ),
-      ),
-      RouteEntity(
-        key: '/home',
-        uri: Uri.parse('/home'),
-        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-          ctx,
-          settings,
-          const a5.HomePage(),
+          const a6.AskHelpPage(),
         ),
       ),
     ];
 
 const routePaths = (
   path: '/',
+  home: '/home',
+  splash: '/splash',
   auth: (
     path: '/auth',
     register: '/auth/register',
     login: '/auth/login',
   ),
+  wantToHelp: '/want_to_help',
   askHelp: (
     path: '/ask_help',
     newAskHelp: '/ask_help/new_ask_help',
   ),
-  splash: '/',
-  home: '/home',
 );
