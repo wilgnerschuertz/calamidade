@@ -4,10 +4,10 @@ import 'package:core_module/core_module.dart';
 
 class AuthRepositoryImpl implements IAuthRepository {
   const AuthRepositoryImpl({
-    required IRestClient client,
-  }) : _client = client;
+    required this.client,
+  });
 
-  final IRestClient _client;
+  final IRestClient client;
 
   @override
   Future<Output<Either>> login({required CredentialsEntity credentials}) {

@@ -3,12 +3,11 @@ import 'package:coopartilhar/app/features/auth/entities/credentials_entity.dart'
 import 'package:core_module/core_module.dart';
 
 class LoginControllerImpl<AuthState> extends BaseController {
-  final IAuthRepository _repository;
-
   LoginControllerImpl({
-    required IAuthRepository repository,
-  })  : _repository = repository,
-        super(InitialState());
+    required this.repository,
+  }) : super(InitialState());
+
+  final IAuthRepository repository;
 
   Future<void> login({
     required String phone,
@@ -21,7 +20,7 @@ class LoginControllerImpl<AuthState> extends BaseController {
       password: password.trim(),
     );
 
-    final result = await _repository.login(credentials: credentials);
+    final result = await repository.login(credentials: credentials);
 
     final newState = result.fold(
       (error) => ErrorState<BaseException>(exception: error),
