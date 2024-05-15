@@ -1,5 +1,3 @@
-import 'package:core_module/core_module.dart';
-import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -19,11 +17,12 @@ class _SplashPageState extends State<SplashPage> {
       body: Column(
         children: [
           const Placeholder(),
-          CooButton.primary(
-            label: 'Login',
-            onPressed: () {
-              Routefly.navigate('/auth/login');
-            },
+          Center(
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/auth/login');
+                },
+                child: const Text('Login')),
           ),
         ],
       ),
