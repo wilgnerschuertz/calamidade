@@ -53,6 +53,10 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
     super.dispose();
   }
 
+  void _registerRequest() {
+    if (_formKey.currentState!.validate()) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -212,12 +216,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                CooButton(
-                  label: 'Próximo',
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                  },
-                )
+                CooButton(label: 'Próximo', onPressed: _registerRequest)
               ],
             ),
           ),
