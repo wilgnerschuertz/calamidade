@@ -5,6 +5,7 @@ import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a2;
 import 'app/(public)/ask_help/ask_help_page.dart' as a3;
 import 'app/(public)/splash/splash_page.dart' as a4;
 import 'app/(public)/home/home_page.dart' as a5;
+import 'app/(public)/auth/not_affiliated/not_affiliated_page.dart' as a6;
 
 List<RouteEntity> get routes => [
       RouteEntity(
@@ -41,6 +42,15 @@ List<RouteEntity> get routes => [
           ctx,
           settings,
           const a3.AskHelpPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/not_affiliated',
+        uri: Uri.parse('/auth/not_affiliated'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a6.NotAfilliatedPage(),
         ),
       ),
       RouteEntity(
