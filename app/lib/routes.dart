@@ -64,8 +64,8 @@ List<RouteEntity> get routes => [
         ),
       ),
       RouteEntity(
-        key: '/home',
-        uri: Uri.parse('/home'),
+        key: '',
+        uri: Uri.parse(''),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
