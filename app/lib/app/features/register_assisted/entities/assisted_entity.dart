@@ -5,12 +5,12 @@ class AssistedEntity extends Entity {
   final double latitude, longitude;
 
   AssistedEntity(
-    super.id,
-    this.email,
-    this.name,
-    this.document,
-    this.phone,
-    this.latitude,
-    this.longitude,
-  );
+    super.id, {
+    required this.email,
+    required this.name,
+    required this.document,
+    required this.phone,
+    required this.latitude,
+    required this.longitude,
+  });
 }
