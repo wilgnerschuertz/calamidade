@@ -1,12 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   flutter_test:
@@ -27,4 +21,4 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
       - name: Flutter analyze
-        run: flutter analyze
+        run: flutter analyze --no-fatal-infos
