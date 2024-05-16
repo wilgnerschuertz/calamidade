@@ -9,10 +9,10 @@ class RegisterAssistedController extends BaseController {
   RegisterAssistedController({required this.repository})
       : super(InitialState());
 
-  final email = TextEditingController();
-  final name = TextEditingController();
-  final document = TextEditingController();
-  final phone = TextEditingController();
+  final emailTextController = TextEditingController();
+  final nameTextController = TextEditingController();
+  final documentTextController = TextEditingController();
+  final phoneTextController = TextEditingController();
   final latitude = ValueNotifier<double>(0);
   final longitude = ValueNotifier<double>(0);
 
@@ -21,10 +21,10 @@ class RegisterAssistedController extends BaseController {
 
     final assisted = AssistedEntity(
       '',
-      email: email.text,
-      name: name.text,
-      document: document.text,
-      phone: phone.text,
+      email: emailTextController.text,
+      name: nameTextController.text,
+      document: documentTextController.text,
+      phone: phoneTextController.text,
       latitude: latitude.value,
       longitude: longitude.value,
     );
@@ -41,7 +41,7 @@ class RegisterAssistedController extends BaseController {
       ValidatorsHelper.emailIsValid(text) ? null : 'E-mail inválido';
 
   String? nameValidator(String? text) =>
-      name.text.isNotEmpty ? null : 'Nome inválido';
+      nameTextController.text.isNotEmpty ? null : 'Nome inválido';
 
   String? documentValidator(String? text) =>
       ValidatorsHelper.documentIsValid(text) ? null : 'Documento inválido';
