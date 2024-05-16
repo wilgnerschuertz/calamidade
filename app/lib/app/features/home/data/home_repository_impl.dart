@@ -11,16 +11,18 @@ class HomeRepositoryImpl implements IHomeRepository {
 
   @override
   Future<Output<List<OrderEntity>>> getOrders(CategoryHelp category) async {
-    final response = await restClient.get(RestClientRequest(path: '/feed'));
+    try {
+      final response = await restClient.get(RestClientRequest(path: '/feed'));
 
-    return Either.cond<BaseException, List<OrderEntity>>(
-      response.statusCode == 200,
-      DefaultException(message: ''),
-      List<OrderEntity>.from(
+      final listOrders = List<OrderEntity>.from(
         response.data.map(
           (e) => OrderAdapter.fromJson(e),
         ),
-      ),
-    );
+      );
+
+      return Right(listOrders);
+    } on RestClientException catch (e) {
+      return Left(e);
+    }
   }
 }
