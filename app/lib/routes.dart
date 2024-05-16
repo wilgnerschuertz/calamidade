@@ -1,16 +1,25 @@
 import 'package:core_module/core_module.dart';
 
-import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart' as a10;
-import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart' as a9;
-import 'package:coopartilhar/app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart' as a8;
+import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart'
+    as a10;
+import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart'
+    as a9;
+import 'package:coopartilhar/app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart'
+    as a8;
 import 'package:coopartilhar/app/(public)/ask_help/ask_help_page.dart' as a7;
-import 'package:coopartilhar/app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a6;
+import 'package:coopartilhar/app/(public)/ask_help/new_ask_help/new_ask_help_page.dart'
+    as a6;
 import 'package:coopartilhar/app/(public)/auth/login/login_page.dart' as a4;
-import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart' as a2;
-import 'package:coopartilhar/app/(public)/auth/register/register_page.dart' as a3;
+import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart'
+    as a2;
+import 'package:coopartilhar/app/(public)/auth/register/register_page.dart'
+    as a3;
 import 'package:coopartilhar/app/(public)/home/home_page.dart' as a0;
 import 'package:coopartilhar/app/(public)/splash/splash_page.dart' as a1;
-import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart' as a5;
+import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart'
+    as a5;
+import 'package:coopartilhar/app/(public)/auth/check_affiliated/check_affiliated_page.dart'
+    as check_affiliated;
 
 List<RouteEntity> get routes => [
       RouteEntity(
@@ -87,7 +96,8 @@ List<RouteEntity> get routes => [
       ),
       RouteEntity(
         key: '/affiliated_first_action/presentation/affiliated_first_action',
-        uri: Uri.parse('/affiliated_first_action/presentation/affiliated_first_action'),
+        uri: Uri.parse(
+            '/affiliated_first_action/presentation/affiliated_first_action'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
@@ -110,6 +120,15 @@ List<RouteEntity> get routes => [
           ctx,
           settings,
           const a10.AffiliatedPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/check_affiliated',
+        uri: Uri.parse('/auth/check_affiliated'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const check_affiliated.CheckAffiliatedPage(),
         ),
       ),
     ];
@@ -135,7 +154,8 @@ const routePaths = (
     path: '/affiliated_first_action',
     presentation: (
       path: '/affiliated_first_action/presentation',
-      affiliatedFirstAction: '/affiliated_first_action/presentation/affiliated_first_action',
+      affiliatedFirstAction:
+          '/affiliated_first_action/presentation/affiliated_first_action',
     ),
   ),
 );
