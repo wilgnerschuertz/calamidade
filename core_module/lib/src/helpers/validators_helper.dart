@@ -10,6 +10,8 @@ abstract class ValidatorsHelper {
     return false;
   }
 
+  static bool emailIsEmpty(String? email) => email == null || email.isEmpty;
+
   static bool phoneIsValid(String? phone) {
     const phonePattern = r'^\(?\d{2}\)?[\s-]?9?\d{4}-?\d{4}$';
 
@@ -33,4 +35,10 @@ abstract class ValidatorsHelper {
 
     return false;
   }
+
+  static bool passwordIsEmpty(String? password) =>
+      password == null || password.isEmpty;
+
+  static bool passworHasEnoughCharacters(String? password) =>
+      (password?.length ?? 0) > 3;
 }
