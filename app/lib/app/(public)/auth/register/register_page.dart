@@ -1,6 +1,5 @@
 import 'package:coopartilhar/app/(public)/auth/register/non_editable_register_item.dart';
 import 'package:coopartilhar/app/(public)/auth/register/register_item_field.dart';
-import 'package:coopartilhar/app/features/auth/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/register/interactor/controllers/register_controller.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:core_module/core_module.dart';
@@ -8,8 +7,11 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key, required this.document});
+  RegisterPage({super.key})
+      : document = Routefly.query.arguments.document.toString(),
+        name = Routefly.query.arguments.name;
   final String document;
+  final String name;
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -17,11 +19,6 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final controller = injector.get<RegisterController>();
-  @override
-  void initState() {
-    super.initState();
-    controller.init(widget.document);
-  }
 
   @override
   void dispose() {
@@ -59,18 +56,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 30),
-                    ValueListenableBuilder(
-                      valueListenable: controller,
-                      builder: (context, value, child) {
-                        if (controller.value
-                            case final SuccessState<UserEntity> user) {
-                          return NonEditableRegisterItem(
-                            title: 'Nome completo',
-                            value: user.data.name,
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      },
+                    NonEditableRegisterItem(
+                      title: 'Nome completo',
+                      value: widget.name,
                     ),
                     const SizedBox(height: 30),
                     NonEditableRegisterItem(
@@ -109,7 +97,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     const Spacer(),
                     CooButton.primary(
                       label: 'Entrar',
-                      onPressed: controller.register,
+                      onPressed: () => controller.register(
+                        document: widget.document,
+                        name: widget.name,
+                      ),
                     ),
                     const SizedBox(height: 20),
                   ],

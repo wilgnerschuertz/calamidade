@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class RegisterController<RegisterState> extends BaseController {
   RegisterController({required this.repository}) : super(InitialState());
-
   final IRegisterRepository repository;
 
   late final emailController = TextEditingController();
@@ -13,36 +12,22 @@ class RegisterController<RegisterState> extends BaseController {
   late final repeatPasswordController = TextEditingController();
   late final formKey = GlobalKey<FormState>();
 
-  Future<void> init(String document) => getUser(document);
-
-  Future<void> getUser(String document) async {
-    update(LoadingState());
-    final response = await repository.getUser(document: document);
-    response.fold(
-      (left) => update(ErrorState(exception: left)),
-      (right) => update(SuccessState<UserValues>(
-        data: UserValues(document: document, name: right.name),
-      )),
-    );
-  }
-
-  Future<void> register() async {
+  Future<void> register({
+    required String name,
+    required String document,
+  }) async {
     if (formKey.currentState!.validate()) {
-      final userValues = state is SuccessState<UserValues>
-          ? state as SuccessState<UserValues>
-          : null;
+      final registerEntity = RegisterEntity(
+        const Uuid().v4(),
+        email: emailController.text,
+        name: name,
+        document: document,
+        password: passwordController.text,
+      );
 
       update(LoadingState());
 
-      final response = await repository.register(
-        register: RegisterEntity(
-          const Uuid().v4(),
-          email: emailController.text,
-          name: userValues?.data.name ?? '',
-          document: userValues?.data.document ?? '',
-          password: passwordController.text,
-        ),
-      );
+      final response = await repository.register(register: registerEntity);
 
       response.fold(
         (left) => update(ErrorState(exception: left)),
@@ -86,11 +71,4 @@ class RegisterController<RegisterState> extends BaseController {
     passwordController.dispose();
     repeatPasswordController.dispose();
   }
-}
-
-class UserValues {
-  final String document;
-  final String name;
-
-  UserValues({required this.document, required this.name});
 }
