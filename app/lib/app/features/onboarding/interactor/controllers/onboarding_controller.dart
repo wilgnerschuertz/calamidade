@@ -1,9 +1,9 @@
-import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onboarding_service_repository.dart';
+import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onboarding_repository.dart';
 import 'package:coopartilhar/app/features/onboarding/interactor/state/onboarding_state.dart';
 import 'package:core_module/core_module.dart';
 
-class OnboardingController extends BaseController<BaseState> {
-  final IOnboardingServiceRepository _onboardingRepository;
+class OnboardingController<OnboardingState> extends BaseController<BaseState> {
+  final IOnboardingRepository _onboardingRepository;
   OnboardingController(
     this._onboardingRepository,
   ) : super(OnboardingInitialState());
