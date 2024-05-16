@@ -1,6 +1,7 @@
 import 'package:routefly/routefly.dart';
 
-import 'app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart' as a8;
+import 'app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart'
+    as a8;
 import 'app/(public)/ask_help/ask_help_page.dart' as a7;
 import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a6;
 import 'app/(public)/auth/login/login_page.dart' as a4;
@@ -9,90 +10,102 @@ import 'app/(public)/auth/register/register_page.dart' as a3;
 import 'app/(public)/home/home_page.dart' as a0;
 import 'app/(public)/splash/splash_page.dart' as a1;
 import 'app/(public)/want_to_help/want_to_help_page.dart' as a5;
+import 'app/(public)/auth/affiliated/check_affiliated_page.dart'
+    as check_affiliated;
 
 List<RouteEntity> get routes => [
-  RouteEntity(
-    key: '/home',
-    uri: Uri.parse('/home'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a0.HomePage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/splash',
-    uri: Uri.parse('/splash'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a1.SplashPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/auth/not_affiliated',
-    uri: Uri.parse('/auth/not_affiliated'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a2.NotAfilliatedPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/auth/register',
-    uri: Uri.parse('/auth/register'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a3.RegisterPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/auth/login',
-    uri: Uri.parse('/auth/login'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a4.LoginPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/want_to_help',
-    uri: Uri.parse('/want_to_help'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a5.WantToHelpPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/ask_help/new_ask_help',
-    uri: Uri.parse('/ask_help/new_ask_help'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a6.NewAskHelpPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/ask_help',
-    uri: Uri.parse('/ask_help'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a7.AskHelpPage(),
-    ),
-  ),
-  RouteEntity(
-    key: '/affiliated_first_action/presentation/affiliated_first_action',
-    uri: Uri.parse('/affiliated_first_action/presentation/affiliated_first_action'),
-    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-      ctx,
-      settings,
-      const a8.AffiliatedFirstActionPage(),
-    ),
-  ),
-];
+      RouteEntity(
+        key: '/home',
+        uri: Uri.parse('/home'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a0.HomePage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/splash',
+        uri: Uri.parse('/splash'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a1.SplashPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/not_affiliated',
+        uri: Uri.parse('/auth/not_affiliated'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a2.NotAfilliatedPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/register',
+        uri: Uri.parse('/auth/register'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a3.RegisterPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/login',
+        uri: Uri.parse('/auth/login'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a4.LoginPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/want_to_help',
+        uri: Uri.parse('/want_to_help'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a5.WantToHelpPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/ask_help/new_ask_help',
+        uri: Uri.parse('/ask_help/new_ask_help'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a6.NewAskHelpPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/ask_help',
+        uri: Uri.parse('/ask_help'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a7.AskHelpPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/affiliated_first_action/presentation/affiliated_first_action',
+        uri: Uri.parse(
+            '/affiliated_first_action/presentation/affiliated_first_action'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a8.AffiliatedFirstActionPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/affiliated',
+        uri: Uri.parse('/auth/affiliated'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const check_affiliated.AffiliatedPage(),
+        ),
+      ),
+    ];
 
 const routePaths = (
   path: '/',
@@ -113,7 +126,8 @@ const routePaths = (
     path: '/affiliated_first_action',
     presentation: (
       path: '/affiliated_first_action/presentation',
-      affiliatedFirstAction: '/affiliated_first_action/presentation/affiliated_first_action',
+      affiliatedFirstAction:
+          '/affiliated_first_action/presentation/affiliated_first_action',
     ),
   ),
 );
