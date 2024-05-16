@@ -55,7 +55,7 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
             child: Stack(
               children: [
@@ -74,11 +74,11 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 16),
-                      Center(
+                      const Center(
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 16),
-                          child: Image.asset(
-                            'assets/splash/logo_splash.png',
+                          padding: EdgeInsets.only(top: 16),
+                          child: Image(
+                            image: CooImages.cooBrand,
                             width: 150,
                             height: 124,
                           ),
