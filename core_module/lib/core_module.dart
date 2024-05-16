@@ -10,7 +10,6 @@ export 'package:auto_injector/auto_injector.dart';
 export 'package:either_dart/either.dart';
 export 'package:routefly/routefly.dart';
 export 'package:uicons/uicons.dart';
-export 'package:lottie/lottie.dart';
 export 'src/cache/cache.dart';
 export 'src/client/client.dart';
 export 'src/controllers/controllers.dart';
@@ -20,6 +19,7 @@ export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 export 'src/helpers/validators_helper.dart';
 export 'src/types/unit.dart';
+export 'package:lottie/lottie.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {

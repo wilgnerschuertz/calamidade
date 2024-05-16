@@ -1,6 +1,6 @@
 import 'package:core_module/core_module.dart';
 
-import 'app/(public)/success_state/success_state.dart' as a11;
+import 'package:coopartilhar/app/(public)/success_state/success_state.dart' as a11;
 import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart' as a10;
 import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart' as a9;
 import 'package:coopartilhar/app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart' as a8;
