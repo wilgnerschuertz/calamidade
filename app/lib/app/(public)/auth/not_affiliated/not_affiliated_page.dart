@@ -25,7 +25,7 @@ class _NotAfilliatedPageState extends State<NotAfilliatedPage> {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          Image.asset('assets/pngs/background_details.png'),
+          const Image(image: CooImages.cooBackgroundDetails),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
