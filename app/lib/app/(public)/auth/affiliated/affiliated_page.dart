@@ -59,19 +59,25 @@ class AffiliatedPage extends StatelessWidget {
                     color: colors.black),
               ),
               TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Já tenho cadastro',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'inter',
+                    fontWeight: FontWeight.w400,
+                    color: colors.primary,
+                    decoration: TextDecoration.underline,
+                    decorationColor: colors.primary,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+              CooButton(
+                  label: 'Concluir cadastro',
                   onPressed: () {},
-                  child: Text(
-                    'Já tenho cadastro',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'inter',
-                      fontWeight: FontWeight.w400,
-                      color: colors.primary,
-                      decoration: TextDecoration.underline,
-                      decorationColor: colors.primary,
-                    ),
-                  )),
+                  icon: Icons.arrow_right_alt),
               const Spacer(flex: 2),
             ],
           )
