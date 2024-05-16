@@ -17,7 +17,7 @@ class CheckAffiliatedPage extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .displayLarge!
-              .copyWith(color: colors.black2),
+              .copyWith(color: colors.appBackground),
         ),
         leading: IconButton(
           icon: const Icon(Icons.chevron_left),
@@ -46,7 +46,7 @@ class CheckAffiliatedPage extends StatelessWidget {
                     Text(
                       'Informe o seu CPF/CNPJ',
                       style: theme.textTheme.titleMedium!
-                          .copyWith(color: colors.black2),
+                          .copyWith(color: colors.appBackground),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -54,7 +54,7 @@ class CheckAffiliatedPage extends StatelessWidget {
                 Center(
                   child: TextFormField(
                     style: theme.textTheme.displaySmall!
-                        .copyWith(color: colors.black2),
+                        .copyWith(color: colors.appBackground),
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
                         return 'Este CPF / CNPJ não existe!';
