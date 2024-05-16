@@ -1,8 +1,8 @@
-import 'package:coopartilhar/app/(public)/request_details/request_details_card.dart';
+import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card.dart';
+import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_page_header.dart';
 import 'package:coopartilhar/app/features/auth/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/request_details/entities/request_details_entity.dart';
 import 'package:coopartilhar/app/features/request_details/entities/status_details_entity.dart';
-import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -43,8 +43,6 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = CoopartilharColors.of(context);
-    final texTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -61,20 +59,9 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 32.0),
-                      child: Icon(
-                        UIcons.regularRounded.document_signed,
-                        size: 46.0,
-                        color: colors.primary,
-                      ),
+                    const RequestDetailsPageHeader(
+                      title: 'Detalhes da Solicitação',
                     ),
-                    Text(
-                      'Detalhes da solicitação',
-                      style: texTheme.displayLarge
-                          ?.copyWith(color: colors.textColor),
-                    ),
-                    const SizedBox(height: 32.0),
                     RequestDetailsCard(request: request),
                   ],
                 ),
