@@ -1,5 +1,6 @@
 import 'package:routefly/routefly.dart';
 
+import 'app/(public)/success_state/success_state.dart' as a9;
 import 'app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart' as a8;
 import 'app/(public)/ask_help/ask_help_page.dart' as a7;
 import 'app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a6;
@@ -92,6 +93,15 @@ List<RouteEntity> get routes => [
       const a8.AffiliatedFirstActionPage(),
     ),
   ),
+  RouteEntity(
+  key: '/success_state',
+  uri: Uri.parse('/success_state'),
+  routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+    ctx,
+    settings,
+    const a9.SuccessState(),
+  ),
+),
 ];
 
 const routePaths = (
@@ -116,4 +126,5 @@ const routePaths = (
       affiliatedFirstAction: '/affiliated_first_action/presentation/affiliated_first_action',
     ),
   ),
+  successState: 'success_state',
 );
