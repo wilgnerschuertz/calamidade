@@ -103,7 +103,7 @@ class RestClientDioImpl implements IRestClient {
   }
 
   @override
-  Future<RestClientResponse> post<T>(RestClientRequest request) async {
+  Future<RestClientResponse> post(RestClientRequest request) async {
     try {
       final response = await _dio.post(
         request.path,
