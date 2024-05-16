@@ -14,14 +14,18 @@ class HomeRepositoryImpl implements IHomeRepository {
     try {
       final response = await restClient.get(RestClientRequest(path: '/feed'));
 
+      if (response.data == null) {
+        return const Left(DefaultException(message: 'Não há dados no feed'));
+      }
+
       final json = response.data as List;
 
-      final ordersFilter = json.where((e) => e.tag == tagType.name);
+      final listOrders = json.map((e) => OrderAdapter.fromJson(e));
 
-      final listOrders =
-          ordersFilter.map((e) => OrderAdapter.fromJson(e)).toList();
+      final ordersFilter =
+          listOrders.where((e) => e.tag == tagType.name).toList();
 
-      return Right(listOrders);
+      return Right(ordersFilter);
     } on RestClientException catch (e) {
       return Left(e);
     }

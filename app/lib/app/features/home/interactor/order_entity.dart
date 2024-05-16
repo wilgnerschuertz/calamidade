@@ -1,4 +1,5 @@
 import 'package:coopartilhar/app/features/home/interactor/cooperated_entity.dart';
+import 'package:coopartilhar/app/features/home/interactor/god_father_entity.dart';
 import 'package:core_module/core_module.dart';
 
 class OrderEntity extends Entity {
@@ -7,7 +8,7 @@ class OrderEntity extends Entity {
   final String createdAt, chavePix, banco, agencia, conta;
   final int amount;
   final CooperatedEntity? cooperated;
-  final dynamic godfather;
+  final GodFatherEntity? godfather;
 
   OrderEntity(
       {required this.tag,

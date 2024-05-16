@@ -1,4 +1,5 @@
 import 'package:coopartilhar/app/features/home/data/cooperated_adapter.dart';
+import 'package:coopartilhar/app/features/home/data/god_father_entity_adapter.dart';
 import 'package:coopartilhar/app/features/home/interactor/order_entity.dart';
 
 abstract class OrderAdapter {
@@ -15,7 +16,9 @@ abstract class OrderAdapter {
         cooperated: json['cooperated'] != null
             ? CooperatedAdapter.fromJson(json['cooperated'])
             : null,
-        godfather: json['godfather'],
+        godfather: json['godfather'] != null
+            ? GodFatherAdapter.fromJson(json['godfather'])
+            : null,
         createdAt: json['createdAt'],
         chavePix: json['chavePix'],
         banco: json['banco'],

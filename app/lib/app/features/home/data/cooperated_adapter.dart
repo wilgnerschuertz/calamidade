@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/home/data/cooperated_entity.dart';
+import 'package:coopartilhar/app/features/home/interactor/cooperated_entity.dart';
 
 class CooperatedAdapter {
   static CooperatedEntity fromJson(Map<String, dynamic> json) =>
