@@ -1,9 +1,5 @@
-import 'package:coopartilhar/injector.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-
-import 'package:coopartilhar/app/features/affliated_first_action/interactor/controllers/affiliated_first_action_controller_impl.dart';
-
 
 class AffiliatedFirstActionPage extends StatefulWidget {
   const AffiliatedFirstActionPage({super.key});
@@ -13,7 +9,6 @@ class AffiliatedFirstActionPage extends StatefulWidget {
 }
 
 class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
-  final controller = injector.get<AffiliatedFirstActionControllerImpl>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,17 +44,17 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
               Column(
                 children: [
                   CardButton(
-                    icon: Image.asset('assets/affiliated_first_action/need_help.png'), 
+                    icon: Image.asset('assets/pngs/need_help.png'), 
                     labelPrimary: 'Preciso de ajuda', 
                     labelSecondary: 'Estou buscando recursos', 
-                    onPressed: () => controller.navigateToNeedHelp(context),
+                    onPressed: () => Navigator.pushNamed(context, '/ask_help'),
                   ),
                   const SizedBox(height: 24,),
                   CardButton(
-                    icon: Image.asset('assets/affiliated_first_action/want_to_help.png'), 
+                    icon: Image.asset('assets/pngs/want_to_help.png'), 
                     labelPrimary: 'Quero ajudar!', 
                     labelSecondary: 'Quero apadrinhar uma família', 
-                    onPressed: () => controller.navigateToWantToHelp(context),
+                    onPressed: () => Navigator.pushNamed(context, '/want_to_help'),
                   ),
                 ],
               ),
