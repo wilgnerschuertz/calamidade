@@ -1,5 +1,7 @@
 import 'package:core_module/core_module.dart';
 
+import 'package:coopartilhar/app/(public)/success_state/success_state_page.dart' as a11;
+
 import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart'
     as a10;
 import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart'
@@ -131,6 +133,15 @@ List<RouteEntity> get routes => [
           const check_affiliated.CheckAffiliatedPage(),
         ),
       ),
+      RouteEntity(
+        key: '/success_state',
+        uri: Uri.parse('/success_state'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a11.SuccessStatePage(),
+        ),
+      ),
     ];
 
 const routePaths = (
@@ -158,4 +169,5 @@ const routePaths = (
           '/affiliated_first_action/presentation/affiliated_first_action',
     ),
   ),
+  successState: 'success_state',
 );
