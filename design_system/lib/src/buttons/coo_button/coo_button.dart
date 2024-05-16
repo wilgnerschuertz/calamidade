@@ -21,6 +21,7 @@ class CooButton extends StatelessWidget {
   final IconData? icon;
   final ButtonType? type;
   final EdgeInsets? padding;
+  final Size? size;
 
   const CooButton({
     super.key,
@@ -33,6 +34,7 @@ class CooButton extends StatelessWidget {
     this.icon,
     this.type = ButtonType.primary,
     this.padding,
+    this.size,
   });
 
   factory CooButton.primary({
@@ -43,6 +45,7 @@ class CooButton extends StatelessWidget {
     bool isLoading = false,
     bool enable = true,
     IconData? icon,
+    Size? size = const Size(double.infinity, 56),
   }) {
     return CooButton(
       label: label,
@@ -53,6 +56,7 @@ class CooButton extends StatelessWidget {
       enable: enable,
       icon: icon,
       type: ButtonType.primary,
+      size: size,
     );
   }
 
@@ -152,6 +156,7 @@ class CooButton extends StatelessWidget {
       child: ButtonType.outline == type
           ? OutlinedButton(
               style: OutlinedButton.styleFrom(
+                fixedSize: size,
                 side: BorderSide(
                   color: _backgroundColor,
                   width: 1.0,
@@ -176,6 +181,7 @@ class CooButton extends StatelessWidget {
           : ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: _backgroundColor,
+                fixedSize: size,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),

@@ -10,6 +10,7 @@ import 'app/(public)/auth/register/register_page.dart' as a3;
 import 'app/(public)/home/home_page.dart' as a0;
 import 'app/(public)/splash/splash_page.dart' as a1;
 import 'app/(public)/want_to_help/want_to_help_page.dart' as a5;
+import 'app/(public)/auth/affiliated/affiliated_page.dart' as a9;
 
 List<RouteEntity> get routes => [
       RouteEntity(
