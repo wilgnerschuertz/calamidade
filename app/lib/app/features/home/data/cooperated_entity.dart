@@ -1,6 +1,7 @@
-class CooperatedEntity {
-  final int id;
+import 'package:core_module/core_module.dart';
+
+class CooperatedEntity extends Entity {
   final String name;
 
-  const CooperatedEntity({required this.id, required this.name});
+  CooperatedEntity({required this.name, required String id}) : super(id);
 }

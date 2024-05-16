@@ -14,13 +14,12 @@ class HomeRepositoryImpl implements IHomeRepository {
     try {
       final response = await restClient.get(RestClientRequest(path: '/feed'));
 
-      final listOrders = List<OrderEntity>.from(
-        response.data
-          ..where((element) => element.tag == tagType.name)
-          ..map(
-            (e) => OrderAdapter.fromJson(e),
-          ),
-      );
+      final json = response.data as List;
+
+      final ordersFilter = json.where((e) => e.tag == tagType.name);
+
+      final listOrders =
+          ordersFilter.map((e) => OrderAdapter.fromJson(e)).toList();
 
       return Right(listOrders);
     } on RestClientException catch (e) {

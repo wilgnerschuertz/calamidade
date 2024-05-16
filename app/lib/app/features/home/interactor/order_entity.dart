@@ -1,22 +1,12 @@
 import 'package:coopartilhar/app/features/home/data/cooperated_entity.dart';
 
 class OrderEntity {
-  final String id;
-  final String tag;
-  final String title;
-  final String helpType;
-  final String address;
+  final String tag, title, helpType, address;
+  final String status, obs, telephone, id;
+  final String createdAt, chavePix, banco, agencia, conta;
   final int amount;
-  final String status;
-  final String obs;
-  final String telephone;
   final CooperatedEntity? cooperated;
   final dynamic godfather;
-  final String createdAt;
-  final String chavePix;
-  final String banco;
-  final String agencia;
-  final String conta;
 
   OrderEntity(
       {required this.id,
