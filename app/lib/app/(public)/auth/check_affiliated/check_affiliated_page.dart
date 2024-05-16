@@ -29,19 +29,17 @@ class CheckAffiliatedPage extends StatelessWidget {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          Image.asset('assets/pngs/background_details.png'),
+          const Image(image: CooImages.cooBackgroundDetails),
           Padding(
-            padding: EdgeInsets.only(
-                left: widthScreen * 0.04, right: widthScreen * 0.04),
+            padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: heightScreen * 0.20,
-                    bottom: heightScreen * 0.20,
+                  padding: EdgeInsets.symmetric(
+                    vertical: heightScreen * 0.20,
                   ),
-                  child: Image.asset('assets/splash/logo_splash.png'),
+                  child: const Image(image: CooImages.cooBrand),
                 ),
                 Row(
                   children: [
@@ -59,7 +57,7 @@ class CheckAffiliatedPage extends StatelessWidget {
                         .copyWith(color: colors.black2),
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Este CPF não existe!';
+                        return 'Este CPF / CNPJ não existe!';
                       }
                       return null;
                     },

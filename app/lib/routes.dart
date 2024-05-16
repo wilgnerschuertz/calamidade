@@ -18,7 +18,7 @@ import 'package:coopartilhar/app/(public)/home/home_page.dart' as a0;
 import 'package:coopartilhar/app/(public)/splash/splash_page.dart' as a1;
 import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart'
     as a5;
-import 'package:coopartilhar/app/(public)/auth/affiliated/check_affiliated_page.dart'
+import 'package:coopartilhar/app/(public)/auth/check_affiliated/check_affiliated_page.dart'
     as check_affiliated;
 
 List<RouteEntity> get routes => [
@@ -123,8 +123,8 @@ List<RouteEntity> get routes => [
         ),
       ),
       RouteEntity(
-        key: '/auth/affiliated',
-        uri: Uri.parse('/auth/affiliated'),
+        key: '/auth/check_affiliated',
+        uri: Uri.parse('/auth/check_affiliated'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
