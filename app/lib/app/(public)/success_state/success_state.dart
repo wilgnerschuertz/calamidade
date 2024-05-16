@@ -16,27 +16,33 @@ class SuccessState extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios)
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          SizedBox(
-            height: size.height * 0.8,
-            width: size.width * 0.6,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                LottieBuilder.asset('assets/lotties/successAnimation.json',repeat: true),
-                const SizedBox(height: 20),
-                Text('Parabéns!', style: textTheme.displayLarge),
-                const SizedBox(height: 20),
-                Text('Você acaba de se tornar um Padrinho.', style: textTheme.bodySmall?.copyWith(overflow: TextOverflow.clip),textAlign: TextAlign.center),
-              ],
-            ),
+          const Image(image: CooImages.cooBackgroundDetails),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: size.height * 0.8,
+                width: size.width * 0.6,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LottieBuilder.asset('assets/lotties/successAnimation.json',repeat: false),
+                    const SizedBox(height: 20),
+                    Text('Parabéns!', style: textTheme.displayLarge),
+                    const SizedBox(height: 20),
+                    Text('Você acaba de se tornar um Padrinho.', style: textTheme.bodySmall?.copyWith(overflow: TextOverflow.clip),textAlign: TextAlign.center),
+                  ],
+                ),
+              ),
+              CooButton(
+                label: 'Continuar', 
+                onPressed: () {},
+              )
+            ],
           ),
-          CooButton(
-            label: 'Continuar', 
-            onPressed: () {},
-          )
         ],
       ),
     );
