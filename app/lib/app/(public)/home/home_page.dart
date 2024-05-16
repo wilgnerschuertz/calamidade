@@ -28,16 +28,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/auth/affiliated');
-              },
-              child: const Text(
-                'Página para checar cooperado',
-              ),
-            ),
-          ),
         ],
       ),
     );
