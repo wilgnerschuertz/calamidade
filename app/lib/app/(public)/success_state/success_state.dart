@@ -8,7 +8,7 @@ class SuccessState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
