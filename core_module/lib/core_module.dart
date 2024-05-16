@@ -14,6 +14,7 @@ export 'src/entities/entity.dart';
 export 'src/errors/errors.dart';
 export 'src/states/base_state.dart';
 export 'src/types/types.dart';
+export 'src/helpers/validators_helper.dart';
 export 'src/types/unit.dart';
 
 final coreModule = AutoInjector(

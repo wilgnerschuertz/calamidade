@@ -10,4 +10,6 @@ class CooImages {
       AssetImage(package: _packageName, 'assets/images/coo_no_coop.png');
   static const cooSuccess =
       AssetImage(package: _packageName, 'assets/images/coo_success.png');
+  static const cooBackgroundDetails = AssetImage(
+      package: _packageName, 'assets/images/coo_background_details.png');
 }
