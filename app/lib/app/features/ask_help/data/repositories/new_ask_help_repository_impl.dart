@@ -8,7 +8,7 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
   NewAskHelpRepositoryImpl(this.restClient);
 
   @override
-  Future<Output<void>> saveSolicitation(SolicitationEntity solicitationEntity) async {
+  Future<Output<Unit>> saveSolicitation(SolicitationEntity solicitationEntity) async {
     try {
       //TODO: impl correct endpoint
       const url = '';
@@ -21,9 +21,9 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
         ),
       );
       if (response.data == null) {
-        throw const DefaultException(message: 'Requisição inválida.');
+        return const Left(DefaultException(message: 'Requisição inválida.'));
       }
-      return const Right(null);
+      return const Right(unit);
     } on BaseException catch (err) {
       return Left(DefaultException(message: err.message));
     } catch (_) {
