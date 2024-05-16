@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('HomePage'),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(right: 16, left: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
