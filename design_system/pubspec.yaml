@@ -28,7 +28,6 @@ flutter:
     - assets/icons/fi-rs-checked.png
     - assets/images/coo_brand_horizontal.png
     - assets/images/coo_no_coop.png
-    - assets/images/coo_sucess.png
     - assets/images/coo_brand.png
   # assets:
   #   - images/a_dot_burr.jpeg
