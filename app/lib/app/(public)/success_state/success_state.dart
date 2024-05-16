@@ -29,7 +29,7 @@ class SuccessState extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LottieBuilder.asset('assets/success/successAnimation.json',repeat: false),
+                    LottieBuilder.asset('assets/lotties/successAnimation.json',repeat: false),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text('Parabéns!', style: textTheme.displayLarge),
