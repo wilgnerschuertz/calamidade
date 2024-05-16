@@ -10,14 +10,16 @@ class HomeRepositoryImpl implements IHomeRepository {
   const HomeRepositoryImpl(this.restClient);
 
   @override
-  Future<Output<List<OrderEntity>>> getOrders(CategoryHelp category) async {
+  Future<Output<List<OrderEntity>>> getOrders(TagType tagType) async {
     try {
       final response = await restClient.get(RestClientRequest(path: '/feed'));
 
       final listOrders = List<OrderEntity>.from(
-        response.data.map(
-          (e) => OrderAdapter.fromJson(e),
-        ),
+        response.data
+          ..where((element) => element.tag == tagType.name)
+          ..map(
+            (e) => OrderAdapter.fromJson(e),
+          ),
       );
 
       return Right(listOrders);

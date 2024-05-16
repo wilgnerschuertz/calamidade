@@ -2,7 +2,7 @@ import 'package:coopartilhar/app/features/home/interactor/home_state.dart';
 import 'package:coopartilhar/app/features/home/interactor/interfaces/i_home_repository.dart';
 import 'package:core_module/core_module.dart';
 
-enum CategoryHelp {
+enum TagType {
   general('Geral'),
   houses('Casas'),
   health('Saude'),
@@ -10,7 +10,7 @@ enum CategoryHelp {
   shelters('Abrigos'),
   anxiety('Ansiedade');
 
-  const CategoryHelp(this.label);
+  const TagType(this.label);
   final String label;
 }
 
@@ -18,7 +18,7 @@ class HomeInteractor extends BaseController<BaseState> {
   final IHomeRepository _homeRepository;
   HomeInteractor(this._homeRepository) : super(HomeInitial());
 
-  Future<void> getOrders(CategoryHelp category) async {
+  Future<void> getOrders(TagType category) async {
     update(HomeLoading());
     final result = await _homeRepository.getOrders(category);
     result.fold(
