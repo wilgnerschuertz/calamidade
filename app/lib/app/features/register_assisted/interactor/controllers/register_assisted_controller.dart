@@ -14,8 +14,8 @@ class RegisterAssistedController extends BaseController {
     final response = await repository.register(assisted: assisted);
 
     response.fold(
-      (l) => update(ErrorState(exception: l)),
-      (r) => update(SuccessState<AssistedEntity>(data: r)),
+      (left) => update(ErrorState(exception: left)),
+      (right) => update(SuccessState<AssistedEntity>(data: right)),
     );
   }
 
