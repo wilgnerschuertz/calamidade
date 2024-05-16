@@ -5,7 +5,7 @@ class DioAdapter {
   static RestClientException toClientException(DioException dioException) {
     return RestClientException(
       error: dioException.error,
-      message: dioException.message,
+      message: dioException.message ?? '',
       response: dioException.response == null
           ? null
           : toClientResponse(dioException.response!),

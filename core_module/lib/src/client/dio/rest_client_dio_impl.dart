@@ -10,8 +10,8 @@ class DioFactory {
   static Dio dio() {
     final baseOptions = BaseOptions(
       baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 5),
+      connectTimeout: const Duration(milliseconds: connectTimeout),
+      receiveTimeout: const Duration(microseconds: receiveTimeout),
     );
     return Dio(baseOptions);
   }
@@ -103,7 +103,7 @@ class RestClientDioImpl implements IRestClient {
   }
 
   @override
-  Future<RestClientResponse> post(RestClientRequest request) async {
+  Future<RestClientResponse> post<T>(RestClientRequest request) async {
     try {
       final response = await _dio.post(
         request.path,
