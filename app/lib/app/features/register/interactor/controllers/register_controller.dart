@@ -1,8 +1,6 @@
-import 'package:coopartilhar/app/features/auth/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/register/entities/register_entity.dart';
 import 'package:coopartilhar/app/features/register/repositories/i_register_repository.dart';
 import 'package:core_module/core_module.dart';
-
-import 'package:coopartilhar/app/features/register/entities/register_entity.dart';
 import 'package:flutter/material.dart';
 
 class RegisterController<RegisterState> extends BaseController {
@@ -22,16 +20,17 @@ class RegisterController<RegisterState> extends BaseController {
     final response = await repository.getUser(document: document);
     response.fold(
       (left) => update(ErrorState(exception: left)),
-      (right) => update(SuccessState<UserEntity>(data: right)),
+      (right) => update(SuccessState<UserValues>(
+        data: UserValues(document: document, name: right.name),
+      )),
     );
   }
 
   Future<void> register() async {
     if (formKey.currentState!.validate()) {
-      String? name;
-      if (state case final SuccessState<UserEntity> user) {
-        name = user.data.name;
-      }
+      final userValues = state is SuccessState<UserValues>
+          ? state as SuccessState<UserValues>
+          : null;
 
       update(LoadingState());
 
@@ -39,9 +38,9 @@ class RegisterController<RegisterState> extends BaseController {
         register: RegisterEntity(
           const Uuid().v4(),
           email: emailController.text,
-          name: name ?? '',
-          document: document,
-          password: password,
+          name: userValues?.data.name ?? '',
+          document: userValues?.data.document ?? '',
+          password: passwordController.text,
         ),
       );
 
@@ -87,4 +86,11 @@ class RegisterController<RegisterState> extends BaseController {
     passwordController.dispose();
     repeatPasswordController.dispose();
   }
+}
+
+class UserValues {
+  final String document;
+  final String name;
+
+  UserValues({required this.document, required this.name});
 }
