@@ -38,7 +38,7 @@ class CooButton extends StatelessWidget {
   });
 
   factory CooButton.primary({
-    required String label,
+    String label = '',
     required VoidCallback onPressed,
     Color? textColor,
     Color? backgroundColor,
@@ -61,7 +61,7 @@ class CooButton extends StatelessWidget {
   }
 
   factory CooButton.secondary({
-    required String label,
+    String label = '',
     required VoidCallback onPressed,
     Color? textColor,
     Color? backgroundColor,
@@ -82,7 +82,7 @@ class CooButton extends StatelessWidget {
   }
 
   factory CooButton.danger({
-    required String label,
+    String label = '',
     required VoidCallback onPressed,
     Color? textColor,
     Color? backgroundColor,
@@ -102,7 +102,7 @@ class CooButton extends StatelessWidget {
   }
 
   factory CooButton.outline({
-    required String label,
+    String label = '',
     required VoidCallback onPressed,
     Color? textColor,
     Color? backgroundColor,
@@ -221,19 +221,14 @@ class _ContentButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        icon != null
-            ? const SizedBox(
-                height: 10,
-                width: 25,
-              )
-            : Container(),
+        icon != null && label.isNotEmpty ? const SizedBox(width: 8) : Container(),
         Text(
           label,
           style: TextStyle(
             color: textColor,
           ),
         ),
-        icon ?? Container(),
+        Center(child: icon ?? Container()),
       ],
     );
   }

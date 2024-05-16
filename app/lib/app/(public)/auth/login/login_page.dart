@@ -41,10 +41,8 @@ class _LoginPageState extends State<LoginPage> {
         arguments: (document: document, name: name));
 
     if (_formKey.currentState!.validate()) {
-      print('OK!');
       return;
     }
-    print('OPS!');
   }
 
   @override
