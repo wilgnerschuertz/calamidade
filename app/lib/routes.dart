@@ -15,7 +15,6 @@ import 'app/(public)/register_assistence/register_assistence_page.dart' as a13;
 import 'app/(public)/splash/splash_page.dart' as a2;
 import 'app/(public)/success_state/success_state_page.dart' as a1;
 import 'app/(public)/want_to_help/want_to_help_page.dart' as a8;
-import 'app/(public)/welcome/welcome_page.dart' as a9;
 
 List<RouteEntity> get routes => [
       RouteEntity(
