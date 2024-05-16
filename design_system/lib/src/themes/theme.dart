@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const _defaultInputBorder = OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8)), borderSide: BorderSide.none);
+const _defaultInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderSide: BorderSide.none);
 
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
@@ -29,12 +31,18 @@ ThemeData lightTheme(BuildContext context) {
       error: Color(0xffEB5757),
     ),
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700),
-      displayMedium: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
-      displaySmall: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w400),
-      headlineLarge: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700),
-      headlineMedium: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
-      headlineSmall: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w400),
+      displayLarge:
+          GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700),
+      displayMedium:
+          GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
+      displaySmall:
+          GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w400),
+      headlineLarge:
+          GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700),
+      headlineMedium:
+          GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
+      headlineSmall:
+          GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w400),
       titleLarge: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w700),
       titleMedium: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
       titleSmall: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w400),
@@ -52,8 +60,9 @@ ThemeData lightTheme(BuildContext context) {
         tertiary: Color(0xff84cc6d),
         error: Color(0xffEB5757),
         black: Color(0xff000000),
-        black2: Color(0xff151515),
+        appBackground: Color(0xff151515),
         textColor: Color(0xff333333),
+        textColor2: Color(0xff555555),
         middleGrey: Color(0xffb6c5d1),
         grey: Color(0xffb6c5d1),
         lightGrey: Color(0xffF2F2F7),
@@ -61,6 +70,12 @@ ThemeData lightTheme(BuildContext context) {
         success: Color(0xff00FF85),
         otherYellow: Color(0xffffc745),
         otherGreen: Color(0xff00b050),
+        routine: Color(0xff129166),
+        routineLight: Color(0xffa5f3d9),
+        urgent: Color(0xfffcb900),
+        urgentLight: Color(0xffffecb8),
+        critical: Color(0xffe94949),
+        criticalLight: Color(0xfff9d2d2),
       ),
     ],
   );
@@ -76,12 +91,19 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     required this.otherYellow,
     required this.otherGreen,
     required this.black,
-    required this.black2,
+    required this.appBackground,
     required this.textColor,
+    required this.textColor2,
     required this.middleGrey,
     required this.grey,
     required this.lightGrey,
     required this.white,
+    required this.routine,
+    required this.routineLight,
+    required this.urgent,
+    required this.urgentLight,
+    required this.critical,
+    required this.criticalLight,
   });
 
   final Color primary;
@@ -92,12 +114,19 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
   final Color otherYellow;
   final Color otherGreen;
   final Color black;
-  final Color black2;
+  final Color appBackground;
   final Color textColor;
+  final Color textColor2;
   final Color middleGrey;
   final Color grey;
   final Color lightGrey;
   final Color white;
+  final Color routine;
+  final Color routineLight;
+  final Color urgent;
+  final Color urgentLight;
+  final Color critical;
+  final Color criticalLight;
 
   static CoopartilharColors of(BuildContext context) {
     return Theme.of(context).extension<CoopartilharColors>()!;
@@ -113,12 +142,19 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     Color? otherYellow,
     Color? otherGreen,
     Color? black,
-    Color? black2,
+    Color? appBackground,
     Color? textColor,
+    Color? textColor2,
     Color? middleGrey,
     Color? grey,
     Color? lightGrey,
     Color? white,
+    Color? routine,
+    Color? routineLight,
+    Color? urgent,
+    Color? urgentLight,
+    Color? critical,
+    Color? criticalLight,
   }) {
     return CoopartilharColors(
       primary: primary ?? this.primary,
@@ -129,12 +165,19 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       otherYellow: otherYellow ?? this.otherYellow,
       otherGreen: otherGreen ?? this.otherGreen,
       black: black ?? this.black,
-      black2: black2 ?? this.black2,
+      appBackground: appBackground ?? this.appBackground,
       textColor: textColor ?? this.textColor,
+      textColor2: textColor2 ?? this.textColor2,
       middleGrey: middleGrey ?? this.middleGrey,
       grey: grey ?? this.grey,
       lightGrey: lightGrey ?? this.lightGrey,
       white: white ?? this.white,
+      routine: routine ?? this.routine,
+      routineLight: routineLight ?? this.routineLight,
+      urgent: urgent ?? this.urgent,
+      urgentLight: urgentLight ?? this.urgentLight,
+      critical: critical ?? this.critical,
+      criticalLight: criticalLight ?? this.criticalLight,
     );
   }
 
@@ -156,12 +199,19 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       otherYellow: Color.lerp(otherYellow, other.otherYellow, t)!,
       otherGreen: Color.lerp(otherGreen, other.otherGreen, t)!,
       black: Color.lerp(black, other.black, t)!,
-      black2: Color.lerp(black2, other.black2, t)!,
+      appBackground: Color.lerp(appBackground, other.appBackground, t)!,
       textColor: Color.lerp(textColor, other.textColor, t)!,
+      textColor2: Color.lerp(textColor2, other.textColor2, t)!,
       middleGrey: Color.lerp(middleGrey, other.middleGrey, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
       lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
       white: Color.lerp(white, other.white, t)!,
+      routine: Color.lerp(routine, other.routine, t)!,
+      routineLight: Color.lerp(routineLight, other.routineLight, t)!,
+      urgent: Color.lerp(urgent, other.urgent, t)!,
+      urgentLight: Color.lerp(urgentLight, other.urgentLight, t)!,
+      critical: Color.lerp(critical, other.critical, t)!,
+      criticalLight: Color.lerp(criticalLight, other.criticalLight, t)!,
     );
   }
 }
