@@ -16,6 +16,7 @@ export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 export 'src/client/client.dart';
 export 'src/controllers/controllers.dart';
+export 'src/helpers/validators_helper.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {
