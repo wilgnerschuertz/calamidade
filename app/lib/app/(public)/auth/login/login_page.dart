@@ -35,10 +35,10 @@ class _LoginPageState extends State<LoginPage> {
 
   void _register() {
     // Descomente esse código para navegar para `/auth/register` através do botão entrar
-    final document = 00000000000;
-    final name = 'mock-name';
-    Navigator.pushNamed(context, '/auth/register',
-        arguments: (document: document, name: name));
+    // final document = 00000000000;
+    // final name = 'mock-name';
+    // Navigator.pushNamed(context, '/auth/register',
+    //     arguments: (document: document, name: name));
 
     if (_formKey.currentState!.validate()) {
       return;
