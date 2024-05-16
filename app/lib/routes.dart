@@ -102,7 +102,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const check_affiliated.AffiliatedPage(),
+          const check_affiliated.CheckAffiliatedPage(),
         ),
       ),
     ];
