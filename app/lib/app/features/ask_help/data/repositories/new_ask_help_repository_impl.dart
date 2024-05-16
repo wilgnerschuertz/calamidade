@@ -12,7 +12,7 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
     try {
       //TODO: impl correct endpoint
       const url = '';
-      final response = await restClient.post<Map<String, dynamic>>(
+      final response = await restClient.post(
         RestClientRequest(
           path: '$url/${solicitationEntity.id}',
           data: NewAskHelpAdapter.toJson(
