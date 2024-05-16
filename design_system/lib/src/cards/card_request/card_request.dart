@@ -3,7 +3,16 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class CardRequest extends StatelessWidget {
-  const CardRequest({super.key});
+  final double value;
+  final String title, helpedName, localName, dateString;
+  const CardRequest({
+    super.key,
+    required this.value,
+    required this.title,
+    required this.helpedName,
+    required this.localName,
+    required this.dateString,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,7 @@ class CardRequest extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   child: Text(
-                    'RS 3.500,00',
+                    value.toString(),
                     style: TextStyle(
                       color: colors.primary,
                       fontSize: 12,
@@ -48,10 +57,10 @@ class CardRequest extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Text('Reconstrução telhado', style: texts.displayMedium),
+          Text(title, style: texts.displayMedium),
           const SizedBox(height: 8),
           Text(
-            'Bairro: Estância Velha',
+            'Bairro: $localName',
             style: texts.bodyMedium?.copyWith(color: colors.textColor),
           ),
           const SizedBox(height: 16),
@@ -71,13 +80,13 @@ class CardRequest extends StatelessWidget {
                     color: colors.textColor,
                   ),
                   const SizedBox(width: 6),
-                  Text('15/04 às 10h', style: texts.bodyMedium?.copyWith(color: colors.textColor)),
+                  Text(dateString, style: texts.bodyMedium?.copyWith(color: colors.textColor)),
                 ],
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Por: Antônio Coutinh asdasdasd asd asdo',
+                  'Por: $helpedName',
                   overflow: TextOverflow.ellipsis,
                   style: texts.bodyMedium?.copyWith(color: colors.textColor),
                 ),

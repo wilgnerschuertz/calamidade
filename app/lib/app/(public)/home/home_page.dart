@@ -1,3 +1,7 @@
+import 'package:coopartilhar/app/features/home/interactor/home_interactor.dart';
+import 'package:coopartilhar/app/features/home/interactor/home_state.dart';
+import 'package:coopartilhar/injector.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +13,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<dynamic> filters = ['Geral', 'Casas', 'Saude', 'Animais', 'Abrigos', 'Ansiedade'];
-  int indexSelected = 0;
+  final homeInteractor = injector.get<HomeInteractor>();
+  final List<CategoryHelp> categories = [
+    CategoryHelp.general,
+    CategoryHelp.houses,
+    CategoryHelp.health,
+    CategoryHelp.animals,
+    CategoryHelp.shelters,
+    CategoryHelp.anxiety,
+  ];
+  int indexCategorySelected = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    homeInteractor.getOrders(categories[indexCategorySelected]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,31 +61,48 @@ class _HomePageState extends State<HomePage> {
                   return InkWell(
                     onTap: () {
                       setState(() {
-                        indexSelected = index;
+                        indexCategorySelected = index;
                       });
+                      homeInteractor.getOrders(categories[indexCategorySelected]);
                     },
                     child: Text(
-                      filters[index],
+                      categories[index].label,
                       style: texts.bodyMedium?.copyWith(
-                        color: index == indexSelected ? colors.otherGreen : colors.grey,
+                        color: index == indexCategorySelected ? colors.otherGreen : colors.grey,
                       ),
                     ),
                   );
                 },
                 separatorBuilder: (_, __) => const SizedBox(width: 16),
-                itemCount: filters.length,
+                itemCount: categories.length,
               ),
             ),
             const SizedBox(height: 24),
-            Expanded(
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return const CardRequest();
-                },
-                separatorBuilder: (_, __) => const SizedBox(height: 16),
-                itemCount: 5,
-              ),
-            )
+            ValueListenableBuilder(
+                valueListenable: homeInteractor,
+                builder: (_, state, ____) {
+                  return switch (state) {
+                    HomeInitial() || HomeLoading() => const Center(child: CircularProgressIndicator()),
+                    HomeSuccess(:final data) => Expanded(
+                        child: ListView.separated(
+                          itemBuilder: (context, index) {
+                            final orderEntity = data[index];
+                            return CardRequest(
+                              value: orderEntity.value,
+                              title: orderEntity.title,
+                              helpedName: orderEntity.helpedName,
+                              localName: orderEntity.localName,
+                              dateString: DateAdapter.dateToString(orderEntity.date),
+                            );
+                          },
+                          separatorBuilder: (_, __) => const SizedBox(height: 16),
+                          itemCount: 5,
+                        ),
+                      ),
+                    HomeError(:final exception) => Container(),
+                    _ => Container(),
+                  };
+                })
           ],
         ),
       ),
