@@ -2,8 +2,8 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:core_module/core_module.dart';
 
-class SuccessState extends StatelessWidget {
-  const SuccessState({super.key});
+class SuccessStatePage extends StatelessWidget {
+  const SuccessStatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
