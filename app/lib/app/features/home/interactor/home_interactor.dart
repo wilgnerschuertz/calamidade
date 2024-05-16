@@ -18,9 +18,9 @@ class HomeInteractor extends BaseController<BaseState> {
   final IHomeRepository _homeRepository;
   HomeInteractor(this._homeRepository) : super(HomeInitial());
 
-  Future<void> getOrders(TagType category) async {
+  Future<void> getOrders(TagType tagType) async {
     update(HomeLoading());
-    final result = await _homeRepository.getOrders(category);
+    final result = await _homeRepository.getOrders(tagType);
     result.fold(
       (left) => update(HomeError(left)),
       (right) => update(HomeSuccess(data: right)),
