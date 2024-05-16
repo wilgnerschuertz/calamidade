@@ -1,17 +1,40 @@
+import 'package:coopartilhar/app/features/home/interactor/cooperated_entity.dart';
+import 'package:coopartilhar/app/features/home/interactor/god_father_entity.dart';
 import 'package:core_module/core_module.dart';
 
 class OrderEntity extends Entity {
-  final double value;
-  final String title, helpedName, description, localName;
-  final DateTime date;
+  final String tag;
+  final String title;
+  final String helpType;
+  final String address;
+  final String status;
+  final String obs;
+  final String telephone;
+  final String createdAt;
+  final String chavePix;
+  final String banco;
+  final String agencia;
+  final String conta;
+  final int amount;
+  final CooperatedEntity? cooperated;
+  final GodFatherEntity? godfather;
 
   OrderEntity(
-      {required this.value,
+      {required this.tag,
       required this.title,
-      required this.helpedName,
-      required this.description,
-      required this.localName,
-      required this.date,
+      required this.helpType,
+      required this.address,
+      required this.amount,
+      required this.status,
+      required this.obs,
+      required this.telephone,
+      this.cooperated,
+      this.godfather,
+      required this.createdAt,
+      required this.chavePix,
+      required this.banco,
+      required this.agencia,
+      required this.conta,
       required String id})
       : super(id);
 }
