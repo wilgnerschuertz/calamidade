@@ -7,12 +7,12 @@ class RegisterItemField extends StatelessWidget {
     required this.title,
     required this.controller,
     required this.hint,
-    required this.validator,
+    this.validator,
   });
 
   final String title;
   final String hint;
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final String? Function(String?)? validator;
 
   @override
