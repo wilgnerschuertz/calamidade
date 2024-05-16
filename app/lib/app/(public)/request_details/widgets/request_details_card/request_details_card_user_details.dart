@@ -32,16 +32,18 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Cidade:',
+              'Cidade: ',
               style: textThemes.bodySmall?.copyWith(
                   fontSize: 14.0,
                   color: const Color(0xff595959)), //TODO: atualizar cor
             ),
-            Text(
-              city,
-              style: textThemes.bodySmall?.copyWith(
-                  fontSize: 14.0,
-                  color: const Color(0xff595959)), //TODO: atualizar cor
+            Flexible(
+              child: Text(
+                city,
+                style: textThemes.bodySmall
+                    ?.copyWith(fontSize: 14.0, color: const Color(0xff595959)),
+                overflow: TextOverflow.ellipsis, //TODO: atualizar cor
+              ),
             ),
           ],
         ),
@@ -53,10 +55,13 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
               style: textThemes.bodySmall
                   ?.copyWith(fontSize: 14.0, color: colors.textColor),
             ),
-            Text(
-              phoneNumber,
-              style: textThemes.bodySmall
-                  ?.copyWith(fontSize: 14.0, color: colors.textColor),
+            Flexible(
+              child: Text(
+                phoneNumber,
+                style: textThemes.bodySmall
+                    ?.copyWith(fontSize: 14.0, color: colors.textColor),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

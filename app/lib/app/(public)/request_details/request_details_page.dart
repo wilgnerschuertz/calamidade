@@ -63,6 +63,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                       title: 'Detalhes da Solicitação',
                     ),
                     RequestDetailsCard(request: request),
+                    const SizedBox(height: 96.0),
                   ],
                 ),
               ),

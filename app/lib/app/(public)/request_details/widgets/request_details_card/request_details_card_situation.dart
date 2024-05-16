@@ -19,11 +19,14 @@ class RequestDetailsCardSituation extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Situação',
-              style: textThems.displayMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: colors.textColor,
+            Flexible(
+              child: Text(
+                'Situação',
+                style: textThems.displayMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: colors.textColor,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             SituationPriorityTag(status: statusDetails.status)

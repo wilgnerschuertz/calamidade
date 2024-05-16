@@ -27,6 +27,7 @@ class RequestDetailsPageHeader extends StatelessWidget {
           Text(
             title,
             style: textThemes.displayLarge?.copyWith(color: colors.textColor),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

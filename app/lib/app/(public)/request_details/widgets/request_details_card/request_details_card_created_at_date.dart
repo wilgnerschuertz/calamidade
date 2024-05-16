@@ -20,11 +20,15 @@ class RequestDetailsCardCreatedAtDate extends StatelessWidget {
           color: const Color(0xff767373), //TODO: atualizar com a cor correta
         ),
         const SizedBox(width: 10.0),
-        Text(
-          DateAdapter.dateToString(createdAt),
-          style: textThemes.bodySmall?.copyWith(
-            fontSize: 14.0,
-            color: const Color(0xff767373), //TODO: atualizar com a cor correta
+        Flexible(
+          child: Text(
+            DateAdapter.dateToString(createdAt),
+            style: textThemes.bodySmall?.copyWith(
+              fontSize: 14.0,
+              color:
+                  const Color(0xff767373), //TODO: atualizar com a cor correta
+            ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
