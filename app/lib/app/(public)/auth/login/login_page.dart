@@ -38,10 +38,8 @@ class _LoginPageState extends State<LoginPage> {
     // Navigator.pushNamed(context, '/auth/register');
 
     if (_formKey.currentState!.validate()) {
-      print('OK!');
       return;
     }
-    print('OPS!');
   }
 
   @override

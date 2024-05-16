@@ -1,5 +1,4 @@
 import 'package:design_system/design_system.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class RegisterAssistencePage extends StatefulWidget {
@@ -42,9 +41,8 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
 
   void _register() {
     if (_formKey.currentState!.validate()) {
-      print('OK!');
+      return;
     }
-    print('OPS!');
   }
 
   @override
