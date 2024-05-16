@@ -29,21 +29,17 @@ class SuccessState extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LottieBuilder.asset('assets/lotties/successAnimation.json',repeat: false),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text('Parabéns!', style: textTheme.displayLarge),
-                    ),
+                    LottieBuilder.asset('assets/lotties/successAnimation.json',repeat: true),
+                    const SizedBox(height: 20),
+                    Text('Parabéns!', style: textTheme.displayLarge),
+                    const SizedBox(height: 20),
                     Text('Você acaba de se tornar um Padrinho.', style: textTheme.bodySmall?.copyWith(overflow: TextOverflow.clip),textAlign: TextAlign.center),
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CooButton(
-                  label: 'Continuar', 
-                  onPressed: () {},
-                ),
+              CooButton(
+                label: 'Continuar', 
+                onPressed: () {},
               )
             ],
           ),
