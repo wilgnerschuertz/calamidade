@@ -1,8 +1,8 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-class AffiliatedPage extends StatelessWidget {
-  const AffiliatedPage({super.key});
+class CheckAffiliatedPage extends StatelessWidget {
+  const CheckAffiliatedPage({super.key});
 
   @override
   Widget build(BuildContext context) {
