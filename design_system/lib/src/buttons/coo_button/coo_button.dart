@@ -20,6 +20,7 @@ class CooButton extends StatelessWidget {
   final bool enable;
   final IconData? icon;
   final ButtonType? type;
+  final EdgeInsets? padding;
 
   const CooButton({
     super.key,
@@ -30,7 +31,8 @@ class CooButton extends StatelessWidget {
     this.backgroundColor,
     this.isLoading = false,
     this.icon,
-    this.type = ButtonType.primary,
+    this.type = ButtonType.primary, 
+    this.padding,
   });
 
   factory CooButton.primary({
@@ -146,7 +148,7 @@ class CooButton extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(right: 10, left: 10),
+      padding: padding ?? const EdgeInsets.only(right: 10, left: 10),
       child: ButtonType.outline == type
           ? OutlinedButton(
               style: OutlinedButton.styleFrom(

@@ -19,6 +19,7 @@ dependencies:
   design_system: 
     path: ../design_system
   lottie: ^3.1.1
+  lottie: ^3.1.1
 
 dev_dependencies:
   flutter_test:

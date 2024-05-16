@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
-
+  uicons: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +24,11 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
+  assets:
+    - assets/icons/fi-rs-checked.png
+    - assets/images/coo_brand_horizontal.png
+    - assets/images/coo_no_coop.png
+    - assets/images/coo_brand.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
