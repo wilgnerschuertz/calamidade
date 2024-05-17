@@ -14,9 +14,8 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       // TODO, rever backend endpoint
       const url = '';
       final response = await restClient.get(RestClientRequest(path: url));
-
       if (response.data == null) {
-        throw const DefaultException(message: 'Requisição inválida');
+        return const Left(DefaultException(message: 'Requisição inválida'));
       }
 
       return Right(OnboardingAdpter.fromJson(response.data!));

@@ -1,13 +1,64 @@
+<!-- <div align="center"><img src="/docs/images/logo_200px.png" /></div> -->
+
 # App Ajuda Enchentes RS
+
+<!-- Caso necessário adicionar as telas do app -->
+<!-- |||||||||
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| <img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/1_image.png" /> | <img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/2_image.png" /> | <img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/3_image.png" /> | <img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/4_image.png" /> |<img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/5_image.png" /> |<img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/6_image.png" /> |<img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/7_image.png" /> |<img style="max-width: 200px; margin-bottom: 10px;" src="/docs/images/screenshot/8_image.png" /> | -->
 
 Este aplicativo é uma iniciativa para auxiliar as vítimas das enchentes no Rio Grande do Sul, facilitando a conexão entre voluntários, doadores e as famílias afetadas.
 
+## Versões Necessárias
+
+- **Dart**: ![Dart Version](https://img.shields.io/static/v1?label=Dart&amp;message=3.4.0&amp;color=blue&amp;logo=dart)
+  [Documentação Oficial do Dart](https://dart.dev)
+
+- **Flutter**: ![Flutter Version](https://img.shields.io/static/v1?label=Flutter&amp;message=3.22.0&amp;color=blue&amp;logo=flutter)
+  [Documentação Oficial do Flutter](https://docs.flutter.dev/get-started/install)
+
 ## Personagens
+
+A tecnologia escolhida para o desenvolvimento deste projeto foi `Flutter`. Saiba mais em: [flutter.dev](https://flutter.dev/)
+
+[![Dart][dart_img]][dart_ln] [![Flutter][flutter_img]][flutter_ln]
+
+## Sumário
+
+- [Personagens](#personagens)
+- [Funcionalidades](#funcionalidades)
+- [Liberação de Recursos](#liberação-de-recursos)
+- [Contato](#contato)
+- [Metodologia de Desenvolvimento](#metodologia-de-desenvolvimento)
+- [Tecnologias e Pacotes Utilizados](#tecnologias-e-pacotes-utilizados)
+- [Como Contribuir](#como-contribuir)
+- [Como executar o projeto](#como-executar-o-projeto)
+- [Tutoriais e Recursos](#tutoriais-e-recursos)
+- [Nomenclatura](#nomenclatura)
+- [Padrão para classes de interface](#padrão-para-classes-de-interface)
+- [Padrão para classes de implementação de interface](#padrão-para-classes-de-implementação-de-interface)
+- [Padrão para classes de entity](#padrão-para-classes-de-entity)
+- [State Pattern](#state-pattern)
+- [Princípio da inversão de dependências (DIP)](#princípio-da-inversão-de-dependências-dip)
+- [Manipulação de Erros e Resultados](#manipulação-de-erros-e-resultados)
+- [Como criar uma nova feature](#como-criar-uma-nova-feature)
+- [Uso de Adapters](#uso-de-adapters)
+- [Como adicionar um package](#como-adicionar-um-package)
+- [Core Module](#core-module)
+- [Design system](#design-system)
+- [Theme Color](#theme-color)
+- [Convenção de Commits](#convenção-de-commits)
+- [Convenção de nomenclatura para branches](#convenção-de-nomenclatura-para-branches)
+- [Code review](#code-review)
+- [Acesse nossa comunidade no discord](#acesse-nossa-comunidade-no-discord)
+- [Variáveis de ambiente](#variáveis-de-ambiente)
+- [Licença](#licença)
+
 
 - **Voluntários Adopters**: Indivíduos ou famílias que desejam "adotar" famílias afetadas, fornecendo apoio contínuo.
 - **Voluntários de Campo**: Voluntários que trabalham diretamente no terreno para auxiliar os afetados pelas enchentes.
 
-## Funcionalidades
+### Funcionalidades
 
 - **Coleta de Informações sobre Doações**: Uma interface para registrar e gerenciar as informações sobre as doações recebidas.
 - **Transparência na Destinação de Recursos**: Relatórios e atualizações sobre como os recursos estão sendo usados, garantindo transparência.
@@ -15,15 +66,15 @@ Este aplicativo é uma iniciativa para auxiliar as vítimas das enchentes no Rio
 - **Arrecadação de Fundos**: Ferramenta para facilitar a arrecadação de fundos para apoiar os afetados.
 - **QR Code para Doações**: Facilitar doações por meio de um QR code que direciona para uma conta dedicada.
 
-## Liberação de Recursos
+### Liberação de Recursos
 
 As liberações de recursos são feitas parcialmente, acompanhadas de comprovantes e transações financeiras claras para garantir transparência e confiança.
 
-## Contato
+### Contato
 
 - **Coordenadora do Projeto**: Rosane (contato ainda será adicionado)
 
-## Metodologia de Desenvolvimento
+### Metodologia de Desenvolvimento
 
 - **Dia 1 (Segunda)**: Brainstorm de ideias e requisitos.
 - **Dia 2 (Terça)**: Refinamento das ideias e planejamento.
@@ -31,27 +82,25 @@ As liberações de recursos são feitas parcialmente, acompanhadas de comprovant
 - **Dia 4 (Quinta)**: Testes de funcionalidades.
 - **Dia 5 (Sexta)**: Revisão final e entrega.
 
-## Tecnologias e Pacotes Utilizados
+### Tecnologias e Pacotes Utilizados
 
 - [Auto Injector](https://pub.dev/packages/auto_injector): Para injeção de dependências.
 - [Routefly](https://pub.dev/packages/routefly): Gerenciamento de rotas no app.
 - [ValueNotifier](https://api.flutter.dev/flutter/foundation/ValueNotifier-class.html): Utilizado para gerenciar estados dentro do app.
 
-## Como Contribuir
+### Como Contribuir
 
 Você pode contribuir com o projeto de várias maneiras, incluindo:
 
 - Fazer o fork do repositório do github
-
 - Criar uma branch para a feature que deseja implementar
-
 - Após a implementação, faça um pull request para a branch de desenvolvimento.
 
 ### Como executar o projeto
 
-- Certifique-se de que sua versão do dart seja >= 3.3.3
+- Certifique-se de que sua versão do dart seja >= 3.4.0
 
-- Certifique-se de que sua versão do flutter seja >= 3.19.5
+- Certifique-se de que sua versão do flutter seja >= 3.22.0
 
 - Para executar o seu projeto você deve clonar o projeto que você acabou de fazer o fork
 
@@ -81,7 +130,7 @@ Como fazer o Sync Fork:
 
 ![Como fazer o Sync Fork](doc/sync_fork.png)
 
-## Tutoriais e Recursos
+### Tutoriais e Recursos
 
 Para ajudar os desenvolvedores a se familiarizarem com as tecnologias e pacotes utilizados neste projeto, compilamos uma lista de vídeos e tutoriais úteis:
 
@@ -99,21 +148,20 @@ Para ajudar os desenvolvedores a se familiarizarem com as tecnologias e pacotes 
 
 Estes recursos são recomendados para todos os membros da equipe, especialmente aqueles novos nas bibliotecas e frameworks utilizados.
 
-## Nomenclatura
+### Nomenclatura
 
 - **Diretórios e Arquivos**:
   - **Classes**: PascalCase
   - **Variaveis**: Funções e métodos: camelCase
   - **Interfaces**: Começam com um `I`, por ex. `IRepository`
   - **Implementação**: Termina com `Impl`, por ex. `RepositoryImpl`
-  
 - **Snake Case**:
   - Use o estilo snake_case para nomes de arquivos.
   - Todas as letras devem ser minúsculas.
   - Palavras separadas por sublinhado.
 - **Descrição Concisa**:
   - Mantenha o nome do arquivo descritivo e conciso, refletindo seu conteúdo ou funcionalidade.
-  
+
 Toda pagina deve ter seu nome mais o sufixo '`_page.dar`t' para a geração de rotas do routefly.
 
 ### Padrão para classes de interface
@@ -134,6 +182,7 @@ class UserImpl implements IUser {}
 
 //bad
 class UserImplements implements IUser {}
+```
 
 ### Padrão para classes de entity
 
@@ -147,7 +196,7 @@ class UserEntity {}
 class User {}
 ```
 
-## State Pattern
+### State Pattern
 
 - **Flutter State Pattern**:
   [Aprenda State Pattern](https://blog.flutterando.com.br/entendendo-state-pattern-flutter-b0318bab77c3)
@@ -190,7 +239,7 @@ class LoginControllerImpl extends BaseController {
     required String email,
     required String password,
   }) async {
-    
+
     _state.value = LoadingState();
 
     final credentials = Credentials(
@@ -211,7 +260,7 @@ class LoginControllerImpl extends BaseController {
 }
 ```
 
-## Princípio da inversão de dependências (DIP)
+### Princípio da inversão de dependências (DIP)
 
 - É um dos cinco princípios SOLID da programação orientada a objetos. Ele estabelece que:
   - Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
@@ -255,9 +304,9 @@ abstract class IAuthRepository {
 }
 ```
 
-## Como criar uma nova feature
+### Como criar uma nova feature
 
-As features devem ficar no diretorio app/features usando a arquitetura minicore
+As features devem ficar no diretório app/features usando a arquitetura minicore
 
 - **Arquitetura Minicore**:
   [Minicore Doc](https://github.com/Flutterando/minicore)
@@ -273,30 +322,28 @@ Data - Implementação dos contratos, e os Adapters que devem retornar entity qu
 - **App todo minicore**:
   [App usando Minicore de exemplo](https://github.com/EdsonMello-code/todoapp)
 
-## Uso de Adapters
+### Uso de Adapters
 
 Os adapters recebem um Map e devem retornar entity, podem existir também adapters que recebem uma Entity e retornam outra.
 
-## Como adicionar um package
+### Como adicionar um package
 
-forma para adicionar packages no app
-Os packages devem ficar dentro de core/shared/services/
+Forma para adicionar packages no app. Os packages devem ficar dentro de `core/shared/services/`
 
-Criar um diretorio com o nome do package e deve conter um contrato que deve ser usada pelo projeto e sua implementação feita com determinado package, o contrato e a implementação devem ficar no mesmo arquivo.
+Criar um diretório com o nome do package e deve conter um contrato que deve ser usada pelo projeto e sua implementação feita com determinado package. O contrato e a implementação devem ficar no mesmo arquivo.
 
-caso o package adicionado seja compartilhado ele deve ficar no core_module
+caso o package adicionado seja compartilhado ele deve ficar no core_module e também deve ter um contrato e sua implementação.
 
-e também deve ter um contrato e sua implementação.
+### Core Module
 
-## Core Module
+O core module é uma lib interna que serve para compartilhar o código entre os 2 projetos que temos: `app` e o `dashboard`.
+Ele vai lidar com packages compartilhados, os contratos e estados que também serão usados nos dois apps.
 
-O core module é uma lib interna que serve para compartilhar o código entre os 2 projetos que temos, o app e o dashboard
-ele vai lidar com packages compartilhados os contratos e estados que também serão usados nos dois apps.
+### Design system
 
-## Design system
+O design system é uma lib interna que vai ter todos components compartilhados e temas, eles ficarão divididos em diretórios exemplo:
 
-O design system é uma lib interna que vai ter todos components compartilhados e temas, eles ficarão divididos em diretorios exemplo:
-dentro de buttons/ todos nossos tipos de botões, seguindo a mesma lógica para toda criação de components.
+> Dentro de `buttons/` todos nossos tipos de botões, seguindo a mesma lógica para toda criação de components.
 
 ### Theme Color
 
@@ -306,14 +353,14 @@ Todas as cores podem ser acessadas usando o código:
 final colors = CoopartilharColors.of(context);
 ```
 
-## Convenção de Commits
+### Convenção de Commits
 
 - **Commits**:
   - `feat`, `fix`, `doc`, `etc`.
 
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0)
 
-## Convenção de nomenclatura para branches
+### Convenção de nomenclatura para branches
 
 - **prefixos utilizados**:
   - **feat**: adição de código novo
@@ -326,7 +373,7 @@ final colors = CoopartilharColors.of(context);
 
 obs: esse #10 é uma referencia a issue.
 
-## Code review
+### Code review
 
 **[!WARNING]**
 
@@ -335,19 +382,24 @@ obs: esse #10 é uma referencia a issue.
 - *Todo código deverá passar por Code Review através da feature "Pull Request (PR)" do Gitlab durante o processo de merge da branch de "feature" para a branch alvo.
 É recomendado que durante o desenvolvimento da feature seja criado um Pull Request de WIP (trabalho em progresso) para permitir coletar feedbacks ao longo do processo. Isso ocorre quando o título da PR é prefixado de WIP:*.
 
-## Acesse nossa comunidade no discord
+### Acesse nossa comunidade no discord
 
 Entrar no servidor do [Discord](https://discord.gg/BMKxRGnEmT) para discutir ideias e colaborar com outros membros da equipe.
 
-## Variáveis de ambiente
+### Variáveis de ambiente
+
 As keys de desenvolvimento estão em `dev.env`
 
-Para usar a key:
-`String.fromEnvironment(CHAVE_DA_VARIAVEL);`
+Para usar a key: `String.fromEnvironment(CHAVE_DA_VARIAVEL);`
 
-Por questões de segurança, para prod é necessário criar um arquivo local `.env` e adiconar à root de `app/`, seguir o padrão de `dev.env`
-As keys podem ser fornecidas pelos participantes do projeto, entrar em contato com Flutterando caso seja necessário debugar o app prod
+Por questões de segurança, para prod é necessário criar um arquivo local `.env` e adiconar à root de `app/`, seguir o padrão de `dev.env`. As keys podem ser fornecidas pelos participantes do projeto, entrar em contato com Flutterando caso seja necessário debugar o app prod
 
-## Licença
+### Licença
 
 Este projeto é distribuído sob a Licença MIT, o que permite o uso, cópia, modificação, fusão, publicação, distribuição, sublicenciação, e/ou venda de cópias do software, desde que as cópias do software sejam acompanhadas pelo aviso de direitos autorais e este aviso de permissão.
+
+<!-- Links úteis: -->
+[dart_img]: https://img.shields.io/static/v1?label=Dart&message=3.4.0&color=blue&logo=dart
+[dart_ln]: https://dart.dev/ "https://dart.dev/"
+[flutter_img]: https://img.shields.io/static/v1?label=Flutter&message=3.22.0&color=blue&logo=flutter
+[flutter_ln]: https://docs.flutter.dev/get-started/install "https://docs.flutter.dev/get-started/install"

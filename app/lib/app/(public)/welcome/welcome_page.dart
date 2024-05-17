@@ -1,9 +1,9 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key, required this.userName});
   final String userName;
-  static const String background = 'assets/pngs/background_details.png';
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +40,9 @@ class WelcomePage extends StatelessWidget {
               ],
             ),
           ),
-          Positioned.fill(
-              child: Image.asset(
-            background,
+          const Positioned.fill(
+              child: Image(
+            image: CooImages.cooBackgroundDetails,
             alignment: Alignment.bottomCenter,
           ))
         ],

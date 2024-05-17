@@ -2,8 +2,7 @@ name: design_system
 description: "A new Flutter package project."
 version: 0.0.1
 
-publish_to: "none" 
-
+publish_to: "none"
 
 environment:
   flutter: "3.22.0"
@@ -27,11 +26,12 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # To add assets to your package, add an assets section, like this:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/lotties/
+    - assets/gifs/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
