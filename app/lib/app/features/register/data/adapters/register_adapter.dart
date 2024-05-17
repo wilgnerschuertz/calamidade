@@ -5,10 +5,10 @@ class RegisterAdapter {
     final [firstName, lastName] = register.name.split(' ');
 
     return {
-      "email": register.email,
-      "password": register.password,
-      "firstName": firstName,
-      "lastName": lastName,
+      'email': register.email,
+      'password': register.password,
+      'firstName': firstName,
+      'lastName': lastName,
     };
   }
 }

@@ -51,7 +51,6 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
     final textTheme = Theme.of(context).textTheme;
-    final Size size = MediaQuery.sizeOf(context);
     final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
