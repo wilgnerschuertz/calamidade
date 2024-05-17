@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     if (mounted) {
       Future.delayed(
-        const Duration(seconds: 5),
+        const Duration(milliseconds: 5500),
         () {
           Routefly.navigate(routePaths.onboarding);
         },
@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Center(child: Image(image: CooImages.cooBrand1, fit: BoxFit.contain, width: 200, height: 200)),
+                Center(child: Image(image: CooImages.cooSplashGif, fit: BoxFit.contain, width: 200, height: 200)),
               ],
             )
           ],

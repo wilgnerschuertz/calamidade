@@ -9,8 +9,8 @@ class CooImages {
   static const cooNoCoop = AssetImage(package: _packageName, 'assets/images/coo_no_coop.png');
   static const cooSuccess = AssetImage(package: _packageName, 'assets/images/coo_success.png');
   static const cooBackgroundDetails = AssetImage(package: _packageName, 'assets/images/coo_background_details.png');
-  static const cooSplashGif = AssetImage(package: _packageName, 'assets/splash/coo_splash.png');
-  static const cooFlutterando1 = AssetImage(package: _packageName, 'assets/images/1.0/coo_flutterando.png');
-  static const cooFlutterando2 = AssetImage(package: _packageName, 'assets/images/2.0/coo_flutterando.png');
-  static const cooFlutterando3 = AssetImage(package: _packageName, 'assets/images/3.0/coo_flutterando.png');
+  static const cooSplashGif = AssetImage(package: _packageName, 'assets/splash/coo_splash.gif');
+  static const cooFlutterando1 = AssetImage(package: _packageName, 'assets/splash/1.0x/coo_flutterando.png');
+  static const cooFlutterando2 = AssetImage(package: _packageName, 'assets/splash/2.0x/coo_flutterando.png');
+  static const cooFlutterando3 = AssetImage(package: _packageName, 'assets/splash/3.0x/coo_flutterando.png');
 }
