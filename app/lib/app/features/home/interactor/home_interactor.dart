@@ -6,7 +6,7 @@ enum TagType {
   general('Geral'),
   houses('Casas'),
   health('Saude'),
-  animais('Animais'),
+  animals('Animais'),
   shelters('Abrigos'),
   anxiety('Ansiedade');
 
