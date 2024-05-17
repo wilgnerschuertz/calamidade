@@ -39,7 +39,7 @@ class CheckAffiliatedPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     vertical: heightScreen * 0.20,
                   ),
-                  child: const Image(image: CooImages.cooBrand),
+                  child: const Image(image: CooImages.cooBrand1),
                 ),
                 Row(
                   children: [

@@ -32,6 +32,10 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/splash/
+    - assets/splash/1.0x/
+    - assets/splash/2.0x/
+    - assets/splash/3.0x/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
