@@ -21,7 +21,7 @@ class NonEditableRegisterItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: textTheme.titleMedium?.copyWith(height: 1.125, color: colors.textColor),
+          style: textTheme.titleMedium?.copyWith(color: colors.textColor),
         ),
         const SizedBox(height: 15),
         Text(
