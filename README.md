@@ -2,6 +2,14 @@
 
 Este aplicativo é uma iniciativa para auxiliar as vítimas das enchentes no Rio Grande do Sul, facilitando a conexão entre voluntários, doadores e as famílias afetadas.
 
+## Versões Necessárias
+
+- **Dart**: ![Dart Version](https://img.shields.io/static/v1?label=Dart&amp;message=3.4.0&amp;color=blue&amp;logo=dart)
+  [Documentação Oficial do Dart](https://dart.dev)
+
+- **Flutter**: ![Flutter Version](https://img.shields.io/static/v1?label=Flutter&amp;message=3.22.0&amp;color=blue&amp;logo=flutter)
+  [Documentação Oficial do Flutter](https://docs.flutter.dev/get-started/install)
+
 ## Personagens
 
 - **Voluntários Adopters**: Indivíduos ou famílias que desejam "adotar" famílias afetadas, fornecendo apoio contínuo.
