@@ -60,7 +60,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             const Spacer(),
-                            const Image(image: CooImages.cooBrand),
+                            const Image(image: CooImages.cooBrand1),
                             const SizedBox(
                               height: 32,
                             ),

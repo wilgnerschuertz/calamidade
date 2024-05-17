@@ -25,16 +25,24 @@
             ]
         },
         {
-            "name": "app (profile mode)",
+            "name": "Dev Dashboard",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "dashboard/lib/main_dev.dart",
+            "toolArgs": [
+                "--dart-define-from-file",
+                "dev.env",
+            ]
         },
         {
-            "name": "app (release mode)",
+            "name": "Prod Dashboard",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
-        }
+            "program": "dashboard/lib/main_prod.dart",
+            "toolArgs": [
+                "--dart-define-from-file",
+                ".env",
+            ]
+        },
     ]
 }
