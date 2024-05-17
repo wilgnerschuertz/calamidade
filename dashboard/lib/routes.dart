@@ -1,6 +1,6 @@
-import 'package:routefly/routefly.dart';
+import 'package:core_module/core_module.dart';
 
-import 'app/(public)/auth/login_page.dart' as a0;
+import 'package:dashboard/app/(public)/auth/login_page.dart' as a0;
 
 List<RouteEntity> get routes => [
       RouteEntity(

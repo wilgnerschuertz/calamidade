@@ -1,7 +1,7 @@
 name: coopartilhar
 description: "Aplicativo da comunidade Flutterando para apoio aos moradores do Rio Grande do Sul"
 
-publish_to: "none" 
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -9,14 +9,13 @@ environment:
   flutter: "3.22.0"
   sdk: "3.4.0"
 
-
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
   core_module:
     path: ../core_module
-  design_system: 
+  design_system:
     path: ../design_system
 
 dev_dependencies:
@@ -26,7 +25,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/pngs/
-    - assets/lotties/
-
+  #assets:

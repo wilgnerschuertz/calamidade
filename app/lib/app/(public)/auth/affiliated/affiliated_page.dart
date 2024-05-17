@@ -19,7 +19,7 @@ class AffiliatedPage extends StatelessWidget {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          Image.asset('assets/pngs/background_details.png'),
+          const Image(image: CooImages.cooBackgroundDetails),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -33,10 +33,9 @@ class AffiliatedPage extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     fontFamily: 'inter'),
               ),
-              Image.asset(
-                'assets/pngs/affiliated.png',
-                width: MediaQuery.sizeOf(context).width * 0.8,
-              ),
+              Image(
+                  image: CooImages.cooSuccess,
+                  width: MediaQuery.sizeOf(context).width * 0.8),
               const SizedBox(
                 height: 32,
               ),

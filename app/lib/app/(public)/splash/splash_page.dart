@@ -43,7 +43,12 @@ class _SplashPageState extends State<SplashPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Center(child: Image(image: CooImages.cooSplashGif, fit: BoxFit.contain, width: 200, height: 200)),
+                Center(
+                    child: Image(
+                        image: CooGifs.cooSplashGif,
+                        fit: BoxFit.contain,
+                        width: 200,
+                        height: 200)),
               ],
             )
           ],
