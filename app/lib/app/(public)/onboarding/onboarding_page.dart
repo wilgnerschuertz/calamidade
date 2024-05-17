@@ -9,13 +9,9 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
 
-    final titleStyle = Theme.of(context).textTheme.displayLarge?.copyWith(
-        color: colors.primary, fontSize: 36, fontWeight: FontWeight.bold);
+    final titleStyle = Theme.of(context).textTheme.displayLarge?.copyWith(color: colors.primary, fontSize: 36, fontWeight: FontWeight.bold);
 
-    final subTitleStyle = Theme.of(context)
-        .textTheme
-        .displayMedium
-        ?.copyWith(color: colors.textColor, fontSize: 20);
+    final subTitleStyle = Theme.of(context).textTheme.displaySmall?.copyWith(color: colors.textColor, fontSize: 20);
 
     return Material(
       child: SafeArea(
@@ -24,20 +20,18 @@ class OnboardingPage extends StatelessWidget {
           children: [
             const Image(image: CooImages.cooBackgroundDetails),
             Padding(
-              padding: const EdgeInsets.only(bottom: 48),
+              padding: const EdgeInsets.only(bottom: 15),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const Spacer(),
-                  const Image(image: CooImages.cooBrand),
+                  const Image(
+                    image: CooImages.cooBrand1,
+                  ),
                   const SizedBox(
                     height: 32,
                   ),
-                  Text('R\$ 1,2 Milhão',
-                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 56,
-                          color: colors.primary,
-                          fontWeight: FontWeight.w700)),
+                  Text('R\$ 1,2 Milhão', style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 56, color: colors.primary, fontWeight: FontWeight.w700)),
                   Text('arrecadados', style: subTitleStyle),
                   const SizedBox(
                     height: 32,
@@ -50,7 +44,7 @@ class OnboardingPage extends StatelessWidget {
                   const SizedBox(
                     height: 32,
                   ),
-                  Text('R\$1.024', style: titleStyle),
+                  Text('1.024', style: titleStyle),
                   Text(
                     'pessoas assistidas',
                     style: subTitleStyle,
@@ -65,12 +59,13 @@ class OnboardingPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CooButton.primary(
-                        label: 'Começar',
-                        onPressed: () {},
-                        icon: UIcons.regularStraight.arrow_right,
-                      )),
+                    alignment: Alignment.bottomCenter,
+                    child: CooButton.primary(
+                      label: 'Começar',
+                      onPressed: () {},
+                      icon: UIcons.regularStraight.arrow_right,
+                    ),
+                  ),
                 ],
               ),
             ),
