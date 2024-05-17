@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                           itemCount: 5,
                         ),
                       ),
-                    HomeError(:final exception) => Container(),
+                    HomeError() => Container(),
                     _ => Container(),
                   };
                 })
