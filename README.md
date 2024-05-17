@@ -49,9 +49,9 @@ Você pode contribuir com o projeto de várias maneiras, incluindo:
 
 ### Como executar o projeto
 
-- Certifique-se de que sua versão do dart seja >= 3.3.3
+- Certifique-se de que sua versão do dart seja >= 3.4.0
 
-- Certifique-se de que sua versão do flutter seja >= 3.19.5
+- Certifique-se de que sua versão do flutter seja >= 3.22.0
 
 - Para executar o seu projeto você deve clonar o projeto que você acabou de fazer o fork
 
