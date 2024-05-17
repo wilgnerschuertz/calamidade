@@ -35,15 +35,15 @@ class _SplashPageState extends State<SplashPage> {
             alignment: Alignment.bottomCenter,
           ),
         ),
-        child: Stack(
+        child: const Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            Image.asset('assets/splash/3.0x/logo_flutterando.png'),
+            Image(image: CooImages.cooFlutterando3),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Center(child: Image.asset('assets/splash/logo_splash.gif', fit: BoxFit.contain, width: 200, height: 200)),
+                Center(child: Image(image: CooImages.cooBrand1, fit: BoxFit.contain, width: 200, height: 200)),
               ],
             )
           ],
