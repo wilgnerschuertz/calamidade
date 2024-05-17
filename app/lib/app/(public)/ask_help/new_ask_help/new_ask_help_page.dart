@@ -71,156 +71,163 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          const Image(image: CooImages.cooBackgroundDetails),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Valor pré-aprovado',
-                      style: textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 30),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 2,
-                        horizontal: 8,
-                      ),
-                      decoration: BoxDecoration(
-                        color: colorsTheme.lightGrey,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
-                      ),
-                      child: Text(
-                        'R\$ $preApprovedValue',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: colorsTheme.primary,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Valor pré-aprovado',
+                          style: textTheme.titleMedium,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-                const TextInformationExtends(text: 'Titulo da solicitação*'),
-                TextFormField(
-                  controller: _titleController,
-                  decoration: const InputDecoration(
-                    hintText: 'Insira o titulo para solicitação',
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Titulo não pode esta vazio';
-                    }
-                    return null;
-                  },
-                ),
-                const TextInformationExtends(text: 'CPF do Assistido*'),
-                TextFormField(
-                  controller: _cpfController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: 'Insira o CPF do Assistido',
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'CPF não pode esta vazio';
-                    }
-                    return null;
-                  },
-                ),
-                const TextInformationExtends(text: 'Chave pix'),
-                TextFormField(
-                  controller: _pixKeyController,
-                  decoration: const InputDecoration(
-                    hintText: 'Insira a chave pix do Assistido',
-                  ),
-                ),
-                const TextInformationExtends(text: 'Banco'),
-                TextFormField(
-                  controller: _bankController,
-                  decoration: const InputDecoration(
-                    hintText: 'Insira o banco do Assistido',
-                  ),
-                ),
-                const TextInformationExtends(text: 'Agência'),
-                TextFormField(
-                  controller: _agencyController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: 'Insira a agência bancária do Assistido',
-                  ),
-                ),
-                const TextInformationExtends(text: 'Conta'),
-                TextFormField(
-                  controller: _accountController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: 'Insira a conta bancária do Assistido',
-                  ),
-                ),
-                const TextInformationExtends(text: 'Valor*'),
-                TextFormField(
-                  controller: _valueController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    hintText: 'R\$ 14.500,00',
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Valor não pode esta vazio';
-                    }
-                    return null;
-                  },
-                ),
-                const TextInformationExtends(text: 'Enviar arquivo*'),
-                !asImage
-                    ? InkWell(
-                        onTap: () {},
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
+                        const SizedBox(height: 30),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 2,
+                            horizontal: 8,
+                          ),
                           decoration: BoxDecoration(
+                            color: colorsTheme.lightGrey,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(8)),
-                            color: colorsTheme.primary,
                           ),
-                          child: Icon(
-                            UIcons.regularStraight.clip,
-                            color: colorsTheme.white,
+                          child: Text(
+                            'R\$ $preApprovedValue',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: colorsTheme.primary,
+                            ),
                           ),
                         ),
-                      )
-                    : Image.network(
-                        urlImage,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) {
-                            return child;
-                          }
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
+                      ],
+                    ),
+                    const TextInformationExtends(
+                        text: 'Titulo da solicitação*'),
+                    TextFormField(
+                      controller: _titleController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira o titulo para solicitação',
                       ),
-                const TextInformationExtends(text: 'Breve descrição'),
-                TextFormField(
-                  controller: _descriptionController,
-                  maxLines: 8,
-                  decoration: const InputDecoration(
-                    hintText:
-                        'Insira uma breve descrição sobre sua solicitação',
-                  ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Titulo não pode esta vazio';
+                        }
+                        return null;
+                      },
+                    ),
+                    const TextInformationExtends(text: 'CPF do Assistido*'),
+                    TextFormField(
+                      controller: _cpfController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira o CPF do Assistido',
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'CPF não pode esta vazio';
+                        }
+                        return null;
+                      },
+                    ),
+                    const TextInformationExtends(text: 'Chave pix'),
+                    TextFormField(
+                      controller: _pixKeyController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira a chave pix do Assistido',
+                      ),
+                    ),
+                    const TextInformationExtends(text: 'Banco'),
+                    TextFormField(
+                      controller: _bankController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira o banco do Assistido',
+                      ),
+                    ),
+                    const TextInformationExtends(text: 'Agência'),
+                    TextFormField(
+                      controller: _agencyController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira a agência bancária do Assistido',
+                      ),
+                    ),
+                    const TextInformationExtends(text: 'Conta'),
+                    TextFormField(
+                      controller: _accountController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira a conta bancária do Assistido',
+                      ),
+                    ),
+                    const TextInformationExtends(text: 'Valor*'),
+                    TextFormField(
+                      controller: _valueController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: 'R\$ 14.500,00',
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Valor não pode esta vazio';
+                        }
+                        return null;
+                      },
+                    ),
+                    const TextInformationExtends(text: 'Enviar arquivo*'),
+                    !asImage
+                        ? InkWell(
+                            onTap: () {},
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(8)),
+                                color: colorsTheme.primary,
+                              ),
+                              child: Icon(
+                                UIcons.regularStraight.clip,
+                                color: colorsTheme.white,
+                              ),
+                            ),
+                          )
+                        : Image.network(
+                            urlImage,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
+                          ),
+                    const TextInformationExtends(text: 'Breve descrição'),
+                    TextFormField(
+                      controller: _descriptionController,
+                      maxLines: 8,
+                      decoration: const InputDecoration(
+                        hintText:
+                            'Insira uma breve descrição sobre sua solicitação',
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+                    CooButton(label: 'Próximo', onPressed: _registerRequest)
+                  ],
                 ),
-                const SizedBox(height: 50),
-                CooButton(label: 'Próximo', onPressed: _registerRequest)
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
