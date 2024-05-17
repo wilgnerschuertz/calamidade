@@ -31,4 +31,7 @@ class CooImages {
 
   static const cooBrandSmall =
       AssetImage(package: _packageName, 'assets/images/coo_brand_small.png');
+
+  static const cooBanricoopBrand = AssetImage(
+      package: _packageName, 'assets/images/coo_banricoop_brand.png');
 }
