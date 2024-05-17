@@ -30,7 +30,7 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       'Bem-vindo',
-                      style: TextStyle(fontSize: 28, color: CoopartilharColors.of(context).textColor),
+                      style: TextStyle(fontSize: 30, color: CoopartilharColors.of(context).textColor),
                     ),
                   ),
                   Padding(padding: const EdgeInsets.symmetric(horizontal: 50), child: Text('Vamos prosseguir. O que você deseja fazer?', textAlign: TextAlign.center, style: textTheme.bodySmall!.copyWith(fontSize: 24, color: CoopartilharColors.of(context).textColor))),
@@ -49,7 +49,7 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                       onPressed: () => Navigator.pushNamed(context, '/ask_help'),
                     ),
                     const SizedBox(
-                      height: 25,
+                      height: 20,
                     ),
                     CardButton(
                       icon: Image.asset('assets/pngs/want_to_help.png'),
