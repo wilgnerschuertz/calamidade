@@ -1,7 +1,9 @@
+import 'package:coopartilhar/app/(public)/home/widgets/coo_app_bar.dart';
+import 'package:coopartilhar/app/(public)/home/widgets/coo_navigator_bar.dart';
+import 'package:coopartilhar/app/(public)/home/widgets/search_widget.dart';
+import 'package:coopartilhar/app/(public)/home/widgets/tab_view.dart';
 import 'package:coopartilhar/app/features/home/interactor/home_interactor.dart';
-import 'package:coopartilhar/app/features/home/interactor/home_state.dart';
 import 'package:coopartilhar/injector.dart';
-import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeInteractor = injector.get<HomeInteractor>();
-  final List<TagType> categories = [
+  final List<TagType> tags = [
     TagType.general,
     TagType.houses,
     TagType.health,
@@ -22,28 +24,50 @@ class _HomePageState extends State<HomePage> {
     TagType.shelters,
     TagType.anxiety,
   ];
-  int indexCategorySelected = 0;
+  int selectedTag = 0;
 
   @override
   void initState() {
     super.initState();
-    homeInteractor.getOrders(categories[indexCategorySelected]);
+    homeInteractor.getOrders(tags[selectedTag]);
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
-    final texts = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomePage'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight + 20),
+        child: CooAppBar(
+          // urlAvatar:
+          //     'https://s3-alpha-sig.figma.com/img/7d97/2595/ee4b1dc62acec9003a0f23fe10c69f8a?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MiSfMmVwIz4POu26-LpO1uNk3lASdgKTH3LcRt-VmOpGaufZPpPpKOW02upY9lE7X8steA9dXok9lE1XeibYzZ5~xS4ruUQz0u2btQcab8Qb~sENk34ZsBEn~f~HfzvXdOTT9PzYOZbu6QAqYUq-V5TiDFabeU79ckkDxWu4OgQlmIYy9hM8oTSpKiJ5Gvf~h~OjV-ZHFhGcTSl~k4EpjSvu8Lv6JIeSLmfU5Yc1I~DBQAPLrhBceow89ot6VgUxm2wid1fGdy2i7Saz39yRrtYFmDNt-1M-6HyxFpapGk1pfChEq22U8HrTSARFRqkYglQjidmpvsUGkm0aDXw0Sw__',
+          hasNotification: true,
+          onClickAvatar: () {},
+          onClickIconNotification: () {},
+        ),
+      ),
+      extendBody: true,
+      bottomNavigationBar: CooNavigatorBar(
+        onClickCooBrand: () {},
+        onClickDonate: () {},
+        onClickPlus: () {},
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: SearchWidget(
+                hitText: 'O que você está procurando hoje?',
+                onSearch: (value) {},
+              ),
+            ),
+            const SizedBox(height: 24),
             Text(
               'Solicitações',
               style: TextStyle(
@@ -52,57 +76,32 @@ class _HomePageState extends State<HomePage> {
                 color: colors.black,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             SizedBox(
               height: 20,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      setState(() {
-                        indexCategorySelected = index;
-                      });
-                      homeInteractor.getOrders(categories[indexCategorySelected]);
-                    },
-                    child: Text(
-                      categories[index].label,
-                      style: texts.bodyMedium?.copyWith(
-                        color: index == indexCategorySelected ? colors.otherGreen : colors.grey,
-                      ),
-                    ),
-                  );
-                },
-                separatorBuilder: (_, __) => const SizedBox(width: 16),
-                itemCount: categories.length,
+              child: TabView(
+                tags: tags,
+                onSelected: (tag) {},
               ),
             ),
             const SizedBox(height: 24),
-            ValueListenableBuilder(
-                valueListenable: homeInteractor,
-                builder: (_, state, ____) {
-                  return switch (state) {
-                    HomeInitial() || HomeLoading() => const Center(child: CircularProgressIndicator()),
-                    HomeSuccess(:final data) => Expanded(
-                        child: ListView.separated(
-                          itemBuilder: (context, index) {
-                            final orderEntity = data[index];
-                            return CardRequest(
-                              value: orderEntity.amount,
-                              title: orderEntity.title,
-                              helpedName: orderEntity.cooperated?.name ?? '',
-                              localName: orderEntity.address,
-                              dateString: DateAdapter.dateToString(orderEntity.createdAt),
-                            );
-                          },
-                          separatorBuilder: (_, __) => const SizedBox(height: 16),
-                          itemCount: 5,
-                        ),
-                      ),
-                    HomeError() => Container(),
-                    _ => Container(),
-                  };
-                })
+            Expanded(
+              child: ListView.separated(
+                itemBuilder: (context, index) {
+                  //final orderEntity = data[index];
+                  return CardRequest(
+                    onClickArrowRight: () {},
+                    value: 1234.5, //orderEntity.amount,
+                    title: 'test', //orderEntity.title,
+                    helpedName: 'Fulano de Tal', // orderEntity.cooperated?.name ?? '',
+                    localName: 'Rua qualquer coisa', // orderEntity.address,
+                    dateTime: DateTime.now(), //DateAdapter.dateToString(orderEntity.createdAt),
+                  );
+                },
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
+                itemCount: 5,
+              ),
+            ),
           ],
         ),
       ),
