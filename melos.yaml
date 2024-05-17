@@ -1,0 +1,5 @@
+name: coopartila_workspace
+# sdkPath: .fvm/flutter_sdk
+
+packages:
+  - ./**

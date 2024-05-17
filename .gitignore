@@ -1,1 +1,7 @@
-design_system/.flutter-plugins*
+.dart_tool/
+.idea/
+**/.flutter-plugins*
+**/pubspec.lock
+pubspec.lock
+pubspec_overrides.yaml
+melos_coopartila_workspace.iml
