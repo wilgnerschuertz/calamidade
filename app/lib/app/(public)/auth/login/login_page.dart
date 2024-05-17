@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 60),
-                const Center(child: Image(image: CooImages.cooBrand)),
+                 const Center(child: Image(image: CooImages.cooBrand1)),
                 const SizedBox(height: 60),
                 Center(
                   child: Text(

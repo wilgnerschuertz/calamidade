@@ -21,7 +21,7 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/splash/logo_splash.png'),
+              const Image(image: CooImages.cooBrand1),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
