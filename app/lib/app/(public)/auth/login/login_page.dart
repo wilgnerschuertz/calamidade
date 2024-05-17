@@ -35,13 +35,14 @@ class _LoginPageState extends State<LoginPage> {
 
   void _register() {
     // Descomente esse código para navegar para `/auth/register` através do botão entrar
-    // Navigator.pushNamed(context, '/auth/register');
+    // final document = 00000000000;
+    // final name = 'mock-name';
+    // Navigator.pushNamed(context, '/auth/register',
+    //     arguments: (document: document, name: name));
 
     if (_formKey.currentState!.validate()) {
-      print('OK!');
       return;
     }
-    print('OPS!');
   }
 
   @override
@@ -95,7 +96,8 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: const InputDecoration(
                           hintText: 'Insira seu CPF/CNPJ',
                         ),
-                        validator: _validatorEmpty('CPF/CNPJ não pode está vazio'),
+                        validator:
+                            _validatorEmpty('CPF/CNPJ não pode está vazio'),
                       ),
                       const SizedBox(height: 24),
                       Text(
@@ -110,7 +112,9 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           hintText: 'Insira sua senha',
                           suffixIcon: IconButton(
-                            icon: Icon(_passwordVisible ? Icons.visibility_off : Icons.visibility),
+                            icon: Icon(_passwordVisible
+                                ? Icons.visibility_off
+                                : Icons.visibility),
                             onPressed: () {
                               setState(() {
                                 _passwordVisible = !_passwordVisible;

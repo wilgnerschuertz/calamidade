@@ -19,31 +19,31 @@ class CardButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Card(
+        elevation: 0,
+        color: CoopartilharColors.of(context).lightGrey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                icon,
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        labelPrimary,
-                        style: TextStyle(fontSize: 16, color: CoopartilharColors.of(context).black),
-                      ),
-                      Text(
-                        labelSecondary,
-                        style: TextStyle(fontSize: 12, color: CoopartilharColors.of(context).grey),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+          padding: const EdgeInsets.only(left: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              icon,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      labelPrimary,
+                      style: TextStyle(fontSize: 18, color: CoopartilharColors.of(context).textColor),
+                    ),
+                    Text(
+                      labelSecondary,
+                      style: TextStyle(fontSize: 12, color: CoopartilharColors.of(context).middleGrey),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),

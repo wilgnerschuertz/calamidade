@@ -29,3 +29,5 @@ flutter:
   assets:
     - assets/splash/
     - assets/pngs/
+    - assets/lotties/
+
