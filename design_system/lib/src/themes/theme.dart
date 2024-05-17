@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const _defaultInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(8)),
-    borderSide: BorderSide.none);
+const _defaultInputBorder = OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8)), borderSide: BorderSide.none);
 
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
@@ -31,18 +29,12 @@ ThemeData lightTheme(BuildContext context) {
       error: Color(0xffEB5757),
     ),
     textTheme: TextTheme(
-      displayLarge:
-          GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700),
-      displayMedium:
-          GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
-      displaySmall:
-          GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w400),
-      headlineLarge:
-          GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700),
-      headlineMedium:
-          GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
-      headlineSmall:
-          GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w400),
+      displayLarge: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700),
+      displayMedium: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
+      displaySmall: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w400),
+      headlineLarge: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700),
+      headlineMedium: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
+      headlineSmall: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w400),
       titleLarge: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w700),
       titleMedium: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
       titleSmall: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w400),
@@ -63,6 +55,7 @@ ThemeData lightTheme(BuildContext context) {
         appBackground: Color(0xff151515),
         textColor: Color(0xff333333),
         textColor2: Color(0xff555555),
+        textColor3: Color(0x767373),
         middleGrey: Color(0Xff929296),
         grey: Color(0xffb6c5d1),
         lightGrey: Color(0xffF2F2F9),
@@ -94,6 +87,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
     required this.appBackground,
     required this.textColor,
     required this.textColor2,
+    required this.textColor3,
     required this.middleGrey,
     required this.grey,
     required this.lightGrey,
@@ -117,6 +111,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
   final Color appBackground;
   final Color textColor;
   final Color textColor2;
+  final Color textColor3;
   final Color middleGrey;
   final Color grey;
   final Color lightGrey;
@@ -168,6 +163,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       appBackground: appBackground ?? this.appBackground,
       textColor: textColor ?? this.textColor,
       textColor2: textColor2 ?? this.textColor2,
+      textColor3: textColor3 ?? this.textColor3,
       middleGrey: middleGrey ?? this.middleGrey,
       grey: grey ?? this.grey,
       lightGrey: lightGrey ?? this.lightGrey,
@@ -202,6 +198,7 @@ class CoopartilharColors extends ThemeExtension<CoopartilharColors> {
       appBackground: Color.lerp(appBackground, other.appBackground, t)!,
       textColor: Color.lerp(textColor, other.textColor, t)!,
       textColor2: Color.lerp(textColor2, other.textColor2, t)!,
+      textColor3: Color.lerp(textColor3, other.textColor3, t)!,
       middleGrey: Color.lerp(middleGrey, other.middleGrey, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
       lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,

@@ -4,14 +4,18 @@ import 'package:flutter/material.dart';
 
 class CardRequest extends StatelessWidget {
   final double value;
-  final String title, helpedName, localName, dateString;
+  final String title, helpedName, localName;
+  final DateTime dateTime;
+  final VoidCallback onClickArrowRight;
+
   const CardRequest({
     super.key,
     required this.value,
     required this.title,
     required this.helpedName,
     required this.localName,
-    required this.dateString,
+    required this.dateTime,
+    required this.onClickArrowRight,
   });
 
   @override
@@ -25,43 +29,40 @@ class CardRequest extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: colors.middleGrey),
       ),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: colors.primary.withOpacity(.1),
-                  borderRadius: BorderRadius.circular(28),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  child: Text(
-                    value.toString(),
-                    style: TextStyle(
-                      color: colors.primary,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: Container(
+              decoration: BoxDecoration(
+                color: colors.primary.withOpacity(.1),
+                borderRadius: BorderRadius.circular(28),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                child: Text(
+                  'R\$ $value',
+                  style: TextStyle(
+                    color: colors.primary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
-              Icon(
-                UIcons.regularStraight.arrow_small_right,
-                size: 30,
-              ),
-            ],
+            ),
+            trailing: IconButton(
+              onPressed: onClickArrowRight,
+              icon: Icon(UIcons.regularStraight.arrow_small_right, size: 30),
+            ),
           ),
           const SizedBox(height: 16),
           Text(title, style: texts.displayMedium),
           const SizedBox(height: 8),
           Text(
             'Bairro: $localName',
-            style: texts.bodyMedium?.copyWith(color: colors.textColor),
+            style: texts.bodySmall?.copyWith(color: colors.textColor2),
           ),
           const SizedBox(height: 16),
           Container(
@@ -76,23 +77,24 @@ class CardRequest extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    Icons.access_time,
-                    color: colors.textColor,
+                    UIcons.regularStraight.clock_seven,
+                    color: colors.textColor2,
                   ),
                   const SizedBox(width: 6),
-                  Text(dateString, style: texts.bodyMedium?.copyWith(color: colors.textColor)),
+                  Text(DateAdapter.dateAndHour(dateTime), style: texts.bodySmall?.copyWith(color: colors.textColor2)),
                 ],
               ),
-              const SizedBox(width: 10),
+              const Spacer(),
               Expanded(
                 child: Text(
                   'Por: $helpedName',
                   overflow: TextOverflow.ellipsis,
-                  style: texts.bodyMedium?.copyWith(color: colors.textColor),
+                  style: texts.bodySmall?.copyWith(color: colors.textColor2),
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );
