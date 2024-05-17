@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
       theme: lightTheme(context),
       routerConfig: Routefly.routerConfig(
         routes: routes,
-        initialPath: routePaths.path,
+        initialPath: '/home',
       ),
     );
   }

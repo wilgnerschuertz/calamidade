@@ -71,10 +71,11 @@ class CooNavBar extends StatelessWidget {
                   label: 'Usuários',
                   onPressed: () {}),
               const Spacer(),
-              const CooNavBarUserItem(
+              CooNavBarUserItem(
                 isEmpty: true,
                 name: 'Homer Griffin',
                 role: 'Logistic Manager',
+                onPressed: () {},
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
