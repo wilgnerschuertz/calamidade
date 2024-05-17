@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ class CooNavBarUserItem extends StatelessWidget {
   final bool isEmpty;
   final String name;
   final String role;
+
   final VoidCallback onPressed;
 
   const CooNavBarUserItem({
@@ -22,7 +24,9 @@ class CooNavBarUserItem extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return InkWell(
-      onTap: () => onPressed,
+      onTap: () {
+        onPressed();
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
         child: Row(
