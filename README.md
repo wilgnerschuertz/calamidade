@@ -89,8 +89,8 @@ Você pode contribuir com o projeto de várias maneiras, incluindo:
 
 ### Como executar o projeto
 
-- Certifique-se de que sua versão do dart seja >= 3.3.3
-- Certifique-se de que sua versão do flutter seja >= 3.19.5
+- Certifique-se de que sua versão do dart seja >= 3.4.0
+- Certifique-se de que sua versão do flutter seja >= 3.22.0
 - Para executar o seu projeto você deve clonar o projeto que você acabou de fazer o fork
 
 ```dart
@@ -388,7 +388,7 @@ Por questões de segurança, para prod é necessário criar um arquivo local `.e
 Este projeto é distribuído sob a Licença MIT, o que permite o uso, cópia, modificação, fusão, publicação, distribuição, sublicenciação, e/ou venda de cópias do software, desde que as cópias do software sejam acompanhadas pelo aviso de direitos autorais e este aviso de permissão.
 
 <!-- Links úteis: -->
-[dart_img]: https://img.shields.io/static/v1?label=Dart&message=3.3.3&color=blue&logo=dart
+[dart_img]: https://img.shields.io/static/v1?label=Dart&message=3.4.0&color=blue&logo=dart
 [dart_ln]: https://dart.dev/ "https://dart.dev/"
-[flutter_img]: https://img.shields.io/static/v1?label=Flutter&message=3.19.5&color=blue&logo=flutter
+[flutter_img]: https://img.shields.io/static/v1?label=Flutter&message=3.22.0&color=blue&logo=flutter
 [flutter_ln]: https://docs.flutter.dev/get-started/install "https://docs.flutter.dev/get-started/install"
