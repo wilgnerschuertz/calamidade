@@ -64,7 +64,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             const SizedBox(
                               height: 32,
                             ),
-                            Text('R\$ 1,2 Milhão',
+                            Text(
+                                CurrencyAdapter.doubleToBRL(
+                                    state.data.donationsAmount),
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayLarge
@@ -76,7 +78,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             const SizedBox(
                               height: 32,
                             ),
-                            Text('R\$1 Milhão', style: titleStyle),
+                            Text(
+                                CurrencyAdapter.doubleToBRL(
+                                    state.data.cooPartilhados),
+                                style: titleStyle),
                             Text(
                               'CooPartilhados',
                               style: subTitleStyle,
@@ -84,7 +89,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             const SizedBox(
                               height: 32,
                             ),
-                            Text('1.024', style: titleStyle),
+                            Text(state.data.assistedPeople.toString(),
+                                style: titleStyle),
                             Text(
                               'pessoas assistidas',
                               style: subTitleStyle,
@@ -92,7 +98,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             const SizedBox(
                               height: 32,
                             ),
-                            Text('R\$200.024', style: titleStyle),
+                            Text(
+                                CurrencyAdapter.doubleToBRL(
+                                    state.data.partnerDonations),
+                                style: titleStyle),
                             Text(
                               'em doações de parceiros',
                               style: subTitleStyle,
