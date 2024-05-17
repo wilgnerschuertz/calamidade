@@ -64,6 +64,10 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(UIcons.regularStraight.angle_small_left),
+          onPressed: () {},
+        ),
         title: Text(
           widget.title,
           style: textTheme.titleLarge?.copyWith(
