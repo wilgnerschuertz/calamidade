@@ -92,17 +92,6 @@ class CooAppBar extends StatelessWidget {
               ],
             ),
           ),
-          // child: IconButton(
-          //   icon: urlAvatar != null
-          //       ? CircleAvatar(
-          //           child: Image.network(urlAvatar.toString()),
-          //         )
-          //       : CircleAvatar(
-          //           backgroundColor: colors.grey,
-          //           child: Icon(UIcons.regularStraight.user),
-          //         ),
-          //   onPressed: onClickAvatar,
-          //),
         ),
       ),
     );
