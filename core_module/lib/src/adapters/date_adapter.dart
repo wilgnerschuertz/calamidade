@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class DateAdapter {
   static String dateToString(DateTime dateTime) {
     const Map<int, String> dates = {
@@ -16,5 +18,11 @@ class DateAdapter {
     };
 
     return '${dateTime.day} de ${dates[dateTime.month]} ${dateTime.hour}:h';
+  }
+
+  static String dateAndHour(DateTime dateTime) {
+    final format = DateFormat("dd/MM 'às' HH'h'");
+
+    return format.format(dateTime);
   }
 }
