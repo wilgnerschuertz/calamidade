@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:core_module/core_module.dart';
-import 'package:dashboard/app/(public)/home/widgets/nav_bar/item_nav_bar.dart';
+import 'package:dashboard/app/(public)/home/widgets/nav_bar/coo_nav_bar_item.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dashboard/app/(public)/home/widgets/nav_bar/item_user_nav_bar.dart';
+import 'package:dashboard/app/(public)/home/widgets/nav_bar/coo_nav_bar_user_item.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+class CooNavBar extends StatelessWidget {
+  const CooNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +36,13 @@ class NavBar extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              ItemNavBar(
+              CooNavBarItem(
                   icon: Icon(UIcons.regularStraight.apps,
                       size: 24, color: color.textColor2),
                   label: 'Dashboard',
                   onPressed: () {}),
               const SizedBox(height: 10),
-              ItemNavBar(
+              CooNavBarItem(
                 icon: Icon(UIcons.regularStraight.hand_holding_heart,
                     size: 24, color: color.textColor2),
                 label: 'Novas solicitações',
@@ -51,7 +51,7 @@ class NavBar extends StatelessWidget {
                 showNotifications: true,
               ),
               const SizedBox(height: 10),
-              ItemNavBar(
+              CooNavBarItem(
                   icon: Image(
                       image: CooIcons.cooCheck,
                       height: 24,
@@ -60,18 +60,18 @@ class NavBar extends StatelessWidget {
                   label: 'Solic. aprovadas',
                   onPressed: () {}),
               const SizedBox(height: 10),
-              ItemNavBar(
+              CooNavBarItem(
                   icon: Icon(UIcons.regularRounded.cross_circle,
                       size: 24, color: color.textColor2),
                   label: 'Solic. negadas',
                   onPressed: () {}),
-              ItemNavBar(
+              CooNavBarItem(
                   icon: Icon(UIcons.regularStraight.user,
                       size: 24, color: color.textColor2),
                   label: 'Usuários',
                   onPressed: () {}),
               const Spacer(),
-              const ItemUserNavBar(
+              const CooNavBarUserItem(
                 isEmpty: true,
                 name: 'Homer Griffin',
                 role: 'Logistic Manager',
@@ -83,7 +83,7 @@ class NavBar extends StatelessWidget {
                   height: 2,
                 ),
               ),
-              ItemNavBar(
+              CooNavBarItem(
                   icon: Icon(UIcons.regularStraight.sign_out_alt,
                       size: 24, color: color.textColor2),
                   label: 'Sair',

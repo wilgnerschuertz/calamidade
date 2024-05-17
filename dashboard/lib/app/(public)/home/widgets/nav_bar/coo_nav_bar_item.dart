@@ -2,14 +2,14 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-class ItemNavBar extends StatelessWidget {
+class CooNavBarItem extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
   final Widget icon;
   final bool showNotifications;
   final int numberNotifications;
 
-  const ItemNavBar({
+  const CooNavBarItem({
     super.key,
     required this.label,
     required this.onPressed,

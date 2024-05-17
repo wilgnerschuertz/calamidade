@@ -2,12 +2,12 @@ import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-class ItemUserNavBar extends StatelessWidget {
+class CooNavBarUserItem extends StatelessWidget {
   final bool isEmpty;
   final String name;
   final String role;
 
-  const ItemUserNavBar({
+  const CooNavBarUserItem({
     super.key,
     required this.isEmpty,
     required this.name,
