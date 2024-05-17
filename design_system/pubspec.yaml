@@ -2,6 +2,9 @@ name: design_system
 description: "A new Flutter package project."
 version: 0.0.1
 
+publish_to: "none" 
+
+
 environment:
   flutter: "3.22.0"
   sdk: "3.4.0"
@@ -11,6 +14,8 @@ dependencies:
     sdk: flutter
   google_fonts: ^6.2.1
   uicons: ^1.0.1
+  core_module:
+    path: ../core_module
 
 dev_dependencies:
   flutter_test:

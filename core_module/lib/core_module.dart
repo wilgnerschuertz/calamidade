@@ -24,6 +24,7 @@ export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 export 'src/types/unit.dart';
 
+
 final coreModule = AutoInjector(
   on: (injector) {
     injector.addSingleton<ICache>(SharedPreferencesImpl.new);

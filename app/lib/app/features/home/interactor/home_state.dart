@@ -1,3 +1,4 @@
+import 'package:coopartilhar/app/features/home/interactor/order_entity.dart';
 import 'package:core_module/core_module.dart';
 
 final class HomeInitial implements InitialState {}
@@ -10,8 +11,8 @@ final class HomeError<T extends BaseException> implements ErrorState {
   HomeError(this.exception);
 }
 
-final class HomeSuccess<T> implements SuccessState {
+final class HomeSuccess implements SuccessState {
   @override
-  final T data;
+  final List<OrderEntity> data;
   const HomeSuccess({required this.data});
 }
