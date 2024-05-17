@@ -21,14 +21,12 @@ class NonEditableRegisterItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: textTheme.bodyMedium
-              ?.copyWith(height: 1.125, color: colors.textColor),
+          style: textTheme.titleMedium?.copyWith(height: 1.125, color: colors.textColor),
         ),
         const SizedBox(height: 15),
         Text(
           value,
-          style: textTheme.displaySmall
-              ?.copyWith(height: 0.9, color: colors.textColor),
+          style: textTheme.bodySmall?.copyWith(fontSize: 20, color: colors.textColor),
         ),
       ],
     );
