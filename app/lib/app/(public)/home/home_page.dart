@@ -14,13 +14,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeInteractor = injector.get<HomeInteractor>();
-  final List<CategoryHelp> categories = [
-    CategoryHelp.general,
-    CategoryHelp.houses,
-    CategoryHelp.health,
-    CategoryHelp.animals,
-    CategoryHelp.shelters,
-    CategoryHelp.anxiety,
+  final List<TagType> categories = [
+    TagType.general,
+    TagType.houses,
+    TagType.health,
+    TagType.animals,
+    TagType.shelters,
+    TagType.anxiety,
   ];
   int indexCategorySelected = 0;
 
@@ -88,11 +88,11 @@ class _HomePageState extends State<HomePage> {
                           itemBuilder: (context, index) {
                             final orderEntity = data[index];
                             return CardRequest(
-                              value: orderEntity.value,
+                              value: orderEntity.amount,
                               title: orderEntity.title,
-                              helpedName: orderEntity.helpedName,
-                              localName: orderEntity.localName,
-                              dateString: DateAdapter.dateToString(orderEntity.date),
+                              helpedName: orderEntity.cooperated?.name ?? '',
+                              localName: orderEntity.address,
+                              dateString: DateAdapter.dateToString(orderEntity.createdAt),
                             );
                           },
                           separatorBuilder: (_, __) => const SizedBox(height: 16),
