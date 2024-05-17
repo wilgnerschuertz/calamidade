@@ -24,7 +24,7 @@ class AlertWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 17, 20, 17),
               child: SelectableText(
-                message,
+                message.isNotEmpty ? message : "Ocorreu um erro inesperado.",
                 style: TextStyle(
                   color: color,
                   fontWeight: FontWeight.w500,
