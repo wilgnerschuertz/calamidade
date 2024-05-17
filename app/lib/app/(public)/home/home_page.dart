@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
-    final texts = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: PreferredSize(
