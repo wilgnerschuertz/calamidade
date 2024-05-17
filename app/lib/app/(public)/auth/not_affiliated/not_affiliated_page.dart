@@ -30,8 +30,8 @@ class _NotAfilliatedPageState extends State<NotAfilliatedPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Spacer(),
-              Image.asset(
-                'assets/pngs/not_affiliated.png',
+              Image(
+                image: CooImages.cooNoCoop,
                 width: MediaQuery.sizeOf(context).width * 0.8,
               ),
               const SizedBox(height: 32),

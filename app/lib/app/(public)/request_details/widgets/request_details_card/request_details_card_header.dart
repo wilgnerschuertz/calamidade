@@ -1,3 +1,4 @@
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -32,8 +33,7 @@ class RequestDetailsCardHeader extends StatelessWidget {
             ),
           ),
           Tag(
-            label:
-                'R\$ ${price.toString()}', //TODO: formatar para valor monetário
+            label: CurrencyAdapter.doubleToBRL(price),
             labelColor: const Color(0xff1e8361), //TODO atualizar cores
             backgroundColor: const Color(0xff129166).withOpacity(0.1),
           ),

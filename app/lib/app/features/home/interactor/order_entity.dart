@@ -10,12 +10,12 @@ class OrderEntity extends Entity {
   final String status;
   final String obs;
   final String telephone;
-  final String createdAt;
+  final DateTime createdAt;
   final String chavePix;
   final String banco;
   final String agencia;
   final String conta;
-  final int amount;
+  final double amount;
   final CooperatedEntity? cooperated;
   final GodFatherEntity? godfather;
 
