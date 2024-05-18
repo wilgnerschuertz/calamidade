@@ -1,6 +1,8 @@
 import 'package:core_module/core_module.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+
 
 class NewRequestsCard extends StatefulWidget {
   final String title;
@@ -8,10 +10,9 @@ class NewRequestsCard extends StatefulWidget {
   final String city;
   final String phone;
   final String date;
-  final String status;
+  final StatusNewRequest status;
   final String requestedIncome;
   final VoidCallback? onTap;
-  final Color statusColor;
   bool isSelected;
 
   NewRequestsCard({
@@ -22,7 +23,6 @@ class NewRequestsCard extends StatefulWidget {
     required this.phone,
     required this.date,
     required this.status,
-    required this.statusColor,
     required this.requestedIncome,
     this.onTap,
     required this.isSelected,
@@ -66,8 +66,8 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     child: Text(
-                      widget.status,
-                      style: texts.bodyMedium?.copyWith(color: widget.statusColor),
+                      widget.status.label,
+                      style: texts.bodyMedium?.copyWith(color: widget.status.color),
                     ),
                   ),
                 ),

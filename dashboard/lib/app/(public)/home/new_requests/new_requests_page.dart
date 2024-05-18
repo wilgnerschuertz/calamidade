@@ -1,6 +1,12 @@
-import 'package:dashboard/app/(public)/home/new_requests/controllers/new_requests_controller.dart';
+import 'package:dashboard/app/(public)/home/new_requests/widgets/cards/new_requests_card/new_requests_card.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/states/new_request_states.dart';
+import 'package:dashboard/injector.dart';
 import 'package:design_system/design_system.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/controllers/new_requests_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class NewRequestsPage extends StatefulWidget {
   const NewRequestsPage({super.key});
@@ -10,13 +16,7 @@ class NewRequestsPage extends StatefulWidget {
 }
 
 class _NewRequestsPageState extends State<NewRequestsPage> {
-  final NewRequestsController newRequestsController = NewRequestsController();
-
-  @override
-  void initState() {
-    super.initState();
-    newRequestsController.removeLastItemIfOddList(newRequestsController.requestsList);
-  }
+  final controller = injector.get<NewRequestsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,101 +25,127 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
 
     return Scaffold(
       backgroundColor: colors.lightGrey,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Text('Acesso administrativo', style: texts.displayLarge?.copyWith(color: colors.textColor2)),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: ValueListenableBuilder(
+        valueListenable: controller,
+        builder: (context, state, child) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         child: Text(
-                          'Solicitações mais antigas',
-                          style: texts.bodyMedium?.copyWith(color: colors.textColor2),
+                          'Acesso administrativo',
+                          style: texts.displayLarge
+                              ?.copyWith(color: colors.textColor2),
                         ),
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: Text(
-                          'Filtrar',
-                          style: texts.bodySmall?.copyWith(decoration: TextDecoration.underline, color: colors.textColor2),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Text(
+                              'Solicitações mais antigas',
+                              style: texts.bodyMedium
+                                  ?.copyWith(color: colors.textColor2),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Text(
+                              'Filtrar',
+                              style: texts.bodySmall?.copyWith(
+                                  decoration: TextDecoration.underline,
+                                  color: colors.textColor2),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 180,
-                  crossAxisCount: 2,
-                  childAspectRatio: 3,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
                 ),
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return ListenableBuilder(
-                      listenable: newRequestsController,
-                      builder: (context, child) {
-                        final entity = newRequestsController.requestsList[index];
-                        return NewRequestsCard(
-                          title: entity.titleDescription,
-                          name: entity.name,
-                          city: entity.city,
-                          phone: entity.phone,
-                          date: entity.date,
-                          status: entity.status.label,
-                          statusColor: newRequestsController.statusColor[entity.status]!,
-                          requestedIncome: entity.requestedIncome,
-                          isSelected: newRequestsController.selectedId == entity.id,
-                          onTap: () {
-                            newRequestsController.selectItem(entity.id);
+                //Lista de cards
+                switch (state) {
+                  NewRequestsSuccessState() => SliverPadding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      sliver: SliverGrid(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisExtent: 180,
+                          crossAxisCount: 2,
+                          childAspectRatio: 3,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                        ),
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            final entity = state.data[index];
+
+                            return NewRequestsCard(
+                              title: entity.titleDescription,
+                              name: entity.name,
+                              city: entity.city,
+                              phone: entity.phone,
+                              date: entity.date,
+                              status: entity.status,
+                              requestedIncome: entity.requestedIncome,
+                              isSelected: state.selectedId == entity.id,
+                              onTap: () {
+                                controller.selectItem(entity.id);
+                              },
+                            );
                           },
-                        );
-                      },
-                    );
-                  },
-                  childCount: newRequestsController.requestsList.length,
-                ),
-              ),
+                          childCount: state.data.length,
+                        ),
+                      ),
+                    ),
+                  NewRequestsErrorState() => SliverToBoxAdapter(
+                      child: Center(
+                        child: Text(state.exception.message),
+                      ),
+                    ),
+                  _ => const SliverToBoxAdapter(
+                      child: Center(child: CircularProgressIndicator()),
+                    ),
+                },
+                //Ultimo Card
+                switch (state) {
+                  NewRequestsSuccessState() => SliverVisibility(
+                      visible: state.lastItem != null,
+                      sliver: SliverToBoxAdapter(
+                        child: NewRequestsCard(
+                          title: state.lastItem?.description ?? '',
+                          name: state.lastItem?.name ?? '',
+                          city: state.lastItem?.city ?? '',
+                          phone: state.lastItem?.phone ?? '',
+                          date: state.lastItem?.date ?? '',
+                          status:
+                              state.lastItem?.status ?? StatusNewRequest.low,
+                          requestedIncome:
+                              state.lastItem?.requestedIncome ?? '',
+                          isSelected: state.selectedId == state.lastItem?.id,
+                          onTap: () {
+                            controller.selectItem(state.lastItem?.id ?? '');
+                          },
+                        ),
+                      ),
+                    ),
+                  NewRequestsErrorState() => SliverToBoxAdapter(
+                      child: Container(),
+                    ),
+                  _ => SliverToBoxAdapter(
+                      child: Container(),
+                    ),
+                },
+              ],
             ),
-            SliverVisibility(
-              visible: newRequestsController.lastItem != null,
-              sliver: SliverToBoxAdapter(
-                child: ListenableBuilder(
-                  listenable: newRequestsController,
-                  builder: (context, child) {
-                    return NewRequestsCard(
-                      title: newRequestsController.lastItem?.description ?? '',
-                      name: newRequestsController.lastItem?.name ?? '',
-                      city: newRequestsController.lastItem?.city ?? '',
-                      phone: newRequestsController.lastItem?.phone ?? '',
-                      date: newRequestsController.lastItem?.date ?? '',
-                      status: newRequestsController.lastItem?.status.toString() ?? '',
-                      statusColor: newRequestsController.statusColor[newRequestsController.lastItem?.status]!,
-                      requestedIncome: newRequestsController.lastItem?.requestedIncome ?? '',
-                      isSelected: true,
-                      onTap: () {},
-                    );
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
