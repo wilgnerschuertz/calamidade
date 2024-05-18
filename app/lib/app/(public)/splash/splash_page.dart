@@ -30,6 +30,12 @@ class _SplashPageState extends State<SplashPage> {
     }
   }
 
+  @override
+  void dispose() {
+    controller.removeListener(listener);
+    super.dispose();
+  }
+
   void listener() async {
     return switch (controller.value) {
       AuthSuccess() =>
