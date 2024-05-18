@@ -1,3 +1,6 @@
+import 'package:coopartilhar/app/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
+import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
 import 'package:coopartilhar/app/features/home/data/home_repository_impl.dart';
 import 'package:coopartilhar/app/features/home/interactor/home_interactor.dart';
 import 'package:coopartilhar/app/features/home/interactor/interfaces/i_home_repository.dart';
@@ -17,7 +20,9 @@ final injector = AutoInjector(
     injector.addSingleton<IRegisterRepository>(RegisterRepositoryImpl.new);
     injector.addSingleton<RegisterController>(RegisterController.new);
     injector.add<IOnboardingRepository>(OnboardingRepositoryImpl.new);
+    injector.addSingleton<IAuthRepository>(AuthRepositoryImpl.new);
     injector.addLazySingleton<OnboardingController>(OnboardingController.new);
+    injector.addLazySingleton<LoginControllerImpl>(LoginControllerImpl.new);
     injector.commit();
   },
 );

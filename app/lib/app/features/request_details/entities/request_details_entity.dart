@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/auth/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/request_details/entities/status_details_entity.dart';
 import 'package:core_module/core_module.dart';
 
