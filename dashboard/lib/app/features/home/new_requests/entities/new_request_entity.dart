@@ -5,6 +5,7 @@ enum StatusNewRequest {
   media,
   baixa;
 
+  //TODO: adicionar os status certos
   static StatusNewRequest status(String status) {
     switch (status) {
       case 'alta':
