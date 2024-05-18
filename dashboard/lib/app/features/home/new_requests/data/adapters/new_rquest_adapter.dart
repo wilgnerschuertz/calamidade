@@ -1,4 +1,4 @@
-import 'package:dashboard/app/features/home/new_requests/entities/new_request_entity.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 
 class NewRequestAdapter {
   static NewRequestEntity fromJson(Map json) {
