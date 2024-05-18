@@ -1,5 +1,5 @@
 import 'package:dashboard/app/features/home/new_requests/data/adapters/new_rquest_adapter.dart';
-import 'package:dashboard/app/features/home/new_requests/entities/new_request_entity.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

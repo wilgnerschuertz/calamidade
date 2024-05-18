@@ -12,16 +12,16 @@ enum StatusNewRequest {
 
   const StatusNewRequest({required this.label});
 
-  static StatusNewRequest fromId(int id) {
-    switch (id) {
-      case 1:
-        return StatusNewRequest.low;
-      case 2:
-        return StatusNewRequest.medium;
-      case 3:
+  static StatusNewRequest status(String status) {
+    switch (status) {
+      case 'high':
         return StatusNewRequest.high;
+      case 'medium':
+        return StatusNewRequest.medium;
+      case 'low':
+        return StatusNewRequest.low;
       default:
-        return StatusNewRequest.notDefined;
+        return StatusNewRequest.low;
     }
   }
 }
