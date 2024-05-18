@@ -96,6 +96,10 @@ Você pode contribuir com o projeto de várias maneiras, incluindo:
 - Criar uma branch para a feature que deseja implementar
 - Após a implementação, faça um pull request para a branch de desenvolvimento.
 
+Como fazer o Sync Fork:
+
+![Como fazer o Sync Fork](doc/sync_fork.png)
+
 ### Como executar o projeto
 
 - Certifique-se de que sua versão do dart seja >= 3.4.0
@@ -108,27 +112,60 @@ Você pode contribuir com o projeto de várias maneiras, incluindo:
 git clone https://github.com/seu_usuario/calamidade.git
 ```
 
+#### Com melos
+
+Instale o melos: https://melos.invertase.dev/getting-started
+
+Execute:
+```sh
+melos bs
+```
+
+#### Instalando manualmente
+
 - Acesse a pasta do projeto
 
-```dart
-cd calamidade/app
+```sh
+cd calamidade/
 ```
 
-- Instale as dependências
+- Instale o core
 
-```dart
+```sh
+cd core_module && flutter pub get
+```
+
+- Instale o design system
+
+```sh
+cd design_system && flutter pub get
+```
+
+#### Após instalado
+
+- Execute o app
+
+```sh
+cd app
+
+# dependencias
 flutter pub get
-```
 
-- Execute o projeto
-
-```dart
+# executando
 flutter run
 ```
 
-Como fazer o Sync Fork:
+- Execute o dashboard
 
-![Como fazer o Sync Fork](doc/sync_fork.png)
+```sh
+cd dashboard
+
+# dependencias
+flutter pub get
+
+# executando
+flutter run
+```
 
 ### Tutoriais e Recursos
 

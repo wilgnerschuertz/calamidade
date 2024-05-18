@@ -1,6 +1,6 @@
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card.dart';
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_page_header.dart';
-import 'package:coopartilhar/app/features/auth/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/request_details/entities/request_details_entity.dart';
 import 'package:coopartilhar/app/features/request_details/entities/status_details_entity.dart';
 import 'package:design_system/design_system.dart';
@@ -29,8 +29,9 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
     user: UserEntity(
       //TODO: a entidade precisa de mais campos (endereço, telefone)
       '0',
-      'teste@teste.com',
-      'João Maria da silva',
+      email: 'teste@teste.com',
+      name: 'João Maria da silva',
+      urlAvatar: '',
     ),
     createdAt: DateTime.now(),
     price: 3500.00,
@@ -69,8 +70,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
               ),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: CooButton.primary(

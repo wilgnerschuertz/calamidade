@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/auth/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -33,15 +33,12 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
           children: [
             Text(
               'Cidade: ',
-              style: textThemes.bodySmall?.copyWith(
-                  fontSize: 14.0,
-                  color: const Color(0xff595959)), //TODO: atualizar cor
+              style: textThemes.bodySmall?.copyWith(fontSize: 14.0, color: const Color(0xff595959)), //TODO: atualizar cor
             ),
             Flexible(
               child: Text(
                 city,
-                style: textThemes.bodySmall
-                    ?.copyWith(fontSize: 14.0, color: const Color(0xff595959)),
+                style: textThemes.bodySmall?.copyWith(fontSize: 14.0, color: const Color(0xff595959)),
                 overflow: TextOverflow.ellipsis, //TODO: atualizar cor
               ),
             ),
@@ -52,14 +49,12 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
           children: [
             Text(
               'Telefone: ',
-              style: textThemes.bodySmall
-                  ?.copyWith(fontSize: 14.0, color: colors.textColor),
+              style: textThemes.bodySmall?.copyWith(fontSize: 14.0, color: colors.textColor),
             ),
             Flexible(
               child: Text(
                 phoneNumber,
-                style: textThemes.bodySmall
-                    ?.copyWith(fontSize: 14.0, color: colors.textColor),
+                style: textThemes.bodySmall?.copyWith(fontSize: 14.0, color: colors.textColor),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
