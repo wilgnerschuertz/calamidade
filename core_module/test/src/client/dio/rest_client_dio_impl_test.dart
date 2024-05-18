@@ -3,7 +3,6 @@ import 'package:core_module/src/client/dio/rest_client_dio_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 class MockDio extends Mock implements DioForNative {}
 
