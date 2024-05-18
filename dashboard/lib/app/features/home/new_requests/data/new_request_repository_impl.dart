@@ -3,14 +3,16 @@ import 'package:dashboard/app/features/home/new_requests/data/i_new_request_repo
 import 'package:dashboard/app/features/home/new_requests/entities/new_request_entity.dart';
 
 class NewRequestRepositoryImpl implements INewRequestRepository {
-  final IRestClient restClient;
+  final IRestClient _restClient;
 
-  const NewRequestRepositoryImpl(this.restClient);
+  const NewRequestRepositoryImpl({
+    required IRestClient restClient,
+  }) : _restClient = restClient;
 
   @override
   Future<Output<NewRequestEntity>> getNewRequest() async {
     try {
-      final response = await restClient.get(RestClientRequest(path: 'url'));
+      final response = await _restClient.get(RestClientRequest(path: 'url'));
       if (response.data == null) {
         return const Left(DefaultException(message: 'Requisição inválida'));
       }
@@ -20,7 +22,7 @@ class NewRequestRepositoryImpl implements INewRequestRepository {
         NewRequestEntity(
           '0',
           name: 'João Maria da Silva',
-          status: Status.baixa,
+          status: StatusNewRequest.baixa,
           city: 'Estância Velha',
           phone: '+55 (51) 9 1234-5648',
           bank: 'CooperBank',

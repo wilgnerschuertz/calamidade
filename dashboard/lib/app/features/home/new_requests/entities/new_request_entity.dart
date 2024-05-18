@@ -1,10 +1,10 @@
 import 'package:core_module/core_module.dart';
 
-enum Status { alta, media, baixa }
+enum StatusNewRequest { alta, media, baixa }
 
 class NewRequestEntity extends Entity {
   final String name;
-  final Status status;
+  final StatusNewRequest status;
   final String city;
   final String phone;
   final String bank;

@@ -12,7 +12,7 @@ void main() {
 
   setUpAll(() {
     restClientMock = RestClientMock();
-    requestRepository = NewRequestRepositoryImpl(restClientMock);
+    requestRepository = NewRequestRepositoryImpl(restClient: restClientMock);
     registerFallbackValue(RestClientRequest(path: 'path'));
   });
 
