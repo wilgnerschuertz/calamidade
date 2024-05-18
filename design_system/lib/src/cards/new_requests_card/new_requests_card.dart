@@ -12,9 +12,9 @@ class NewRequestsCard extends StatefulWidget {
   final String requestedIncome;
   final VoidCallback? onTap;
   final Color statusColor;
-  bool isSelected;
+  final bool isSelected;
 
-  NewRequestsCard({
+  const NewRequestsCard({
     super.key,
     required this.title,
     required this.name,
@@ -88,11 +88,8 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                   'Cidade:',
                   style: texts.bodySmall,
                 ),
-                Text(
-                  widget.city,
-                  textAlign: TextAlign.right,
-                  style: texts.bodySmall,
-                ),
+                Text(widget.city,
+                    textAlign: TextAlign.right, style: texts.bodySmall)
               ],
             ),
             Row(

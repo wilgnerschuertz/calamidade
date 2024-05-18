@@ -6,43 +6,9 @@ on:
   pull_request:
 
 jobs:
-  flutter_analysis:
-    name: Analyze flutter code
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./app
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pub-cache
-          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-flutter-
-
-      - name: Flutter Version
-        run: flutter --version
-
-      - name: Flutter pub get
-        run: flutter pub get
-
-      - name: Flutter analyze
-        run: flutter analyze --no-fatal-infos
-
-  flutter_format:
+  flutter_ci:
     name: Format flutter code
     runs-on: ubuntu-latest
-    needs: flutter_analysis
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -52,17 +18,17 @@ jobs:
         with:
           channel: "stable"
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pub-cache
-          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-flutter-
+      - name: Install melos
+        run: dart pub global activate melos
 
-      - name: Flutter Version
-        run: flutter --version
+      - name: bootstraping
+        run: dart run melos bootstrap
 
-      - name: Format code
+      - name: format
         run: dart format --set-exit-if-changed .
+
+      - name: analyze
+        run: dart run melos analyze --no-select
+
+      - name: test
+        run: dart run melos test --no-select
