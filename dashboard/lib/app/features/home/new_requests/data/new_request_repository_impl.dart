@@ -15,7 +15,7 @@ class NewRequestRepositoryImpl implements INewRequestRepository {
   @override
   Future<Output<List<NewRequestEntity>>> getNewRequest() async {
     try {
-      final response = await _restClient.get(RestClientRequest(path: 'https://ddbtzrk4ihoela73fvtvfpiyza0fetxg.lambda-url.sa-east-1.on.aws/core/v1/requests?page=1&limit=1'));
+      final response = await _restClient.get(RestClientRequest(path: '/core/v1/requests?page=1&limit=1'));
       if (response.data == null) {
         return const Left(DefaultException(message: 'Requisição inválida'));
       } else {
