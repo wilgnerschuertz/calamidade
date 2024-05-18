@@ -41,7 +41,8 @@ class CardRequest extends StatelessWidget {
                 borderRadius: BorderRadius.circular(28),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 child: Text(
                   'R\$ $value',
                   style: TextStyle(
@@ -81,7 +82,9 @@ class CardRequest extends StatelessWidget {
                     color: colors.textColor2,
                   ),
                   const SizedBox(width: 6),
-                  Text(DateAdapter.dateAndHour(dateTime), style: texts.bodySmall?.copyWith(color: colors.textColor2)),
+                  Text(DateAdapter.dateAndHour(dateTime),
+                      style:
+                          texts.bodySmall?.copyWith(color: colors.textColor2)),
                 ],
               ),
               const Spacer(),

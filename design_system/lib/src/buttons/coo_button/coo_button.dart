@@ -167,7 +167,9 @@ class CooButton extends StatelessWidget {
               ),
               onPressed: enable ? onPressed : null,
               child: isLoading
-                  ? const CircularProgressIndicator()
+                  ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
                   : _ContentButton(
                       icon: Icon(
                         icon,
@@ -188,7 +190,9 @@ class CooButton extends StatelessWidget {
               ),
               onPressed: enable ? onPressed : null,
               child: isLoading
-                  ? const CircularProgressIndicator()
+                  ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
                   : _ContentButton(
                       icon: Icon(
                         icon,
@@ -222,7 +226,9 @@ class _ContentButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        icon != null && label.isNotEmpty ? const SizedBox(width: 8) : Container(),
+        icon != null && label.isNotEmpty
+            ? const SizedBox(width: 8)
+            : Container(),
         Text(
           label,
           style: textTheme.bodyMedium?.copyWith(color: textColor),

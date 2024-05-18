@@ -48,16 +48,21 @@ class _RegisterItemFieldState extends State<RegisterItemField> {
                   hintText: widget.hint,
                   suffixIcon: widget.isPassword
                       ? IconButton(
-                          icon: Icon(passwordVisible ? UIcons.regularStraight.crossed_eye : UIcons.regularStraight.eye),
+                          icon: Icon(passwordVisible
+                              ? UIcons.regularStraight.crossed_eye
+                              : UIcons.regularStraight.eye),
                           onPressed: () {
                             _passwordVisible.value = !passwordVisible;
                           },
                         )
                       : null,
                 ),
-                keyboardType: widget.isPassword ? TextInputType.visiblePassword : TextInputType.text,
+                keyboardType: widget.isPassword
+                    ? TextInputType.visiblePassword
+                    : TextInputType.text,
                 validator: widget.validator,
-                style: textTheme.displaySmall?.copyWith(height: 0.9, color: colors.textColor),
+                style: textTheme.displaySmall
+                    ?.copyWith(height: 0.9, color: colors.textColor),
               );
             }),
       ],

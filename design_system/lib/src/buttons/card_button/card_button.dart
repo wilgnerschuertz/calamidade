@@ -28,17 +28,22 @@ class CardButton extends StatelessWidget {
             children: [
               icon,
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       labelPrimary,
-                      style: TextStyle(fontSize: 18, color: CoopartilharColors.of(context).textColor),
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: CoopartilharColors.of(context).textColor),
                     ),
                     Text(
                       labelSecondary,
-                      style: TextStyle(fontSize: 12, color: CoopartilharColors.of(context).middleGrey),
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: CoopartilharColors.of(context).middleGrey),
                     ),
                   ],
                 ),

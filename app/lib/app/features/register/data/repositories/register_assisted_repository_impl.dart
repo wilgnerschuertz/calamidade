@@ -24,7 +24,8 @@ class RegisterRepositoryImpl extends IRegisterRepository {
       if (response.statusCode == 204) {
         return const Right(unit);
       }
-      return const Left(DefaultException(message: 'Falha ao realizar registro'));
+      return const Left(
+          DefaultException(message: 'Falha ao realizar registro'));
     } on BaseException catch (err) {
       return Left(DefaultException(message: err.message));
     } catch (_) {

@@ -40,14 +40,17 @@ class RegisterController<RegisterState> extends BaseController {
     if (ValidatorsHelper.passwordIsEmpty(text)) {
       return 'A senha não pode estar vazia';
     } else {
-      return ValidatorsHelper.passworHasEnoughCharacters(text) ? null : 'Insira uma senha com pelo menos 4 caracteres';
+      return ValidatorsHelper.passworHasEnoughCharacters(text)
+          ? null
+          : 'Insira uma senha com pelo menos 4 caracteres';
     }
   }
 
   String? repeatPasswordValidator(String? text) {
     if (ValidatorsHelper.passwordIsEmpty(text)) {
       return 'A senha não pode estar vazia';
-    } else if (passwordController.text.isNotEmpty && text != passwordController.text) {
+    } else if (passwordController.text.isNotEmpty &&
+        text != passwordController.text) {
       return 'As senhas devem ser iguais';
     }
     return null;

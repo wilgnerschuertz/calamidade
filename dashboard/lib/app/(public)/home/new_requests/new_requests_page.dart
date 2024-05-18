@@ -15,7 +15,8 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
   @override
   void initState() {
     super.initState();
-    newRequestsController.removeLastItemIfOddList(newRequestsController.requestsList);
+    newRequestsController
+        .removeLastItemIfOddList(newRequestsController.requestsList);
   }
 
   @override
@@ -35,7 +36,9 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Text('Acesso administrativo', style: texts.displayLarge?.copyWith(color: colors.textColor2)),
+                    child: Text('Acesso administrativo',
+                        style: texts.displayLarge
+                            ?.copyWith(color: colors.textColor2)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,14 +47,17 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: Text(
                           'Solicitações mais antigas',
-                          style: texts.bodyMedium?.copyWith(color: colors.textColor2),
+                          style: texts.bodyMedium
+                              ?.copyWith(color: colors.textColor2),
                         ),
                       ),
                       InkWell(
                         onTap: () {},
                         child: Text(
                           'Filtrar',
-                          style: texts.bodySmall?.copyWith(decoration: TextDecoration.underline, color: colors.textColor2),
+                          style: texts.bodySmall?.copyWith(
+                              decoration: TextDecoration.underline,
+                              color: colors.textColor2),
                         ),
                       ),
                     ],
@@ -74,7 +80,8 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                     return ListenableBuilder(
                       listenable: newRequestsController,
                       builder: (context, child) {
-                        final entity = newRequestsController.requestsList[index];
+                        final entity =
+                            newRequestsController.requestsList[index];
                         return NewRequestsCard(
                           title: entity.titleDescription,
                           name: entity.name,
@@ -82,9 +89,11 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                           phone: entity.phone,
                           date: entity.date,
                           status: entity.status.label,
-                          statusColor: newRequestsController.statusColor[entity.status]!,
+                          statusColor:
+                              newRequestsController.statusColor[entity.status]!,
                           requestedIncome: entity.requestedIncome,
-                          isSelected: newRequestsController.selectedId == entity.id,
+                          isSelected:
+                              newRequestsController.selectedId == entity.id,
                           onTap: () {
                             newRequestsController.selectItem(entity.id);
                           },
@@ -108,9 +117,13 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                       city: newRequestsController.lastItem?.city ?? '',
                       phone: newRequestsController.lastItem?.phone ?? '',
                       date: newRequestsController.lastItem?.date ?? '',
-                      status: newRequestsController.lastItem?.status.toString() ?? '',
-                      statusColor: newRequestsController.statusColor[newRequestsController.lastItem?.status]!,
-                      requestedIncome: newRequestsController.lastItem?.requestedIncome ?? '',
+                      status:
+                          newRequestsController.lastItem?.status.toString() ??
+                              '',
+                      statusColor: newRequestsController
+                          .statusColor[newRequestsController.lastItem?.status]!,
+                      requestedIncome:
+                          newRequestsController.lastItem?.requestedIncome ?? '',
                       isSelected: true,
                       onTap: () {},
                     );

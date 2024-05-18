@@ -12,6 +12,8 @@ void main() {
         'status': 'baixa',
         'city': 'New York',
         'phone': '1234567890',
+        'requestedIncome': 'requestedIncome',
+        'date': 'date',
         'bank': 'ABC Bank',
         'agency': '1234',
         'account': '5678',
