@@ -2,11 +2,13 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key, required this.userName});
-  final String userName;
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    /// TODO: recuperar informação do cache em um controller.
+    const name = 'cooperado';
+
     return Scaffold(
       body: Stack(
         children: [
@@ -15,16 +17,13 @@ class WelcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 RichText(
-                  text: TextSpan(
-                    style: const TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700),
+                  text: const TextSpan(
+                    style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700),
                     children: [
-                      const TextSpan(text: 'Olá, '),
+                      TextSpan(text: 'Olá, '),
                       TextSpan(
-                        text: '$userName!',
-                        style: const TextStyle(color: Colors.green),
+                        text: '$name!',
+                        style: TextStyle(color: Colors.green),
                       ),
                     ],
                   ),
@@ -32,10 +31,7 @@ class WelcomePage extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 const Text(
                   'Seja bem-vindo de volta!',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
                 ),
               ],
             ),

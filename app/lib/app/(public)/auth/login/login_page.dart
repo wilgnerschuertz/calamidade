@@ -1,3 +1,8 @@
+import 'package:coopartilhar/app/(public)/auth/login/widgets/password_text_form_field.dart';
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
+import 'package:coopartilhar/injector.dart';
+import 'package:coopartilhar/routes.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -9,38 +14,31 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late final GlobalKey<FormState> _formKey;
-
-  late final TextEditingController _cpfOrCnpjController;
-  late final TextEditingController _passwordController;
-
-  bool _passwordVisible = false;
+  final controller = injector.get<LoginControllerImpl>();
 
   @override
   void initState() {
     super.initState();
-    _formKey = GlobalKey<FormState>();
+    controller.addListener(listener);
+  }
 
-    _cpfOrCnpjController = TextEditingController();
-    _passwordController = TextEditingController();
+  void listener() {
+    return switch (controller.value) {
+      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      SuccessState() => Navigator.of(context).pushNamed(routePaths.welcome),
+      _ => null,
+    };
   }
 
   @override
   void dispose() {
-    _cpfOrCnpjController.dispose();
-    _passwordController.dispose();
-
+    controller.removeListener(listener);
     super.dispose();
   }
 
-  void _register() {
-    // Descomente esse código para navegar para `/auth/register` através do botão entrar
-    // final document = 00000000000;
-    // final name = 'mock-name';
-    // Navigator.pushNamed(context, '/auth/register',
-    //     arguments: (document: document, name: name));
-
-    if (_formKey.currentState!.validate()) {
+  void _login() {
+    if (controller.formKey.currentState!.validate()) {
+      controller.login();
       return;
     }
   }
@@ -55,7 +53,9 @@ class _LoginPageState extends State<LoginPage> {
         surfaceTintColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(Icons.chevron_left),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
       ),
       body: SafeArea(
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 60),
-                 const Center(child: Image(image: CooImages.cooBrand1)),
+                const Center(child: Image(image: CooImages.cooBrand1)),
                 const SizedBox(height: 60),
                 Center(
                   child: Text(
@@ -80,24 +80,24 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 70),
                 Form(
-                  key: _formKey,
+                  key: controller.formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Informe o seu CPF/CNPJ',
+                        'Informe o seu email',
                         style: textTheme.titleMedium?.copyWith(
                           color: colorsTheme.textColor,
                         ),
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
+                        controller: controller.emailController,
                         decoration: const InputDecoration(
-                          hintText: 'Insira seu CPF/CNPJ',
+                          hintText: 'Insira seu email',
                         ),
-                        validator:
-                            _validatorEmpty('CPF/CNPJ não pode está vazio'),
+                        validator: controller.validatorEmpty('E-mail não pode está vazio'),
                       ),
                       const SizedBox(height: 24),
                       Text(
@@ -107,33 +107,19 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      TextFormField(
-                        obscureText: !_passwordVisible,
-                        decoration: InputDecoration(
-                          hintText: 'Insira sua senha',
-                          suffixIcon: IconButton(
-                            icon: Icon(_passwordVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                            onPressed: () {
-                              setState(() {
-                                _passwordVisible = !_passwordVisible;
-                              });
-                            },
-                          ),
-                        ),
-                        validator: _validatorEmpty('Senha não pode está vazia'),
+                      PasswordTextFormField(
+                        controller: controller.passwordController,
+                        hitText: 'Insira sua senha',
+                        validator: controller.validatorEmpty('Senha não pode está vazia'),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 60),
-                SizedBox(
-                  height: 56,
-                  child: CooButton.primary(
-                    label: 'Entrar',
-                    onPressed: _register,
-                  ),
+                CooButton.primary(
+                  label: 'Entrar',
+                  onPressed: _login,
+                  size: const Size(double.infinity, 60),
                 ),
                 const SizedBox(height: 20),
               ],
@@ -142,14 +128,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-
-  String? Function(String?)? _validatorEmpty(String message) {
-    return (value) {
-      if (value == null || value.isEmpty) {
-        return message;
-      }
-      return null;
-    };
   }
 }
