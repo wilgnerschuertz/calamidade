@@ -69,10 +69,7 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
       appBar: AppBar(
         title: Text(
           'É cooperado?',
-          style: Theme.of(context)
-              .textTheme
-              .displayLarge!
-              .copyWith(color: colors.appBackground),
+          style: Theme.of(context).textTheme.displayLarge!.copyWith(color: colors.appBackground),
         ),
       ),
       body: Stack(
@@ -94,16 +91,14 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
                     children: [
                       Text(
                         'Informe o seu CPF/CNPJ',
-                        style: theme.textTheme.titleMedium!
-                            .copyWith(color: colors.appBackground),
+                        style: theme.textTheme.titleMedium!.copyWith(color: colors.appBackground),
                         textAlign: TextAlign.start,
                       ),
                     ],
                   ),
                   Center(
                     child: TextFormField(
-                      style: theme.textTheme.displaySmall!
-                          .copyWith(color: colors.appBackground),
+                      style: theme.textTheme.displaySmall!.copyWith(color: colors.appBackground),
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         CpfCnpjFormatter(),
@@ -142,9 +137,10 @@ class CpfCnpjFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final text = newValue.text;
+    final shouldReturnToCpfFormat = oldValue.text.length > text.length && text.length == 15;
     final removedCharacteres = text.replaceAll(RegExp('[^0-9]'), '');
-    final characterWasRemoved = oldValue.text.length > newValue.text.length;
-    final maskedText = _applyMask(removedCharacteres, characterWasRemoved);
+
+    final maskedText = _applyMask(removedCharacteres, shouldReturnToCpfFormat);
     return TextEditingValue(
       text: maskedText,
       selection: TextSelection.collapsed(offset: maskedText.length),
@@ -153,7 +149,7 @@ class CpfCnpjFormatter extends TextInputFormatter {
 
   String _applyMask(
     String text,
-    bool characterWasRemoved,
+    bool shouldReturnToCpfFormat,
   ) {
     if (text.length <= 11) {
       if (text.length <= 3) {
@@ -166,7 +162,7 @@ class CpfCnpjFormatter extends TextInputFormatter {
         return '${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6, 9)}-${text.substring(9)}';
       }
     } else {
-      if (text.length == 12 && characterWasRemoved) {
+      if (text.length == 12 && shouldReturnToCpfFormat) {
         text = text.substring(0, text.length - 1);
         return '${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6, 9)}-${text.substring(9)}';
       }
