@@ -21,10 +21,13 @@ class NewRequestRepositoryImpl implements INewRequestRepository {
       return Right(
         NewRequestEntity(
           '0',
+          titleDescription: 'Telhado',
           name: 'João Maria da Silva',
-          status: StatusNewRequest.baixa,
           city: 'Estância Velha',
           phone: '+55 (51) 9 1234-5648',
+          date: '15 de maio às 10h',
+          status: StatusNewRequest.low,
+          requestedIncome: '3.500,00',
           bank: 'CooperBank',
           agency: 'Estância Velha',
           account: '+55 (51) 9 1234-5648',
