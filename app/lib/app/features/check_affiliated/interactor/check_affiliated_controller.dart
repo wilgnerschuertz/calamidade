@@ -1,14 +1,13 @@
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/adapters/check_affiliated_adapter.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/i_check_affiliated_repository.dart';
-import 'package:coopartilhar/app/features/check_affiliated/entities/check_affiliated_entity.dart';
 import 'package:core_module/core_module.dart';
 
 class CheckAffiliatedController extends BaseController {
   final ICheckAffiliatedRepository repository;
   final ICache cache;
 
-  CheckAffiliatedController({required this.repository, required this.cache})
-      : super(InitialState());
+  CheckAffiliatedController({required this.repository, required this.cache}) : super(InitialState());
 
   Future<void> check({required String document}) async {
     update(LoadingState());
@@ -24,7 +23,7 @@ class CheckAffiliatedController extends BaseController {
             value: CheckAffiliatedAdapter.toJson(r),
           ),
         );
-        update(SuccessState<CheckAffiliatedEntity>(data: r));
+        update(SuccessState<UserEntity>(data: r));
       },
     );
   }

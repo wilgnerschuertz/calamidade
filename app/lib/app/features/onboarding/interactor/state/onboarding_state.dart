@@ -11,8 +11,7 @@ class OnboardingSuccessState extends SuccessState<OnboardingEntity> {
   });
 }
 
-class OnboardingErrorState<OnboardingException extends BaseException>
-    extends ErrorState {
+class OnboardingErrorState<OnboardingException extends BaseException> extends ErrorState {
   const OnboardingErrorState(
     this.onboardingException,
   ) : super(exception: onboardingException);

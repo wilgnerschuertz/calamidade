@@ -24,19 +24,20 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
   }
 
   final request = RequestDetailsEntity(
-    id: '0',
+    id: -1,
     title: 'Reconstrução telhado',
     user: UserEntity(
       //TODO: a entidade precisa de mais campos (endereço, telefone)
-      '0',
+      -1,
       email: 'teste@teste.com',
       name: 'João Maria da silva',
-      urlAvatar: '',
+      document: '',
+      phone: '',
     ),
     createdAt: DateTime.now(),
     price: 3500.00,
     status: StatusDetailsEntity(
-      '',
+      -1,
       Status.high,
       'Estamos precisando de ajuda para comprar medicamentos e roupas.',
     ),
@@ -70,8 +71,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
               ),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: CooButton.primary(

@@ -15,7 +15,7 @@ class SessionAdapter {
     // TODO: Back-end não retorna os campos de nome e photo
 
     return SessionEntity(
-      const Uuid() as String,
+      data['id'] ?? -1,
       token: data['token'],
       refreshToken: data['refreshToken'],
       tokenExpires: data['tokenExpires'],
