@@ -1,5 +1,6 @@
 .dart_tool/
 .idea/
+.mason/
 **/.flutter-plugins*
 **/pubspec.lock
 **/coverage
