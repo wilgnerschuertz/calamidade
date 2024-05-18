@@ -8,7 +8,8 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
   NewAskHelpRepositoryImpl(this.restClient);
 
   @override
-  Future<Output<Unit>> saveSolicitation(SolicitationEntity solicitationEntity) async {
+  Future<Output<Unit>> saveSolicitation(
+      SolicitationEntity solicitationEntity) async {
     try {
       //TODO: impl correct endpoint
       const url = '';
@@ -27,7 +28,8 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
     } on BaseException catch (err) {
       return Left(DefaultException(message: err.message));
     } catch (_) {
-      return const Left(DefaultException(message: 'Ocorreu um erro inesperado.'));
+      return const Left(
+          DefaultException(message: 'Ocorreu um erro inesperado.'));
     }
   }
 }

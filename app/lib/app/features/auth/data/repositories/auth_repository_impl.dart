@@ -12,7 +12,8 @@ class AuthRepositoryImpl implements IAuthRepository {
   final IRestClient client;
 
   @override
-  Future<Output<SessionEntity>> login({required CredentialsEntity credentials}) async {
+  Future<Output<SessionEntity>> login(
+      {required CredentialsEntity credentials}) async {
     try {
       final response = await client.post(
         RestClientRequest(

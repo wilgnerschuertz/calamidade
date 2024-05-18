@@ -4,19 +4,19 @@ command:
   bootstrap:
     hooks:
       post: |
-        flutter pub global activate full_coverage
+        dart pub global activate full_coverage
 
 packages:
   - ./**
 
 scripts:
   analyze:
-    description: downloads pub packages.
-    exec: "flutter analyze ."
+    description: analyze.
+    exec: "flutter analyze --no-fatal-infos"
 
   format:
-    description: downloads pub packages.
-    exec: "flutter format ."
+    description: format files.
+    exec: "dart format --set-exit-if-changed ."
 
   get:
     description: downloads pub packages.

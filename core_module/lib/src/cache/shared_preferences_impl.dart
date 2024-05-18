@@ -7,12 +7,7 @@ class SharedPreferencesImpl implements ICache {
     final prefs = await SharedPreferences.getInstance();
     final result = prefs.get(key);
 
-    if (result != null) {
-      return result;
-    } else {
-      throw CacheException(
-          message: 'There is no key ($key) passed as a parameter');
-    }
+    return result;
   }
 
   @override

@@ -13,7 +13,8 @@ class RequestDetailsRepositoryImpl implements IRequestDetailsRepository {
     try {
       //TODO: impl correct endpoint
       const url = '';
-      final response = await restClient.get(RestClientRequest(path: '$url/$id'));
+      final response =
+          await restClient.get(RestClientRequest(path: '$url/$id'));
       if (response.data == null) {
         throw const DefaultException(message: 'Requisição inválida');
       }

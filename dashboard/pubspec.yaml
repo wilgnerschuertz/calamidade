@@ -38,9 +38,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   core_module:
-    path: ../core_module
   design_system: 
-    path: ../design_system
 
 dev_dependencies:
   flutter_test:
