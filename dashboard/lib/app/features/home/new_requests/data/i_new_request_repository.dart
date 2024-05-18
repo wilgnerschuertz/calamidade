@@ -2,5 +2,5 @@ import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/features/home/new_requests/entities/new_request_entity.dart';
 
 abstract interface class INewRequestRepository {
-  Future<Output<NewRequestEntity>> getNewRequest();
+  Future<Output<List<NewRequestEntity>>> getNewRequest();
 }

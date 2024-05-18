@@ -25,7 +25,7 @@ void main() {
         ).thenAnswer(
           (_) async => RestClientResponse(
             request: RestClientRequest(path: ''),
-            data: '{"teste": "testandooo"}',
+            data: _response,
             statusCode: 200,
           ),
         );
@@ -33,7 +33,7 @@ void main() {
         final result = await requestRepository.getNewRequest();
 
         expect(result.isRight, true);
-        expect(result.right, isA<NewRequestEntity>());
+        expect(result.right, isA<List<NewRequestEntity>>());
       },
     );
 
@@ -51,3 +51,55 @@ void main() {
     });
   });
 }
+
+const _response = '''{
+  "data":[
+  {
+    "id": "1",
+    "name": "Alice",
+    "status": "alta",
+    "city": "São Paulo",
+    "phone": "1234567890",
+    "bank": "Banco do Brasil",
+    "agency": "1234",
+    "account": "56789-0",
+    "urlImage": "https://example.com/image1.jpg",
+    "description": "Pedido de aprovação para projeto A."
+  },
+  {
+    "id": "2",
+    "name": "Bruno",
+    "status": "media",
+    "city": "Rio de Janeiro",
+    "phone": "0987654321",
+    "bank": "Caixa Econômica",
+    "agency": "4321",
+    "account": "98765-1",
+    "urlImage": "https://example.com/image2.jpg",
+    "description": "Pedido de avaliação para financiamento."
+  },
+  {
+    "id": "3",
+    "name": "Carla",
+    "status": "baixa",
+    "city": "Belo Horizonte",
+    "phone": "1122334455",
+    "bank": "Bradesco",
+    "agency": "1111",
+    "account": "22222-2",
+    "urlImage": "https://example.com/image3.jpg",
+    "description": "Solicitação de crédito pessoal."
+  },
+  {
+    "id": "4",
+    "name": "Daniel",
+    "status": "alta",
+    "city": "Porto Alegre",
+    "phone": "2233445566",
+    "bank": "Santander",
+    "agency": "2222",
+    "account": "33333-3",
+    "urlImage": "https://example.com/image4.jpg",
+    "description": "Pedido de aprovação para novo empreendimento."
+  }
+]}''';
