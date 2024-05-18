@@ -3,6 +3,7 @@ import 'package:coopartilhar/app/features/onboarding/interactor/entities/onboard
 import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onboarding_repository.dart';
 import 'package:core_module/core_module.dart';
 
+// TODO: this endpoint will be developed in v2+
 class OnboardingRepositoryImpl implements IOnboardingRepository {
   final IRestClient restClient;
 
