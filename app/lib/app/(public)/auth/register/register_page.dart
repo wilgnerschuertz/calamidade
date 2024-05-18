@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({super.key})
-      : document = Routefly.query.arguments.document.toString(),
-        name = Routefly.query.arguments.name,
-        email = Routefly.query.arguments.email,
-        phone = Routefly.query.arguments.phone;
+      : document = Routefly.query.arguments.document.document,
+        name = Routefly.query.arguments.document.name,
+        email = Routefly.query.arguments.document.email,
+        phone = Routefly.query.arguments.document.phone;
 
   final String document;
   final String name;
@@ -34,8 +34,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void listener() {
     return switch (controller.value) {
-      SuccessState() => Routefly.navigate(routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
-      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      SuccessState() => Routefly.navigate(
+          routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
       _ => null,
     };
   }
@@ -94,7 +96,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             key: controller.formKey,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: keyboardHeight > 0 ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: keyboardHeight > 0
+                                  ? MainAxisAlignment.start
+                                  : MainAxisAlignment.spaceBetween,
                               children: [
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
@@ -127,7 +131,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 const SizedBox(height: 30),
                                 RegisterItemField(
                                   title: 'Confirmar senha',
-                                  controller: controller.repeatPasswordController,
+                                  controller:
+                                      controller.repeatPasswordController,
                                   hint: 'Insira novamente sua senha',
                                   isPassword: true,
                                   validator: controller.repeatPasswordValidator,
