@@ -123,8 +123,8 @@ class _HomePageState extends State<HomePage> {
               elevation: 0,
               onPressed: () {},
               shape: const CircleBorder(),
-              child:
-                  Icon(UIcons.regularStraight.plus, color: colors.white, size: 20),
+              child: Icon(UIcons.regularStraight.plus,
+                  color: colors.white, size: 20),
             ),
           ),
         ),

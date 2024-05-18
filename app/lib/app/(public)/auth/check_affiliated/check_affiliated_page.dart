@@ -5,6 +5,8 @@ import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 
 class CheckAffiliatedPage extends StatefulWidget {
   const CheckAffiliatedPage({super.key});
@@ -40,15 +42,14 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
     if (controller.value is ErrorState<BaseException>) {
       final err = (controller.value as ErrorState<BaseException>);
       if (err.exception is NotAffiliatedError) {
-        await Navigator.of(context)
-            .pushNamed<void>(routePaths.auth.notAffiliated);
+        Routefly.navigate(routePaths.auth.notAffiliated);
         setLoading(false);
       } else {
         setLoading(false);
         Alerts.showFailure(context, 'Error desconhecido, tente novamente.');
       }
     } else if (controller.value is SuccessState) {
-      Navigator.of(context).pushNamed<void>(routePaths.auth.register);
+      Routefly.navigate(routePaths.auth.affiliated);
     }
   }
 
@@ -73,12 +74,6 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
               .displayLarge!
               .copyWith(color: colors.appBackground),
         ),
-        leading: IconButton(
-          icon: const Icon(Icons.chevron_left),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -92,12 +87,9 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: heightScreen * 0.20,
-                    ),
-                    child: const Image(image: CooImages.cooBrand1),
-                  ),
+                  const Spacer(),
+                  const Image(image: CooImages.cooBrand1),
+                  const Spacer(),
                   Row(
                     children: [
                       Text(
@@ -112,6 +104,10 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
                     child: TextFormField(
                       style: theme.textTheme.displaySmall!
                           .copyWith(color: colors.appBackground),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        CpfCnpjFormatter(),
+                      ],
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'Este CPF / CNPJ não existe!';
@@ -122,6 +118,7 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
                       onFieldSubmitted: (_) => submit,
                     ),
                   ),
+                  const Spacer(),
                   Padding(
                     padding: EdgeInsets.only(top: heightScreen * 0.18),
                     child: CooButton.primary(
@@ -130,6 +127,7 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
                       isLoading: isLoading,
                     ),
                   ),
+                  const Gap(50),
                 ],
               ),
             ),
@@ -137,5 +135,39 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
         ],
       ),
     );
+  }
+}
+
+class CpfCnpjFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final text = newValue.text;
+    final removedCharacteres = text.replaceAll(RegExp('[^0-9]'), '');
+    final maskedText = _applyMask(removedCharacteres);
+    return TextEditingValue(
+      text: maskedText,
+      selection: TextSelection.collapsed(offset: maskedText.length),
+    );
+  }
+
+  String _applyMask(String text) {
+    if (text.length <= 11) {
+      if (text.length <= 3) {
+        return text;
+      } else if (text.length <= 6) {
+        return '${text.substring(0, 3)}.${text.substring(3)}';
+      } else if (text.length <= 9) {
+        return '${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6)}';
+      } else {
+        return '${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6, 9)}-${text.substring(9)}';
+      }
+    } else {
+      if (text.length <= 14) {
+        return '${text.substring(0, 2)}.${text.substring(2, 5)}.${text.substring(5, 8)}/${text.substring(8, 12)}-${text.substring(12)}';
+      } else {
+        return '${text.substring(0, 2)}.${text.substring(2, 5)}.${text.substring(5, 8)}/${text.substring(8, 12)}-${text.substring(12, 14)}';
+      }
+    }
   }
 }

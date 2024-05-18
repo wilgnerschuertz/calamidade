@@ -167,7 +167,9 @@ class CooButton extends StatelessWidget {
               ),
               onPressed: enable ? onPressed : null,
               child: isLoading
-                  ? const CircularProgressIndicator()
+                  ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
                   : _ContentButton(
                       icon: Icon(
                         icon,
@@ -188,7 +190,9 @@ class CooButton extends StatelessWidget {
               ),
               onPressed: enable ? onPressed : null,
               child: isLoading
-                  ? const CircularProgressIndicator()
+                  ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
                   : _ContentButton(
                       icon: Icon(
                         icon,

@@ -43,7 +43,8 @@ class CooNavigatorBar extends StatelessWidget {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: colors.primary.withOpacity(0.13),
-                        borderRadius: const BorderRadius.all(Radius.circular(14)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(14)),
                       ),
                       child: const Image(
                         image: CooImages.cooBrandSmall,

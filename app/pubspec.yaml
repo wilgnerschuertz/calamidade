@@ -14,9 +14,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   core_module:
-    path: ../core_module
   design_system:
-    path: ../design_system
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
