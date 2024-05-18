@@ -167,6 +167,19 @@ flutter pub get
 flutter run
 ```
 
+
+### Ativar o Mason e criar uma feature:
+```
+dart pub global activate mason_cli
+mason init
+mason get
+```
+
+## Criando uma nova feature:
+```
+mason make feature
+```
+
 ### Tutoriais e Recursos
 
 Para ajudar os desenvolvedores a se familiarizarem com as tecnologias e pacotes utilizados neste projeto, compilamos uma lista de vídeos e tutoriais úteis:

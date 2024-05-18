@@ -15,7 +15,7 @@ class NewRequestsCard extends StatefulWidget {
   final VoidCallback? onTap;
   bool isSelected;
 
-  NewRequestsCard({
+  const NewRequestsCard({
     super.key,
     required this.title,
     required this.name,
@@ -45,7 +45,9 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
         decoration: BoxDecoration(
           color: colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: widget.isSelected ? colors.routine : colors.white, width: 2),
+          border: Border.all(
+              color: widget.isSelected ? colors.routine : colors.white,
+              width: 2),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +66,8 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                     border: Border.all(color: colors.critical, width: 1),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     child: Text(
                       widget.status.label,
                       style: texts.bodyMedium?.copyWith(color: widget.status.color),
@@ -84,11 +87,8 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                   'Cidade:',
                   style: texts.bodySmall,
                 ),
-                Text(
-                  widget.city,
-                  textAlign: TextAlign.right,
-                  style: texts.bodySmall,
-                ),
+                Text(widget.city,
+                    textAlign: TextAlign.right, style: texts.bodySmall)
               ],
             ),
             Row(

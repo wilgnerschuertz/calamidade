@@ -70,7 +70,8 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: CooButton.primary(

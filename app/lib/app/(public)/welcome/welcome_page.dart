@@ -18,7 +18,10 @@ class WelcomePage extends StatelessWidget {
               children: [
                 RichText(
                   text: const TextSpan(
-                    style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700),
                     children: [
                       TextSpan(text: 'Olá, '),
                       TextSpan(
@@ -31,7 +34,10 @@ class WelcomePage extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 const Text(
                   'Seja bem-vindo de volta!',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black),
                 ),
               ],
             ),

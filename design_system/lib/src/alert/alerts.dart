@@ -10,7 +10,7 @@ class Alerts {
       imageIcon: CooIcons.cooCheck,
       message: message,
     ).build(context);
-    
+
     show(context, snackBar);
   }
 

@@ -33,7 +33,8 @@ class _HomeLayoutState extends State<HomeLayout> {
             child: Container(
               color: colors.white,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

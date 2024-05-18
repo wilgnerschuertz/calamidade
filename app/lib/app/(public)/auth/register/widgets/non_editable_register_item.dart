@@ -26,7 +26,8 @@ class NonEditableRegisterItem extends StatelessWidget {
         const SizedBox(height: 15),
         Text(
           value,
-          style: textTheme.bodySmall?.copyWith(fontSize: 20, color: colors.textColor),
+          style: textTheme.bodySmall
+              ?.copyWith(fontSize: 20, color: colors.textColor),
         ),
       ],
     );
