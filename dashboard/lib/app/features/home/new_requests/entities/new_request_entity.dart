@@ -1,6 +1,24 @@
 import 'package:core_module/core_module.dart';
 
-enum StatusNewRequest { alta, media, baixa }
+enum StatusNewRequest {
+  alta,
+  media,
+  baixa;
+
+  //TODO: adicionar os status certos
+  static StatusNewRequest status(String status) {
+    switch (status) {
+      case 'alta':
+        return StatusNewRequest.alta;
+      case 'media':
+        return StatusNewRequest.media;
+      case 'baixa':
+        return StatusNewRequest.baixa;
+      default:
+        return StatusNewRequest.baixa;
+    }
+  }
+}
 
 class NewRequestEntity extends Entity {
   final String name;
