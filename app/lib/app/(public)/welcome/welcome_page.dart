@@ -1,6 +1,3 @@
-import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
-import 'package:coopartilhar/injector.dart';
-import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +7,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// TODO: recuperar informação do cache em um controller.
-    final name = 'cooperado';
+    const name = 'cooperado';
 
     return Scaffold(
       body: Stack(
@@ -20,13 +17,13 @@ class WelcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 RichText(
-                  text: TextSpan(
-                    style: const TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700),
+                  text: const TextSpan(
+                    style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700),
                     children: [
-                      const TextSpan(text: 'Olá, '),
+                      TextSpan(text: 'Olá, '),
                       TextSpan(
                         text: '$name!',
-                        style: const TextStyle(color: Colors.green),
+                        style: TextStyle(color: Colors.green),
                       ),
                     ],
                   ),

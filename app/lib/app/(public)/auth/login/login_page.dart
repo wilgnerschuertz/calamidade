@@ -1,7 +1,5 @@
 import 'package:coopartilhar/app/(public)/auth/login/widgets/password_text_form_field.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
-import 'package:coopartilhar/app/features/auth/interactor/entities/session_entity.dart';
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
@@ -55,7 +53,9 @@ class _LoginPageState extends State<LoginPage> {
         surfaceTintColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(Icons.chevron_left),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
       ),
       body: SafeArea(
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                 CooButton.primary(
                   label: 'Entrar',
                   onPressed: _login,
-                  size: Size(double.infinity, 60),
+                  size: const Size(double.infinity, 60),
                 ),
                 const SizedBox(height: 20),
               ],

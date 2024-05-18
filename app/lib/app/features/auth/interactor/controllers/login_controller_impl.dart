@@ -2,7 +2,6 @@ import 'package:coopartilhar/app/features/auth/interactor/entities/credentials_e
 import 'package:coopartilhar/app/features/auth/interactor/entities/session_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
-import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
