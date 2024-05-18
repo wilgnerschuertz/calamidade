@@ -1,8 +1,10 @@
 .dart_tool/
 .idea/
+.mason/
 **/.flutter-plugins*
 **/pubspec.lock
 **/coverage
 pubspec.lock
 pubspec_overrides.yaml
 melos_coopartila_workspace.iml
+mason-lock.json
