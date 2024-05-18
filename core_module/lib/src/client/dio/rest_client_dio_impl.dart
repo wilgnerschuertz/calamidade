@@ -26,7 +26,8 @@ class RestClientDioImpl implements IRestClient {
 
   @override
   void addInterceptors(IClientInterceptor interceptor) {
-    _interceptors[interceptor] = ClientInterceptorDioImpl(interceptor: interceptor);
+    _interceptors[interceptor] =
+        ClientInterceptorDioImpl(interceptor: interceptor);
     _dio.interceptors.add(_interceptors[interceptor]!);
   }
 

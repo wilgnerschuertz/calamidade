@@ -226,7 +226,9 @@ class _ContentButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        icon != null && label.isNotEmpty ? const SizedBox(width: 8) : Container(),
+        icon != null && label.isNotEmpty
+            ? const SizedBox(width: 8)
+            : Container(),
         Text(
           label,
           style: textTheme.bodyMedium?.copyWith(color: textColor),
