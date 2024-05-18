@@ -69,7 +69,10 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
       appBar: AppBar(
         title: Text(
           'É cooperado?',
-          style: Theme.of(context).textTheme.displayLarge!.copyWith(color: colors.appBackground),
+          style: Theme.of(context)
+              .textTheme
+              .displayLarge!
+              .copyWith(color: colors.appBackground),
         ),
       ),
       body: Stack(
@@ -91,14 +94,16 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
                     children: [
                       Text(
                         'Informe o seu CPF/CNPJ',
-                        style: theme.textTheme.titleMedium!.copyWith(color: colors.appBackground),
+                        style: theme.textTheme.titleMedium!
+                            .copyWith(color: colors.appBackground),
                         textAlign: TextAlign.start,
                       ),
                     ],
                   ),
                   Center(
                     child: TextFormField(
-                      style: theme.textTheme.displaySmall!.copyWith(color: colors.appBackground),
+                      style: theme.textTheme.displaySmall!
+                          .copyWith(color: colors.appBackground),
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         CpfCnpjFormatter(),
@@ -135,9 +140,11 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
 
 class CpfCnpjFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     final text = newValue.text;
-    final shouldReturnToCpfFormat = oldValue.text.length > text.length && text.length == 15;
+    final shouldReturnToCpfFormat =
+        oldValue.text.length > text.length && text.length == 15;
     final removedCharacteres = text.replaceAll(RegExp('[^0-9]'), '');
 
     final maskedText = _applyMask(removedCharacteres, shouldReturnToCpfFormat);
