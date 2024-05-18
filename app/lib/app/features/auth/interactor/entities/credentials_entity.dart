@@ -1,9 +1,9 @@
 class CredentialsEntity {
-  final String phone;
+  final String email;
   final String password;
 
   const CredentialsEntity({
-    required this.phone,
+    required this.email,
     required this.password,
   });
 }

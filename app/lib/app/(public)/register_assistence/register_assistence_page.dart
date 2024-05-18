@@ -106,8 +106,7 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                             decoration: const InputDecoration(
                               hintText: 'Informe seu CPF/CNPJ',
                             ),
-                            validator:
-                                _validatorEmpty('CPF/CNPJ não pode esta vazio'),
+                            validator: _validatorEmpty('CPF/CNPJ não pode esta vazio'),
                           ),
                           const SizedBox(height: 24),
                           Text(
@@ -122,8 +121,7 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                             decoration: const InputDecoration(
                               hintText: 'Insira seu nome completo',
                             ),
-                            validator:
-                                _validatorEmpty('Nome não pode esta vazio'),
+                            validator: _validatorEmpty('Nome não pode esta vazio'),
                           ),
                           const SizedBox(height: 24),
                           Text(
@@ -143,8 +141,7 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                                 return 'E-mail não pode esta vazio';
                               }
 
-                              if (!value.contains('@') &&
-                                  !value.contains('.')) {
+                              if (!value.contains('@') && !value.contains('.')) {
                                 return 'Esse campo precisa ser um e-mail valido';
                               }
                               return null;
@@ -163,8 +160,7 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                             decoration: const InputDecoration(
                               hintText: 'Insira seu número de telefone',
                             ),
-                            validator:
-                                _validatorEmpty('Telefone não pode esta vazio'),
+                            validator: _validatorEmpty('Telefone não pode esta vazio'),
                           ),
                           const SizedBox(height: 24),
                           Text(
@@ -183,15 +179,13 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                                   decoration: const InputDecoration(
                                     hintText: 'Insira sua localização',
                                   ),
-                                  validator: (String? value) =>
-                                      (value == null || value.isEmpty)
-                                          ? 'Localização não pode esta vazio'
-                                          : null,
+                                  validator: (String? value) => (value == null || value.isEmpty) ? 'Localização não pode esta vazio' : null,
                                 ),
                               ),
                               SizedBox(
                                 height: 52,
                                 child: CooButton.primary(
+                                  label: '',
                                   icon: Icons.place,
                                   onPressed: () {},
                                 ),
