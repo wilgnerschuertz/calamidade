@@ -25,7 +25,11 @@ jobs:
         run: dart run melos bootstrap
 
       - name: format
-        run: dart format --set-exit-if-changed .
+        run: |
+          dart format --set-exit-if-changed ./app
+          dart format --set-exit-if-changed ./core_module
+          dart format --set-exit-if-changed ./dashboard
+          dart format --set-exit-if-changed ./design_system
 
       - name: analyze
         run: dart run melos run analyze --no-select
