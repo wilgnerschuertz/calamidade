@@ -1,5 +1,31 @@
 name: coopartila_workspace
 # sdkPath: .fvm/flutter_sdk
+command:
+  bootstrap:
+    hooks:
+      post: |
+        flutter pub global activate full_coverage
 
 packages:
   - ./**
+
+scripts:
+  analyze:
+    description: downloads pub packages.
+    exec: "flutter analyze ."
+
+  format:
+    description: downloads pub packages.
+    exec: "flutter format ."
+
+  get:
+    description: downloads pub packages.
+    exec: "flutter pub get"
+
+  test:
+    description: test all packages.
+    exec: "flutter test --no-pub --coverage"
+    packageFilters:
+      dirExists:
+        - test
+      failFast: true

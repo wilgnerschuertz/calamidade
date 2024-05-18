@@ -2,6 +2,7 @@
 .idea/
 **/.flutter-plugins*
 **/pubspec.lock
+**/coverage
 pubspec.lock
 pubspec_overrides.yaml
 melos_coopartila_workspace.iml
