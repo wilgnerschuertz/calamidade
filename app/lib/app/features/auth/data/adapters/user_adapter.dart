@@ -10,4 +10,13 @@ class UserAdapter {
       urlAvatar: data['phono'] ?? '',
     );
   }
+
+  static Map<String, dynamic> toJson(UserEntity user) {
+    return {
+      'id': user.id,
+      'name': user.name,
+      'email': user.email,
+      'phono': user.urlAvatar,
+    };
+  }
 }
