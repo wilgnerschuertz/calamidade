@@ -1,10 +1,13 @@
 name: CI
 
-on: pull_request
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
-  flutter_test:
-    name: Run Flutter Test
+  flutter_analysis:
+    name: Analyze flutter code
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -12,13 +15,54 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-      - name: Set up Flutter
+
+      - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          channel: "stable"
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+
       - name: Flutter Version
         run: flutter --version
+
       - name: Flutter pub get
         run: flutter pub get
+
       - name: Flutter analyze
         run: flutter analyze --no-fatal-infos
+
+  flutter_format:
+    name: Format flutter code
+    runs-on: ubuntu-latest
+    needs: flutter_analysis
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+
+      - name: Flutter Version
+        run: flutter --version
+
+      - name: Format code
+        run: dart format --set-exit-if-changed .
