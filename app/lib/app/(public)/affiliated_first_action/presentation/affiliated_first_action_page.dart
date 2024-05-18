@@ -7,7 +7,8 @@ class AffiliatedFirstActionPage extends StatefulWidget {
   const AffiliatedFirstActionPage({super.key});
 
   @override
-  State<AffiliatedFirstActionPage> createState() => _AffiliatedFirstActionPageState();
+  State<AffiliatedFirstActionPage> createState() =>
+      _AffiliatedFirstActionPageState();
 }
 
 class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
@@ -32,7 +33,9 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       'Bem-vindo',
-                      style: TextStyle(fontSize: 30, color: CoopartilharColors.of(context).textColor),
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: CoopartilharColors.of(context).textColor),
                     ),
                   ),
                   Padding(
@@ -40,7 +43,9 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                     child: Text(
                       'Vamos prosseguir. O que você deseja fazer?',
                       textAlign: TextAlign.center,
-                      style: textTheme.bodySmall!.copyWith(fontSize: 24, color: CoopartilharColors.of(context).textColor),
+                      style: textTheme.bodySmall!.copyWith(
+                          fontSize: 24,
+                          color: CoopartilharColors.of(context).textColor),
                     ),
                   ),
                 ],

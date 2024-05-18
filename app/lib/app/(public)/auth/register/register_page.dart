@@ -33,8 +33,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void listener() {
     return switch (controller.value) {
-      SuccessState() => Routefly.navigate(routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
-      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      SuccessState() => Routefly.navigate(
+          routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
       _ => null,
     };
   }
@@ -102,7 +104,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             key: controller.formKey,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: keyboardHeight > 0 ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: keyboardHeight > 0
+                                  ? MainAxisAlignment.start
+                                  : MainAxisAlignment.spaceBetween,
                               children: [
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
@@ -135,7 +139,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 const SizedBox(height: 30),
                                 RegisterItemField(
                                   title: 'Confirmar senha',
-                                  controller: controller.repeatPasswordController,
+                                  controller:
+                                      controller.repeatPasswordController,
                                   hint: 'Insira novamente sua senha',
                                   isPassword: true,
                                   validator: controller.repeatPasswordValidator,

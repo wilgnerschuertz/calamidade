@@ -7,7 +7,8 @@ class CheckAffiliatedController extends BaseController {
   final ICheckAffiliatedRepository repository;
   final ICache cache;
 
-  CheckAffiliatedController({required this.repository, required this.cache}) : super(InitialState());
+  CheckAffiliatedController({required this.repository, required this.cache})
+      : super(InitialState());
 
   Future<void> check({required String document}) async {
     update(LoadingState());

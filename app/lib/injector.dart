@@ -26,8 +26,10 @@ final injector = AutoInjector(
     injector.addSingleton<IAuthRepository>(AuthRepositoryImpl.new);
     injector.addLazySingleton<OnboardingController>(OnboardingController.new);
     injector.addLazySingleton<LoginControllerImpl>(LoginControllerImpl.new);
-    injector.addLazySingleton<ICheckAffiliatedRepository>(CheckAffiliatedRepositoryImpl.new);
-    injector.addLazySingleton<CheckAffiliatedController>(CheckAffiliatedController.new);
+    injector.addLazySingleton<ICheckAffiliatedRepository>(
+        CheckAffiliatedRepositoryImpl.new);
+    injector.addLazySingleton<CheckAffiliatedController>(
+        CheckAffiliatedController.new);
     injector.commit();
   },
 );

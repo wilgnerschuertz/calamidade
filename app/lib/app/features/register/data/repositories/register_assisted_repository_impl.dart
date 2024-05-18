@@ -25,9 +25,11 @@ class RegisterRepositoryImpl extends IRegisterRepository {
       if (response.statusCode == 204) {
         return const Right(unit);
       }
-      return const Left(DefaultException(message: 'Falha ao realizar registro'));
+      return const Left(
+          DefaultException(message: 'Falha ao realizar registro'));
     } on BaseException catch (err) {
-      return Left(DefaultException(message: 'A senha deve ter no mínimo 6 caracteres'));
+      return Left(
+          DefaultException(message: 'A senha deve ter no mínimo 6 caracteres'));
     } catch (_) {
       return const Left(DefaultException(message: 'Erro desconhecido'));
     }
