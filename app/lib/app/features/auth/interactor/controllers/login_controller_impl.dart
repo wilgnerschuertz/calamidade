@@ -26,7 +26,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
   late final formKey = GlobalKey<FormState>();
 
   Future<void> checkSession() async {
-    update(LoadingState());
+    update(AuthLoading());
 
     final user = await getUser();
     if (user == null) {
@@ -37,7 +37,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
   }
 
   Future<void> login() async {
-    update(LoadingState());
+    update(AuthLoading());
 
     final email = emailController.value.toString();
     final password = passwordController.value.toString();
