@@ -13,7 +13,7 @@ class NewRequestsCard extends StatefulWidget {
   final StatusNewRequest status;
   final String requestedIncome;
   final VoidCallback? onTap;
-  bool isSelected;
+  final bool isSelected;
 
   const NewRequestsCard({
     super.key,
