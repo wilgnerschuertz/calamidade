@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CooImages {
+sealed class CooImages {
   static const String _packageName = 'design_system';
   static const cooBrand1 = AssetImage(package: _packageName, 'assets/images/coo_brand1.png');
   static const cooBrand2 = AssetImage(package: _packageName, 'assets/images/coo_brand2.png');
@@ -18,4 +18,5 @@ class CooImages {
   static const cooNeedHelp = AssetImage(package: _packageName, 'assets/images/coo_need_help.png');
 
   static const cooBrandSmall = AssetImage(package: _packageName, 'assets/images/coo_brand_small.png');
+  static const cooBanricoop = AssetImage(package: _packageName, 'assets/images/coo_banricoop_2x.png');
 }
