@@ -5,6 +5,7 @@ import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
+// TODO: this page will be developed in v2+
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
 
