@@ -4,6 +4,9 @@ class NewRequestAdapter {
   static NewRequestEntity fromJson(Map json) {
     return NewRequestEntity(
       json['id'].toString(),
+      titleDescription: json['description'],
+      date: json['date'],
+      requestedIncome: json['requestedIncome'],
       name: json['name'],
       status: StatusNewRequest.status(json['status']),
       city: json['city'],
