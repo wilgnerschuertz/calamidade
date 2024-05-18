@@ -167,6 +167,7 @@ flutter pub get
 flutter run
 ```
 
+
 ### Ativar o Mason e criar uma feature:
 ```
 dart pub global activate mason_cli
@@ -178,7 +179,6 @@ mason get
 ```
 mason make feature
 ```
-
 
 ### Tutoriais e Recursos
 

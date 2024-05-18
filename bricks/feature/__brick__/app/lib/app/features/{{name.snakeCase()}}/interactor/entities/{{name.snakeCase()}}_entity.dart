@@ -5,7 +5,6 @@ class {{name.pascalCase()}}Entity extends Entity {
 
   {{name.pascalCase()}}Entity(
     super.id, {
-    required this.name,
-   
+    required this.name,   
   });
 }
