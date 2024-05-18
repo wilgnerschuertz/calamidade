@@ -28,7 +28,7 @@ jobs:
         run: dart format --set-exit-if-changed .
 
       - name: analyze
-        run: dart run melos analyze -- --no-select
+        run: dart run melos run analyze --no-select
 
       - name: test
-        run: dart run melos test -- --no-select
+        run: dart run melos test --no-select
