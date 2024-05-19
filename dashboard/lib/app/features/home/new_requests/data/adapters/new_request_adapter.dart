@@ -1,3 +1,4 @@
+import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 
 class NewRequestAdapter {
@@ -8,7 +9,7 @@ class NewRequestAdapter {
       date: json['date'],
       requestedIncome: json['requestedIncome'],
       name: json['name'],
-      status: StatusNewRequest.status(json['status']),
+      status: RequestStatus.fromId(json['status']),
       city: json['city'],
       phone: json['phone'],
       bank: json['bank'],
