@@ -17,7 +17,7 @@ class DateAdapter {
       12: 'Dezembro',
     };
 
-    return '${dateTime.day} de ${dates[dateTime.month]} ${dateTime.hour}:h';
+    return '${dateTime.day} de ${dates[dateTime.month]} às ${dateTime.hour}:${dateTime.minute}';
   }
 
   static String dateAndHour(DateTime dateTime) {
