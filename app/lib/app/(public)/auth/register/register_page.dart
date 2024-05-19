@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
                                   title: 'CPF/CNPJ',
-                                  value: user.document ?? '',
+                                  value: user.document,
                                 ),
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(

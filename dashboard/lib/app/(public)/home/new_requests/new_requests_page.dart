@@ -95,7 +95,8 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                           isSelected:
                               newRequestsController.selectedId == entity.id,
                           onTap: () {
-                            newRequestsController.selectItem(entity.id);
+                            newRequestsController
+                                .selectItem(entity.id.toString());
                           },
                         );
                       },

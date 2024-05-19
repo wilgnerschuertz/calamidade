@@ -47,7 +47,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final name = user.name ?? 'cooperado';
+    final name = user.name;
 
     return Scaffold(
       body: Stack(
