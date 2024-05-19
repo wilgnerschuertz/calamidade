@@ -45,7 +45,7 @@ class RestClientDioImpl implements IRestClient {
       ),
     });
 
-    final response = await _dio.post(
+    final response = await _dio.put(
       multipart.path,
       data: formData,
     );

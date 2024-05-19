@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     return switch (controller.value) {
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
-      SuccessState() => Navigator.of(context).pushNamed(routePaths.welcome),
+      SuccessState() => Routefly.navigate(routePaths.welcome),
       _ => null,
     };
   }
