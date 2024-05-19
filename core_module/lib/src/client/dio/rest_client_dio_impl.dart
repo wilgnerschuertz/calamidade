@@ -26,8 +26,7 @@ class RestClientDioImpl implements IRestClient {
 
   @override
   void addInterceptors(IClientInterceptor interceptor) {
-    _interceptors[interceptor] =
-        ClientInterceptorDioImpl(interceptor: interceptor);
+    _interceptors[interceptor] = ClientInterceptorDioImpl(interceptor: interceptor);
     _dio.interceptors.add(_interceptors[interceptor]!);
   }
 
@@ -45,7 +44,7 @@ class RestClientDioImpl implements IRestClient {
       ),
     });
 
-    final response = await _dio.post(
+    final response = await _dio.put(
       multipart.path,
       data: formData,
     );

@@ -59,27 +59,35 @@ class LoginControllerImpl extends BaseController<BaseState> {
     return UserAdapter.fromJson(userMap);
   }
 
-  void tokenStorage(SessionEntity session) {
+  Future<void> tokenStorage(SessionEntity session) async {
     final token = session.token;
     final refreshToken = session.refreshToken;
     final tokenExpires = session.tokenExpires;
     final user = session.user;
 
-    cache.setData(
+    await cache.setData(
       params: CacheParams(key: _kTokenKey, value: token),
     );
-    cache.setData(
+    await cache.setData(
       params: CacheParams(key: _kRefreshTokenKey, value: refreshToken),
     );
-    cache.setData(
+    await cache.setData(
       params: CacheParams(key: _kTokenExpiresKey, value: tokenExpires),
     );
-    cache.setData(
+    await cache.setData(
       params: CacheParams(key: _kUserKey, value: UserAdapter.toJson(user)),
     );
 
     // TODO: Back-end não retorna os campos de nome e photo
     update(AuthSuccess(data: session.user));
+  }
+
+  Future<String> getToken() {
+    return cache.getData(_kTokenKey).then((value) => value ?? '');
+  }
+
+  Future<String> getRefreshToken() {
+    return cache.getData(_kRefreshTokenKey).then((value) => value ?? '');
   }
 
   String? Function(String?)? validatorEmpty(String message) {

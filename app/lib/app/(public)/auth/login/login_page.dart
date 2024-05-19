@@ -24,9 +24,8 @@ class _LoginPageState extends State<LoginPage> {
 
   void listener() {
     return switch (controller.value) {
-      ErrorState(:final exception) =>
-        Alerts.showFailure(context, exception.message),
-      SuccessState() => Navigator.of(context).pushNamed(routePaths.welcome),
+      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      SuccessState() => Routefly.navigate(routePaths.welcome),
       _ => null,
     };
   }
@@ -98,8 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: const InputDecoration(
                           hintText: 'Insira seu email',
                         ),
-                        validator: controller
-                            .validatorEmpty('E-mail não pode está vazio'),
+                        validator: controller.validatorEmpty('E-mail não pode está vazio'),
                       ),
                       const SizedBox(height: 24),
                       Text(
@@ -112,8 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                       PasswordTextFormField(
                         controller: controller.passwordController,
                         hitText: 'Insira sua senha',
-                        validator: controller
-                            .validatorEmpty('Senha não pode está vazia'),
+                        validator: controller.validatorEmpty('Senha não pode está vazia'),
                       ),
                     ],
                   ),
