@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/request_details/entities/user_request_details_entity.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
     required this.phoneNumber,
   });
 
-  final UserEntity user;
+  final UserRequestDetailsEntity user;
   final String city;
   final String phoneNumber;
 
@@ -29,26 +29,20 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
           ),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              'Cidade: ',
-              style: textThemes.bodySmall?.copyWith(
-                  fontSize: 14.0,
-                  color: const Color(0xff595959)), //TODO: atualizar cor
-            ),
             Flexible(
               child: Text(
                 city,
                 style: textThemes.bodySmall
                     ?.copyWith(fontSize: 14.0, color: const Color(0xff595959)),
-                overflow: TextOverflow.ellipsis, //TODO: atualizar cor
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               'Telefone: ',
