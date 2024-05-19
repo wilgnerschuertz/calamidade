@@ -4,9 +4,7 @@ import 'package:dashboard/app/features/home/new_requests/interactor/states/new_r
 import 'package:dashboard/injector.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/controllers/new_requests_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NewRequestsPage extends StatefulWidget {
   const NewRequestsPage({super.key});
