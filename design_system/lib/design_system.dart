@@ -10,6 +10,6 @@ export 'src/icons/coo_icons.dart';
 export 'src/images/coo_file_preview.dart';
 export 'src/images/coo_images.dart';
 export 'src/lotties/coo_lotties.dart';
-export 'src/tags/priority_tag.dart';
+export 'src/tags/status_request_tag.dart';
 export 'src/tags/tag.dart';
 export 'src/themes/theme.dart';

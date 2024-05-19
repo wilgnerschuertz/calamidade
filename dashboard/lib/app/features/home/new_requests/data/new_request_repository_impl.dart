@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:core_module/core_module.dart';
-import 'package:dashboard/app/features/home/new_requests/data/adapters/new_rquest_adapter.dart';
+import 'package:dashboard/app/features/home/new_requests/data/adapters/new_request_adapter.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/repositories/i_new_request_repository.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 

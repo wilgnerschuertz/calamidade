@@ -1,4 +1,5 @@
-import 'package:dashboard/app/features/home/new_requests/data/adapters/new_rquest_adapter.dart';
+import 'package:core_module/core_module.dart';
+import 'package:dashboard/app/features/home/new_requests/data/adapters/new_request_adapter.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,7 +10,7 @@ void main() {
       final json = {
         'id': 1,
         'name': 'John Doe',
-        'status': 'baixa',
+        'status': 1,
         'city': 'New York',
         'phone': '1234567890',
         'requestedIncome': 'requestedIncome',
@@ -28,7 +29,7 @@ void main() {
       expect(result, isA<NewRequestEntity>());
       expect(result.id, equals(1));
       expect(result.name, equals('John Doe'));
-      expect(result.status, equals(StatusNewRequest.status('baixa')));
+      expect(result.status, equals(RequestStatus.fromId(1)));
       expect(result.city, equals('New York'));
       expect(result.phone, equals('1234567890'));
       expect(result.bank, equals('ABC Bank'));
