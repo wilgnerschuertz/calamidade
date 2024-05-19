@@ -49,6 +49,7 @@ class NewRequestsController extends BaseController<BaseState> {
 
     return;
 
+    // ignore: dead_code
     _repository //
         .getNewRequest()
         .fold(
