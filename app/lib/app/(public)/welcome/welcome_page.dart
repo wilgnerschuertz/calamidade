@@ -21,28 +21,16 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
-    userController.addListener(listenerUser);
 
-    listenerUser();
-
-    Future.delayed(const Duration(milliseconds: 600), () {
-      Routefly.navigate(routePaths.home);
-    });
-  }
-
-  void listenerUser() {
     if (userController.state case SuccessState(:final data)) {
       setState(() {
         user = data as UserEntity;
       });
     }
-  }
 
-  @override
-  void dispose() {
-    userController.removeListener(listenerUser);
-    userController.dispose();
-    super.dispose();
+    Future.delayed(const Duration(milliseconds: 600), () {
+      Routefly.navigate(routePaths.home);
+    });
   }
 
   @override
@@ -58,10 +46,7 @@ class _WelcomePageState extends State<WelcomePage> {
               children: [
                 RichText(
                   text: TextSpan(
-                    style: const TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700),
+                    style: const TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700),
                     children: [
                       const TextSpan(text: 'Olá, '),
                       TextSpan(
@@ -74,10 +59,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 const SizedBox(height: 16.0),
                 const Text(
                   'Seja bem-vindo de volta!',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
                 ),
               ],
             ),
