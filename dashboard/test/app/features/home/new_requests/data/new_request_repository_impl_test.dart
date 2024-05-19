@@ -55,7 +55,7 @@ void main() {
 const _response = '''{
   "data":[
   {
-    "id": "1",
+    "id": 1,
     "name": "Alice",
     "date": "date",
     "status": "alta",
@@ -69,7 +69,7 @@ const _response = '''{
     "description": "Pedido de aprovação para projeto A."
   },
   {
-    "id": "2",
+    "id": 2,
     "name": "Bruno",
     "date": "date",
     "status": "media",
@@ -83,7 +83,7 @@ const _response = '''{
     "description": "Pedido de avaliação para financiamento."
   },
   {
-    "id": "3",
+    "id": 3,
     "name": "Carla",
     "status": "baixa",
     "date": "date",
@@ -97,7 +97,7 @@ const _response = '''{
     "description": "Solicitação de crédito pessoal."
   },
   {
-    "id": "4",
+    "id": 4,
     "name": "Daniel",
     "status": "alta",
     "date": "date",

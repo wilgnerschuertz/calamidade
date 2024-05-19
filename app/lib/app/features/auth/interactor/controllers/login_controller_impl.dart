@@ -39,8 +39,8 @@ class LoginControllerImpl extends BaseController<BaseState> {
   Future<void> login() async {
     update(AuthLoading());
 
-    final email = emailController.value.toString();
-    final password = passwordController.value.toString();
+    final email = emailController.text;
+    final password = passwordController.text;
 
     final result = await repository.login(
       credentials: CredentialsEntity(email: email, password: password),

@@ -1,16 +1,18 @@
 import 'package:core_module/core_module.dart';
 
-class CheckAffiliatedEntity extends Entity {
+class RegisterEntity extends Entity {
   final String name;
   final String document;
   final String email;
+  final String password;
   final String phone;
 
-  CheckAffiliatedEntity(
+  RegisterEntity(
     super.id, {
+    required this.email,
     required this.name,
     required this.document,
-    required this.email,
+    required this.password,
     required this.phone,
   });
 }

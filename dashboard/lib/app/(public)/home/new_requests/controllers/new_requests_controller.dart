@@ -8,7 +8,7 @@ class NewRequestsController with ChangeNotifier {
   final requestsList = List.generate(
     22,
     (index) => NewRequestEntity(
-      index.toString(),
+      index,
       titleDescription: 'Reconstrução Telhado $index',
       name: 'João Maria da Silva $index',
       city: 'Estância Velha',

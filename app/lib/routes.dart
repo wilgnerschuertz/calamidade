@@ -99,7 +99,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          a7.RegisterPage(),
+          const a7.RegisterPage(),
         ),
       ),
       RouteEntity(

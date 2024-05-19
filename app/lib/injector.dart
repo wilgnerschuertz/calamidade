@@ -11,7 +11,7 @@ import 'package:coopartilhar/app/features/onboarding/data/onboarding_repository_
 import 'package:coopartilhar/app/features/onboarding/interactor/controllers/onboarding_controller.dart';
 import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onboarding_repository.dart';
 import 'package:coopartilhar/app/features/register/interactor/controllers/register_controller.dart';
-import 'package:coopartilhar/app/features/register/data/repositories/i_register_repository.dart';
+import 'package:coopartilhar/app/features/register/interactor/repositories/i_register_repository.dart';
 import 'package:coopartilhar/app/features/register/data/repositories/register_assisted_repository_impl.dart';
 import 'package:core_module/core_module.dart';
 
