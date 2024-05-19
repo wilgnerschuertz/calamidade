@@ -8,4 +8,8 @@ class CurrencyAdapter {
 
     return valueFormatted;
   }
+
+  static double removeMask(String value) {
+    return double.parse(value.replaceAll(RegExp('[^0-9]'), '')) / 100;
+  }
 }

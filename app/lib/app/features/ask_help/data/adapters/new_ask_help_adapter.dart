@@ -11,7 +11,6 @@ class NewAskHelpAdapter {
       'agency': solicitationEntity.agency,
       'account': solicitationEntity.account,
       'value': solicitationEntity.value,
-      'file': solicitationEntity.file,
       'description': solicitationEntity.description,
     };
   }

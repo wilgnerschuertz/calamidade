@@ -7,6 +7,7 @@ export 'src/buttons/coo_button/coo_button.dart';
 export 'src/cards/card_request/card_request.dart';
 export 'src/gifs/coo_gifs.dart';
 export 'src/icons/coo_icons.dart';
+export 'src/images/coo_file_preview.dart';
 export 'src/images/coo_images.dart';
 export 'src/lotties/coo_lotties.dart';
 export 'src/tags/priority_tag.dart';

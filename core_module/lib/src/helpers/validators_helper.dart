@@ -23,17 +23,22 @@ abstract class ValidatorsHelper {
   }
 
   static bool documentIsValid(String? document) {
-    const cpfPattern = r'^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$';
-    const cnpjPattern = r'^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$|^\d{14}$';
-
-    final cpfRegex = RegExp(cpfPattern);
-    final cnpjRegex = RegExp(cnpjPattern);
-
     if (document != null) {
-      return cpfRegex.hasMatch(document) || cnpjRegex.hasMatch(document);
+      return isValidCPF(document) || isValidCNPJ(document);
     }
-
     return false;
+  }
+
+  static bool isValidCPF(String document) {
+    const cpfPattern = r'^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$';
+    final cpfRegex = RegExp(cpfPattern);
+    return cpfRegex.hasMatch(document);
+  }
+
+  static bool isValidCNPJ(String document) {
+    const cnpjPattern = r'^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$|^\d{14}$';
+    final cnpjRegex = RegExp(cnpjPattern);
+    return cnpjRegex.hasMatch(document);
   }
 
   static bool passwordIsEmpty(String? password) =>
