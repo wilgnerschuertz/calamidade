@@ -46,7 +46,10 @@ class _WelcomePageState extends State<WelcomePage> {
               children: [
                 RichText(
                   text: TextSpan(
-                    style: const TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700),
+                    style: const TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700),
                     children: [
                       const TextSpan(text: 'Olá, '),
                       TextSpan(
@@ -59,7 +62,10 @@ class _WelcomePageState extends State<WelcomePage> {
                 const SizedBox(height: 16.0),
                 const Text(
                   'Seja bem-vindo de volta!',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black),
                 ),
               ],
             ),
