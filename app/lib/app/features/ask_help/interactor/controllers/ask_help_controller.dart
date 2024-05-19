@@ -117,7 +117,7 @@ class AskHelpController extends BaseController {
 
   Future<void> submiSolicitation() async {
     if (formKey.currentState!.validate()) {
-      if(files.length <= 0){
+      if (files.length <= 0) {
         update(FileErrorState());
         return;
       }

@@ -2,7 +2,7 @@ class SolicitationStatusEntity {
   final int id;
   final String name;
 
-  SolicitationStatusEntity( {
+  SolicitationStatusEntity({
     required this.id,
     required this.name,
   });

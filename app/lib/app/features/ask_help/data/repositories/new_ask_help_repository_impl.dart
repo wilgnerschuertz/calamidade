@@ -17,7 +17,6 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
         RestClientRequest(
           path: path,
           data: jsonEncode(solicitationEntity),
-          
         ),
       );
       return const Right(unit);

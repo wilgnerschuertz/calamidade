@@ -24,7 +24,7 @@ class SolicitationEntity extends Entity {
     this.account,
     required this.value,
     this.description,
-    required this.status, 
+    required this.status,
     required this.helpType,
   }) : super(id);
 }

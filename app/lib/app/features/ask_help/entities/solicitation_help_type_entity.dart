@@ -2,7 +2,7 @@ class SolicitationHelpTypeEntity {
   final int id;
   final String name;
 
-  SolicitationHelpTypeEntity( {
+  SolicitationHelpTypeEntity({
     required this.id,
     required this.name,
   });

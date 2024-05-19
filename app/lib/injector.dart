@@ -36,12 +36,13 @@ final injector = AutoInjector(
     injector.addSingleton<IAuthRepository>(AuthRepositoryImpl.new);
     injector.addLazySingleton<OnboardingController>(OnboardingController.new);
     injector.addLazySingleton<LoginControllerImpl>(LoginControllerImpl.new);
-    
+
     injector.addLazySingleton<IAccidentRepository>(AccidentRepositoryImpl.new);
     injector.addLazySingleton<IFileRepository>(FileRepositoryImpl.new);
-    injector.addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
+    injector
+        .addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
     injector.add<AskHelpController>(AskHelpController.new);
-  
+
     injector.addLazySingleton<ICheckAffiliatedRepository>(
         CheckAffiliatedRepositoryImpl.new);
     injector.addLazySingleton<CheckAffiliatedController>(
