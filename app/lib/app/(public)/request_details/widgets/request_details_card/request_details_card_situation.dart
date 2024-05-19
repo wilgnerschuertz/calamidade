@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/request_details/entities/request_details_entity.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class RequestDetailsCardSituation extends StatelessWidget {
     required this.statusDetails,
   });
 
-  final Status statusDetails;
+  final RequestStatus statusDetails;
   final String description;
 
   @override
@@ -32,10 +32,8 @@ class RequestDetailsCardSituation extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            PriorityTag(
-              label: statusDetails.label,
-              color: Color(statusDetails.color),
-              foregroundColor: Color(statusDetails.foregroundColor),
+            StatusRequestTag(
+              status: statusDetails,
             )
           ],
         ),

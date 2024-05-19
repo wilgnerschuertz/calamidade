@@ -1,5 +1,6 @@
 import 'package:coopartilhar/app/features/request_details/data/adapters/user_request_details_adapter.dart';
 import 'package:coopartilhar/app/features/request_details/entities/request_details_entity.dart';
+import 'package:core_module/core_module.dart';
 
 class RequestDetailsAdapter {
   static RequestDetailsEntity fromJson(Map<String, dynamic> map) {
@@ -8,7 +9,7 @@ class RequestDetailsAdapter {
       user: UserRequestDetailsAdapter.fromJson(map['user']),
       title: map['title'],
       amount: map['amount'],
-      status: Status.fromId(map['status']),
+      status: RequestStatus.fromId(map['status']),
       createdAt: DateTime.parse(map['createdAt']),
       description: map['description'],
     );
