@@ -1,5 +1,6 @@
-import 'package:coopartilhar/app/features/register/entities/register_entity.dart';
-import 'package:coopartilhar/app/features/register/data/repositories/i_register_repository.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/register/interactor/entities/register_entity.dart';
+import 'package:coopartilhar/app/features/register/interactor/repositories/i_register_repository.dart';
 import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
@@ -11,17 +12,14 @@ class RegisterController<RegisterState> extends BaseController {
   late final repeatPasswordController = TextEditingController();
   late final formKey = GlobalKey<FormState>();
 
-  Future<void> register({
-    required String name,
-    required String document,
-    required String email,
-  }) async {
+  Future<void> register(UserEntity user) async {
     if (formKey.currentState!.validate()) {
       final registerEntity = RegisterEntity(
-        const Uuid().v4(),
-        email: email,
-        name: name,
-        document: document,
+        -1,
+        email: user.email,
+        name: user.name,
+        document: user.document,
+        phone: user.phone,
         password: passwordController.text,
       );
 

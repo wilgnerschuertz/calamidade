@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/register/entities/register_entity.dart';
+import 'package:coopartilhar/app/features/register/interactor/entities/register_entity.dart';
 import 'package:core_module/core_module.dart';
 
 abstract class IRegisterRepository {

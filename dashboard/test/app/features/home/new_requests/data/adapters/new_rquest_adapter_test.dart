@@ -7,7 +7,7 @@ void main() {
     test('fromJson should return a NewRequestEntity object', () {
       // Arrange
       final json = {
-        'id': '1',
+        'id': 1,
         'name': 'John Doe',
         'status': 'baixa',
         'city': 'New York',
@@ -26,7 +26,7 @@ void main() {
 
       // Assert
       expect(result, isA<NewRequestEntity>());
-      expect(result.id, equals('1'));
+      expect(result.id, equals(1));
       expect(result.name, equals('John Doe'));
       expect(result.status, equals(StatusNewRequest.status('baixa')));
       expect(result.city, equals('New York'));

@@ -1,3 +1,5 @@
+import 'package:coopartilhar/routes.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -37,13 +39,15 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: Text('Vamos prosseguir. O que você deseja fazer?',
-                          textAlign: TextAlign.center,
-                          style: textTheme.bodySmall!.copyWith(
-                              fontSize: 24,
-                              color:
-                                  CoopartilharColors.of(context).textColor))),
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Text(
+                      'Vamos prosseguir. O que você deseja fazer?',
+                      textAlign: TextAlign.center,
+                      style: textTheme.bodySmall!.copyWith(
+                          fontSize: 24,
+                          color: CoopartilharColors.of(context).textColor),
+                    ),
+                  ),
                 ],
               ),
               Padding(
@@ -56,8 +60,10 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                       icon: const Image(image: CooImages.cooNeedHelp),
                       labelPrimary: 'Preciso de ajuda',
                       labelSecondary: 'Estou buscando recursos',
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/ask_help'),
+                      onPressed: () {
+                        Routefly.navigate(routePaths.home);
+                        Routefly.push(routePaths.askHelp.path);
+                      },
                     ),
                     const SizedBox(
                       height: 20,
@@ -66,8 +72,10 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                       icon: const Image(image: CooImages.cooWantToHelp),
                       labelPrimary: 'Quero ajudar!',
                       labelSecondary: 'Quero apadrinhar uma família',
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/want_to_help'),
+                      onPressed: () {
+                        Routefly.navigate(routePaths.home);
+                        Routefly.push(routePaths.wantToHelp);
+                      },
                     ),
                   ],
                 ),
