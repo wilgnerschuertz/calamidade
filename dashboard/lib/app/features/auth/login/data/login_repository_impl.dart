@@ -4,8 +4,7 @@ import 'package:dashboard/app/features/auth/login/interactor/interface/i_login_r
 
 class LoginRepositoryImpl implements ILoginRepository {
   @override
-  Future<Output<Unit>> auth(CredentialsEntity credentials) {
-    // TODO: implement auth
-    throw UnimplementedError();
+  Future<Output<Unit>> auth(CredentialsEntity credentials) async {
+    return const Right(unit);
   }
 }
