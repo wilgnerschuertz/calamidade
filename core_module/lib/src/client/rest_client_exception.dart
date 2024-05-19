@@ -1,5 +1,4 @@
 import '../../core_module.dart';
-import 'rest_client_http_message.dart';
 
 class RestClientException extends BaseException
     implements RestClientHttpMessage {

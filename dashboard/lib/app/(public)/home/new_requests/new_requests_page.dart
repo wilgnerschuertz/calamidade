@@ -1,9 +1,9 @@
-import 'package:dashboard/app/(public)/home/new_requests/widgets/cards/new_requests_card/new_requests_card.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
+import 'package:core_module/core_module.dart';
+import 'package:dashboard/app/(public)/home/new_requests/widgets/new_requests_card.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/controllers/new_requests_controller.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/states/new_request_states.dart';
 import 'package:dashboard/injector.dart';
 import 'package:design_system/design_system.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/controllers/new_requests_controller.dart';
 import 'package:flutter/material.dart';
 
 class NewRequestsPage extends StatefulWidget {
@@ -123,7 +123,7 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                           phone: state.lastItem?.phone ?? '',
                           date: state.lastItem?.date ?? '',
                           status:
-                              state.lastItem?.status ?? StatusNewRequest.low,
+                              state.lastItem?.status ?? RequestStatus.analisys,
                           requestedIncome:
                               state.lastItem?.requestedIncome ?? '',
                           isSelected: state.selectedId == state.lastItem?.id,
