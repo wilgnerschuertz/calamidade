@@ -30,4 +30,11 @@ class LoginController extends BaseController<BaseState> {
       );
     }
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    passwordController.dispose();
+    emailController.dispose();
+  }
 }
