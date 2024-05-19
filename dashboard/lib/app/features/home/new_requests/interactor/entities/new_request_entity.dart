@@ -14,7 +14,7 @@ enum StatusNewRequest {
   final String label;
 
   Color get color => statusColor[this]!;
-  
+
   const StatusNewRequest({required this.label});
 
   static StatusNewRequest status(String status) {
@@ -31,11 +31,11 @@ enum StatusNewRequest {
   }
 }
 
-    final statusColor = {
-    StatusNewRequest.low: const Color.fromARGB(255, 0, 255, 34),
-    StatusNewRequest.medium: const Color.fromARGB(255, 0, 38, 255),
-    StatusNewRequest.high: const Color.fromARGB(255, 255, 0, 0),
-  };
+final statusColor = {
+  StatusNewRequest.low: const Color.fromARGB(255, 0, 255, 34),
+  StatusNewRequest.medium: const Color.fromARGB(255, 0, 38, 255),
+  StatusNewRequest.high: const Color.fromARGB(255, 255, 0, 0),
+};
 
 class NewRequestEntity extends Entity {
   final String titleDescription;

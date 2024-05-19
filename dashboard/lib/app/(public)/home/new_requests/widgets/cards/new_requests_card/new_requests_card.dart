@@ -3,7 +3,6 @@ import 'package:dashboard/app/features/home/new_requests/interactor/entities/new
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-
 class NewRequestsCard extends StatefulWidget {
   final String title;
   final String name;
@@ -70,7 +69,8 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     child: Text(
                       widget.status.label,
-                      style: texts.bodyMedium?.copyWith(color: widget.status.color),
+                      style: texts.bodyMedium
+                          ?.copyWith(color: widget.status.color),
                     ),
                   ),
                 ),
