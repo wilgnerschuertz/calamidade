@@ -11,17 +11,19 @@ class RequestDetailsRepositoryImpl implements IRequestDetailsRepository {
   @override
   Future<Output<RequestDetailsEntity>> getRequestById(String id) async {
     try {
-      //TODO: impl correct endpoint
-      const url = '';
-      final response =
-          await restClient.get(RestClientRequest(path: '$url/$id'));
+      const url = '/core/v1/requests/';
+      final response = await restClient.get(RestClientRequest(path: '$url$id'));
       if (response.data == null) {
         throw const DefaultException(message: 'Requisição inválida');
       }
       return Right(RequestDetailsAdapter.fromJson(response.data!));
-    } on BaseException catch (err) {
-      return Left(DefaultException(message: err.message));
-    } catch (_) {
+    } on RestClientException catch (err) {
+      if (err.statusCode == 401) {
+        return const Left(DefaultException(message: 'Não autorizado!'));
+      }
+      return const Left(
+          DefaultException(message: 'Verifique a conexão e tente novamente'));
+    } catch (e) {
       return const Left(DefaultException(message: 'Erro desconhecido'));
     }
   }
