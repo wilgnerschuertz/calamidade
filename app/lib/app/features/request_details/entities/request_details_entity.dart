@@ -10,7 +10,7 @@ class RequestDetailsEntity extends Entity {
   final StatusDetailsEntity status;
 
   RequestDetailsEntity({
-    required String id,
+    required int id,
     required this.title,
     required this.user,
     required this.createdAt,

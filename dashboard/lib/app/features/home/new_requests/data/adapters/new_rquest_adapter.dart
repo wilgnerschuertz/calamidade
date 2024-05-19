@@ -3,7 +3,7 @@ import 'package:dashboard/app/features/home/new_requests/interactor/entities/new
 class NewRequestAdapter {
   static NewRequestEntity fromJson(Map json) {
     return NewRequestEntity(
-      json['id'].toString(),
+      json['id'] ?? -1,
       titleDescription: json['description'],
       date: json['date'],
       requestedIncome: json['requestedIncome'],

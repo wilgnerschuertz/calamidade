@@ -35,6 +35,6 @@ class OrderEntity extends Entity {
       required this.banco,
       required this.agencia,
       required this.conta,
-      required String id})
+      required int id})
       : super(id);
 }
