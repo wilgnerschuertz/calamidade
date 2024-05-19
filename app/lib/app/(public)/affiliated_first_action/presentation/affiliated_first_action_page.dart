@@ -24,7 +24,8 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Image(image: CooImages.cooBrand1),
+              const Center(
+                  child: Image(image: CooImages.cooBrand2, height: 166)),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

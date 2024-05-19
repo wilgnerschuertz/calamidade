@@ -61,6 +61,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             const Spacer(),
+                            //TODO: Alterar para CooImages.cooBrand2, para aumentar a resolução do logo, não fiz isso pois a page precisa de credenciais para abrir corretamente
                             const Image(image: CooImages.cooBrand1),
                             const SizedBox(
                               height: 32,
