@@ -76,7 +76,7 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                         child: Padding(
                           padding: EdgeInsets.only(top: 16),
                           child: Image(
-                            image: CooImages.cooBrand1,
+                            image: CooImages.cooBrand2,
                             width: 150,
                             height: 124,
                           ),

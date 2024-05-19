@@ -88,7 +88,8 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  const Image(image: CooImages.cooBrand1),
+                  const Center(
+                      child: Image(image: CooImages.cooBrand2, height: 166)),
                   const Spacer(),
                   Row(
                     children: [
