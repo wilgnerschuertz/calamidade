@@ -42,7 +42,7 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
     if (controller.value is ErrorState<BaseException>) {
       final err = (controller.value as ErrorState<BaseException>);
       if (err.exception is NotAffiliatedError) {
-        Routefly.navigate(routePaths.auth.notAffiliated);
+        Routefly.push(routePaths.auth.notAffiliated);
         setLoading(false);
       } else {
         setLoading(false);
