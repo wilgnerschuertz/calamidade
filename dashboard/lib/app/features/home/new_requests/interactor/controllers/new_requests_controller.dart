@@ -21,7 +21,7 @@ class NewRequestsController extends BaseController<BaseState> {
     final data = List.generate(
       23,
       (index) => NewRequestEntity(
-        index.toString(),
+        index,
         titleDescription: 'Reconstrução Telhado $index',
         name: 'João Maria da Silva $index',
         city: 'Estância Velha',
@@ -66,7 +66,7 @@ class NewRequestsController extends BaseController<BaseState> {
     );
   }
 
-  void selectItem(String itemId) {
+  void selectItem(int? itemId) {
     final newState = (state as NewRequestsSuccessState).copyWith(
       selectedId: itemId,
     );

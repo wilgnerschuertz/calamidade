@@ -16,12 +16,12 @@ class NewRequestsSuccessState extends SuccessState<List<NewRequestEntity>> {
     this.lastItem,
   });
 
-  final String? selectedId;
+  final int? selectedId;
   final NewRequestEntity? lastItem;
 
   NewRequestsSuccessState copyWith(
       {List<NewRequestEntity>? data,
-      String? selectedId,
+      int? selectedId,
       NewRequestEntity? lastItem}) {
     return NewRequestsSuccessState(
       data: data ?? this.data,

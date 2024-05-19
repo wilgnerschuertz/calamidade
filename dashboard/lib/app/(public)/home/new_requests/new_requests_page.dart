@@ -128,7 +128,7 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                               state.lastItem?.requestedIncome ?? '',
                           isSelected: state.selectedId == state.lastItem?.id,
                           onTap: () {
-                            controller.selectItem(state.lastItem?.id ?? '');
+                            controller.selectItem(state.lastItem?.id);
                           },
                         ),
                       ),
