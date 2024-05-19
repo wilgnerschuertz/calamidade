@@ -143,15 +143,21 @@ class CpfCnpjFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     final text = newValue.text;
+    final shouldReturnToCpfFormat =
+        oldValue.text.length > text.length && text.length == 15;
     final removedCharacteres = text.replaceAll(RegExp('[^0-9]'), '');
-    final maskedText = _applyMask(removedCharacteres);
+
+    final maskedText = _applyMask(removedCharacteres, shouldReturnToCpfFormat);
     return TextEditingValue(
       text: maskedText,
       selection: TextSelection.collapsed(offset: maskedText.length),
     );
   }
 
-  String _applyMask(String text) {
+  String _applyMask(
+    String text,
+    bool shouldReturnToCpfFormat,
+  ) {
     if (text.length <= 11) {
       if (text.length <= 3) {
         return text;
@@ -163,6 +169,10 @@ class CpfCnpjFormatter extends TextInputFormatter {
         return '${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6, 9)}-${text.substring(9)}';
       }
     } else {
+      if (text.length == 12 && shouldReturnToCpfFormat) {
+        text = text.substring(0, text.length - 1);
+        return '${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6, 9)}-${text.substring(9)}';
+      }
       if (text.length <= 14) {
         return '${text.substring(0, 2)}.${text.substring(2, 5)}.${text.substring(5, 8)}/${text.substring(8, 12)}-${text.substring(12)}';
       } else {
