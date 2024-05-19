@@ -7,4 +7,5 @@ class CooIcons {
       AssetImage(package: _packageName, 'assets/icons/fi-rs-checked.png');
   static final cooCrossCircle = UIcons.regularRounded.cross_circle;
   static final plusSmall = UIcons.regularRounded.plus_small;
+  static final cooHandHolding = UIcons.regularStraight.hand_holding_heart;
 }

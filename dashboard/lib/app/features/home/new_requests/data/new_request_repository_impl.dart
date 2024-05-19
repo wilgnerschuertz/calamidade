@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/features/home/new_requests/data/adapters/new_rquest_adapter.dart';
-import 'package:dashboard/app/features/home/new_requests/data/i_new_request_repository.dart';
+import 'package:dashboard/app/features/home/new_requests/interactor/repositories/i_new_request_repository.dart';
 import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 
 class NewRequestRepositoryImpl implements INewRequestRepository {
@@ -15,7 +15,8 @@ class NewRequestRepositoryImpl implements INewRequestRepository {
   @override
   Future<Output<List<NewRequestEntity>>> getNewRequest() async {
     try {
-      final response = await _restClient.get(RestClientRequest(path: 'url'));
+      final response = await _restClient
+          .get(RestClientRequest(path: '/core/v1/requests?page=1&limit=1'));
       if (response.data == null) {
         return const Left(DefaultException(message: 'Requisição inválida'));
       } else {
@@ -28,7 +29,7 @@ class NewRequestRepositoryImpl implements INewRequestRepository {
     } on BaseException catch (err) {
       return Left(DefaultException(message: err.message));
     } catch (e) {
-      return Left(DefaultException(message: 'Erro desconhecido:$e'));
+      return Left(DefaultException(message: 'Erro desconhecido: $e'));
     }
   }
 }

@@ -1,14 +1,19 @@
 import 'package:core_module/core_module.dart';
+import 'package:flutter/material.dart';
 
 enum StatusNewRequest {
   // TODO: Adicionar os status corretos e corrigir as cores para cada status
   // no momento ainda não foram decididos quais serão os status
+  // https://github.com/Flutterando/calamidade/issues/179
+
   low(label: 'Baixa'),
   medium(label: 'Média'),
   high(label: 'Alta'),
   notDefined(label: 'Não definido');
 
   final String label;
+
+  Color get color => statusColor[this]!;
 
   const StatusNewRequest({required this.label});
 
@@ -25,6 +30,12 @@ enum StatusNewRequest {
     }
   }
 }
+
+final statusColor = {
+  StatusNewRequest.low: const Color.fromARGB(255, 0, 255, 34),
+  StatusNewRequest.medium: const Color.fromARGB(255, 0, 38, 255),
+  StatusNewRequest.high: const Color.fromARGB(255, 255, 0, 0),
+};
 
 class NewRequestEntity extends Entity {
   final String titleDescription;
