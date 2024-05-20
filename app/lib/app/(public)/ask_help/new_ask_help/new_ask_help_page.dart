@@ -184,20 +184,28 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                               CurrencyFormatter(),
                             ],
                           ),
+                          const TextInformationExtends(text: 'Localização*'),
+                          CooInputButton(
+                            controller: controller.localizationController,
+                            iconData: UIcons.solidRounded.location_alt,
+                            onTap: () {
+                              print('click');
+                            },
+                          ),
+                          const TextInformationExtends(text: 'Dados Bancarios'),
+                          CooInputButton(
+                            controller: controller.bankAccountController,
+                            iconData: UIcons.solidRounded.bank,
+                            onTap: () {
+                              print('click');
+                            },
+                          ),
                           const TextInformationExtends(text: 'Enviar arquivo*'),
-                          InkWell(
-                            onTap: controller.pickFile,
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
-                                color: colorsTheme.primary,
-                              ),
-                              child: Icon(
-                                UIcons.regularStraight.clip,
-                                color: colorsTheme.white,
-                              ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            child: CooIconButton(
+                              icon: UIcons.regularStraight.clip,
+                              onTap: controller.pickFile,
                             ),
                           ),
                           if (controller.files.isNotEmpty)

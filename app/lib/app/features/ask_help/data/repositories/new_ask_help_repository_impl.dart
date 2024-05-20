@@ -16,7 +16,6 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
     UserEntity user,
   ) async {
     try {
-      print(NewAskHelpAdapter.toJson(solicitationEntity, user));
       await restClient.post(
         RestClientRequest(
           path: '/core/v1/requests',

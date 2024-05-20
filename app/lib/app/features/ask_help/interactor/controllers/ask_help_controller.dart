@@ -49,17 +49,22 @@ class AskHelpController extends BaseController {
   late final TextEditingController cpfController =
       TextEditingController(text: '12345678910');
   late final TextEditingController pixKeyController =
-      TextEditingController(text: 'test');
+      TextEditingController(text: 'teste@test.com');
   late final TextEditingController bankController =
-      TextEditingController(text: 'test');
+      TextEditingController(text: '1234');
   late final TextEditingController agencyController =
-      TextEditingController(text: 'test');
+      TextEditingController(text: '123456');
   late final TextEditingController accountController =
-      TextEditingController(text: 'test');
+      TextEditingController(text: '123');
   late final TextEditingController valueController =
       TextEditingController(text: '1000');
   late final TextEditingController descriptionController =
       TextEditingController(text: 'test');
+
+  late final TextEditingController localizationController =
+      TextEditingController(text: 'Taquari, RS');
+  late final TextEditingController bankAccountController =
+      TextEditingController(text: 'Banco - 1000');
 
   Future<void> pickFile() async {
     update(FileLoadingState());
@@ -171,6 +176,8 @@ class AskHelpController extends BaseController {
     accountController.dispose();
     valueController.dispose();
     descriptionController.dispose();
+    localizationController.dispose();
+    bankAccountController.dispose();
     super.dispose();
   }
 

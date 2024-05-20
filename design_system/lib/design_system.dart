@@ -4,6 +4,8 @@ export 'src/alert/alerts.dart';
 export 'src/buttons/card_button/card_button.dart';
 export 'src/buttons/chip_button/chip_button.dart';
 export 'src/buttons/coo_button/coo_button.dart';
+export 'src/buttons/coo_button/coo_icon_button.dart';
+export 'src/input/coo_input_button.dart';
 export 'src/cards/card_request/card_request.dart';
 export 'src/gifs/coo_gifs.dart';
 export 'src/icons/coo_icons.dart';
