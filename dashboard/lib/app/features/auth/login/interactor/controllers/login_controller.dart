@@ -18,7 +18,7 @@ class LoginController extends BaseController<BaseState> {
       update(LoadingState());
 
       final credentials = CredentialsEntity(
-        const Uuid().v4(),
+        0,
         emailController.text,
         passwordController.text,
       );
