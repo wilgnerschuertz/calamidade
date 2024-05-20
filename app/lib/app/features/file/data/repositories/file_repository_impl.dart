@@ -46,6 +46,10 @@ class FileRepositoryImpl implements IFileRepository {
         path: presignedUrl.url,
         fileBytes: fileBytes,
       ));
+
+      final data = response.data;
+      print(data);
+
       return Right(FileEntity(-1, 'test', 'test'));
     } on BaseException catch (err) {
       return Left(err);

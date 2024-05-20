@@ -1,6 +1,6 @@
 import 'package:coopartilhar/app/features/accident/data/repositories/accident_repository_impl.dart';
 import 'package:coopartilhar/app/features/accident/data/repositories/i_accident_repository.dart';
-import 'package:coopartilhar/app/features/ask_help/data/repositories/i_new_ask_help_repository.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/data/repositories/new_ask_help_repository_impl.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/controllers/ask_help_controller.dart';
 import 'package:coopartilhar/app/features/auth/data/repositories/auth_repository_impl.dart';

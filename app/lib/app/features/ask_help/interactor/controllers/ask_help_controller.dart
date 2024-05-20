@@ -5,35 +5,43 @@ import 'package:coopartilhar/app/features/accident/entities/accident_entity.dart
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_help_type_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_status_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/state/file_state.dart';
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:coopartilhar/app/features/file/data/repositories/i_file_repository.dart';
 import 'package:coopartilhar/app/features/file/entities/pressigned_entity.dart';
 import 'package:core_module/core_module.dart';
 
-import 'package:coopartilhar/app/features/ask_help/data/repositories/i_new_ask_help_repository.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
 import 'package:flutter/material.dart';
 
 class AskHelpController extends BaseController {
-  AskHelpController(
-      {required INewAskHelpRepository repository,
-      required IFileRepository fileRepository,
-      required IFilePickerService filePickerService,
-      required IAccidentRepository accidentRepository})
-      : _repository = repository,
+  AskHelpController({
+    required INewAskHelpRepository repository,
+    required IFileRepository fileRepository,
+    required IFilePickerService filePickerService,
+    required IAccidentRepository accidentRepository,
+    required LoginControllerImpl userController,
+  })  : _repository = repository,
         _fileRepository = fileRepository,
         _filePickerService = filePickerService,
         _accidentRepository = accidentRepository,
+        _userController = userController,
         super(InitialState());
 
   final IAccidentRepository _accidentRepository;
   final IFileRepository _fileRepository;
   final INewAskHelpRepository _repository;
   final IFilePickerService _filePickerService;
+  final LoginControllerImpl _userController;
 
   // TODO: Implementar remote config
   double preApprovedValue = 3500.00;
 
   List<String> files = [];
+
+  UserEntity user = UserEntity.init();
 
   late final formKey = GlobalKey<FormState>();
   late final TextEditingController titleController =
@@ -73,6 +81,7 @@ class AskHelpController extends BaseController {
     final AccidentEntity accidentEntity = AccidentEntity(
         solicitationId: solicitationEntity.id!,
         fileId: pressignedEntity.fileId);
+
     final response = await _accidentRepository.saveAccident(accidentEntity);
 
     response.fold(
@@ -85,6 +94,12 @@ class AskHelpController extends BaseController {
     PressignedEntity pressignedEntity,
   ) async {
     final SolicitationEntity solicitation = SolicitationEntity(
+      id: -1,
+      account: accountController.text,
+      agency: agencyController.text,
+      bank: bankController.text,
+      description: descriptionController.text,
+      pix: pixKeyController.text,
       title: titleController.text,
       cpf: cpfController.text,
       value: CurrencyAdapter.removeMask(valueController.text),
@@ -94,7 +109,15 @@ class AskHelpController extends BaseController {
         name: 'Analysis',
       ),
     );
-    final response = await _repository.saveSolicitation(solicitation);
+
+    if (_userController.state case AuthSuccess(:final data)) {
+      user = data;
+    }
+
+    final response = await _repository.saveSolicitation(
+      solicitation,
+      user,
+    );
 
     response.fold(
       (error) => update(ErrorState<BaseException>(exception: error)),
@@ -104,20 +127,22 @@ class AskHelpController extends BaseController {
 
   void _uploadFile(String fileName, PressignedEntity pressignedEntity,
       List<int>? fileBytes) async {
-    final responseUpload = await _fileRepository.upload(
-      fileName: fileName,
-      presignedUrl: pressignedEntity,
-      fileBytes: fileBytes,
-    );
-    responseUpload.fold(
-      (error) => update(ErrorState<BaseException>(exception: error)),
-      (_) => _generateSolicitation(pressignedEntity),
-    );
+    // final responseUpload = await _fileRepository.upload(
+    //   fileName: fileName,
+    //   presignedUrl: pressignedEntity,
+    //   fileBytes: fileBytes,
+    // );
+
+    // responseUpload.fold(
+    //   (error) => update(ErrorState<BaseException>(exception: error)),
+    //   (_) => _generateSolicitation(pressignedEntity),
+    // );
+    _generateSolicitation(pressignedEntity);
   }
 
   Future<void> submiSolicitation() async {
     if (formKey.currentState!.validate()) {
-      if (files.length <= 0) {
+      if (files.isEmpty) {
         update(FileErrorState());
         return;
       }

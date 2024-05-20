@@ -200,7 +200,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                               ),
                             ),
                           ),
-                          if (controller.files.length > 0)
+                          if (controller.files.isNotEmpty)
                             CooFilePreview(
                               type: FilePreviewType.file,
                               path: controller.files.first,

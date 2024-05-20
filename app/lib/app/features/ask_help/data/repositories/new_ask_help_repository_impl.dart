@@ -1,7 +1,9 @@
 import 'dart:convert';
 
-import 'package:coopartilhar/app/features/ask_help/data/repositories/i_new_ask_help_repository.dart';
+import 'package:coopartilhar/app/features/ask_help/data/adapters/new_ask_help_adapter.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:core_module/core_module.dart';
 
 class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
@@ -10,13 +12,15 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
 
   @override
   Future<Output<Unit>> saveSolicitation(
-      SolicitationEntity solicitationEntity) async {
+    SolicitationEntity solicitationEntity,
+    UserEntity user,
+  ) async {
     try {
-      const path = '/core/v1/requests';
+      print(NewAskHelpAdapter.toJson(solicitationEntity, user));
       await restClient.post(
         RestClientRequest(
-          path: path,
-          data: jsonEncode(solicitationEntity),
+          path: '/core/v1/requests',
+          data: NewAskHelpAdapter.toJson(solicitationEntity, user),
         ),
       );
       return const Right(unit);
