@@ -7,54 +7,54 @@ void main() {
   SharedPreferences.setMockInitialValues({});
 
   test('shared preferences impl String ...', () async {
-    SharedPreferencesImpl chace = SharedPreferencesImpl();
+    SharedPreferencesImpl cache = SharedPreferencesImpl();
 
     CacheParams params = CacheParams(key: 'String', value: 'teste');
 
-    await chace.setData(params: params);
+    await cache.setData(params: params);
 
-    final teste = await chace.getData('String');
+    final teste = await cache.getData('String');
 
     expect(teste, 'teste');
   });
 
   test('shared preferences impl bool ...', () async {
-    SharedPreferencesImpl chace = SharedPreferencesImpl();
+    SharedPreferencesImpl cache = SharedPreferencesImpl();
 
     CacheParams params = CacheParams(key: 'bool', value: true);
 
-    await chace.setData(params: params);
+    await cache.setData(params: params);
 
-    final teste = await chace.getData('bool');
+    final teste = await cache.getData('bool');
 
     expect(teste, true);
   });
 
   test('shared preferences impl List...', () async {
-    SharedPreferencesImpl chace = SharedPreferencesImpl();
+    SharedPreferencesImpl cache = SharedPreferencesImpl();
 
     CacheParams params = CacheParams(key: 'list', value: ['teste']);
 
-    await chace.setData(params: params);
+    await cache.setData(params: params);
 
-    final teste = await chace.getData('list');
+    final teste = await cache.getData('list');
 
     expect(teste, ['teste']);
   });
 
   test('shared preferences impl Remove...', () async {
-    SharedPreferencesImpl chace = SharedPreferencesImpl();
+    SharedPreferencesImpl cache = SharedPreferencesImpl();
 
     CacheParams params = CacheParams(key: 'remove', value: 'teste');
 
-    await chace.setData(params: params);
+    await cache.setData(params: params);
 
-    final teste = await chace.getData('remove');
+    final teste = await cache.getData('remove');
 
     expect(teste, 'teste');
 
-    await chace.removeData('remove');
+    await cache.removeData('remove');
 
-    expect(() => chace.getData('remove'), throwsA(isA<CacheException>()));
+    expect(cache.getData('remove'), completion(isNull));
   });
 }

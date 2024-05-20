@@ -5,6 +5,7 @@ import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
+// TODO: this page will be developed in v2+
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
 
@@ -60,6 +61,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             const Spacer(),
+                            //TODO: Alterar para CooImages.cooBrand2, para aumentar a resolução do logo, não fiz isso pois a page precisa de credenciais para abrir corretamente
                             const Image(image: CooImages.cooBrand1),
                             const SizedBox(
                               height: 32,

@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   lottie: ^3.1.1
+  mocktail: ^1.0.3
   routefly: ^1.0.9
   shared_preferences: ^2.2.3
   uicons: ^1.0.1
@@ -23,7 +24,6 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  mocktail: ^1.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

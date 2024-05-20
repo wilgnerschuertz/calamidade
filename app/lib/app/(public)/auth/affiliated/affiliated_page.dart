@@ -1,3 +1,5 @@
+import 'package:coopartilhar/routes.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -8,31 +10,15 @@ class AffiliatedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.chevron_left),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           const Image(image: CooImages.cooBackgroundDetails),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               const Spacer(),
-              Text(
-                'Sucesso!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 36,
-                    color: colors.primary,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'inter'),
-              ),
               Image(
                   image: CooImages.cooSuccess,
                   width: MediaQuery.sizeOf(context).width * 0.8),
@@ -58,7 +44,9 @@ class AffiliatedPage extends StatelessWidget {
                     color: colors.black),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Routefly.push(routePaths.auth.login);
+                },
                 child: Text(
                   'Já tenho cadastro',
                   textAlign: TextAlign.center,
@@ -73,10 +61,13 @@ class AffiliatedPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
-              CooButton(
-                  label: 'Concluir cadastro',
-                  onPressed: () {},
-                  icon: Icons.arrow_right_alt),
+              CooButton.primary(
+                label: 'Concluir cadastro',
+                onPressed: () {
+                  Routefly.push(routePaths.auth.register);
+                },
+                icon: Icons.arrow_right_alt,
+              ),
               const Spacer(flex: 2),
             ],
           )

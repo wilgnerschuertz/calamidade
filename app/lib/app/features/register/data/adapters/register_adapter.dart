@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/register/entities/register_entity.dart';
+import 'package:coopartilhar/app/features/register/interactor/entities/register_entity.dart';
 
 class RegisterAdapter {
   static Map<String, dynamic> toJson(RegisterEntity register) {
@@ -9,6 +9,8 @@ class RegisterAdapter {
       'password': register.password,
       'firstName': firstName,
       'lastName': lastName,
+      'document': register.document,
+      'telephone': register.phone,
     };
   }
 }

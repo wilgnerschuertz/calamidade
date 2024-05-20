@@ -165,18 +165,21 @@ class CooButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              onPressed: enable ? onPressed : null,
-              child: isLoading
-                  ? const CircularProgressIndicator()
-                  : _ContentButton(
-                      icon: Icon(
-                        icon,
-                        color: _backgroundColor,
-                      ),
-                      label: label,
-                      textColor: _backgroundColor,
-                      colors: colors,
-                    ),
+              onPressed: () {
+                if (enable && !isLoading) {
+                  onPressed();
+                }
+              },
+              child: _ContentButton(
+                icon: Icon(
+                  icon,
+                  color: _backgroundColor,
+                ),
+                label: label,
+                textColor: _backgroundColor,
+                colors: colors,
+                isLoading: isLoading,
+              ),
             )
           : ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -186,18 +189,21 @@ class CooButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              onPressed: enable ? onPressed : null,
-              child: isLoading
-                  ? const CircularProgressIndicator()
-                  : _ContentButton(
-                      icon: Icon(
-                        icon,
-                        color: _textColor,
-                      ),
-                      label: label,
-                      textColor: _textColor,
-                      colors: colors,
-                    ),
+              onPressed: () {
+                if (enable && !isLoading) {
+                  onPressed();
+                }
+              },
+              child: _ContentButton(
+                icon: Icon(
+                  icon,
+                  color: _textColor,
+                ),
+                label: label,
+                textColor: _textColor,
+                colors: colors,
+                isLoading: isLoading,
+              ),
             ),
     );
   }
@@ -209,26 +215,39 @@ class _ContentButton extends StatelessWidget {
     required this.label,
     required this.textColor,
     required this.colors,
+    required this.isLoading,
   });
 
   final Icon? icon;
   final String label;
   final Color? textColor;
   final CoopartilharColors colors;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        icon != null && label.isNotEmpty ? const SizedBox(width: 8) : Container(),
-        Text(
-          label,
-          style: textTheme.bodyMedium?.copyWith(color: textColor),
-        ),
-        Center(child: icon ?? Container()),
-      ],
-    );
+    return isLoading
+        ? const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            ],
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              icon != null && label.isNotEmpty
+                  ? const SizedBox(width: 8)
+                  : Container(),
+              Text(
+                label,
+                style: textTheme.bodyMedium?.copyWith(color: textColor),
+              ),
+              Center(child: icon ?? Container()),
+            ],
+          );
   }
 }

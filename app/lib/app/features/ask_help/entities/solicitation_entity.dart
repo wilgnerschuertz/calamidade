@@ -12,7 +12,7 @@ class SolicitationEntity extends Entity {
   final String? description;
 
   SolicitationEntity({
-    required String id,
+    required int id,
     required this.title,
     required this.cpf,
     this.pix,

@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 class CooNavigatorBar extends StatelessWidget {
   const CooNavigatorBar({
     super.key,
-    required this.onClickPlus,
     required this.onClickCooBrand,
     required this.onClickDonate,
   });
 
-  final VoidCallback onClickPlus;
   final VoidCallback onClickCooBrand;
   final VoidCallback onClickDonate;
 
@@ -19,73 +17,54 @@ class CooNavigatorBar extends StatelessWidget {
     final colors = CoopartilharColors.of(context);
 
     return BottomAppBar(
-      height: 75,
-      color: Colors.transparent,
+      height: 60,
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 60,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  top: BorderSide(color: colors.grey),
-                ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(36),
-                  topRight: Radius.circular(36),
-                ),
+          Container(
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(color: colors.grey),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: colors.primary.withOpacity(0.13),
-                          borderRadius: const BorderRadius.all(Radius.circular(14)),
-                        ),
-                        child: const Image(
-                          image: CooImages.cooBrandSmall,
-                          height: 24,
-                          width: 30,
-                        ),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(36),
+                topRight: Radius.circular(36),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: colors.primary.withOpacity(0.13),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(14)),
                       ),
-                      onPressed: onClickCooBrand,
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        UIcons.regularStraight.hand_holding_heart,
-                        color: Colors.black,
+                      child: const Image(
+                        image: CooImages.cooBrandSmall,
+                        height: 24,
+                        width: 30,
                       ),
-                      onPressed: onClickDonate,
                     ),
-                  ],
-                ),
+                    onPressed: onClickCooBrand,
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      UIcons.regularStraight.hand_holding_heart,
+                      color: Colors.black,
+                    ),
+                    onPressed: onClickDonate,
+                  ),
+                ],
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: InkWell(
-              onTap: onClickPlus,
-              child: Container(
-                height: 64,
-                width: 64,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: colors.primary,
-                  borderRadius: BorderRadius.circular(36),
-                ),
-                child: Icon(UIcons.regularStraight.plus, color: colors.white, size: 20),
-              ),
-            ),
-          )
         ],
       ),
     );

@@ -5,6 +5,7 @@ class RegisterEntity extends Entity {
   final String document;
   final String email;
   final String password;
+  final String phone;
 
   RegisterEntity(
     super.id, {
@@ -12,5 +13,6 @@ class RegisterEntity extends Entity {
     required this.name,
     required this.document,
     required this.password,
+    required this.phone,
   });
 }

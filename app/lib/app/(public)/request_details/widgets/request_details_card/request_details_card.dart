@@ -23,18 +23,21 @@ class RequestDetailsCard extends StatelessWidget {
         children: [
           RequestDetailsCardHeader(
             title: request.title,
-            price: request.price,
+            price: request.amount,
           ),
           const SizedBox(height: 24.0),
           RequestDetailsCardUserDetails(
             user: request.user,
-            city: 'Estância Velha',
-            phoneNumber: '+55 (51) 9 1234-5648',
+            city: request.user.address,
+            phoneNumber: request.user.phone,
           ),
           const SizedBox(height: 16.0),
           RequestDetailsCardCreatedAtDate(createdAt: request.createdAt),
           const SizedBox(height: 40.0),
-          RequestDetailsCardSituation(statusDetails: request.status),
+          RequestDetailsCardSituation(
+            statusDetails: request.status,
+            description: request.description,
+          ),
         ],
       ),
     );

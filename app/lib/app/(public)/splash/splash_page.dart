@@ -1,3 +1,6 @@
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
+import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
+import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
@@ -11,17 +14,37 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final controller = injector.get<LoginControllerImpl>();
+
   @override
   void initState() {
     super.initState();
+
+    controller.addListener(listener);
+
     if (mounted) {
       Future.delayed(
         const Duration(milliseconds: 5500),
-        () {
-          Routefly.navigate(routePaths.onboarding);
-        },
+        controller.checkSession,
       );
     }
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(listener);
+    super.dispose();
+  }
+
+  void listener() async {
+    if (controller.state is AuthLoading) {
+      return;
+    }
+
+    return switch (controller.state) {
+      AuthSuccess() => Routefly.navigate(routePaths.welcome),
+      _ => Routefly.navigate(routePaths.auth.checkAffiliated),
+    };
   }
 
   @override
@@ -38,19 +61,20 @@ class _SplashPageState extends State<SplashPage> {
         child: const Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            Image(image: CooImages.cooFlutterando3),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-                    child: Image(
-                        image: CooGifs.cooSplashGif,
-                        fit: BoxFit.contain,
-                        width: 200,
-                        height: 200)),
-              ],
-            )
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Image(image: CooImages.cooFlutterando3),
+            ),
+            Positioned(
+              child: Center(
+                child: Image(
+                  image: CooGifs.cooSplashGif,
+                  fit: BoxFit.contain,
+                  width: 200,
+                  height: 200,
+                ),
+              ),
+            ),
           ],
         ),
       ),

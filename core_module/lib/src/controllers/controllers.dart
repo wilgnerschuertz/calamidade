@@ -45,6 +45,7 @@ abstract class BaseController<T extends BaseState>
   /// Atualiza o estado atual com um novo estado.
   ///
   /// [newState] O novo estado para atualizar.
+  @protected
   void update(T newState) {
     _stateNotifier.value = newState;
   }

@@ -1,3 +1,4 @@
+import 'package:coopartilhar/app/features/auth/interceptor/auth_interceptor.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
@@ -10,9 +11,10 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: lightTheme(context),
+      builder: InterceptorConfig.instance,
       routerConfig: Routefly.routerConfig(
         routes: routes,
-        initialPath: '/splash',
+        initialPath: routePaths.splash,
       ),
     );
   }

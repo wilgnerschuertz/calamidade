@@ -1,5 +1,7 @@
 import 'package:coopartilhar/app/(public)/auth/register/widgets/non_editable_register_item.dart';
 import 'package:coopartilhar/app/(public)/auth/register/widgets/register_item_field.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
 import 'package:coopartilhar/app/features/register/interactor/controllers/register_controller.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
@@ -8,16 +10,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({super.key})
-      : document = Routefly.query.arguments.document.toString(),
-        name = Routefly.query.arguments.name,
-        email = Routefly.query.arguments.email,
-        phone = Routefly.query.arguments.phone;
-
-  final String document;
-  final String name;
-  final String email;
-  final String phone;
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -25,17 +18,28 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final controller = injector.get<RegisterController>();
+  final userController = injector.get<CheckAffiliatedController>();
+
+  UserEntity user = UserEntity.init();
 
   @override
   void initState() {
     super.initState();
     controller.addListener(listener);
+
+    if (userController.state case SuccessState(:final data)) {
+      setState(() {
+        user = data as UserEntity;
+      });
+    }
   }
 
   void listener() {
     return switch (controller.value) {
-      SuccessState() => Routefly.navigate(routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
-      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      SuccessState() => Routefly.navigate(
+          routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
       _ => null,
     };
   }
@@ -94,27 +98,29 @@ class _RegisterPageState extends State<RegisterPage> {
                             key: controller.formKey,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: keyboardHeight > 0 ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: keyboardHeight > 0
+                                  ? MainAxisAlignment.start
+                                  : MainAxisAlignment.spaceBetween,
                               children: [
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
                                   title: 'Nome completo',
-                                  value: widget.name,
+                                  value: user.name,
                                 ),
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
                                   title: 'CPF/CNPJ',
-                                  value: widget.document,
+                                  value: user.document,
                                 ),
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
                                   title: 'E-mail',
-                                  value: widget.email,
+                                  value: user.email,
                                 ),
                                 const SizedBox(height: 30),
                                 NonEditableRegisterItem(
                                   title: 'Telefone',
-                                  value: widget.phone,
+                                  value: user.phone,
                                 ),
                                 const SizedBox(height: 30),
                                 RegisterItemField(
@@ -127,7 +133,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 const SizedBox(height: 30),
                                 RegisterItemField(
                                   title: 'Confirmar senha',
-                                  controller: controller.repeatPasswordController,
+                                  controller:
+                                      controller.repeatPasswordController,
                                   hint: 'Insira novamente sua senha',
                                   isPassword: true,
                                   validator: controller.repeatPasswordValidator,
@@ -135,11 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 const Spacer(),
                                 CooButton.primary(
                                   label: 'Entrar',
-                                  onPressed: () => controller.register(
-                                    document: widget.document,
-                                    name: widget.name,
-                                    email: widget.email,
-                                  ),
+                                  onPressed: () => controller.register(user),
                                 ),
                                 const SizedBox(height: 40),
                               ],

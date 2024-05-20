@@ -1,20 +1,21 @@
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
-import 'package:coopartilhar/app/features/request_details/entities/status_details_entity.dart';
+import 'package:coopartilhar/app/features/request_details/entities/user_request_details_entity.dart';
 import 'package:core_module/core_module.dart';
 
 class RequestDetailsEntity extends Entity {
   final String title;
-  final UserEntity user;
+  final UserRequestDetailsEntity user;
   final DateTime createdAt;
-  final double price;
-  final StatusDetailsEntity status;
+  final double amount;
+  final RequestStatus status;
+  final String description;
 
   RequestDetailsEntity({
-    required String id,
+    required int id,
     required this.title,
     required this.user,
     required this.createdAt,
-    required this.price,
+    required this.amount,
     required this.status,
+    required this.description,
   }) : super(id);
 }

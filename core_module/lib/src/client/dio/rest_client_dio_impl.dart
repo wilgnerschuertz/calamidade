@@ -11,7 +11,7 @@ class DioFactory {
     final baseOptions = BaseOptions(
       baseUrl: baseUrl,
       connectTimeout: const Duration(milliseconds: connectTimeout),
-      receiveTimeout: const Duration(microseconds: receiveTimeout),
+      receiveTimeout: const Duration(milliseconds: receiveTimeout),
     );
     return Dio(baseOptions);
   }
@@ -45,7 +45,7 @@ class RestClientDioImpl implements IRestClient {
       ),
     });
 
-    final response = await _dio.post(
+    final response = await _dio.put(
       multipart.path,
       data: formData,
     );

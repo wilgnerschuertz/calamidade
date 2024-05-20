@@ -1,20 +1,23 @@
-import 'package:coopartilhar/app/features/request_details/entities/status_details_entity.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class RequestDetailsCardSituation extends StatelessWidget {
   const RequestDetailsCardSituation({
     super.key,
+    required this.description,
     required this.statusDetails,
   });
 
-  final StatusDetailsEntity statusDetails;
+  final RequestStatus statusDetails;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
     final textThems = Theme.of(context).textTheme;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,12 +32,14 @@ class RequestDetailsCardSituation extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            SituationPriorityTag(status: statusDetails.status)
+            StatusRequestTag(
+              status: statusDetails,
+            )
           ],
         ),
         const SizedBox(height: 8.0),
         Text(
-          statusDetails.description,
+          description,
           style: textThems.bodySmall?.copyWith(
             fontSize: 14.0,
             color: colors.textColor,
@@ -42,22 +47,5 @@ class RequestDetailsCardSituation extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class SituationPriorityTag extends StatelessWidget {
-  const SituationPriorityTag({super.key, required this.status});
-
-  final Status status;
-
-  @override
-  Widget build(BuildContext context) {
-    if (status == Status.high) {
-      return PriorityTag.critical(label: status.label);
-    } else if (status == Status.medium) {
-      return PriorityTag.urgent(label: status.label);
-    } else {
-      return PriorityTag.routine(label: status.label);
-    }
   }
 }

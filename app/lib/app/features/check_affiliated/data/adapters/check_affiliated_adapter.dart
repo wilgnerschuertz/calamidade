@@ -1,11 +1,22 @@
-import 'package:coopartilhar/app/features/check_affiliated/entities/check_affiliated_entity.dart';
+import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 
 class CheckAffiliatedAdapter {
-  static CheckAffiliatedEntity fromJson(Map<String, dynamic> json) {
-    // TODO, check backend variables name
-    return CheckAffiliatedEntity(
-      json['id'],
-      isAffiliated: json['isAffiliated'],
+  static UserEntity fromJson(Map<String, dynamic> json) {
+    return UserEntity(
+      json['id'] ?? -1,
+      name: json['name'] ?? '',
+      document: json['document'] ?? '',
+      email: json['email'] ?? '',
+      phone: json['phone'] ?? '',
     );
+  }
+
+  static Map<String, dynamic> toJson(UserEntity value) {
+    return {
+      'name': value.name,
+      'document': value.document,
+      'email': value.email,
+      'phone': value.phone,
+    };
   }
 }

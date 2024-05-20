@@ -39,7 +39,8 @@ class _TabViewState extends State<TabView> {
           child: Text(
             tags[index].label,
             style: texts.bodyMedium?.copyWith(
-              color: index == selectedTag.value ? colors.otherGreen : colors.grey,
+              color:
+                  index == selectedTag.value ? colors.otherGreen : colors.grey,
             ),
           ),
         );
