@@ -6,7 +6,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
   @override
   Future<Output<OnboardingEntity>> getOnboardingData() async {
     return Right(OnboardingEntity(
-      const Uuid().v4(),
+      0,
       donationsAmount: 10000000,
       cooPartilhados: 10000,
       assistedPeople: 1204,
