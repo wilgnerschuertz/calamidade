@@ -62,7 +62,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Image(
-                image: CooImages.cooBanricoopBrand,
+                image: CooImages.cooBanricoop,
                 width: 100,
               ),
               const SizedBox(width: 20),
