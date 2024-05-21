@@ -4,6 +4,7 @@ import 'package:coopartilhar/app/(public)/home/widgets/search_widget.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/tab_view.dart';
 import 'package:coopartilhar/app/features/home/interactor/home_interactor.dart';
 import 'package:coopartilhar/injector.dart';
+import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,9 @@ class _HomePageState extends State<HomePage> {
             height: 64,
             child: FloatingActionButton(
               elevation: 0,
-              onPressed: () {},
+              onPressed: () {
+                Routefly.push(routePaths.askHelp.newAskHelp);
+              },
               shape: const CircleBorder(),
               child: Icon(UIcons.regularStraight.plus,
                   color: colors.white, size: 20),

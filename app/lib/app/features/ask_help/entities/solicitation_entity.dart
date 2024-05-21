@@ -1,3 +1,5 @@
+import 'package:coopartilhar/app/features/ask_help/entities/solicitation_help_type_entity.dart';
+import 'package:coopartilhar/app/features/ask_help/entities/solicitation_status_entity.dart';
 import 'package:core_module/core_module.dart';
 
 class SolicitationEntity extends Entity {
@@ -7,12 +9,13 @@ class SolicitationEntity extends Entity {
   final String? bank;
   final String? agency;
   final String? account;
-  final int value;
-  final List<int> file;
+  final double value;
   final String? description;
+  final SolicitationStatusEntity status;
+  final SolicitationHelpTypeEntity helpType;
 
   SolicitationEntity({
-    required int id,
+    int? id,
     required this.title,
     required this.cpf,
     this.pix,
@@ -20,7 +23,8 @@ class SolicitationEntity extends Entity {
     this.agency,
     this.account,
     required this.value,
-    required this.file,
     this.description,
+    required this.status,
+    required this.helpType,
   }) : super(id);
 }

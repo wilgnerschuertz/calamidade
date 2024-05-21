@@ -1,5 +1,6 @@
 library core_module;
 
+import 'package:core_module/src/file_picker/file_picker_impl.dart';
 import 'package:dio/dio.dart';
 
 import 'core_module.dart';
@@ -26,11 +27,14 @@ export 'src/helpers/validators_helper.dart';
 export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 export 'src/types/unit.dart';
+export 'src/file_picker/i_file_picker.dart';
+export 'src/helpers/currency_format_helper.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {
     injector.addSingleton<ICache>(SharedPreferencesImpl.new);
     injector.add<Dio>(DioFactory.dio);
     injector.add<IRestClient>(RestClientDioImpl.new);
+    injector.add<IFilePickerService>(FilePickerServiceImpl.new);
   },
 );

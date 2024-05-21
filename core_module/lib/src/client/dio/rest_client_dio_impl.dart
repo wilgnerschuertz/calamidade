@@ -45,10 +45,17 @@ class RestClientDioImpl implements IRestClient {
       ),
     });
 
-    final response = await _dio.put(
+    final baseOptions = BaseOptions(
+      connectTimeout: const Duration(milliseconds: connectTimeout),
+      receiveTimeout: const Duration(milliseconds: receiveTimeout),
+    );
+
+    Dio dio = Dio(baseOptions);
+    final response = await dio.put(
       multipart.path,
       data: formData,
     );
+
     return DioAdapter.toClientResponse(response);
   }
 

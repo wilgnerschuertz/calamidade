@@ -1,6 +1,13 @@
+import 'package:coopartilhar/app/features/accident/data/repositories/accident_repository_impl.dart';
+import 'package:coopartilhar/app/features/accident/data/repositories/i_accident_repository.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
+import 'package:coopartilhar/app/features/ask_help/data/repositories/new_ask_help_repository_impl.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/controllers/ask_help_controller.dart';
 import 'package:coopartilhar/app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
+import 'package:coopartilhar/app/features/file/data/repositories/file_repository_impl.dart';
+import 'package:coopartilhar/app/features/file/data/repositories/i_file_repository.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/check_affiliated_repository_impl.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/i_check_affiliated_repository.dart';
 import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
@@ -29,6 +36,13 @@ final injector = AutoInjector(
     injector.addSingleton<IAuthRepository>(AuthRepositoryImpl.new);
     injector.addLazySingleton<OnboardingController>(OnboardingController.new);
     injector.addLazySingleton<LoginControllerImpl>(LoginControllerImpl.new);
+
+    injector.addLazySingleton<IAccidentRepository>(AccidentRepositoryImpl.new);
+    injector.addLazySingleton<IFileRepository>(FileRepositoryImpl.new);
+    injector
+        .addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
+    injector.add<AskHelpController>(AskHelpController.new);
+
     injector.addLazySingleton<ICheckAffiliatedRepository>(
         CheckAffiliatedRepositoryImpl.new);
     injector.addLazySingleton<CheckAffiliatedController>(
