@@ -8,6 +8,7 @@ class CooTextButton extends StatelessWidget {
   final String label;
   final bool enable;
   final IconData? icon;
+  final EdgeInsets? padding;
 
   const CooTextButton({
     super.key,
@@ -17,6 +18,7 @@ class CooTextButton extends StatelessWidget {
     this.enable = true,
     this.backgroundColor,
     this.icon,
+    this.padding,
   });
 
   @override
@@ -25,33 +27,36 @@ class CooTextButton extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final labelColor = textColor ?? colors.primary;
 
-    return TextButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
+    return Padding(
+      padding: padding ?? const EdgeInsets.only(right: 10, left: 10),
+      child: TextButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor ?? Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          icon != null && label.isNotEmpty
-              ? const SizedBox(width: 8)
-              : Container(),
-          Text(
-            label,
-            style: textTheme.bodyMedium?.copyWith(color: labelColor),
-          ),
-          Center(
-            child: icon != null
-                ? Icon(
-                    icon,
-                    color: labelColor,
-                  )
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            icon != null && label.isNotEmpty
+                ? const SizedBox(width: 8)
                 : Container(),
-          ),
-        ],
+            Text(
+              label,
+              style: textTheme.bodyMedium?.copyWith(color: labelColor),
+            ),
+            Center(
+              child: icon != null
+                  ? Icon(
+                      icon,
+                      color: labelColor,
+                    )
+                  : Container(),
+            ),
+          ],
+        ),
       ),
     );
   }
