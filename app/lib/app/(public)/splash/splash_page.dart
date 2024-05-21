@@ -25,9 +25,7 @@ class _SplashPageState extends State<SplashPage> {
     if (mounted) {
       Future.delayed(
         const Duration(milliseconds: 5500),
-        // TODO, rever uso do login controller nesta tela
-        // controller.checkSession,
-        () => Routefly.navigate(routePaths.onboarding),
+        controller.checkSession,
       );
     }
   }
