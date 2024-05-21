@@ -9,6 +9,8 @@ class AffiliatedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -28,47 +30,24 @@ class AffiliatedPage extends StatelessWidget {
               Text(
                 'Você é um cooperado!',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 32,
-                    fontFamily: 'inter',
-                    color: colors.primary,
-                    fontWeight: FontWeight.w700),
+                style: textTheme.displayLarge?.copyWith(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                    color: colors.primary),
               ),
               Text(
                 'Prossiga para concluir seu cadastro',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'inter',
-                    fontWeight: FontWeight.w400,
-                    color: colors.black),
+                style: textTheme.displaySmall?.copyWith(color: colors.black),
               ),
-              TextButton(
-                onPressed: () {
-                  Routefly.push(routePaths.auth.login);
-                },
-                child: Text(
-                  'Já tenho cadastro',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'inter',
-                    fontWeight: FontWeight.w400,
-                    color: colors.primary,
-                    decoration: TextDecoration.underline,
-                    decorationColor: colors.primary,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 32),
+              const Spacer(),
               CooButton.primary(
-                label: 'Concluir cadastro',
-                onPressed: () {
-                  Routefly.push(routePaths.auth.register);
-                },
-                icon: Icons.arrow_right_alt,
-              ),
-              const Spacer(flex: 2),
+                  label: 'Concluir cadastro',
+                  icon: UIcons.regularStraight.arrow_small_right,
+                  onPressed: () {
+                    Routefly.push(routePaths.auth.register);
+                  }),
+              const SizedBox(height: 10)
             ],
           )
         ],
