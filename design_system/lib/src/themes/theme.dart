@@ -53,7 +53,8 @@ ThemeData lightTheme(BuildContext context) {
       bodyMedium:
           GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
       bodySmall: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),
-      labelLarge: GoogleFonts.poppins(fontSize: 1, fontWeight: FontWeight.w700),
+      labelLarge:
+          GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w700),
       labelMedium:
           GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600),
       labelSmall:
