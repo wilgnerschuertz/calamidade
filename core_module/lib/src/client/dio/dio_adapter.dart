@@ -31,6 +31,7 @@ class DioAdapter {
       headers: request.headers,
       queryParameters: request.queryParameters,
       data: request.data,
+      baseUrl: request.baseUrl,
     );
   }
 
@@ -41,6 +42,7 @@ class DioAdapter {
       method: restClientRequest.method,
       queryParameters: restClientRequest.queryParameters,
       headers: restClientRequest.headers,
+      baseUrl: restClientRequest.baseUrl,
     );
   }
 

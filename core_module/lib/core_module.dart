@@ -34,7 +34,7 @@ final coreModule = AutoInjector(
   on: (injector) {
     injector.addSingleton<ICache>(SharedPreferencesImpl.new);
     injector.add<Dio>(DioFactory.dio);
-    injector.add<IRestClient>(RestClientDioImpl.new);
+    injector.addSingleton<IRestClient>(RestClientDioImpl.new);
     injector.add<IFilePickerService>(FilePickerServiceImpl.new);
   },
 );

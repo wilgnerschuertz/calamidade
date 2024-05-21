@@ -1,8 +1,8 @@
 import 'package:coopartilhar/app/(public)/home/widgets/coo_app_bar.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/coo_navigator_bar.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/search_widget.dart';
-import 'package:coopartilhar/app/(public)/home/widgets/tab_view.dart';
-import 'package:coopartilhar/app/features/home/interactor/home_interactor.dart';
+import 'package:coopartilhar/app/features/home/interactor/controllers/home_controller.dart';
+import 'package:coopartilhar/app/features/home/interactor/entities/order_list_entity.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
@@ -17,26 +17,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final homeInteractor = injector.get<HomeInteractor>();
-  final List<TagType> tags = [
-    TagType.general,
-    TagType.houses,
-    TagType.health,
-    TagType.animals,
-    TagType.shelters,
-    TagType.anxiety,
-  ];
-  int selectedTag = 0;
+  final homeController = injector.get<HomeController>();
 
   @override
   void initState() {
     super.initState();
-    homeInteractor.getOrders(tags[selectedTag]);
+    homeController.getOrders();
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
+
+    /// TODO: Back-end ainda não tem API pra essa tela.
 
     return Stack(children: [
       Scaffold(
@@ -57,66 +50,63 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: SearchWidget(
-                  hitText: 'O que você está procurando hoje?',
-                  onSearch: (value) {},
-                ),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                'Solicitações',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: colors.black,
-                ),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                height: 20,
-                child: TabView(
-                  tags: tags,
-                  onSelected: (tag) {},
-                ),
-              ),
-              const SizedBox(height: 24),
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    //final orderEntity = data[index];
-                    return CardRequest(
-                      onClickArrowRight: () {},
-                      value: 1234.5,
-                      //orderEntity.amount,
-                      title: 'test',
-                      //orderEntity.title,
-                      helpedName: 'Fulano de Tal',
-                      // orderEntity.cooperated?.name ?? '',
-                      localName: 'Rua qualquer coisa',
-                      // orderEntity.address,
-                      dateTime: DateTime
-                          .now(), //DateAdapter.dateToString(orderEntity.createdAt),
-                    );
-                  },
-                  separatorBuilder: (_, __) => const SizedBox(height: 16),
-                  itemCount: 5,
-                ),
-              ),
-            ],
-          ),
+          child: ValueListenableBuilder(
+              valueListenable: homeController,
+              builder: (context, state, __) {
+                return switch (state) {
+                  SuccessState(:final OrderListEntity data) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 24),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: SearchWidget(
+                            hitText: 'O que você está procurando hoje?',
+                            onSearch: (value) {},
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          'Solicitações',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            color: colors.black,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Expanded(
+                          child: ListView.separated(
+                            itemBuilder: (context, index) {
+                              final order = data.orders[index];
+                              return CardRequest(
+                                onClickArrowRight: () {},
+                                value: order.amount,
+                                title: order.title,
+
+                                /// TODO: back-end não retornar nome.
+                                helpedName: 'Test',
+                                localName: order.description,
+                                dateTime: order.createdAt,
+                              );
+                            },
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(height: 16),
+                            itemCount: data.orders.length,
+                          ),
+                        ),
+                      ],
+                    ),
+                  _ => const Center(child: CircularProgressIndicator()),
+                };
+              }),
         ),
       ),
       Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 45),
+          padding: const EdgeInsets.only(bottom: 15),
           child: SizedBox(
             width: 64,
             height: 64,
