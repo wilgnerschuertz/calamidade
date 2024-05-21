@@ -5,6 +5,7 @@ class RestClientRequest implements RestClientHttpMessage {
   final String path;
   final dynamic data;
   final String method;
+  final String baseUrl;
   final Map<String, dynamic>? queryParameters;
   final Map<String, dynamic>? headers;
 
@@ -14,6 +15,7 @@ class RestClientRequest implements RestClientHttpMessage {
     this.queryParameters,
     this.headers,
     this.method = 'GET',
+    this.baseUrl = '',
   });
 
   RestClientRequest copyWith({

@@ -11,9 +11,9 @@ import 'package:coopartilhar/app/features/file/data/repositories/i_file_reposito
 import 'package:coopartilhar/app/features/check_affiliated/data/check_affiliated_repository_impl.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/i_check_affiliated_repository.dart';
 import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
-import 'package:coopartilhar/app/features/home/data/home_repository_impl.dart';
-import 'package:coopartilhar/app/features/home/interactor/home_interactor.dart';
-import 'package:coopartilhar/app/features/home/interactor/interfaces/i_home_repository.dart';
+import 'package:coopartilhar/app/features/home/data/repositories/home_repository_impl.dart';
+import 'package:coopartilhar/app/features/home/interactor/controllers/home_controller.dart';
+import 'package:coopartilhar/app/features/home/interactor/repositories/i_home_repository.dart';
 import 'package:coopartilhar/app/features/onboarding/data/onboarding_repository_impl.dart';
 import 'package:coopartilhar/app/features/onboarding/interactor/controllers/onboarding_controller.dart';
 import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onboarding_repository.dart';
@@ -28,7 +28,7 @@ import 'package:core_module/core_module.dart';
 final injector = AutoInjector(
   on: (injector) {
     injector.addInjector(coreModule);
-    injector.add(HomeInteractor.new);
+    injector.add(HomeController.new);
     injector.add<IHomeRepository>(HomeRepositoryImpl.new);
     injector.addSingleton<IRegisterRepository>(RegisterRepositoryImpl.new);
     injector.addSingleton<RegisterController>(RegisterController.new);
@@ -39,18 +39,13 @@ final injector = AutoInjector(
 
     injector.addLazySingleton<IAccidentRepository>(AccidentRepositoryImpl.new);
     injector.addLazySingleton<IFileRepository>(FileRepositoryImpl.new);
-    injector
-        .addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
+    injector.addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
     injector.add<AskHelpController>(AskHelpController.new);
 
-    injector.addLazySingleton<ICheckAffiliatedRepository>(
-        CheckAffiliatedRepositoryImpl.new);
-    injector.addLazySingleton<CheckAffiliatedController>(
-        CheckAffiliatedController.new);
-    injector.addLazySingleton<IRequestDetailsRepository>(
-        RequestDetailsRepositoryImpl.new);
-    injector.addLazySingleton<RequestDetailsController>(
-        RequestDetailsController.new);
+    injector.addLazySingleton<ICheckAffiliatedRepository>(CheckAffiliatedRepositoryImpl.new);
+    injector.addLazySingleton<CheckAffiliatedController>(CheckAffiliatedController.new);
+    injector.addLazySingleton<IRequestDetailsRepository>(RequestDetailsRepositoryImpl.new);
+    injector.addLazySingleton<RequestDetailsController>(RequestDetailsController.new);
     injector.commit();
   },
 );
