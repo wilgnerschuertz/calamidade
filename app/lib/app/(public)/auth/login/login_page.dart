@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 60),
+                const SizedBox(height: 40),
                 const Center(
                     child: Image(image: CooImages.cooBrand2, height: 166)),
                 const SizedBox(height: 60),
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 60),
+                const SizedBox(height: 40),
                 CooButton.primary(
                   label: 'Entrar',
                   onPressed: _login,
