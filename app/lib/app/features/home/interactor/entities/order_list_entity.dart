@@ -5,5 +5,6 @@ class OrderListEntity extends Entity {
   final List<OrderEntity> orders;
   final bool hasNextPage;
 
-  OrderListEntity({required this.orders, required this.hasNextPage}) : super(-1);
+  OrderListEntity({required this.orders, required this.hasNextPage})
+      : super(-1);
 }

@@ -12,7 +12,8 @@ class HomeRepositoryImpl implements IHomeRepository {
   Future<Output<OrderListEntity>> getOrders() async {
     try {
       /// TODO: Back-end ainda não tem API pra essa tela. Sera `/feed`_
-      final response = await restClient.get(RestClientRequest(path: '/core/v1/requests?page=1&limit=10&ordering=ASC'));
+      final response = await restClient.get(RestClientRequest(
+          path: '/core/v1/requests?page=1&limit=10&ordering=ASC'));
 
       return Right(OrderListAdapter.fromJson(response.data));
     } on RestClientException catch (e) {

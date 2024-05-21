@@ -91,7 +91,8 @@ class _HomePageState extends State<HomePage> {
                                 dateTime: order.createdAt,
                               );
                             },
-                            separatorBuilder: (_, __) => const SizedBox(height: 16),
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(height: 16),
                             itemCount: data.orders.length,
                           ),
                         ),
@@ -115,7 +116,8 @@ class _HomePageState extends State<HomePage> {
                 Routefly.push(routePaths.askHelp.newAskHelp);
               },
               shape: const CircleBorder(),
-              child: Icon(UIcons.regularStraight.plus, color: colors.white, size: 20),
+              child: Icon(UIcons.regularStraight.plus,
+                  color: colors.white, size: 20),
             ),
           ),
         ),

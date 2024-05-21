@@ -14,7 +14,9 @@ abstract class OrderAdapter {
         financialAccount: json['financialAccount'],
         createdAt: DateTime.parse(json['createdAt']),
         updatedAt: DateTime.parse(json['updatedAt']),
-        deletedAt: json['deletedAt'] == null ? null : DateTime.parse(json['deletedAt']),
+        deletedAt: json['deletedAt'] == null
+            ? null
+            : DateTime.parse(json['deletedAt']),
         owner: null,
         godfather: GodFatherAdapter.fromJson(json['godFather']),
       );
