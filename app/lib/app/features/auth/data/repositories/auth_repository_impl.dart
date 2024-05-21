@@ -24,6 +24,14 @@ class AuthRepositoryImpl implements IAuthRepository {
 
       return Right(SessionAdapter.fromJson(response.data));
     } on BaseException catch (err) {
+      if (err.data['erros']['email'] == 'emailNotExists') {
+        return const Left(
+            DefaultException(message: 'E-mail não foi encontrado'));
+      }
+
+      if (err.data['erros']['password'] == 'incorrectPassword') {
+        return const Left(DefaultException(message: 'Senha incorreta'));
+      }
       return Left(DefaultException(message: err.message));
     } catch (_) {
       return const Left(DefaultException(message: 'Erro desconhecido'));

@@ -6,6 +6,7 @@ class DioAdapter {
     return RestClientException(
       error: dioException.error,
       message: dioException.message ?? '',
+      data: dioException.response?.data ?? {},
       response: dioException.response == null
           ? null
           : toClientResponse(dioException.response!),
