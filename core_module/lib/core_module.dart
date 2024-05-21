@@ -15,8 +15,10 @@ export 'package:routefly/routefly.dart';
 export 'package:uicons/uicons.dart';
 export 'package:uuid/uuid.dart';
 
+export 'src/adapters/cpf_cnpj_adapter.dart';
 export 'src/adapters/currency_adapter.dart';
 export 'src/adapters/date_adapter.dart';
+export 'src/adapters/phone_adapter.dart';
 export 'src/cache/cache.dart';
 export 'src/client/client.dart';
 export 'src/controllers/controllers.dart';

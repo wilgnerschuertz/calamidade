@@ -61,10 +61,10 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double heightScreen = MediaQuery.sizeOf(context).height;
     final double widthScreen = MediaQuery.sizeOf(context).width;
     final colors = CoopartilharColors.of(context);
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -86,49 +86,41 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Spacer(),
                   const Center(
                       child: Image(image: CooImages.cooBrand2, height: 166)),
                   const Spacer(),
-                  Row(
-                    children: [
-                      Text(
-                        'Informe o seu CPF/CNPJ',
-                        style: theme.textTheme.titleMedium!
-                            .copyWith(color: colors.appBackground),
-                        textAlign: TextAlign.start,
-                      ),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Informe o seu CPF/CNPJ',
+                          style: theme.textTheme.titleMedium!
+                              .copyWith(color: colors.appBackground),
+                          textAlign: TextAlign.start)),
+                  TextFormField(
+                    style: theme.textTheme.displaySmall!
+                        .copyWith(color: colors.appBackground),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      CpfCnpjFormatter(),
                     ],
-                  ),
-                  Center(
-                    child: TextFormField(
-                      style: theme.textTheme.displaySmall!
-                          .copyWith(color: colors.appBackground),
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [
-                        CpfCnpjFormatter(),
-                      ],
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Este CPF / CNPJ não existe!';
-                        }
-                        document = value;
-                        return null;
-                      },
-                      onFieldSubmitted: (_) => submit,
-                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Este CPF / CNPJ não existe!';
+                      }
+                      document = value;
+                      return null;
+                    },
+                    onFieldSubmitted: (_) => submit,
                   ),
                   const Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(top: heightScreen * 0.18),
-                    child: CooButton.primary(
-                      label: 'Verificar',
-                      onPressed: submit,
-                      isLoading: isLoading,
-                    ),
+                  CooButton.primary(
+                    label: 'Verificar',
+                    onPressed: submit,
+                    isLoading: isLoading,
                   ),
-                  const Gap(50),
+                  const Gap(10),
                 ],
               ),
             ),
