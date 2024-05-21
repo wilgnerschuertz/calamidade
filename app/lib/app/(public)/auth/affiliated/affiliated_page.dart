@@ -40,6 +40,17 @@ class AffiliatedPage extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: textTheme.displaySmall?.copyWith(color: colors.black),
               ),
+              TextButton(
+                  onPressed: () {
+                    Routefly.push(routePaths.auth.login);
+                  },
+                  child: Text(
+                    'Já tenho cadastro',
+                    style: textTheme.titleSmall?.copyWith(
+                        color: colors.primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor: colors.primary),
+                  )),
               const Spacer(),
               CooButton.primary(
                   label: 'Concluir cadastro',
