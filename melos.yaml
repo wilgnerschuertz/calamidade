@@ -50,9 +50,10 @@ scripts:
     run: "cd app && flutter build apk --split-per-abi --dart-define-from-file=.env  -t lib/main_prod.dart"
 
   build-ios-dev:
-    description: Build DEVELOPMENT APK.
-    run: "cd app && flutter build ios --split-per-abi --dart-define-from-file=dev.env  -t lib/main_dev.dart"
+    description: Build DEVELOPMENT IOS APP.
+    run: "cd app && flutter build ios  --dart-define-from-file=dev.env  -t lib/main_dev.dart"
 
   build-ios:
-    description: Build PRODUCTION APK.
-    run: "cd app && flutter build ios --split-per-abi --dart-define-from-file=.env  -t lib/main_prod.dart"
+    description: Build PRODUCTION IOS APP.
+    run: "cd app && flutter build ios --dart-define-from-file=.env  -t lib/main_prod.dart"
+
