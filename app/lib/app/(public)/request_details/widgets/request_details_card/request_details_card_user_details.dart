@@ -25,7 +25,7 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
           user.name,
           style: textThemes.headlineMedium?.copyWith(
             fontWeight: FontWeight.w500,
-            color: colors.textColor,
+            color: colors.textColor.withOpacity(0.8),
           ),
         ),
         Row(
@@ -41,6 +41,7 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

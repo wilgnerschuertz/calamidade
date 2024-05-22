@@ -24,4 +24,27 @@ class RequestDetailsRepositoryImpl implements IRequestDetailsRepository {
       return const Left(DefaultException(message: 'Erro desconhecido'));
     }
   }
+
+  @override
+  Future<Output<Unit>> patronize(RequestEntity request, int godFatherId) async {
+    try {
+      await restClient.patch(
+        RestClientRequest(
+          path: '/core/v1/requests/${request.id}',
+          data:
+              RequestAdapter.toJson(request: request, godFatherId: godFatherId),
+        ),
+      );
+
+      return const Right(unit);
+    } on RestClientException catch (err) {
+      if (err.statusCode == 401) {
+        return const Left(DefaultException(message: 'Não autorizado!'));
+      }
+      return const Left(
+          DefaultException(message: 'Verifique a conexão e tente novamente'));
+    } catch (e) {
+      return const Left(DefaultException(message: 'Erro desconhecido'));
+    }
+  }
 }

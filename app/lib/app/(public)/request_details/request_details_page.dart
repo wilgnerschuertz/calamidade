@@ -1,7 +1,12 @@
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card.dart';
+import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_description.dart';
+import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_situation.dart';
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_page_header.dart';
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/request_details/interactor/controllers/request_details_controller.dart';
+import 'package:coopartilhar/app/features/request_details/interactor/state/request_state.dart';
 import 'package:coopartilhar/injector.dart';
+import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
@@ -16,38 +21,32 @@ class RequestDetailsPage extends StatefulWidget {
 class _RequestDetailsPageState extends State<RequestDetailsPage> {
   late final RequestDetailsController _controller =
       injector.get<RequestDetailsController>();
-  RequestEntity? request;
-  String errorMessage = '';
-  bool isLoading = true;
+  final userController = injector.get<LoginControllerImpl>();
+
+  UserEntity user = UserEntity.init();
 
   @override
   void initState() {
     super.initState();
     final id = Routefly.query.arguments['id'];
 
+    if (userController.state case SuccessState(:final data)) {
+      setState(() {
+        user = data as UserEntity;
+      });
+    }
+
     _controller.addListener(listener);
     _controller.loadRequestDetails(id: id!);
   }
 
   void listener() {
-    if (_controller.value is SuccessState) {
-      request = (_controller.value as SuccessState<RequestEntity>).data;
-      setLoading(false);
-    } else if (_controller.value is LoadingState) {
-    } else if (_controller.value is ErrorState<BaseException>) {
-      errorMessage =
-          (_controller.value as ErrorState<BaseException>).exception.message;
-      if (errorMessage.isEmpty) {
-        errorMessage = 'Error desconhecido';
-      }
-      setLoading(false);
-    }
-  }
-
-  void setLoading(bool value) {
-    setState(() {
-      isLoading = value;
-    });
+    return switch (_controller.state) {
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
+      SuccessPatronizeState() => Routefly.navigate(routePaths.home),
+      _ => null,
+    };
   }
 
   @override
@@ -58,77 +57,70 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-
-    if (!isLoading && errorMessage.isNotEmpty) {
-      return Scaffold(
-          body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          RequestDetailsPageHeader(title: errorMessage),
-          CooButton.primary(
-            label: 'Tentar novamente',
-            onPressed: () async {
-              setLoading(true);
-              errorMessage = '';
-              await Future.delayed(const Duration(seconds: 1));
-              _controller.loadRequestDetails(
-                id: Routefly.query.arguments['id'],
-              );
-            },
-          )
-        ],
-      ));
-    }
     return SafeArea(
       child: Scaffold(
-        body: Visibility(
-          child: Center(
-            child: Stack(
-              children: [
-                const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image(
-                    image: CooImages.cooBackgroundDetails,
-                  ),
-                ),
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        RequestDetailsPageHeader(
-                          title: request?.title ?? '',
+        body: ValueListenableBuilder(
+          valueListenable: _controller,
+          builder: (context, state, _) {
+            return switch (state) {
+              LoadingState() =>
+                const Center(child: CircularProgressIndicator()),
+              SuccessState<RequestEntity>(:final data) => Stack(
+                  children: [
+                    const Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Image(
+                        image: CooImages.cooBackgroundDetails,
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            RequestDetailsPageHeader(
+                              title: data.title,
+                            ),
+                            RequestDetailsCard(request: data),
+                            const SizedBox(height: 16.0),
+                            RequestDetailsCardDescription(
+                              description: data.description,
+                            ),
+                            const SizedBox(height: 16.0),
+                            RequestDetailsCardSituation(
+                              description: '',
+                              status: data.status,
+                            ),
+                          ],
                         ),
-                        request != null
-                            ? RequestDetailsCard(request: request!)
-                            : const SizedBox.shrink(),
-                        const SizedBox(height: 96.0),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 8.0),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: CooButton.primary(
-                      label: 'Próximo',
-                      onPressed: () {},
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 8.0),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: (data.godFather == null &&
+                                data.user.id != user.id)
+                            ? CooButton.primary(
+                                label: 'Apadrinhar',
+                                onPressed: () async => _controller.patronize(
+                                  godFatherId: user.id!,
+                                  request: data,
+                                ),
+                              )
+                            : CooButton.primary(
+                                label: 'Voltar',
+                                onPressed: () => Routefly.pop(context),
+                              ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                Visibility(
-                  visible: isLoading,
-                  child: const Center(child: CircularProgressIndicator()),
-                ),
-              ],
-            ),
-          ),
+              _ => const SizedBox.shrink(),
+            };
+          },
         ),
       ),
     );

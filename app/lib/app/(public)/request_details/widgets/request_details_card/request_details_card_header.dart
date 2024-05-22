@@ -16,26 +16,35 @@ class RequestDetailsCardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
     final textThemes = Theme.of(context).textTheme;
+
     return SizedBox(
       width: double.infinity,
-      child: Wrap(
-        alignment: WrapAlignment.spaceBetween,
-        spacing: 8.0,
-        runSpacing: 8.0,
-        direction: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         verticalDirection: VerticalDirection.up,
         children: [
-          Text(
-            title,
-            style: textThemes.displayMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: colors.textColor,
+          Expanded(
+            child: Text(
+              title,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: textThemes.displayMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                color: colors.textColor,
+              ),
             ),
           ),
-          Tag(
-            label: CurrencyAdapter.doubleToBRL(price),
-            labelColor: const Color(0xff1e8361), //TODO atualizar cores
-            backgroundColor: const Color(0xff129166).withOpacity(0.1),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+            decoration: BoxDecoration(
+              color: colors.lightGrey,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              CurrencyAdapter.doubleToBRL(price),
+              style: textThemes.labelSmall?.copyWith(color: colors.primary),
+            ),
           ),
         ],
       ),

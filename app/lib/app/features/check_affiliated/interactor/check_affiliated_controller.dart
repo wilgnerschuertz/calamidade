@@ -1,4 +1,3 @@
-import 'package:core_module/src/entities/auth/user_entity.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/adapters/check_affiliated_adapter.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/i_check_affiliated_repository.dart';
 import 'package:core_module/core_module.dart';

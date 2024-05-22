@@ -1,7 +1,7 @@
 enum RequestStatusEntity {
-  analisys('Em analise', 0xFFfcb900, 0xFFa17703),
-  accepted('Aceito', 0xFF129166, 0xFF0a4531),
-  rejected('Rejeitado', 0xFFEB5757, 0xFF7d2e2e),
+  analisys('Em análise', 0xFFfcb900, 0xFFEB575),
+  accepted('Aprovado', 0xFF129166, 0xFF0a4531),
+  rejected('Recusado', 0xFFEB5757, 0xE94949),
   concluded('Concluído', 0xFF129166, 0xFF0a4531),
   notDefined('Não definido', 0xFF010101, 0xFFFFFFFF);
 
