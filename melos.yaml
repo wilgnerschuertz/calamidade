@@ -29,3 +29,11 @@ scripts:
       dirExists:
         - test
       failFast: true
+
+  build-dev:
+    description: Build DEVELOPMENT APK.
+    exec: "flutter build apk --split-per-abi --dart-define-from-file=dev.env  -t lib/main_dev.dart"
+
+  build-prod:
+    description: Build PRODUCTION APK.
+    exec: "flutter build apk --split-per-abi --dart-define-from-file=.env  -t lib/main_prod.dart"
