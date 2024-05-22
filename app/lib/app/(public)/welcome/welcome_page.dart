@@ -1,4 +1,3 @@
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class StatusRequestTag extends StatefulWidget {
   const StatusRequestTag({super.key, required this.status});
 
-  final RequestStatus status;
+  final RequestStatusEntity status;
 
   @override
   State<StatusRequestTag> createState() => _StatusRequestTagState();
@@ -22,19 +22,19 @@ class _StatusRequestTagState extends State<StatusRequestTag> {
     colors = CoopartilharColors.of(context);
     textThemes = Theme.of(context).textTheme;
     switch (widget.status) {
-      case RequestStatus.analisys:
+      case RequestStatusEntity.analisys:
         color = colors.urgentLight;
         foregroundColor = colors.urgent;
-      case RequestStatus.accepted:
+      case RequestStatusEntity.accepted:
         color = colors.routineLight;
         foregroundColor = colors.routine;
-      case RequestStatus.rejected:
+      case RequestStatusEntity.rejected:
         color = colors.criticalLight;
         foregroundColor = colors.critical;
-      case RequestStatus.concluded:
+      case RequestStatusEntity.concluded:
         color = colors.routineLight;
         foregroundColor = colors.routine;
-      case RequestStatus.notDefined:
+      case RequestStatusEntity.notDefined:
         color = colors.black;
         foregroundColor = colors.white;
       default:

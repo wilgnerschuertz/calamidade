@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import '../../entities/auth/user_entity.dart';
 
 class UserAdapter {
   static UserEntity fromJson(Map<String, dynamic> data) {

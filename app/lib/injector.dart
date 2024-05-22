@@ -26,9 +26,9 @@ import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onbo
 import 'package:coopartilhar/app/features/register/interactor/controllers/register_controller.dart';
 import 'package:coopartilhar/app/features/register/interactor/repositories/i_register_repository.dart';
 import 'package:coopartilhar/app/features/register/data/repositories/register_assisted_repository_impl.dart';
-import 'package:coopartilhar/app/features/request_details/data/i_request_details_repository.dart';
-import 'package:coopartilhar/app/features/request_details/data/request_details_repository_impl.dart';
-import 'package:coopartilhar/app/features/request_details/interactor/request_details_controller.dart';
+import 'package:coopartilhar/app/features/request_details/interactor/repositories/i_request_details_repository.dart';
+import 'package:coopartilhar/app/features/request_details/data/repositories/request_details_repository_impl.dart';
+import 'package:coopartilhar/app/features/request_details/interactor/controllers/request_details_controller.dart';
 import 'package:core_module/core_module.dart';
 
 final injector = AutoInjector(

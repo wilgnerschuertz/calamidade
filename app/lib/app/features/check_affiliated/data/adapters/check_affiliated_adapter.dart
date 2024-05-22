@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:core_module/src/entities/auth/user_entity.dart';
 
 class CheckAffiliatedAdapter {
   static UserEntity fromJson(Map<String, dynamic> json) {

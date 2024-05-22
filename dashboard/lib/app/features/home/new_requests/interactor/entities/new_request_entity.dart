@@ -6,7 +6,7 @@ class NewRequestEntity extends Entity {
   final String city;
   final String phone;
   final String date;
-  final RequestStatus status;
+  final RequestStatusEntity status;
   final String requestedIncome;
   final String bank;
   final String agency;
