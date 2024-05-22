@@ -19,8 +19,7 @@ class RequestDetailsPage extends StatefulWidget {
 }
 
 class _RequestDetailsPageState extends State<RequestDetailsPage> {
-  late final RequestDetailsController _controller =
-      injector.get<RequestDetailsController>();
+  late final RequestDetailsController _controller = injector.get<RequestDetailsController>();
   final userController = injector.get<LoginControllerImpl>();
 
   UserEntity user = UserEntity.init();
@@ -42,9 +41,8 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
 
   void listener() {
     return switch (_controller.state) {
-      ErrorState(:final exception) =>
-        Alerts.showFailure(context, exception.message),
-      SuccessPatronizeState() => Routefly.navigate(routePaths.home),
+      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      SuccessPatronizeState() => Routefly.navigate(routePaths.home), // TODO: enviar para a pagina success_state_page
       _ => null,
     };
   }
@@ -63,8 +61,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
           valueListenable: _controller,
           builder: (context, state, _) {
             return switch (state) {
-              LoadingState() =>
-                const Center(child: CircularProgressIndicator()),
+              LoadingState() => const Center(child: CircularProgressIndicator()),
               SuccessState<RequestEntity>(:final data) => Stack(
                   children: [
                     const Align(
@@ -97,12 +94,10 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                       child: Align(
                         alignment: Alignment.bottomCenter,
-                        child: (data.godFather == null &&
-                                data.user.id != user.id)
+                        child: (data.godFather == null && data.user.id != user.id)
                             ? CooButton.primary(
                                 label: 'Apadrinhar',
                                 onPressed: () async => _controller.patronize(
