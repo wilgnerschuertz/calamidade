@@ -28,6 +28,11 @@ import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart'
     as a14;
 import 'package:coopartilhar/app/(public)/welcome/welcome_page.dart' as a15;
 
+import 'package:coopartilhar/app/(public)/address/address_page.dart' as a16;
+
+import 'package:coopartilhar/app/(public)/bank_account/bank_account_page.dart'
+    as a17;
+
 List<RouteEntity> get routes => [
       RouteEntity(
         key: '/affiliated_first_action/presentation/affiliated_first_action',
@@ -172,6 +177,24 @@ List<RouteEntity> get routes => [
           ctx,
           settings,
           const a15.WelcomePage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/address',
+        uri: Uri.parse('/address'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a16.AddressPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/bank_account',
+        uri: Uri.parse('/bank_account'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a17.BankAccountPage(),
         ),
       ),
     ];

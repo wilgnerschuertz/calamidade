@@ -1,11 +1,17 @@
 import 'package:coopartilhar/app/features/accident/data/repositories/accident_repository_impl.dart';
 import 'package:coopartilhar/app/features/accident/data/repositories/i_accident_repository.dart';
+import 'package:coopartilhar/app/features/address/data/repositories/address_repository_impl.dart';
+import 'package:coopartilhar/app/features/address/interactor/controllers/address_controller.dart';
+import 'package:coopartilhar/app/features/address/interactor/repositories/i_address_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/data/repositories/new_ask_help_repository_impl.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/controllers/ask_help_controller.dart';
 import 'package:coopartilhar/app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
+import 'package:coopartilhar/app/features/bank_account/data/repositories/bank_account_repository_impl.dart';
+import 'package:coopartilhar/app/features/bank_account/interactor/controllers/bank_account_controller.dart';
+import 'package:coopartilhar/app/features/bank_account/interactor/repositories/i_bank_account_repository.dart';
 import 'package:coopartilhar/app/features/file/data/repositories/file_repository_impl.dart';
 import 'package:coopartilhar/app/features/file/data/repositories/i_file_repository.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/check_affiliated_repository_impl.dart';
@@ -42,7 +48,6 @@ final injector = AutoInjector(
     injector
         .addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
     injector.add<AskHelpController>(AskHelpController.new);
-
     injector.addLazySingleton<ICheckAffiliatedRepository>(
         CheckAffiliatedRepositoryImpl.new);
     injector.addLazySingleton<CheckAffiliatedController>(
@@ -51,6 +56,14 @@ final injector = AutoInjector(
         RequestDetailsRepositoryImpl.new);
     injector.addLazySingleton<RequestDetailsController>(
         RequestDetailsController.new);
+
+    injector.addLazySingleton<IAddressRepository>(AddressRepositoryImpl.new);
+    injector.addLazySingleton(AddressController.new);
+
+    injector.addLazySingleton<IBankAccountRepository>(
+        BankAccountRepositoryImpl.new);
+    injector.addLazySingleton(BankAccountController.new);
+
     injector.commit();
   },
 );

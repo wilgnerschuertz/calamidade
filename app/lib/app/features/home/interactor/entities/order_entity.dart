@@ -3,7 +3,6 @@ import 'package:coopartilhar/app/features/home/interactor/entities/order_owner_e
 import 'package:core_module/core_module.dart';
 
 class OrderEntity extends Entity {
-  final int id;
   final String title;
   final String description;
   final double amount;
@@ -19,7 +18,7 @@ class OrderEntity extends Entity {
   final GodFatherEntity? godfather;
 
   OrderEntity(
-    this.id, {
+    super.id, {
     required this.title,
     required this.description,
     required this.amount,
@@ -33,5 +32,5 @@ class OrderEntity extends Entity {
     required this.deletedAt,
     required this.owner,
     required this.godfather,
-  }) : super(id);
+  });
 }

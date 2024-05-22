@@ -1,7 +1,6 @@
 class PhoneAdapter {
   static String applyMask(String text) {
     final phone = text.replaceAll(RegExp(r'\D'), '');
-    print(phone);
     if (phone.length == 13) {
       return '+${phone.substring(0, 2)} (${phone.substring(2, 4)}) ${phone.substring(4, 9)}-${phone.substring(9)}';
     } else if (phone.length == 12) {
