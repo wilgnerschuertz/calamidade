@@ -23,5 +23,5 @@ class GodFather extends Entity {
     required this.createdAt,
     required this.updatedAt,
     required this.deleteAt,
-  }) : super(-1);
+  }) : super(id);
 }

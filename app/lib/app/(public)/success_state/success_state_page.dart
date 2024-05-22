@@ -1,3 +1,4 @@
+import 'package:coopartilhar/routes.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:core_module/core_module.dart';
@@ -27,7 +28,7 @@ class SuccessStatePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LottieBuilder.asset(CooLotties.cooSuccess, repeat: false),
+                    CooLotties.cooSuccess,
                     const SizedBox(height: 20),
                     Text('Parabéns!', style: textTheme.displayLarge),
                     const SizedBox(height: 20),
@@ -40,7 +41,7 @@ class SuccessStatePage extends StatelessWidget {
               ),
               CooButton(
                 label: 'Continuar',
-                onPressed: () {},
+                onPressed: () => Routefly.navigate(routePaths.home),
               )
             ],
           ),

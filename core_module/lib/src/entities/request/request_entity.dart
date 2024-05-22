@@ -16,7 +16,7 @@ class RequestEntity extends Entity {
   final UserEntity user;
   final RequestStatusEntity status;
   final RequestHelpType helpType;
-  final GodFather godFather;
+  final GodFather? godFather;
 
   RequestEntity({
     required int id,
