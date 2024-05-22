@@ -16,7 +16,11 @@ scripts:
 
   format:
     description: format files.
-    exec: "dart format --set-exit-if-changed ."
+    steps:
+      - dart format --set-exit-if-changed ./app
+      - dart format --set-exit-if-changed ./core_module
+      - dart format --set-exit-if-changed ./dashboard
+      - dart format --set-exit-if-changed ./design_system
 
   get:
     description: downloads pub packages.
@@ -29,11 +33,26 @@ scripts:
       dirExists:
         - test
       failFast: true
+  
+  ci:
+    description: Run CI.
+    steps:
+      - dart run melos run format
+      - dart run melos run analyze
+      - dart run melos run test
 
-  build-dev:
+  build-apk-dev:
     description: Build DEVELOPMENT APK.
-    exec: "flutter build apk --split-per-abi --dart-define-from-file=dev.env  -t lib/main_dev.dart"
+    run: "cd app && flutter build apk --split-per-abi --dart-define-from-file=dev.env  -t lib/main_dev.dart"
 
-  build-prod:
+  build-apk:
     description: Build PRODUCTION APK.
-    exec: "flutter build apk --split-per-abi --dart-define-from-file=.env  -t lib/main_prod.dart"
+    run: "cd app && flutter build apk --split-per-abi --dart-define-from-file=.env  -t lib/main_prod.dart"
+
+  build-ios-dev:
+    description: Build DEVELOPMENT APK.
+    run: "cd app && flutter build ios --split-per-abi --dart-define-from-file=dev.env  -t lib/main_dev.dart"
+
+  build-ios:
+    description: Build PRODUCTION APK.
+    run: "cd app && flutter build ios --split-per-abi --dart-define-from-file=.env  -t lib/main_prod.dart"
