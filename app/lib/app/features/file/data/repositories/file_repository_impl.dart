@@ -40,16 +40,12 @@ class FileRepositoryImpl implements IFileRepository {
     List<int>? fileBytes,
   }) async {
     try {
-      final response = await restClient.upload(RestClientMultipart(
+      await restClient.upload(RestClientMultipart(
         fileKey: presignedUrl.key,
         fileName: fileName,
         path: presignedUrl.url,
         fileBytes: fileBytes,
       ));
-
-      final data = response.data;
-      print(data);
-
       return Right(FileEntity(-1, 'test', 'test'));
     } on BaseException catch (err) {
       return Left(err);
