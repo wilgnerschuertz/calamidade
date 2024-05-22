@@ -1,7 +1,6 @@
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card.dart';
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_page_header.dart';
-import 'package:coopartilhar/app/features/request_details/entities/request_details_entity.dart';
-import 'package:coopartilhar/app/features/request_details/interactor/request_details_controller.dart';
+import 'package:coopartilhar/app/features/request_details/interactor/controllers/request_details_controller.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
@@ -15,8 +14,9 @@ class RequestDetailsPage extends StatefulWidget {
 }
 
 class _RequestDetailsPageState extends State<RequestDetailsPage> {
-  late final RequestDetailsController _controller;
-  RequestDetailsEntity? request;
+  late final RequestDetailsController _controller =
+      injector.get<RequestDetailsController>();
+  RequestEntity? request;
   String errorMessage = '';
   bool isLoading = true;
 
@@ -25,14 +25,13 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
     super.initState();
     final id = Routefly.query.arguments['id'];
 
-    _controller = injector.get<RequestDetailsController>();
     _controller.addListener(listener);
     _controller.loadRequestDetails(id: id!);
   }
 
   void listener() {
     if (_controller.value is SuccessState) {
-      request = (_controller.value as SuccessState<RequestDetailsEntity>).data;
+      request = (_controller.value as SuccessState<RequestEntity>).data;
       setLoading(false);
     } else if (_controller.value is LoadingState) {
     } else if (_controller.value is ErrorState<BaseException>) {

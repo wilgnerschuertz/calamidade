@@ -1,4 +1,4 @@
-enum RequestStatus {
+enum RequestStatusEntity {
   analisys('Em analise', 0xFFfcb900, 0xFFa17703),
   accepted('Aceito', 0xFF129166, 0xFF0a4531),
   rejected('Rejeitado', 0xFFEB5757, 0xFF7d2e2e),
@@ -9,20 +9,20 @@ enum RequestStatus {
   final int color;
   final int foregroundColor;
 
-  const RequestStatus(this.label, this.color, this.foregroundColor);
+  const RequestStatusEntity(this.label, this.color, this.foregroundColor);
 
-  static RequestStatus fromId(int id) {
+  static RequestStatusEntity fromId(int id) {
     switch (id) {
       case 1:
-        return RequestStatus.analisys;
+        return RequestStatusEntity.analisys;
       case 2:
-        return RequestStatus.accepted;
+        return RequestStatusEntity.accepted;
       case 3:
-        return RequestStatus.rejected;
+        return RequestStatusEntity.rejected;
       case 4:
-        return RequestStatus.concluded;
+        return RequestStatusEntity.concluded;
       default:
-        return RequestStatus.notDefined;
+        return RequestStatusEntity.notDefined;
     }
   }
 }

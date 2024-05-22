@@ -1,6 +1,5 @@
 import 'package:coopartilhar/app/(public)/auth/register/widgets/non_editable_register_item.dart';
 import 'package:coopartilhar/app/(public)/auth/register/widgets/register_item_field.dart';
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
 import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
 import 'package:coopartilhar/app/features/register/interactor/controllers/register_controller.dart';
 import 'package:coopartilhar/injector.dart';

@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:core_module/src/entities/auth/user_entity.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/adapters/check_affiliated_adapter.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/adapters/document_adapter.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/errors/not_affiliated_error.dart';

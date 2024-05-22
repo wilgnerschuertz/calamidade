@@ -1,4 +1,4 @@
-import 'package:coopartilhar/app/features/request_details/entities/user_request_details_entity.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class RequestDetailsCardUserDetails extends StatelessWidget {
     required this.phoneNumber,
   });
 
-  final UserRequestDetailsEntity user;
+  final UserEntity user;
   final String city;
   final String phoneNumber;
 

@@ -122,8 +122,8 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                           city: state.lastItem?.city ?? '',
                           phone: state.lastItem?.phone ?? '',
                           date: state.lastItem?.date ?? '',
-                          status:
-                              state.lastItem?.status ?? RequestStatus.analisys,
+                          status: state.lastItem?.status ??
+                              RequestStatusEntity.analisys,
                           requestedIncome:
                               state.lastItem?.requestedIncome ?? '',
                           isSelected: state.selectedId == state.lastItem?.id,

@@ -9,7 +9,7 @@ class RequestDetailsCardSituation extends StatelessWidget {
     required this.statusDetails,
   });
 
-  final RequestStatus statusDetails;
+  final RequestStatusEntity statusDetails;
   final String description;
 
   @override

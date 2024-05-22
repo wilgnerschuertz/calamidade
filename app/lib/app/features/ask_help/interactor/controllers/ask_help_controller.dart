@@ -6,7 +6,7 @@ import 'package:coopartilhar/app/features/ask_help/entities/solicitation_help_ty
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_status_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/state/file_state.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
-import 'package:coopartilhar/app/features/auth/interactor/entities/user_entity.dart';
+import 'package:core_module/src/entities/auth/user_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:coopartilhar/app/features/file/data/repositories/i_file_repository.dart';
 import 'package:coopartilhar/app/features/file/entities/pressigned_entity.dart';

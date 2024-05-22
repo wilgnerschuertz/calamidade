@@ -1,6 +1,6 @@
-import 'package:coopartilhar/app/features/auth/data/adapters/user_adapter.dart';
 import 'package:coopartilhar/app/features/auth/interactor/entities/credentials_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/entities/session_entity.dart';
+import 'package:core_module/core_module.dart';
 
 class SessionAdapter {
   static Map<String, dynamic> toJson(CredentialsEntity credentials) {

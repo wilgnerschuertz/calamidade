@@ -2,13 +2,13 @@ import 'package:coopartilhar/app/(public)/request_details/widgets/request_detail
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_header.dart';
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_situation.dart';
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_user_details.dart';
-import 'package:coopartilhar/app/features/request_details/entities/request_details_entity.dart';
+import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
 class RequestDetailsCard extends StatelessWidget {
   const RequestDetailsCard({super.key, required this.request});
 
-  final RequestDetailsEntity request;
+  final RequestEntity request;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,9 @@ class RequestDetailsCard extends StatelessWidget {
           const SizedBox(height: 24.0),
           RequestDetailsCardUserDetails(
             user: request.user,
-            city: request.user.address,
+
+            /// TODO: add o endereço aqui
+            city: 'endereço aqui...',
             phoneNumber: request.user.phone,
           ),
           const SizedBox(height: 16.0),
