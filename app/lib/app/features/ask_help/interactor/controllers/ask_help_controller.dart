@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:coopartilhar/app/features/accident/data/repositories/i_accident_repository.dart';
 import 'package:coopartilhar/app/features/accident/entities/accident_entity.dart';
 import 'package:coopartilhar/app/features/address/entities/address_entity.dart';
+import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_help_type_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_status_entity.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/state/file_state.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
@@ -12,9 +14,6 @@ import 'package:coopartilhar/app/features/bank_account/entities/bank_account.dar
 import 'package:coopartilhar/app/features/file/data/repositories/i_file_repository.dart';
 import 'package:coopartilhar/app/features/file/entities/pressigned_entity.dart';
 import 'package:core_module/core_module.dart';
-
-import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
-import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
 import 'package:flutter/material.dart';
 
 class AskHelpController extends BaseController {

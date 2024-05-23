@@ -12,11 +12,9 @@ dependencies:
   either_dart: ^1.0.0
   flutter:
     sdk: flutter
-  lottie: ^3.1.1
   mocktail: ^1.0.3
   routefly: ^1.0.9
   shared_preferences: ^2.2.3
-  uicons: ^1.0.1
   uuid: ^4.4.0
   intl: ^0.19.0
   file_picker: ^8.0.3
