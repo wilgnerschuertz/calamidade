@@ -1,5 +1,3 @@
-
-
 import 'package:coopartilhar/app/features/request_details/interactor/repositories/i_request_details_repository.dart';
 import 'package:core_module/core_module.dart';
 
