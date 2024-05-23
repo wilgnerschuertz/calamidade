@@ -1,7 +1,6 @@
 import '../auth/user_entity.dart';
 import '../entity.dart';
 import 'god_father.dart';
-import 'request_help_type.dart';
 import 'request_status_entity.dart';
 
 class RequestEntity extends Entity {
@@ -15,7 +14,7 @@ class RequestEntity extends Entity {
   final DateTime createdAt;
   final UserEntity user;
   final RequestStatusEntity status;
-  final RequestHelpType helpType;
+  final String helpType;
   final GodFather? godFather;
 
   RequestEntity({

@@ -2,7 +2,7 @@ import 'package:coopartilhar/app/(public)/home/widgets/coo_app_bar.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/coo_navigator_bar.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/search_widget.dart';
 import 'package:coopartilhar/app/features/home/interactor/controllers/home_controller.dart';
-import 'package:coopartilhar/app/features/home/interactor/entities/order_list_entity.dart';
+import 'package:coopartilhar/app/features/home/interactor/entities/request_list_entity.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               valueListenable: homeController,
               builder: (context, state, __) {
                 return switch (state) {
-                  SuccessState(:final OrderListEntity data) => Column(
+                  SuccessState(:final RequestListEntity data) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 24),
@@ -79,9 +79,12 @@ class _HomePageState extends State<HomePage> {
                         Expanded(
                           child: ListView.separated(
                             itemBuilder: (context, index) {
-                              final order = data.orders[index];
+                              final order = data.requests[index];
                               return CardRequest(
-                                onClickArrowRight: () {},
+                                onClickArrowRight: () {
+                                  Routefly.push(routePaths.requestDetails,
+                                      arguments: {'id': order.id});
+                                },
                                 value: order.amount,
                                 title: order.title,
 
@@ -94,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             separatorBuilder: (_, __) =>
                                 const SizedBox(height: 16),
-                            itemCount: data.orders.length,
+                            itemCount: data.requests.length,
                           ),
                         ),
                       ],

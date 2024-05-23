@@ -1,8 +1,4 @@
-import 'package:core_module/src/adapters/request/god_father_adapter.dart';
-import 'package:core_module/src/adapters/request/request_help_type_adapter.dart';
-import 'package:core_module/src/adapters/request/request_status_adapter.dart';
-import 'package:core_module/src/adapters/request/request_user_adapter.dart';
-import 'package:core_module/src/entities/request/request_entity.dart';
+import 'package:core_module/core_module.dart';
 
 class RequestAdapter {
   static RequestEntity fromJson(Map<String, dynamic> map) {
@@ -16,8 +12,8 @@ class RequestAdapter {
       financialBank: map['financialBank'] ?? '',
       financialAgency: map['financialBank'] ?? '',
       financialAccount: map['financialAccount'] ?? '',
-      status: RequestStatusAdapter.fromJson(map['status']),
-      helpType: RequestHelpTypeAdapter.fromJson(map['helpType']),
+      status: RequestStatusEntity.fromString(map['status'] ?? 'Não definido'),
+      helpType: map['helpType'] ?? '',
       user: RequestUserAdapter.fromJson(map['user']),
       godFather: map['godFather'] != null
           ? GodFatherAdapter.fromJson(map['godFather'])
