@@ -10,13 +10,7 @@ class RequestController extends BaseController<BaseState> {
   Future<void> fetchNewRequests() async {
     update(NewRequestsLoadingState());
 
-    final result = await _repository.getRequests();
-    print(
-      result.fold(
-        (error) => print(error),
-        (success) => print(success),
-      ),
-    );
+    await _repository.getRequests();
 
     final data = <RequestEntity>[];
 
