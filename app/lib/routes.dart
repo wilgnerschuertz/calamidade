@@ -10,28 +10,31 @@ import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart'
 import 'package:coopartilhar/app/(public)/auth/check_affiliated/check_affiliated_page.dart'
     as a4;
 import 'package:coopartilhar/app/(public)/auth/login/login_page.dart' as a5;
-import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart'
+import 'package:coopartilhar/app/(public)/auth/login/forgot_password_page.dart'
     as a6;
-import 'package:coopartilhar/app/(public)/auth/register/register_page.dart'
+import 'package:coopartilhar/app/(public)/auth/login/reset_password_page.dart'
     as a7;
-import 'package:coopartilhar/app/(public)/home/home_page.dart' as a8;
-import 'package:coopartilhar/app/(public)/onboarding/onboarding_page.dart'
+import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart'
+    as a8;
+import 'package:coopartilhar/app/(public)/auth/register/register_page.dart'
     as a9;
-import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart'
-    as a10;
-import 'package:coopartilhar/app/(public)/request_details/request_details_page.dart'
+import 'package:coopartilhar/app/(public)/home/home_page.dart' as a10;
+import 'package:coopartilhar/app/(public)/onboarding/onboarding_page.dart'
     as a11;
-import 'package:coopartilhar/app/(public)/splash/splash_page.dart' as a12;
-import 'package:coopartilhar/app/(public)/success_state/success_state_page.dart'
+import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart'
+    as a12;
+import 'package:coopartilhar/app/(public)/request_details/request_details_page.dart'
     as a13;
+import 'package:coopartilhar/app/(public)/splash/splash_page.dart' as a14;
+import 'package:coopartilhar/app/(public)/success_state/success_state_page.dart'
+    as a15;
 import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart'
-    as a14;
-import 'package:coopartilhar/app/(public)/welcome/welcome_page.dart' as a15;
+    as a16;
+import 'package:coopartilhar/app/(public)/welcome/welcome_page.dart' as a17;
 
-import 'package:coopartilhar/app/(public)/address/address_page.dart' as a16;
-
+import 'package:coopartilhar/app/(public)/address/address_page.dart' as a18;
 import 'package:coopartilhar/app/(public)/bank_account/bank_account_page.dart'
-    as a17;
+    as a19;
 
 import 'package:coopartilhar/app/(public)/address/new_address/new_address_page.dart'
     as a18;
@@ -93,12 +96,30 @@ List<RouteEntity> get routes => [
         ),
       ),
       RouteEntity(
+        key: '/auth/login/forgot_password',
+        uri: Uri.parse('/auth/login/forgot_password'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a6.ForgotPasswordPage(),
+        ),
+      ),
+      RouteEntity(
+        key: '/auth/login/forgot_password/reset_password',
+        uri: Uri.parse('/auth/login/forgot_password/reset_password'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a7.ResetPasswordPage(),
+        ),
+      ),
+      RouteEntity(
         key: '/auth/not_affiliated',
         uri: Uri.parse('/auth/not_affiliated'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a6.NotAfilliatedPage(),
+          const a8.NotAfilliatedPage(),
         ),
       ),
       RouteEntity(
@@ -107,7 +128,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a7.RegisterPage(),
+          const a9.RegisterPage(),
         ),
       ),
       RouteEntity(
@@ -116,7 +137,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a8.HomePage(),
+          const a10.HomePage(),
         ),
       ),
       RouteEntity(
@@ -125,7 +146,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a9.OnboardingPage(),
+          const a11.OnboardingPage(),
         ),
       ),
       RouteEntity(
@@ -134,7 +155,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a10.RegisterAssistencePage(),
+          const a12.RegisterAssistencePage(),
         ),
       ),
       RouteEntity(
@@ -143,7 +164,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a11.RequestDetailsPage(),
+          const a13.RequestDetailsPage(),
         ),
       ),
       RouteEntity(
@@ -152,7 +173,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a12.SplashPage(),
+          const a14.SplashPage(),
         ),
       ),
       RouteEntity(
@@ -161,7 +182,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a13.SuccessStatePage(),
+          const a15.SuccessStatePage(),
         ),
       ),
       RouteEntity(
@@ -170,7 +191,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a14.WantToHelpPage(),
+          const a16.WantToHelpPage(),
         ),
       ),
       RouteEntity(
@@ -179,7 +200,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a15.WelcomePage(),
+          const a17.WelcomePage(),
         ),
       ),
       RouteEntity(
@@ -188,7 +209,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a16.AddressPage(),
+          const a18.AddressPage(),
         ),
       ),
       RouteEntity(
@@ -206,7 +227,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a17.BankAccountPage(),
+          const a19.BankAccountPage(),
         ),
       ),
     ];
@@ -232,6 +253,8 @@ const routePaths = (
     login: '/auth/login',
     notAffiliated: '/auth/not_affiliated',
     register: '/auth/register',
+    forgotPassword: '/auth/login/forgot_password',
+    resetPassword: '/auth/login/forgot_password/reset_password',
   ),
   home: '/home',
   onboarding: '/onboarding',

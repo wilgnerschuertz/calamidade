@@ -30,7 +30,9 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             decoration: InputDecoration(
               hintText: widget.hitText,
               suffixIcon: IconButton(
-                icon: Icon(state ? Icons.visibility_off : Icons.visibility),
+                icon: Icon(state
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined),
                 onPressed: () {
                   _passwordVisible.value = !state;
                 },
