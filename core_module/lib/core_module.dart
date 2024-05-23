@@ -34,8 +34,6 @@ export 'src/helpers/validators_helper.dart';
 export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 export 'src/types/unit.dart';
-export 'src/file_picker/i_file_picker.dart';
-export 'src/helpers/currency_format_helper.dart';
 export 'src/adapters/adapters.dart';
 
 final coreModule = AutoInjector(
