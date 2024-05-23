@@ -1,4 +1,3 @@
-import 'package:core_module/src/entities/auth/user_entity.dart';
 import 'package:coopartilhar/app/features/register/interactor/entities/register_entity.dart';
 import 'package:coopartilhar/app/features/register/interactor/repositories/i_register_repository.dart';
 import 'package:core_module/core_module.dart';
@@ -38,17 +37,14 @@ class RegisterController<RegisterState> extends BaseController {
     if (ValidatorsHelper.passwordIsEmpty(text)) {
       return 'A senha não pode estar vazia';
     } else {
-      return ValidatorsHelper.passworHasEnoughCharacters(text)
-          ? null
-          : 'Insira uma senha com pelo menos 4 caracteres';
+      return ValidatorsHelper.passworHasEnoughCharacters(text) ? null : 'Insira uma senha com pelo menos 4 caracteres';
     }
   }
 
   String? repeatPasswordValidator(String? text) {
     if (ValidatorsHelper.passwordIsEmpty(text)) {
       return 'A senha não pode estar vazia';
-    } else if (passwordController.text.isNotEmpty &&
-        text != passwordController.text) {
+    } else if (passwordController.text.isNotEmpty && text != passwordController.text) {
       return 'As senhas devem ser iguais';
     }
     return null;

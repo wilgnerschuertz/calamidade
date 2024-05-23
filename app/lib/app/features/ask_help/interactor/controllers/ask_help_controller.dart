@@ -3,19 +3,17 @@ import 'dart:io';
 import 'package:coopartilhar/app/features/accident/data/repositories/i_accident_repository.dart';
 import 'package:coopartilhar/app/features/accident/entities/accident_entity.dart';
 import 'package:coopartilhar/app/features/address/entities/address_entity.dart';
+import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_help_type_entity.dart';
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_status_entity.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/state/file_state.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
-import 'package:core_module/src/entities/auth/user_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:coopartilhar/app/features/bank_account/entities/bank_account.dart';
 import 'package:coopartilhar/app/features/file/data/repositories/i_file_repository.dart';
 import 'package:coopartilhar/app/features/file/entities/pressigned_entity.dart';
 import 'package:core_module/core_module.dart';
-
-import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
-import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
 import 'package:flutter/material.dart';
 
 class AskHelpController extends BaseController {
@@ -46,18 +44,12 @@ class AskHelpController extends BaseController {
   UserEntity user = UserEntity.init();
 
   late final formKey = GlobalKey<FormState>();
-  late final TextEditingController titleController =
-      TextEditingController(text: '');
-  late final TextEditingController cpfController =
-      TextEditingController(text: '');
-  late final TextEditingController valueController =
-      TextEditingController(text: '');
-  late final TextEditingController descriptionController =
-      TextEditingController(text: '');
-  late final TextEditingController localizationController =
-      TextEditingController(text: '');
-  late final TextEditingController accountBankController =
-      TextEditingController(text: '');
+  late final TextEditingController titleController = TextEditingController(text: '');
+  late final TextEditingController cpfController = TextEditingController(text: '');
+  late final TextEditingController valueController = TextEditingController(text: '');
+  late final TextEditingController descriptionController = TextEditingController(text: '');
+  late final TextEditingController localizationController = TextEditingController(text: '');
+  late final TextEditingController accountBankController = TextEditingController(text: '');
 
   Future<void> pickFile() async {
     update(FileLoadingState());
@@ -74,11 +66,8 @@ class AskHelpController extends BaseController {
     // TODO: Listar arquivo selecionado caso for imagem
   }
 
-  void _generateAccident(PressignedEntity pressignedEntity,
-      SolicitationEntity solicitationEntity) async {
-    final AccidentEntity accidentEntity = AccidentEntity(
-        solicitationId: solicitationEntity.id!,
-        fileId: pressignedEntity.fileId);
+  void _generateAccident(PressignedEntity pressignedEntity, SolicitationEntity solicitationEntity) async {
+    final AccidentEntity accidentEntity = AccidentEntity(solicitationId: solicitationEntity.id!, fileId: pressignedEntity.fileId);
 
     final response = await _accidentRepository.saveAccident(accidentEntity);
 
@@ -132,15 +121,12 @@ class AskHelpController extends BaseController {
 
   void changeBankAccount(BankAccountEntity? bankAccount) {
     if (bankAccount != null) {
-      accountBankController.text = bankAccount.bankName != null
-          ? bankAccount.bankName!
-          : bankAccount.keyPix!;
+      accountBankController.text = bankAccount.bankName != null ? bankAccount.bankName! : bankAccount.keyPix!;
       bankAccountEntity = bankAccount;
     }
   }
 
-  void _uploadFile(String fileName, PressignedEntity pressignedEntity,
-      List<int>? fileBytes) async {
+  void _uploadFile(String fileName, PressignedEntity pressignedEntity, List<int>? fileBytes) async {
     // final responseUpload = await _fileRepository.upload(
     //   fileName: fileName,
     //   presignedUrl: pressignedEntity,
@@ -165,8 +151,7 @@ class AskHelpController extends BaseController {
       final File file = File(files.first);
       final String fileName = file.path.split('/').last;
 
-      final responsePresigned =
-          await _fileRepository.getPresignedUrl(fileName: fileName);
+      final responsePresigned = await _fileRepository.getPresignedUrl(fileName: fileName);
 
       responsePresigned.fold(
         (error) => update(ErrorState<BaseException>(exception: error)),

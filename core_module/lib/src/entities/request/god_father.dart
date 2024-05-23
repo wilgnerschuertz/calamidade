@@ -1,7 +1,6 @@
 import 'package:core_module/src/entities/entity.dart';
 
 class GodFather extends Entity {
-  final int id;
   final String email;
   final String firstName;
   final String lastName;
@@ -13,7 +12,7 @@ class GodFather extends Entity {
   final DateTime? deleteAt;
 
   GodFather({
-    required this.id,
+    required int id,
     required this.email,
     required this.firstName,
     required this.lastName,
