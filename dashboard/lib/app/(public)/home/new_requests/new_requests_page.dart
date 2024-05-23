@@ -20,6 +20,12 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
   final controller = injector.get<RequestController>();
 
   @override
+  void initState() {
+    super.initState();
+    controller.fetchNewRequests();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
     final texts = Theme.of(context).textTheme;

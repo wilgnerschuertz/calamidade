@@ -32,16 +32,17 @@ List<RouteEntity> get routes => [
           const a1.ApprovedRequestsPage(),
         ),
       ),
-      RouteEntity(
-        key: '/home/dashboard',
-        parent: '/home',
-        uri: Uri.parse('/home/dashboard'),
-        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-          ctx,
-          settings,
-          const a2.DashboardPage(),
-        ),
-      ),
+      // TODO: (bracinho2): dashboard comentado;
+      // RouteEntity(
+      //   key: '/home/dashboard',
+      //   parent: '/home',
+      //   uri: Uri.parse('/home/dashboard'),
+      //   routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+      //     ctx,
+      //     settings,
+      //     const a2.DashboardPage(),
+      //   ),
+      // ),
       RouteEntity(
         key: '/home/denied_requests',
         parent: '/home',

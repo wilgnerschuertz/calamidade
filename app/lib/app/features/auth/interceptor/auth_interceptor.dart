@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:coopartilhar/app/features/auth/data/adapters/session_adapter.dart';
+import 'package:core_module/src/adapters/auth/session_adapter.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';

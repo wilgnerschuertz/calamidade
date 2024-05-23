@@ -1,10 +1,13 @@
+import 'package:dashboard/app/features/auth/interactor/controllers/login_controller.dart';
+import 'package:dashboard/app/features/auth/interactor/states/login_states.dart';
+
 import 'package:flutter/material.dart';
 import 'package:design_system/design_system.dart';
 import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/(public)/auth/login/widgets/password_text_form_field_widget.dart';
-import 'package:dashboard/app/features/auth/login/interactor/controllers/login_controller.dart';
-import 'package:dashboard/app/features/auth/login/interactor/value_objects/email_vo.dart';
-import 'package:dashboard/app/features/auth/login/interactor/value_objects/password_vo.dart';
+
+import 'package:dashboard/app/features/auth/interactor/value_objects/email_vo.dart';
+import 'package:dashboard/app/features/auth/interactor/value_objects/password_vo.dart';
 import 'package:dashboard/injector.dart';
 
 class LoginFormWidget extends StatefulWidget {
@@ -27,7 +30,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
     return switch (controller.value) {
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
-      SuccessState<Unit>() => Routefly.pushNavigate('/home/dashboard'),
+      LoginSuccess() => Routefly.pushNavigate('/home/new_requests'),
       _ => null,
     };
   }
@@ -105,7 +108,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
 
                     return CooButton.primary(
                       label: 'Entrar',
-                      onPressed: controller.auth,
+                      onPressed: controller.login,
                       size: const Size(double.infinity, 48),
                     );
                   },

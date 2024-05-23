@@ -44,6 +44,7 @@ class _CooNavBarState extends State<CooNavBar> {
                     child: Divider(color: color.grey, height: 2),
                   ),
                   const SizedBox(height: 10),
+                  // TODO: (bracinho2): dashboard comentado;
                   // CooNavBarItem(
                   //   icon: Icon(UIcons.regularStraight.apps,
                   //       size: 24, color: color.textColor2),
@@ -53,7 +54,7 @@ class _CooNavBarState extends State<CooNavBar> {
                   //     Routefly.navigate(routePaths.home.dashboard);
                   //   },
                   // ),
-                  // const SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   CooNavBarItem(
                     icon: Icon(
                       CooIcons.cooHandHolding,

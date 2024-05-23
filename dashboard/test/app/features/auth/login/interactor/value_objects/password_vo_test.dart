@@ -1,4 +1,4 @@
-import 'package:dashboard/app/features/auth/login/interactor/value_objects/password_vo.dart';
+import 'package:dashboard/app/features/auth/interactor/value_objects/password_vo.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

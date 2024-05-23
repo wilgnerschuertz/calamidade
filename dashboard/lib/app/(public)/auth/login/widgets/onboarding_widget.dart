@@ -1,9 +1,9 @@
+import 'package:dashboard/app/features/auth/interactor/entities/onboarding_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:dashboard/injector.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
-import 'package:dashboard/app/features/auth/login/interactor/controllers/onboarding_controller.dart';
-import 'package:dashboard/app/features/auth/login/interactor/entities/onboarding_entity.dart';
+import 'package:dashboard/app/features/auth/interactor/controllers/onboarding_controller.dart';
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({super.key});
