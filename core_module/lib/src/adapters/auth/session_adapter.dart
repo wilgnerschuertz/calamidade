@@ -1,5 +1,7 @@
-import 'package:core_module/core_module.dart';
 import 'package:core_module/src/entities/auth/credencial_entity.dart';
+import 'package:core_module/src/entities/auth/session_entity.dart';
+
+import 'user_adapter.dart';
 
 class SessionAdapter {
   static Map<String, dynamic> toJson({
