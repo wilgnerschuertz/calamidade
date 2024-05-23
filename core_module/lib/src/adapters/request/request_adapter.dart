@@ -1,5 +1,8 @@
-import '../../entities/request/request.dart';
-import 'request.dart';
+import 'package:core_module/src/adapters/request/god_father_adapter.dart';
+import 'package:core_module/src/adapters/request/request_help_type_adapter.dart';
+import 'package:core_module/src/adapters/request/request_status_adapter.dart';
+import 'package:core_module/src/adapters/request/request_user_adapter.dart';
+import 'package:core_module/src/entities/request/request_entity.dart';
 
 class RequestAdapter {
   static RequestEntity fromJson(Map<String, dynamic> map) {

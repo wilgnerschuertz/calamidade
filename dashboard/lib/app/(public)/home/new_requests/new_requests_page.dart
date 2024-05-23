@@ -121,14 +121,13 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                       sliver: SliverToBoxAdapter(
                         child: NewRequestsCard(
                           title: state.lastItem?.description ?? '',
-                          name: 'state.lastItem?.name' ?? '',
-                          city: 'state.lastItem?.city' ?? '',
-                          phone: 'state.lastItem?.phone' ?? '',
-                          date: 'state.lastItem?.date' ?? '',
+                          name: 'state.lastItem?.name',
+                          city: 'state.lastItem?.city',
+                          phone: 'state.lastItem?.phone',
+                          date: 'state.lastItem?.date',
                           status: state.lastItem?.status ??
                               RequestStatusEntity.analisys,
-                          requestedIncome:
-                              ' state.lastItem?.requestedIncome' ?? '',
+                          requestedIncome: ' state.lastItem?.requestedIncome',
                           isSelected: state.selectedId == state.lastItem?.id,
                           onTap: () {
                             controller.selectItem(state.lastItem?.id);
