@@ -60,6 +60,13 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
+          leading: IconButton(
+            icon: const Icon(Icons.chevron_left),
+            onPressed: () => Routefly.pop(context),
+          ),
+        ),
         body: ValueListenableBuilder(
           valueListenable: _controller,
           builder: (context, state, _) {
@@ -112,7 +119,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                                 ),
                               )
                             : CooButton.primary(
-                                label: 'Voltar',
+                                label: 'Fechar',
                                 onPressed: () => Routefly.pop(context),
                               ),
                       ),

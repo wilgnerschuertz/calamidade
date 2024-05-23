@@ -12,10 +12,11 @@ class RequestDetailsCardDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
-    final textThems = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Container(
       padding: const EdgeInsets.all(12.0),
+      width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -28,7 +29,7 @@ class RequestDetailsCardDescription extends StatelessWidget {
         children: [
           Text(
             'Descrição',
-            style: textThems.displayMedium?.copyWith(
+            style: textTheme.displayMedium?.copyWith(
               fontWeight: FontWeight.w700,
               color: colors.textColor,
             ),
@@ -37,7 +38,7 @@ class RequestDetailsCardDescription extends StatelessWidget {
           const SizedBox(height: 9.0),
           Text(
             description,
-            style: textThems.bodySmall?.copyWith(
+            style: textTheme.bodySmall?.copyWith(
               fontSize: 14.0,
             ),
           ),
