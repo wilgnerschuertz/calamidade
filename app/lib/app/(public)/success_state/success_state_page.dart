@@ -1,7 +1,7 @@
 import 'package:coopartilhar/routes.dart';
+import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-import 'package:core_module/core_module.dart';
 
 class SuccessStatePage extends StatelessWidget {
   const SuccessStatePage({super.key});
@@ -28,14 +28,16 @@ class SuccessStatePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CooLotties.cooSuccess,
+                    CooAnimations.cooSuccess,
                     const SizedBox(height: 20),
                     Text('Parabéns!', style: textTheme.displayLarge),
                     const SizedBox(height: 20),
-                    Text('Você acaba de se tornar um Padrinho.',
-                        style: textTheme.bodySmall
-                            ?.copyWith(overflow: TextOverflow.clip),
-                        textAlign: TextAlign.center),
+                    Text(
+                      'Você acaba de se tornar um Padrinho.',
+                      style: textTheme.bodySmall
+                          ?.copyWith(overflow: TextOverflow.clip),
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ),

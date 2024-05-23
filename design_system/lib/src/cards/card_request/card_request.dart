@@ -1,11 +1,9 @@
-import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class CardRequest extends StatelessWidget {
   final double value;
-  final String title, helpedName, localName;
-  final DateTime dateTime;
+  final String title, helpedName, localName, dateTime;
   final VoidCallback onClickArrowRight;
 
   const CardRequest({
@@ -82,9 +80,10 @@ class CardRequest extends StatelessWidget {
                     color: colors.textColor2,
                   ),
                   const SizedBox(width: 6),
-                  Text(DateAdapter.dateAndHour(dateTime),
-                      style:
-                          texts.bodySmall?.copyWith(color: colors.textColor2)),
+                  Text(
+                    dateTime,
+                    style: texts.bodySmall?.copyWith(color: colors.textColor2),
+                  ),
                 ],
               ),
               const Spacer(),

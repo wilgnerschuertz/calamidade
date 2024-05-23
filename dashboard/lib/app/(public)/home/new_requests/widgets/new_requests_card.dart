@@ -31,6 +31,21 @@ class NewRequestsCard extends StatefulWidget {
 }
 
 class _NewRequestsCardState extends State<NewRequestsCard> {
+  StatusRequest get status {
+    switch (widget.status) {
+      case RequestStatusEntity.analisys:
+        return StatusRequest.analisys;
+      case RequestStatusEntity.accepted:
+        return StatusRequest.accepted;
+      case RequestStatusEntity.rejected:
+        return StatusRequest.rejected;
+      case RequestStatusEntity.concluded:
+        return StatusRequest.concluded;
+      default:
+        return StatusRequest.notDefined;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = CoopartilharColors.of(context);
@@ -58,7 +73,7 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                   style: texts.titleLarge,
                 ),
                 StatusRequestTag(
-                  status: widget.status,
+                  status: status,
                 ),
               ],
             ),
