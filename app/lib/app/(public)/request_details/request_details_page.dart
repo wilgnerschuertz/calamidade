@@ -37,7 +37,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
     }
 
     _controller.addListener(listener);
-    _controller.loadRequestDetails(id: id!);
+    _controller.loadRequestDetails(id: id.toString());
   }
 
   void listener() {
