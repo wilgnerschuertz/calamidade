@@ -1,9 +1,11 @@
 import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
-import 'package:core_module/src/entities/auth/user_entity.dart';
+import 'package:core_module/core_module.dart';
 
 class NewAskHelpAdapter {
   static Map<String, dynamic> toJson(
-      SolicitationEntity solicitationEntity, UserEntity user) {
+    SolicitationEntity solicitationEntity,
+    UserEntity user,
+  ) {
     return {
       'title': solicitationEntity.title,
       'description': solicitationEntity.description,

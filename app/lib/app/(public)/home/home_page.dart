@@ -88,7 +88,8 @@ class _HomePageState extends State<HomePage> {
                                 /// TODO: back-end não retornar nome.
                                 helpedName: 'Test',
                                 localName: order.description,
-                                dateTime: order.createdAt,
+                                dateTime:
+                                    DateAdapter.dateAndHour(order.createdAt),
                               );
                             },
                             separatorBuilder: (_, __) =>

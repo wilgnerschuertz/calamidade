@@ -1,6 +1,6 @@
-import 'package:core_module/core_module.dart';
+import 'package:lottie/lottie.dart';
 
-class CooLotties {
+class CooAnimations {
   static LottieBuilder cooSuccess = LottieBuilder.asset(
       'assets/lotties/successAnimation.json',
       repeat: false);

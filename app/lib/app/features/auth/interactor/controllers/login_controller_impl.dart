@@ -1,6 +1,5 @@
 import 'package:coopartilhar/app/features/auth/interactor/entities/credentials_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/entities/session_entity.dart';
-import 'package:core_module/src/entities/auth/user_entity.dart';
 import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
 import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:core_module/core_module.dart';

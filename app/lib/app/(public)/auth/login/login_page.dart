@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
         leading: IconButton(
           icon: const Icon(Icons.chevron_left),
           onPressed: () {
-            Navigator.of(context).pop();
+            Routefly.navigate(routePaths.welcome);
           },
         ),
       ),
@@ -103,11 +103,28 @@ class _LoginPageState extends State<LoginPage> {
                             .validatorEmpty('E-mail não pode está vazio'),
                       ),
                       const SizedBox(height: 24),
-                      Text(
-                        'Senha',
-                        style: textTheme.titleMedium?.copyWith(
-                          color: colorsTheme.textColor,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Senha',
+                            style: textTheme.titleMedium?.copyWith(
+                              color: colorsTheme.textColor,
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Routefly.navigate(routePaths.auth.forgotPassword);
+                            },
+                            child: Text(
+                              'Esqueci minha senha',
+                              style: textTheme.titleMedium?.copyWith(
+                                  color: colorsTheme.textColor2,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 14),
+                            ),
+                          )
+                        ],
                       ),
                       const SizedBox(height: 8),
                       PasswordTextFormField(
