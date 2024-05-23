@@ -52,7 +52,8 @@ class CooNavBarUserItem extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   role,
-                  style: textTheme.labelSmall?.copyWith(color: colors.textColor2),
+                  style:
+                      textTheme.labelSmall?.copyWith(color: colors.textColor2),
                 )
               ],
             )

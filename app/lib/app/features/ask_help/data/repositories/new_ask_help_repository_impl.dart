@@ -23,7 +23,8 @@ class NewAskHelpRepositoryImpl implements INewAskHelpRepository {
     } on BaseException catch (err) {
       return Left(err);
     } catch (_) {
-      return const Left(DefaultException(message: 'Ocorreu um erro inesperado.'));
+      return const Left(
+          DefaultException(message: 'Ocorreu um erro inesperado.'));
     }
   }
 }
