@@ -1,4 +1,4 @@
-import 'package:core_module/core_module.dart';
+import '../../entities/request/god_father.dart';
 
 class GodFatherAdapter {
   static GodFather fromJson(Map<String, dynamic> map) {
