@@ -11,7 +11,7 @@ class PasswordVO extends IValueObject {
     if (ValidatorsHelper.passwordIsEmpty(value)) {
       return 'A senha não pode ser vazia.';
     }
-    return ValidatorsHelper.passworHasEnoughCharacters(value)
+    return ValidatorsHelper.passwordHasEnoughCharacters(value)
         ? null
         : 'Insira uma senha com pelo menos 4 caracteres.';
   }
