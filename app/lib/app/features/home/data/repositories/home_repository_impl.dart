@@ -11,7 +11,8 @@ class HomeRepositoryImpl implements IHomeRepository {
   @override
   Future<Output<RequestListEntity>> getOrders() async {
     try {
-      final response = await restClient.get(RestClientRequest(path: '/core/v1/requests/feed?page=1&limit=10&ordering=ASC'));
+      final response = await restClient.get(RestClientRequest(
+          path: '/core/v1/requests/feed?page=1&limit=10&ordering=ASC'));
 
       return Right(RequestListAdapter.fromJson(response.data));
     } on RestClientException catch (e) {

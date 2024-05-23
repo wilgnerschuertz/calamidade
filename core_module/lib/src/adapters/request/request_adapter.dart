@@ -15,11 +15,14 @@ class RequestAdapter {
       status: RequestStatusEntity.fromString(map['status'] ?? 'Não definido'),
       helpType: map['helpType'] ?? '',
       user: RequestUserAdapter.fromJson(map['user']),
-      godFather: map['godFather'] != null ? GodFatherAdapter.fromJson(map['godFather']) : null,
+      godFather: map['godFather'] != null
+          ? GodFatherAdapter.fromJson(map['godFather'])
+          : null,
     );
   }
 
-  static Map<String, dynamic> toJson({required RequestEntity request, required int godFatherId}) {
+  static Map<String, dynamic> toJson(
+      {required RequestEntity request, required int godFatherId}) {
     return {
       'title': request.title,
       'description': request.description,

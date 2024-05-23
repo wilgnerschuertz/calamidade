@@ -82,7 +82,8 @@ class _HomePageState extends State<HomePage> {
                               final order = data.requests[index];
                               return CardRequest(
                                 onClickArrowRight: () {
-                                  Routefly.push(routePaths.requestDetails, arguments: {'id': order.id});
+                                  Routefly.push(routePaths.requestDetails,
+                                      arguments: {'id': order.id});
                                 },
                                 value: order.amount,
                                 title: order.title,
@@ -90,10 +91,12 @@ class _HomePageState extends State<HomePage> {
                                 /// TODO: back-end não retornar nome.
                                 helpedName: 'Test',
                                 localName: order.description,
-                                dateTime: DateAdapter.dateAndHour(order.createdAt),
+                                dateTime:
+                                    DateAdapter.dateAndHour(order.createdAt),
                               );
                             },
-                            separatorBuilder: (_, __) => const SizedBox(height: 16),
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(height: 16),
                             itemCount: data.requests.length,
                           ),
                         ),
@@ -117,7 +120,8 @@ class _HomePageState extends State<HomePage> {
                 Routefly.push(routePaths.askHelp.newAskHelp);
               },
               shape: const CircleBorder(),
-              child: Icon(UIcons.regularStraight.plus, color: colors.white, size: 20),
+              child: Icon(UIcons.regularStraight.plus,
+                  color: colors.white, size: 20),
             ),
           ),
         ),

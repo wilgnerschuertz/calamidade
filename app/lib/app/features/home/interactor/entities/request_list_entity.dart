@@ -4,5 +4,6 @@ class RequestListEntity extends Entity {
   final List<RequestEntity> requests;
   final bool hasNextPage;
 
-  RequestListEntity({required this.requests, required this.hasNextPage}) : super(-1);
+  RequestListEntity({required this.requests, required this.hasNextPage})
+      : super(-1);
 }
