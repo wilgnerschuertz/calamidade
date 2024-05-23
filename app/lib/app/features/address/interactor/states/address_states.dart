@@ -9,3 +9,9 @@ class AddressLoadedState implements BaseState {
 
   AddressLoadedState(this.addresses, {this.selectedAddress});
 }
+
+class RemoveAddressLoadingState extends LoadingState {}
+
+class RemoveAddressSuccessState extends BaseState {
+  RemoveAddressSuccessState();
+}

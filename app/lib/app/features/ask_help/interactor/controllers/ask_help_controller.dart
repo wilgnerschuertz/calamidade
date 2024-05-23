@@ -122,10 +122,9 @@ class AskHelpController extends BaseController {
   }
 
   void changeAddress(AddressEntity? address) {
-    if (address != null) {
-      localizationController.text = address.addressName;
-      addressEntity = address;
-    }
+    addressEntity = address;
+    localizationController.text =
+        address != null ? '${address.addressName}' : '';
   }
 
   void changeBankAccount(BankAccountEntity? bankAccount) {

@@ -1,12 +1,19 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-class CooIconButton extends StatelessWidget {
+class CooIconButton extends StatefulWidget {
   final IconData icon;
   final VoidCallback? onTap;
+  final bool isLoading;
 
-  const CooIconButton({super.key, required this.icon, this.onTap});
+  const CooIconButton(
+      {super.key, required this.icon, this.onTap, this.isLoading = false});
 
+  @override
+  State<CooIconButton> createState() => _CooIconButtonState();
+}
+
+class _CooIconButtonState extends State<CooIconButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton.filled(
@@ -15,12 +22,22 @@ class CooIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      icon: Icon(
-        icon,
-        color: CoopartilharColors.of(context).white,
-      ),
+      icon: widget.isLoading
+          ? SizedBox(
+              width: 24,
+              height: 24,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  CoopartilharColors.of(context).white,
+                ),
+              ),
+            )
+          : Icon(
+              widget.icon,
+              color: CoopartilharColors.of(context).white,
+            ),
       padding: const EdgeInsets.all(16),
-      onPressed: onTap,
+      onPressed: widget.onTap,
     );
   }
 }
