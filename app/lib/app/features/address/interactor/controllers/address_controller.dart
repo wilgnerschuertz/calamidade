@@ -13,10 +13,12 @@ class AddressController extends BaseController {
     final response = await repository.getAll();
     response.fold(
       (error) => update(ErrorState<BaseException>(exception: error)),
-      (data) => update(AddressLoadedState(
-        data,
-        selectedAddress: selectedAddress,
-      )),
+      (addresses) {
+        update(AddressLoadedState(
+          addresses ?? [],
+          selectedAddress: selectedAddress,
+        ));
+      },
     );
   }
 
@@ -28,5 +30,18 @@ class AddressController extends BaseController {
         selectedAddress: address,
       ));
     }
+  }
+
+  void editAddress(int id) {}
+
+  void removeAddress(int id) async {
+    update(AddressLoadingState());
+    final response = await repository.remove(id);
+    final newState = response.fold(
+      (error) => ErrorState<BaseException>(exception: error),
+      (_) => AddressLoadingState(),
+    );
+    update(newState);
+    getAll(null);
   }
 }

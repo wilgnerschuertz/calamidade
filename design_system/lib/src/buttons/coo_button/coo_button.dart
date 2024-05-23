@@ -109,6 +109,7 @@ class CooButton extends StatelessWidget {
     bool isLoading = false,
     bool enable = true,
     IconData? icon,
+    Size? size = const Size(double.infinity, 56),
   }) {
     return CooButton(
       label: label,
@@ -119,6 +120,7 @@ class CooButton extends StatelessWidget {
       enable: enable,
       icon: icon,
       type: ButtonType.outline,
+      size: size,
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:coopartilhar/app/features/accident/data/repositories/accident_re
 import 'package:coopartilhar/app/features/accident/data/repositories/i_accident_repository.dart';
 import 'package:coopartilhar/app/features/address/data/repositories/address_repository_impl.dart';
 import 'package:coopartilhar/app/features/address/interactor/controllers/address_controller.dart';
+import 'package:coopartilhar/app/features/address/interactor/controllers/new_address_controller.dart';
 import 'package:coopartilhar/app/features/address/interactor/repositories/i_address_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/interactor/repositories/i_new_ask_help_repository.dart';
 import 'package:coopartilhar/app/features/ask_help/data/repositories/new_ask_help_repository_impl.dart';
@@ -40,6 +41,16 @@ import 'package:core_module/core_module.dart';
 final injector = AutoInjector(
   on: (injector) {
     injector.addInjector(coreModule);
+
+    injector.addLazySingleton<ILocationService>(LocationService.new);
+    injector.addLazySingleton(PermissionHandler.new);
+    injector.add(NewAddressController.new);
+    injector.addLazySingleton<IAddressRepository>(AddressRepositoryImpl.new);
+    injector.addLazySingleton(AddressController.new);
+    injector.addLazySingleton<IBankAccountRepository>(
+        BankAccountRepositoryImpl.new);
+    injector.addLazySingleton(BankAccountController.new);
+
     injector.add(HomeController.new);
     injector.add<IHomeRepository>(HomeRepositoryImpl.new);
     injector.addSingleton<IRegisterRepository>(RegisterRepositoryImpl.new);
