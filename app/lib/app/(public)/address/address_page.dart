@@ -37,31 +37,24 @@ class _AddressPageState extends State<AddressPage> {
       SuccessState() => Routefly.pop(context),
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
-      RemoveAddressSuccessState() => {
-          // Alerts.showSuccess(context, 'Endereço removido com sucesso!'),
-        },
       _ => null,
     };
   }
 
   @override
   Widget build(BuildContext context) {
+    final colors = CoopartilharColors.of(context);
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
+        title: Text(widget.title,
+            style: textTheme.displayLarge?.copyWith(color: colors.textColor)),
         leading: IconButton(
-          icon: Icon(UIcons.regularStraight.angle_small_left),
-          onPressed: () {
-            Routefly.pop(context);
-          },
-        ),
-        title: Text(
-          widget.title,
-          style: textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+            icon: Icon(UIcons.regularStraight.angle_small_left),
+            onPressed: Navigator.of(context).pop),
+        surfaceTintColor: Colors.transparent,
       ),
       body: ValueListenableBuilder(
           valueListenable: controller,

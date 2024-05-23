@@ -35,8 +35,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void listener() {
     return switch (controller.value) {
-      SuccessState() => Routefly.navigate(
-          routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
+      SuccessState() => Routefly.push(
+          routePaths.address.newAddress,
+          arguments: {
+            'isRegister': true,
+            'title': 'Confirmar Endereço',
+            'callback': () {
+              Routefly.navigate(routePaths
+                  .affiliatedFirstAction.presentation.affiliatedFirstAction);
+            }
+          },
+        ),
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
       _ => null,
@@ -137,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   CooButton.primary(
-                    label: 'Entrar',
+                    label: 'Próximo',
                     onPressed: () => controller.register(user),
                   ),
                   SizedBox(height: keyboardHeight)

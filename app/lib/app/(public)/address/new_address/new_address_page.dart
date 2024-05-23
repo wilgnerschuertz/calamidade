@@ -9,8 +9,8 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class NewAddressPage extends StatefulWidget {
-  final String title;
-  const NewAddressPage({super.key, this.title = 'Cadastrar Endereço'});
+  late String title;
+  NewAddressPage({super.key, this.title = 'Cadastrar Endereço'});
 
   @override
   State<NewAddressPage> createState() => _NewAddressPageState();
@@ -18,9 +18,14 @@ class NewAddressPage extends StatefulWidget {
 
 class _NewAddressPageState extends State<NewAddressPage> {
   final NewAddressController controller = injector.get<NewAddressController>();
-
+  VoidCallback? callback;
   @override
   void initState() {
+    if (Routefly.query.arguments != null) {
+      callback = Routefly.query.arguments['callback'];
+      widget.title = Routefly.query.arguments['title'];
+    }
+
     super.initState();
     controller.addListener(listener);
   }
@@ -36,7 +41,7 @@ class _NewAddressPageState extends State<NewAddressPage> {
       SuccessState(:final AddressEntity data) => {
           Alerts.showSuccess(
               context, 'Endereço "${data.addressName}" criado com sucesso!'),
-          Routefly.pop(context)
+          callback != null ? () : Routefly.pop(context)
         },
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
@@ -49,21 +54,17 @@ class _NewAddressPageState extends State<NewAddressPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = CoopartilharColors.of(context);
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
+        title: Text(widget.title,
+            style: textTheme.displayLarge?.copyWith(color: colors.textColor)),
         leading: IconButton(
-          icon: Icon(UIcons.regularStraight.angle_small_left),
-          onPressed: () {
-            Routefly.pop(context);
-          },
-        ),
-        title: Text(
-          widget.title,
-          style: textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+            icon: Icon(UIcons.regularStraight.angle_small_left),
+            onPressed: Navigator.of(context).pop),
+        surfaceTintColor: Colors.transparent,
       ),
       body: ValueListenableBuilder(
           valueListenable: controller,

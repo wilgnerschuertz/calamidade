@@ -35,6 +35,13 @@ import 'package:core_module/core_module.dart';
 final injector = AutoInjector(
   on: (injector) {
     injector.addInjector(coreModule);
+
+    injector.addLazySingleton<IAddressRepository>(AddressRepositoryImpl.new);
+    injector.addLazySingleton(AddressController.new);
+    injector.addLazySingleton<IBankAccountRepository>(
+        BankAccountRepositoryImpl.new);
+    injector.addLazySingleton(BankAccountController.new);
+
     injector.add(HomeController.new);
     injector.add<IHomeRepository>(HomeRepositoryImpl.new);
     injector.addSingleton<IRegisterRepository>(RegisterRepositoryImpl.new);
@@ -57,13 +64,6 @@ final injector = AutoInjector(
         RequestDetailsRepositoryImpl.new);
     injector.addLazySingleton<RequestDetailsController>(
         RequestDetailsController.new);
-
-    injector.addLazySingleton<IAddressRepository>(AddressRepositoryImpl.new);
-    injector.addLazySingleton(AddressController.new);
-
-    injector.addLazySingleton<IBankAccountRepository>(
-        BankAccountRepositoryImpl.new);
-    injector.addLazySingleton(BankAccountController.new);
 
     injector.addLazySingleton<ILocationService>(LocationService.new);
     injector.addLazySingleton(PermissionHandler.new);

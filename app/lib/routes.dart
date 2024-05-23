@@ -197,7 +197,7 @@ List<RouteEntity> get routes => [
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
-          const a18.NewAddressPage(),
+          a18.NewAddressPage(),
         ),
       ),
       RouteEntity(
