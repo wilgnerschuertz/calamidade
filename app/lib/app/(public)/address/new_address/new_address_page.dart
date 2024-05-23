@@ -9,8 +9,8 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class NewAddressPage extends StatefulWidget {
-  late String title;
-  NewAddressPage({super.key, this.title = 'Cadastrar Endereço'});
+  final String title;
+  const NewAddressPage({super.key, this.title = 'Cadastrar Endereço'});
 
   @override
   State<NewAddressPage> createState() => _NewAddressPageState();
@@ -19,11 +19,12 @@ class NewAddressPage extends StatefulWidget {
 class _NewAddressPageState extends State<NewAddressPage> {
   final NewAddressController controller = injector.get<NewAddressController>();
   VoidCallback? callback;
+  String title = '';
   @override
   void initState() {
     if (Routefly.query.arguments != null) {
       callback = Routefly.query.arguments['callback'];
-      widget.title = Routefly.query.arguments['title'];
+      title = Routefly.query.arguments['title'] ?? widget.title;
     }
 
     super.initState();
@@ -59,7 +60,7 @@ class _NewAddressPageState extends State<NewAddressPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text(widget.title,
+        title: Text(title,
             style: textTheme.displayLarge?.copyWith(color: colors.textColor)),
         leading: IconButton(
             icon: Icon(UIcons.regularStraight.angle_small_left),

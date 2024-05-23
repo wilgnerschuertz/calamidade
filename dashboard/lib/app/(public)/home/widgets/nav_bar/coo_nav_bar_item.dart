@@ -36,12 +36,17 @@ class CooNavBarItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               icon,
               const SizedBox(width: 8),
-              Text(
-                label,
-                style: textTheme.bodyMedium?.copyWith(color: colors.textColor2),
+              Expanded(
+                child: Text(
+                  label,
+                  overflow: TextOverflow.ellipsis,
+                  style:
+                      textTheme.bodyMedium?.copyWith(color: colors.textColor2),
+                ),
               ),
               const SizedBox(width: 8),
               showNotifications

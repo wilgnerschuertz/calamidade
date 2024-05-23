@@ -34,6 +34,7 @@ export 'src/helpers/validators_helper.dart';
 export 'src/states/base_state.dart';
 export 'src/types/types.dart';
 export 'src/types/unit.dart';
+export 'src/adapters/adapters.dart';
 export 'src/location/location.dart';
 export 'src/location/coordinates.dart';
 export 'src/permission_handler/permission_handler.dart';
