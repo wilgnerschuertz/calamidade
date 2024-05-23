@@ -15,18 +15,14 @@ class RegisterRepositoryImpl extends IRegisterRepository {
     try {
       final payload = RegisterAdapter.toJson(register);
 
-      final response = await client.post(
+      await client.post(
         RestClientRequest(
           path: '/core/v1/auth/email/register',
           data: payload,
         ),
       );
 
-      if (response.statusCode == 204) {
-        return const Right(unit);
-      }
-      return const Left(
-          DefaultException(message: 'Falha ao realizar registro'));
+      return const Right(unit);
     } on BaseException catch (err) {
       if (err.data['erros']['email'] == 'emailAlreadyExists') {
         return const Left(DefaultException(
