@@ -50,15 +50,6 @@ class _LoginPageState extends State<LoginPage> {
     final colorsTheme = CoopartilharColors.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        leading: IconButton(
-          icon: const Icon(Icons.chevron_left),
-          onPressed: () {
-            Routefly.navigate(routePaths.welcome);
-          },
-        ),
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
