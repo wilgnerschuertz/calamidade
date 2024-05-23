@@ -30,7 +30,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             decoration: InputDecoration(
               hintText: widget.hitText,
               suffixIcon: IconButton(
-                icon: Icon(state
+                icon: Icon(!state
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined),
                 onPressed: () {
