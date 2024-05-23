@@ -1,6 +1,6 @@
-import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
-import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:core_module/core_module.dart';
+import 'package:dashboard/app/features/auth/interactor/repositories/login_repository.dart';
+import 'package:dashboard/app/features/auth/interactor/states/login_states.dart';
 import 'package:flutter/material.dart';
 
 const _kUserKey = 'user';
@@ -8,13 +8,13 @@ const _kTokenKey = 'token';
 const _kRefreshTokenKey = 'refreshToken';
 const _kTokenExpiresKey = 'tokenExpires';
 
-class LoginControllerImpl extends BaseController<BaseState> {
-  LoginControllerImpl({
+class LoginController extends BaseController<BaseState> {
+  LoginController({
     required this.cache,
     required this.repository,
-  }) : super(AuthInitial());
+  }) : super(LoginInitial());
 
-  final IAuthRepository repository;
+  final LoginRepository repository;
   final ICache cache;
 
   late final passwordController = TextEditingController();
@@ -22,18 +22,18 @@ class LoginControllerImpl extends BaseController<BaseState> {
   late final formKey = GlobalKey<FormState>();
 
   Future<void> checkSession() async {
-    update(AuthLoading());
+    update(LoginLoading());
 
     final user = await getUser();
     if (user == null) {
-      return update(AuthInitial());
+      return update(LoginInitial());
     }
 
-    update(AuthSuccess(data: user));
+    update(LoginSuccess(data: user));
   }
 
   Future<void> login() async {
-    update(AuthLoading());
+    update(LoginLoading());
 
     final email = emailController.text;
     final password = passwordController.text;
@@ -43,7 +43,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
     );
 
     result.fold(
-      (error) => update(AuthError(exception: error)),
+      (error) => update(LoginError(exception: error)),
       (success) => tokenStorage(success),
     );
   }
@@ -74,8 +74,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
       params: CacheParams(key: _kUserKey, value: UserAdapter.toJson(user)),
     );
 
-    // TODO: Back-end não retorna os campos de nome e photo
-    update(AuthSuccess(data: session.user));
+    update(LoginSuccess(data: session.user));
   }
 
   Future<String> getToken() {

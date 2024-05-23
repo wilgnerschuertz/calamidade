@@ -1,5 +1,8 @@
 import 'package:core_module/core_module.dart';
 
+import 'god_father_adapter.dart';
+import 'request_user_adapter.dart';
+
 class RequestAdapter {
   static RequestEntity fromJson(Map<String, dynamic> map) {
     return RequestEntity(

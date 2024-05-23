@@ -5,12 +5,12 @@ import 'package:dashboard/app/features/home/request/interactor/states/request_st
 class RequestController extends BaseController<BaseState> {
   final RequestRepository _repository;
 
-  RequestController(this._repository) : super(NewRequestsInitialState()) {
-    fetchNewRequests();
-  }
+  RequestController(this._repository) : super(NewRequestsInitialState());
 
   Future<void> fetchNewRequests() async {
     update(NewRequestsLoadingState());
+
+    await _repository.getRequests();
 
     final data = <RequestEntity>[];
 

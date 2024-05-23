@@ -1,8 +1,10 @@
 import 'package:core_module/core_module.dart';
-import 'package:dashboard/app/features/auth/login/interactor/value_objects/i_value_object.dart';
+import 'package:dashboard/app/features/auth/interactor/value_objects/i_value_object.dart';
 
 class PasswordVO extends IValueObject {
-  PasswordVO({required super.value});
+  PasswordVO({
+    required super.value,
+  });
 
   @override
   String? validate() {

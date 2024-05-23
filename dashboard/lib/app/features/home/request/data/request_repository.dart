@@ -11,9 +11,10 @@ class RequestRepositoryImpl implements RequestRepository {
 
   @override
   Future<Output<List<RequestEntity>>> getRequests() async {
+    const urlPath = '/core/v1/requests?page=1&limit=1';
+
     try {
-      final response = await _restClient
-          .get(RestClientRequest(path: '/core/v1/requests?page=1&limit=1'));
+      final response = await _restClient.get(RestClientRequest(path: urlPath));
       if (response.data == null) {
         return const Left(DefaultException(message: 'Requisição inválida'));
       } else {

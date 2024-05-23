@@ -1,10 +1,13 @@
 import 'package:dashboard/app/(public)/auth/login/widgets/login_form_widget.dart';
 import 'package:dashboard/app/(public)/auth/login/widgets/onboarding_widget.dart';
+
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

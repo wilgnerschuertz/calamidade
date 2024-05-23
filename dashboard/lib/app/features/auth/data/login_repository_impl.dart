@@ -1,9 +1,9 @@
-import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
-
 import 'package:core_module/core_module.dart';
 
-class AuthRepositoryImpl implements IAuthRepository {
-  const AuthRepositoryImpl({
+import 'package:dashboard/app/features/auth/interactor/repositories/login_repository.dart';
+
+class LoginRepositoryImpl implements LoginRepository {
+  const LoginRepositoryImpl({
     required this.client,
   });
 
@@ -13,10 +13,12 @@ class AuthRepositoryImpl implements IAuthRepository {
   Future<Output<SessionEntity>> login({
     required CredentialsEntity credentials,
   }) async {
+    const loginUrl = '/core/v1/auth/email/login';
+
     try {
       final response = await client.post(
         RestClientRequest(
-          path: '/core/v1/auth/email/login',
+          path: loginUrl,
           data: SessionAdapter.toJson(credentials: credentials),
         ),
       );

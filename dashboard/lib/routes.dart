@@ -3,8 +3,7 @@ import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/(public)/auth/login/login_page.dart' as a0;
 import 'package:dashboard/app/(public)/home/approved_requests/approved_requests_page.dart'
     as a1;
-import 'package:dashboard/app/(public)/home/dashboard/dashboard_page.dart'
-    as a2;
+
 import 'package:dashboard/app/(public)/home/denied_requests/denied_requests_page.dart'
     as a3;
 import 'package:dashboard/app/(public)/home/home_layout.dart' as a4;
@@ -32,16 +31,17 @@ List<RouteEntity> get routes => [
           const a1.ApprovedRequestsPage(),
         ),
       ),
-      RouteEntity(
-        key: '/home/dashboard',
-        parent: '/home',
-        uri: Uri.parse('/home/dashboard'),
-        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
-          ctx,
-          settings,
-          const a2.DashboardPage(),
-        ),
-      ),
+      // TODO: (bracinho2): dashboard comentado;
+      // RouteEntity(
+      //   key: '/home/dashboard',
+      //   parent: '/home',
+      //   uri: Uri.parse('/home/dashboard'),
+      //   routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+      //     ctx,
+      //     settings,
+      //     const a2.DashboardPage(),
+      //   ),
+      // ),
       RouteEntity(
         key: '/home/denied_requests',
         parent: '/home',
