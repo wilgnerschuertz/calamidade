@@ -74,13 +74,6 @@ final injector = AutoInjector(
     injector.addLazySingleton<RequestDetailsController>(
         RequestDetailsController.new);
 
-    injector.addLazySingleton<IAddressRepository>(AddressRepositoryImpl.new);
-    injector.addLazySingleton(AddressController.new);
-
-    injector.addLazySingleton<IBankAccountRepository>(
-        BankAccountRepositoryImpl.new);
-    injector.addLazySingleton(BankAccountController.new);
-
     injector.addLazySingleton<IForgotPasswordRepository>(
         ForgotPasswordRepositoryImpl.new);
     injector.addLazySingleton(ForgotPasswordController.new);
