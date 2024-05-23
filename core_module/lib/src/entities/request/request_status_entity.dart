@@ -11,15 +11,15 @@ enum RequestStatusEntity {
 
   const RequestStatusEntity(this.label, this.color, this.foregroundColor);
 
-  static RequestStatusEntity fromId(int id) {
-    switch (id) {
-      case 1:
+  static RequestStatusEntity fromString(String name) {
+    switch (name) {
+      case 'analysis':
         return RequestStatusEntity.analisys;
-      case 2:
+      case 'accepted':
         return RequestStatusEntity.accepted;
-      case 3:
+      case 'rejected':
         return RequestStatusEntity.rejected;
-      case 4:
+      case 'concluded':
         return RequestStatusEntity.concluded;
       default:
         return RequestStatusEntity.notDefined;

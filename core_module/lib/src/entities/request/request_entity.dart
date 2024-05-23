@@ -15,7 +15,7 @@ class RequestEntity extends Entity {
   final DateTime createdAt;
   final UserEntity user;
   final RequestStatusEntity status;
-  final RequestHelpType helpType;
+  final String helpType;
   final GodFather? godFather;
 
   RequestEntity({
