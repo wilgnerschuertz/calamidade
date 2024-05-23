@@ -36,9 +36,9 @@ class ResetPasswordController extends BaseController {
     if (ValidatorsHelper.passwordIsEmpty(text)) {
       return 'A senha não pode estar vazia';
     } else {
-      return ValidatorsHelper.passworHasEnoughCharacters(text)
+      return ValidatorsHelper.passwordHasEnoughCharacters(text)
           ? null
-          : 'Insira uma senha com pelo menos 4 caracteres';
+          : 'Senha com pelo menos 6 caracteres';
     }
   }
 

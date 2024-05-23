@@ -44,6 +44,6 @@ abstract class ValidatorsHelper {
   static bool passwordIsEmpty(String? password) =>
       password == null || password.isEmpty;
 
-  static bool passworHasEnoughCharacters(String? password) =>
-      (password?.length ?? 0) > 3;
+  static bool passwordHasEnoughCharacters(String? password) =>
+      (password?.length ?? 0) >= 6;
 }

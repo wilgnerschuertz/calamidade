@@ -109,10 +109,13 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 ),
               ),
             ),
-            CooButton.primary(
-              label: 'Concluir',
-              onPressed: () => _reset(),
-              size: const Size(double.infinity, 50),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: CooButton.primary(
+                label: 'Concluir',
+                onPressed: () => _reset(),
+                size: const Size(double.infinity, 50),
+              ),
             ),
           ],
         ),
