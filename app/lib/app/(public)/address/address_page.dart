@@ -2,6 +2,7 @@ import 'package:coopartilhar/app/features/address/entities/address_entity.dart';
 import 'package:coopartilhar/app/features/address/interactor/controllers/address_controller.dart';
 import 'package:coopartilhar/app/features/address/interactor/states/address_states.dart';
 import 'package:coopartilhar/injector.dart';
+import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,9 @@ class _AddressPageState extends State<AddressPage> {
       SuccessState() => Routefly.pop(context),
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
+      RemoveAddressSuccessState() => {
+          // Alerts.showSuccess(context, 'Endereço removido com sucesso!'),
+        },
       _ => null,
     };
   }
@@ -62,12 +66,6 @@ class _AddressPageState extends State<AddressPage> {
       body: ValueListenableBuilder(
           valueListenable: controller,
           builder: (context, state, _) {
-            if (state is AddressLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
             return Stack(
               alignment: Alignment.bottomCenter,
               children: [
@@ -78,6 +76,12 @@ class _AddressPageState extends State<AddressPage> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      if (state is AddressLoadingState)
+                        const Expanded(
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
                       if (state is AddressLoadedState)
                         Expanded(
                           child: ListView.builder(
@@ -92,14 +96,20 @@ class _AddressPageState extends State<AddressPage> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 6.0),
                                 child: CardAddress(
-                                  addressName: address.addressName,
+                                  addressName: '${address.addressName}',
                                   isSelected: isSelected,
-                                  street: address.street,
-                                  complement: address.complement,
-                                  number: address.number,
-                                  city: address.city,
+                                  street: '${address.street}',
+                                  complement: '${address.complement}',
+                                  number: '${address.number}',
+                                  city: '${address.city}',
                                   onTap: () =>
                                       controller.changeAddress(address),
+                                  onTapRemove: () {
+                                    controller.removeAddress(address.id!);
+                                  },
+                                  onTapEdit: () {
+                                    // TODO: implementar
+                                  },
                                 ),
                               );
                             },
@@ -118,14 +128,20 @@ class _AddressPageState extends State<AddressPage> {
                                   Routefly.pop(context);
                                 }
                               },
+                              size: const Size(double.infinity, 60),
                               enable: (state is AddressLoadedState &&
                                   state.selectedAddress != null),
                             ),
                             const SizedBox(height: 10),
                             CooButton.outline(
                               label: 'Cadastrar Endereço',
-                              onPressed: () {},
+                              size: const Size(double.infinity, 60),
+                              onPressed: () async {
+                                await Routefly.push(
+                                    routePaths.address.newAddress);
+                              },
                             ),
+                            const SizedBox(height: 10),
                           ],
                         ),
                       ),

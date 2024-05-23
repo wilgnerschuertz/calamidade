@@ -36,6 +36,10 @@ export 'src/types/types.dart';
 export 'src/types/unit.dart';
 export 'src/file_picker/i_file_picker.dart';
 export 'src/helpers/currency_format_helper.dart';
+export 'src/location/location.dart';
+export 'src/location/coordinates.dart';
+export 'src/permission_handler/permission_handler.dart';
+export 'src/helpers/zip_format_helper.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {

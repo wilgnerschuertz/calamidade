@@ -13,6 +13,7 @@ class AddressAdapter {
       cep: json['cep'],
       locationLatitude: json['locationLatitude'],
       locationLongitude: json['locationLongitude'],
+      userId: json['userId'],
     );
   }
 
@@ -27,6 +28,7 @@ class AddressAdapter {
     data['cep'] = address.cep;
     data['locationLatitude'] = address.locationLatitude;
     data['locationLongitude'] = address.locationLongitude;
+    data['userId'] = address.userId;
     return data;
   }
 }

@@ -1,11 +1,14 @@
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
+import 'package:design_system/src/menu/menu_archor.dart';
 import 'package:flutter/material.dart';
 
 class CardAddress extends StatelessWidget {
   final bool isSelected;
   final String addressName, street, complement, number, city;
   final VoidCallback onTap;
+  final VoidCallback onTapRemove;
+  final VoidCallback onTapEdit;
 
   const CardAddress({
     super.key,
@@ -16,6 +19,8 @@ class CardAddress extends StatelessWidget {
     required this.city,
     required this.onTap,
     this.isSelected = false,
+    required this.onTapRemove,
+    required this.onTapEdit,
   });
 
   @override
@@ -42,41 +47,24 @@ class CardAddress extends StatelessWidget {
                   addressName,
                   style: texts.displayLarge,
                 ),
-                // TODO: REMOVER MENU ARCHOR E PASSAR POR PARAMETRO
-                MenuAnchor(
-                  builder: (BuildContext context, MenuController controller,
-                      Widget? child) {
-                    return IconButton(
-                      onPressed: () {
-                        if (controller.isOpen) {
-                          controller.close();
-                        } else {
-                          controller.open();
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz),
-                      tooltip: 'Show menu',
-                    );
-                  },
-                  menuChildren: [
-                    MenuItemButton(
-                      onPressed: () => {},
-                      leadingIcon: Icon(UIcons.boldStraight.pencil),
-                      child: Text(
-                        'Editar',
-                        style: texts.labelMedium,
-                      ),
+                CooMenuArchorWidget(menus: [
+                  MenuItemButton(
+                    onPressed: onTapEdit,
+                    leadingIcon: Icon(UIcons.boldStraight.pencil),
+                    child: Text(
+                      'Editar',
+                      style: texts.labelMedium,
                     ),
-                    MenuItemButton(
-                      onPressed: () => {},
-                      leadingIcon: Icon(UIcons.boldStraight.trash),
-                      child: Text(
-                        'Remover',
-                        style: texts.labelMedium,
-                      ),
+                  ),
+                  MenuItemButton(
+                    onPressed: onTapRemove,
+                    leadingIcon: Icon(UIcons.boldStraight.trash),
+                    child: Text(
+                      'Remover',
+                      style: texts.labelMedium,
                     ),
-                  ],
-                ),
+                  ),
+                ])
               ],
             ),
             const SizedBox(height: 8),

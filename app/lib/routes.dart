@@ -33,6 +33,9 @@ import 'package:coopartilhar/app/(public)/address/address_page.dart' as a16;
 import 'package:coopartilhar/app/(public)/bank_account/bank_account_page.dart'
     as a17;
 
+import 'package:coopartilhar/app/(public)/address/new_address/new_address_page.dart'
+    as a18;
+
 List<RouteEntity> get routes => [
       RouteEntity(
         key: '/affiliated_first_action/presentation/affiliated_first_action',
@@ -189,6 +192,15 @@ List<RouteEntity> get routes => [
         ),
       ),
       RouteEntity(
+        key: '/address/new',
+        uri: Uri.parse('/address/new'),
+        routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+          ctx,
+          settings,
+          const a18.NewAddressPage(),
+        ),
+      ),
+      RouteEntity(
         key: '/bank_account',
         uri: Uri.parse('/bank_account'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
@@ -229,4 +241,5 @@ const routePaths = (
   successState: '/success_state',
   wantToHelp: '/want_to_help',
   welcome: '/welcome',
+  address: (path: '/address', newAddress: '/address/new')
 );
