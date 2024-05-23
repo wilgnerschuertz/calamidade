@@ -1,6 +1,5 @@
-
-
-import 'package:core_module/core_module.dart';
+import '../../entities/request/request.dart';
+import 'request.dart';
 
 class RequestAdapter {
   static RequestEntity fromJson(Map<String, dynamic> map) {

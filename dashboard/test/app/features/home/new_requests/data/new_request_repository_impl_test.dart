@@ -1,18 +1,18 @@
 import 'package:core_module/core_module.dart';
-import 'package:dashboard/app/features/home/new_requests/data/new_request_repository_impl.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/repositories/i_new_request_repository.dart';
+import 'package:dashboard/app/features/home/request/data/request_repository.dart';
+import 'package:dashboard/app/features/home/request/interactor/repositories/request_repository.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 class RestClientMock extends Mock implements IRestClient {}
 
 void main() {
   late final IRestClient restClientMock;
-  late final INewRequestRepository requestRepository;
+  late final RequestRepository requestRepository;
 
   setUpAll(() {
     restClientMock = RestClientMock();
-    requestRepository = NewRequestRepositoryImpl(restClient: restClientMock);
+    requestRepository = RequestRepositoryImpl(restClient: restClientMock);
     registerFallbackValue(RestClientRequest(path: 'path'));
   });
 
@@ -30,10 +30,10 @@ void main() {
           ),
         );
 
-        final result = await requestRepository.getNewRequest();
+        final result = await requestRepository.getRequests();
 
         expect(result.isRight, true);
-        expect(result.right, isA<List<NewRequestEntity>>());
+        expect(result.right, isA<List<RequestEntity>>());
       },
     );
 
@@ -44,7 +44,7 @@ void main() {
         const DefaultException(message: 'Requisição inválida'),
       );
 
-      final result = await requestRepository.getNewRequest();
+      final result = await requestRepository.getRequests();
 
       expect(result.isLeft, true);
       expect(result.left, isA<DefaultException>());

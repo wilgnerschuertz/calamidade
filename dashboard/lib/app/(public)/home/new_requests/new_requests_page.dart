@@ -1,20 +1,23 @@
 import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/(public)/home/new_requests/widgets/new_requests_card.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/controllers/new_requests_controller.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/states/new_request_states.dart';
+import 'package:dashboard/app/features/home/request/interactor/controller/request_controller.dart';
+import 'package:dashboard/app/features/home/request/interactor/states/request_state.dart';
+
 import 'package:dashboard/injector.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class NewRequestsPage extends StatefulWidget {
-  const NewRequestsPage({super.key});
+  const NewRequestsPage({
+    super.key,
+  });
 
   @override
   State<NewRequestsPage> createState() => _NewRequestsPageState();
 }
 
 class _NewRequestsPageState extends State<NewRequestsPage> {
-  final controller = injector.get<NewRequestsController>();
+  final controller = injector.get<RequestController>();
 
   @override
   Widget build(BuildContext context) {
@@ -85,13 +88,13 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                             final entity = state.data[index];
 
                             return NewRequestsCard(
-                              title: entity.titleDescription,
-                              name: entity.name,
-                              city: entity.city,
-                              phone: entity.phone,
-                              date: entity.date,
+                              title: entity.title,
+                              name: 'entity.name',
+                              city: 'entity.city',
+                              phone: ' entity.phone',
+                              date: 'entity.date',
                               status: entity.status,
-                              requestedIncome: entity.requestedIncome,
+                              requestedIncome: 'entity.requestedIncome',
                               isSelected: state.selectedId == entity.id,
                               onTap: () {
                                 controller.selectItem(entity.id);
@@ -118,14 +121,14 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                       sliver: SliverToBoxAdapter(
                         child: NewRequestsCard(
                           title: state.lastItem?.description ?? '',
-                          name: state.lastItem?.name ?? '',
-                          city: state.lastItem?.city ?? '',
-                          phone: state.lastItem?.phone ?? '',
-                          date: state.lastItem?.date ?? '',
+                          name: 'state.lastItem?.name' ?? '',
+                          city: 'state.lastItem?.city' ?? '',
+                          phone: 'state.lastItem?.phone' ?? '',
+                          date: 'state.lastItem?.date' ?? '',
                           status: state.lastItem?.status ??
                               RequestStatusEntity.analisys,
                           requestedIncome:
-                              state.lastItem?.requestedIncome ?? '',
+                              ' state.lastItem?.requestedIncome' ?? '',
                           isSelected: state.selectedId == state.lastItem?.id,
                           onTap: () {
                             controller.selectItem(state.lastItem?.id);

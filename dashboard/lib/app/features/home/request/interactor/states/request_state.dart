@@ -1,15 +1,16 @@
 import 'package:core_module/core_module.dart';
-import 'package:dashboard/app/features/home/new_requests/interactor/entities/new_request_entity.dart';
 
 class NewRequestsInitialState implements InitialState {}
 
 class NewRequestsLoadingState implements LoadingState {}
 
 class NewRequestsErrorState extends ErrorState {
-  const NewRequestsErrorState({required super.exception});
+  const NewRequestsErrorState({
+    required super.exception,
+  });
 }
 
-class NewRequestsSuccessState extends SuccessState<List<NewRequestEntity>> {
+class NewRequestsSuccessState extends SuccessState<List<RequestEntity>> {
   const NewRequestsSuccessState({
     required super.data,
     this.selectedId,
@@ -17,12 +18,13 @@ class NewRequestsSuccessState extends SuccessState<List<NewRequestEntity>> {
   });
 
   final int? selectedId;
-  final NewRequestEntity? lastItem;
+  final RequestEntity? lastItem;
 
-  NewRequestsSuccessState copyWith(
-      {List<NewRequestEntity>? data,
-      int? selectedId,
-      NewRequestEntity? lastItem}) {
+  NewRequestsSuccessState copyWith({
+    List<RequestEntity>? data,
+    int? selectedId,
+    RequestEntity? lastItem,
+  }) {
     return NewRequestsSuccessState(
       data: data ?? this.data,
       selectedId: selectedId ?? this.selectedId,
