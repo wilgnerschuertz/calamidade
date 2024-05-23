@@ -15,6 +15,7 @@ dependencies:
   uicons: ^1.0.1
   core_module:
     path: ../core_module
+  pinput: ^4.0.0
 
 dev_dependencies:
   flutter_test:

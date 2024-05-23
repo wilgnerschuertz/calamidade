@@ -17,6 +17,9 @@ import 'package:coopartilhar/app/features/file/data/repositories/i_file_reposito
 import 'package:coopartilhar/app/features/check_affiliated/data/check_affiliated_repository_impl.dart';
 import 'package:coopartilhar/app/features/check_affiliated/data/i_check_affiliated_repository.dart';
 import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
+import 'package:coopartilhar/app/features/forgot_password/data/repositories/forgot_password_repository_impl.dart';
+import 'package:coopartilhar/app/features/forgot_password/interactor/controllers/forgot_password_controller.dart';
+import 'package:coopartilhar/app/features/forgot_password/interactor/repositories/i_forgot_password_repository.dart';
 import 'package:coopartilhar/app/features/home/data/repositories/home_repository_impl.dart';
 import 'package:coopartilhar/app/features/home/interactor/controllers/home_controller.dart';
 import 'package:coopartilhar/app/features/home/interactor/repositories/i_home_repository.dart';
@@ -29,6 +32,9 @@ import 'package:coopartilhar/app/features/register/data/repositories/register_as
 import 'package:coopartilhar/app/features/request_details/interactor/repositories/i_request_details_repository.dart';
 import 'package:coopartilhar/app/features/request_details/data/repositories/request_details_repository_impl.dart';
 import 'package:coopartilhar/app/features/request_details/interactor/controllers/request_details_controller.dart';
+import 'package:coopartilhar/app/features/reset_password/data/repositories/reset_password_repository_impl.dart';
+import 'package:coopartilhar/app/features/reset_password/interactor/controllers/reset_password_controller.dart';
+import 'package:coopartilhar/app/features/reset_password/interactor/repositories/i_reset_password_repository.dart';
 import 'package:core_module/core_module.dart';
 
 final injector = AutoInjector(
@@ -63,6 +69,14 @@ final injector = AutoInjector(
     injector.addLazySingleton<IBankAccountRepository>(
         BankAccountRepositoryImpl.new);
     injector.addLazySingleton(BankAccountController.new);
+
+    injector.addLazySingleton<IForgotPasswordRepository>(
+        ForgotPasswordRepositoryImpl.new);
+    injector.addLazySingleton(ForgotPasswordController.new);
+
+    injector.addLazySingleton<IResetPasswordRepository>(
+        ResetPasswordRepositoryImpl.new);
+    injector.addLazySingleton(ResetPasswordController.new);
 
     injector.commit();
   },
