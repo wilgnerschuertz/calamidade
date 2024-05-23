@@ -1,4 +1,3 @@
-
 import 'package:coopartilhar/app/features/forgot_password/interactor/entities/forgot_password_entity.dart';
 
 class ForgotPasswordAdapter {

@@ -15,7 +15,8 @@ class ForgotPasswordController extends BaseController {
   Future<void> sendEmailPass(ForgotPasswordEntity forgotEntity) async {
     update(AddressLoadingState());
 
-    final response = await _repository.sendEmailPass(forgotEntity: forgotEntity);
+    final response =
+        await _repository.sendEmailPass(forgotEntity: forgotEntity);
 
     response.fold(
       (error) => update(ErrorState<BaseException>(exception: error)),

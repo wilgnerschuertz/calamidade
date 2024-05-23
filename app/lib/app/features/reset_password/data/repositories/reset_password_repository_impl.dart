@@ -25,9 +25,11 @@ class ResetPasswordRepositoryImpl extends IResetPasswordRepository {
       if (response.statusCode == 204) {
         return const Right(unit);
       }
-      return const Left(DefaultException(message: 'Falha ao redefinir a senha.'));
+      return const Left(
+          DefaultException(message: 'Falha ao redefinir a senha.'));
     } on BaseException catch (_) {
-      return const Left(DefaultException(message: 'Não foi possível redefinir a sua senha, tente novamente.'));
+      return const Left(DefaultException(
+          message: 'Não foi possível redefinir a sua senha, tente novamente.'));
     } catch (_) {
       return const Left(DefaultException(message: 'Erro desconhecido.'));
     }

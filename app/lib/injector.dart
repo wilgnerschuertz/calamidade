@@ -51,23 +51,31 @@ final injector = AutoInjector(
 
     injector.addLazySingleton<IAccidentRepository>(AccidentRepositoryImpl.new);
     injector.addLazySingleton<IFileRepository>(FileRepositoryImpl.new);
-    injector.addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
+    injector
+        .addLazySingleton<INewAskHelpRepository>(NewAskHelpRepositoryImpl.new);
     injector.add<AskHelpController>(AskHelpController.new);
-    injector.addLazySingleton<ICheckAffiliatedRepository>(CheckAffiliatedRepositoryImpl.new);
-    injector.addLazySingleton<CheckAffiliatedController>(CheckAffiliatedController.new);
-    injector.addLazySingleton<IRequestDetailsRepository>(RequestDetailsRepositoryImpl.new);
-    injector.addLazySingleton<RequestDetailsController>(RequestDetailsController.new);
+    injector.addLazySingleton<ICheckAffiliatedRepository>(
+        CheckAffiliatedRepositoryImpl.new);
+    injector.addLazySingleton<CheckAffiliatedController>(
+        CheckAffiliatedController.new);
+    injector.addLazySingleton<IRequestDetailsRepository>(
+        RequestDetailsRepositoryImpl.new);
+    injector.addLazySingleton<RequestDetailsController>(
+        RequestDetailsController.new);
 
     injector.addLazySingleton<IAddressRepository>(AddressRepositoryImpl.new);
     injector.addLazySingleton(AddressController.new);
 
-    injector.addLazySingleton<IBankAccountRepository>(BankAccountRepositoryImpl.new);
+    injector.addLazySingleton<IBankAccountRepository>(
+        BankAccountRepositoryImpl.new);
     injector.addLazySingleton(BankAccountController.new);
 
-    injector.addLazySingleton<IForgotPasswordRepository>(ForgotPasswordRepositoryImpl.new);
+    injector.addLazySingleton<IForgotPasswordRepository>(
+        ForgotPasswordRepositoryImpl.new);
     injector.addLazySingleton(ForgotPasswordController.new);
 
-    injector.addLazySingleton<IResetPasswordRepository>(ResetPasswordRepositoryImpl.new);
+    injector.addLazySingleton<IResetPasswordRepository>(
+        ResetPasswordRepositoryImpl.new);
     injector.addLazySingleton(ResetPasswordController.new);
 
     injector.commit();

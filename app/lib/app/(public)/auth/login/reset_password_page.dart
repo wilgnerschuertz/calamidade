@@ -24,7 +24,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   void listener() {
     return switch (controller.value) {
-      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
       SuccessState() => Routefly.navigate(routePaths.auth.login),
       _ => null,
     };
@@ -53,7 +54,10 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         surfaceTintColor: Colors.transparent,
         title: Text(
           'Nova senha',
-          style: textTheme.bodyLarge!.copyWith(color: colorsTheme.textColor, fontSize: 20, fontWeight: FontWeight.bold),
+          style: textTheme.bodyLarge!.copyWith(
+              color: colorsTheme.textColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
         ),
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -79,7 +83,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   children: [
                     Text(
                       'Nova senha',
-                      style: textTheme.titleMedium?.copyWith(color: colorsTheme.textColor, fontSize: 14),
+                      style: textTheme.titleMedium?.copyWith(
+                          color: colorsTheme.textColor, fontSize: 14),
                     ),
                     const SizedBox(height: 8),
                     PasswordTextFormField(
@@ -90,7 +95,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     const SizedBox(height: 24),
                     Text(
                       'Confirmar nova senha',
-                      style: textTheme.titleMedium?.copyWith(color: colorsTheme.textColor, fontSize: 14),
+                      style: textTheme.titleMedium?.copyWith(
+                          color: colorsTheme.textColor, fontSize: 14),
                     ),
                     const SizedBox(height: 8),
                     PasswordTextFormField(

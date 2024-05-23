@@ -24,7 +24,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   void listener() {
     return switch (controller.value) {
       SuccessState() => Routefly.navigate(routePaths.auth.resetPassword),
-      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
       _ => null,
     };
   }
@@ -40,7 +41,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     final defaultPinTheme = PinTheme(
         width: 60,
         height: 60,
-        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: CoopartilharColors.of(context).textColor, fontSize: 28),
+        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            color: CoopartilharColors.of(context).textColor, fontSize: 28),
         decoration: BoxDecoration(
           color: CoopartilharColors.of(context).lightGrey,
           borderRadius: BorderRadius.circular(20),
@@ -87,7 +89,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         Text(
                           'Digite o código de recuperação',
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: CoopartilharColors.of(context).primary, fontSize: 28),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(
+                                  color: CoopartilharColors.of(context).primary,
+                                  fontSize: 28),
                         ),
                         Container(
                           padding: const EdgeInsets.only(top: 10),
@@ -95,7 +102,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           child: Text(
                             'Digite o código de verificação de 4 números que enviamos para o seu e-mail cadastrado.',
                             textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: CoopartilharColors.of(context).textColor, fontSize: 16, fontWeight: FontWeight.w600),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                                .copyWith(
+                                    color: CoopartilharColors.of(context)
+                                        .textColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -103,14 +117,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           length: 4,
                           controller: controller.pinputController,
                           defaultPinTheme: defaultPinTheme,
-                          separatorBuilder: (index) => const SizedBox(width: 25),
+                          separatorBuilder: (index) =>
+                              const SizedBox(width: 25),
                           focusedPinTheme: defaultPinTheme.copyWith(
                             decoration: BoxDecoration(
                               color: CoopartilharColors.of(context).lightGrey,
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: const [
                                 BoxShadow(
-                                  color: Color.fromRGBO(0, 0, 0, 0.05999999865889549),
+                                  color: Color.fromRGBO(
+                                      0, 0, 0, 0.05999999865889549),
                                   offset: Offset(0, 3),
                                   blurRadius: 16,
                                 ),
@@ -128,7 +144,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
                     // TODO: Precisa da entity do user que contém o email para conseguir enviar o mesmo.
                     // onPressed: () => controller.sendEmailPass(),
-                    onPressed: () => Routefly.navigate(routePaths.auth.resetPassword),
+                    onPressed: () =>
+                        Routefly.navigate(routePaths.auth.resetPassword),
 
                     size: const Size(double.infinity, 50),
                   ),

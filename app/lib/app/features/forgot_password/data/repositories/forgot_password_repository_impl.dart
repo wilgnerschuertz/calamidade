@@ -9,27 +9,28 @@ class ForgotPasswordRepositoryImpl extends IForgotPasswordRepository {
   final IRestClient client;
 
   @override
-    Future<Output<Unit>> sendEmailPass({
-      required ForgotPasswordEntity forgotEntity,
-    }) async {
-      try {
-        final passToJson = ForgotPasswordAdapter.toJson(forgotEntity);
+  Future<Output<Unit>> sendEmailPass({
+    required ForgotPasswordEntity forgotEntity,
+  }) async {
+    try {
+      final passToJson = ForgotPasswordAdapter.toJson(forgotEntity);
 
-        final response = await client.post(
-          RestClientRequest(
-            path: '/core/v1/auth/forgot/password',
-            data: passToJson,
-          ),
-        );
+      final response = await client.post(
+        RestClientRequest(
+          path: '/core/v1/auth/forgot/password',
+          data: passToJson,
+        ),
+      );
 
-        if (response.statusCode == 204) {
-          return const Right(unit);
-        }
-        return const Left(DefaultException(message: 'Falha ao verificar o código.'));
-      } on BaseException catch (_) {
-        return const Left(DefaultException(message: 'O código está inválido.'));
-      } catch (_) {
-        return const Left(DefaultException(message: 'Erro desconhecido.'));
+      if (response.statusCode == 204) {
+        return const Right(unit);
       }
+      return const Left(
+          DefaultException(message: 'Falha ao verificar o código.'));
+    } on BaseException catch (_) {
+      return const Left(DefaultException(message: 'O código está inválido.'));
+    } catch (_) {
+      return const Left(DefaultException(message: 'Erro desconhecido.'));
     }
+  }
 }

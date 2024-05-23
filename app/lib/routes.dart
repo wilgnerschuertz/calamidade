@@ -1,31 +1,46 @@
 import 'package:core_module/core_module.dart';
 
-import 'package:coopartilhar/app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart' as a0;
+import 'package:coopartilhar/app/(public)/affiliated_first_action/presentation/affiliated_first_action_page.dart'
+    as a0;
 import 'package:coopartilhar/app/(public)/ask_help/ask_help_page.dart' as a1;
-import 'package:coopartilhar/app/(public)/ask_help/new_ask_help/new_ask_help_page.dart' as a2;
-import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart' as a3;
-import 'package:coopartilhar/app/(public)/auth/check_affiliated/check_affiliated_page.dart' as a4;
+import 'package:coopartilhar/app/(public)/ask_help/new_ask_help/new_ask_help_page.dart'
+    as a2;
+import 'package:coopartilhar/app/(public)/auth/affiliated/affiliated_page.dart'
+    as a3;
+import 'package:coopartilhar/app/(public)/auth/check_affiliated/check_affiliated_page.dart'
+    as a4;
 import 'package:coopartilhar/app/(public)/auth/login/login_page.dart' as a5;
-import 'package:coopartilhar/app/(public)/auth/login/forgot_password_page.dart' as a6;
-import 'package:coopartilhar/app/(public)/auth/login/reset_password_page.dart' as a7;
-import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart' as a8;
-import 'package:coopartilhar/app/(public)/auth/register/register_page.dart' as a9;
+import 'package:coopartilhar/app/(public)/auth/login/forgot_password_page.dart'
+    as a6;
+import 'package:coopartilhar/app/(public)/auth/login/reset_password_page.dart'
+    as a7;
+import 'package:coopartilhar/app/(public)/auth/not_affiliated/not_affiliated_page.dart'
+    as a8;
+import 'package:coopartilhar/app/(public)/auth/register/register_page.dart'
+    as a9;
 import 'package:coopartilhar/app/(public)/home/home_page.dart' as a10;
-import 'package:coopartilhar/app/(public)/onboarding/onboarding_page.dart' as a11;
-import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart' as a12;
-import 'package:coopartilhar/app/(public)/request_details/request_details_page.dart' as a13;
+import 'package:coopartilhar/app/(public)/onboarding/onboarding_page.dart'
+    as a11;
+import 'package:coopartilhar/app/(public)/register_assistence/register_assistence_page.dart'
+    as a12;
+import 'package:coopartilhar/app/(public)/request_details/request_details_page.dart'
+    as a13;
 import 'package:coopartilhar/app/(public)/splash/splash_page.dart' as a14;
-import 'package:coopartilhar/app/(public)/success_state/success_state_page.dart' as a15;
-import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart' as a16;
+import 'package:coopartilhar/app/(public)/success_state/success_state_page.dart'
+    as a15;
+import 'package:coopartilhar/app/(public)/want_to_help/want_to_help_page.dart'
+    as a16;
 import 'package:coopartilhar/app/(public)/welcome/welcome_page.dart' as a17;
 
 import 'package:coopartilhar/app/(public)/address/address_page.dart' as a18;
-import 'package:coopartilhar/app/(public)/bank_account/bank_account_page.dart' as a19;
+import 'package:coopartilhar/app/(public)/bank_account/bank_account_page.dart'
+    as a19;
 
 List<RouteEntity> get routes => [
       RouteEntity(
         key: '/affiliated_first_action/presentation/affiliated_first_action',
-        uri: Uri.parse('/affiliated_first_action/presentation/affiliated_first_action'),
+        uri: Uri.parse(
+            '/affiliated_first_action/presentation/affiliated_first_action'),
         routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
           ctx,
           settings,
@@ -211,7 +226,8 @@ const routePaths = (
     path: '/affiliated_first_action',
     presentation: (
       path: '/affiliated_first_action/presentation',
-      affiliatedFirstAction: '/affiliated_first_action/presentation/affiliated_first_action',
+      affiliatedFirstAction:
+          '/affiliated_first_action/presentation/affiliated_first_action',
     ),
   ),
   askHelp: (

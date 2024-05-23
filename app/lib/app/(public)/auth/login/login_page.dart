@@ -24,7 +24,8 @@ class _LoginPageState extends State<LoginPage> {
 
   void listener() {
     return switch (controller.value) {
-      ErrorState(:final exception) => Alerts.showFailure(context, exception.message),
+      ErrorState(:final exception) =>
+        Alerts.showFailure(context, exception.message),
       SuccessState() => Routefly.navigate(routePaths.welcome),
       _ => null,
     };
@@ -67,7 +68,8 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 40),
-                const Center(child: Image(image: CooImages.cooBrand2, height: 166)),
+                const Center(
+                    child: Image(image: CooImages.cooBrand2, height: 166)),
                 const SizedBox(height: 60),
                 Center(
                   child: Text(
@@ -97,7 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: const InputDecoration(
                           hintText: 'Insira seu email',
                         ),
-                        validator: controller.validatorEmpty('E-mail não pode está vazio'),
+                        validator: controller
+                            .validatorEmpty('E-mail não pode está vazio'),
                       ),
                       const SizedBox(height: 24),
                       Row(
@@ -115,7 +118,10 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             child: Text(
                               'Esqueci minha senha',
-                              style: textTheme.titleMedium?.copyWith(color: colorsTheme.textColor2, decoration: TextDecoration.underline, fontSize: 14),
+                              style: textTheme.titleMedium?.copyWith(
+                                  color: colorsTheme.textColor2,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 14),
                             ),
                           )
                         ],
@@ -124,7 +130,8 @@ class _LoginPageState extends State<LoginPage> {
                       PasswordTextFormField(
                         controller: controller.passwordController,
                         hitText: 'Insira sua senha',
-                        validator: controller.validatorEmpty('Senha não pode está vazia'),
+                        validator: controller
+                            .validatorEmpty('Senha não pode está vazia'),
                       ),
                     ],
                   ),
