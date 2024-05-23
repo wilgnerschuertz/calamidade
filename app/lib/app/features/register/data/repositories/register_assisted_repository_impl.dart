@@ -15,21 +15,24 @@ class RegisterRepositoryImpl extends IRegisterRepository {
     try {
       final payload = RegisterAdapter.toJson(register);
 
-      final response = await client.post(
+      await client.post(
         RestClientRequest(
           path: '/core/v1/auth/email/register',
           data: payload,
         ),
       );
 
-      if (response.statusCode == 204) {
-        return const Right(unit);
+      return const Right(unit);
+    } on BaseException catch (err) {
+      if (err.data['erros']['email'] == 'emailAlreadyExists') {
+        return const Left(DefaultException(
+            message: 'Já existe uma conta vinculada a este e-mail'));
       }
-      return const Left(
-          DefaultException(message: 'Falha ao realizar registro'));
-    } on BaseException catch (_) {
-      return const Left(
-          DefaultException(message: 'A senha deve ter no mínimo 6 caracteres'));
+      if (err.data['erros']['document'] == 'documentAlreadyExists') {
+        return const Left(DefaultException(
+            message: 'Já existe uma conta para este documento'));
+      }
+      return Left(DefaultException(message: err.message));
     } catch (_) {
       return const Left(DefaultException(message: 'Erro desconhecido'));
     }

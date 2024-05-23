@@ -44,6 +44,9 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
     return switch (addressController.state) {
       AddressLoadedState(:final selectedAddress) =>
         controller.changeAddress(selectedAddress),
+      RemoveAddressSuccessState() => {
+          controller.changeAddress(null),
+        },
       _ => null,
     };
   }
@@ -90,169 +93,168 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
         ),
       ),
       body: ValueListenableBuilder(
-          valueListenable: controller,
-          builder: (context, state, _) {
-            return Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                const Image(image: CooImages.cooBackgroundDetails),
-                SingleChildScrollView(
-                  child: Form(
-                    key: controller.formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Valor pré-aprovado',
-                                    style: textTheme.titleMedium,
+        valueListenable: controller,
+        builder: (context, state, _) {
+          return Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              const Image(image: CooImages.cooBackgroundDetails),
+              SingleChildScrollView(
+                child: Form(
+                  key: controller.formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Valor pré-aprovado',
+                                  style: textTheme.titleMedium,
+                                ),
+                                const SizedBox(height: 30),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 2,
+                                    horizontal: 8,
                                   ),
-                                  const SizedBox(height: 30),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 2,
-                                      horizontal: 8,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: colorsTheme.lightGrey,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(8)),
-                                    ),
-                                    child: Text(
-                                      CurrencyAdapter.doubleToBRL(
-                                          controller.preApprovedValue),
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: colorsTheme.primary,
-                                      ),
+                                  decoration: BoxDecoration(
+                                    color: colorsTheme.lightGrey,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(8)),
+                                  ),
+                                  child: Text(
+                                    CurrencyAdapter.doubleToBRL(
+                                        controller.preApprovedValue),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: colorsTheme.primary,
                                     ),
                                   ),
-                                ],
-                              ),
-                              const TextInformationExtends(
-                                  text: 'Titulo da solicitação*'),
-                              TextFormField(
-                                controller: controller.titleController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Insira o titulo para solicitação',
                                 ),
-                                validator: (String? value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Titulo não pode esta vazio';
-                                  }
-                                  return null;
-                                },
+                              ],
+                            ),
+                            const TextInformationExtends(
+                                text: 'Titulo da solicitação*'),
+                            TextFormField(
+                              controller: controller.titleController,
+                              decoration: const InputDecoration(
+                                hintText: 'Insira o titulo para solicitação',
                               ),
-                              const TextInformationExtends(
-                                  text: 'CPF do Assistido*'),
-                              TextFormField(
-                                controller: controller.cpfController,
-                                keyboardType: TextInputType.number,
-                                decoration: const InputDecoration(
-                                  hintText: 'Insira o CPF do Assistido',
-                                ),
-                                inputFormatters: [
-                                  CpfCnpjFormatter(),
-                                ],
-                                validator: (String? value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'CPF não pode esta vazio';
-                                  }
-                                  return ValidatorsHelper.isValidCPF(value)
-                                      ? null
-                                      : 'CPF inválido';
-                                },
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Titulo não pode esta vazio';
+                                }
+                                return null;
+                              },
+                            ),
+                            const TextInformationExtends(
+                                text: 'CPF do Assistido*'),
+                            TextFormField(
+                              controller: controller.cpfController,
+                              keyboardType: TextInputType.number,
+                              maxLength: 14,
+                              decoration: const InputDecoration(
+                                hintText: 'Insira o CPF do Assistido',
                               ),
-                              const TextInformationExtends(text: 'Valor*'),
-                              TextFormField(
-                                controller: controller.valueController,
-                                keyboardType: TextInputType.number,
-                                decoration: const InputDecoration(
-                                  hintText: 'R\$ 5.000,00',
-                                  errorMaxLines: 3,
-                                ),
-                                validator: controller.valueValidator,
-                                inputFormatters: [
-                                  CurrencyFormatter(),
-                                ],
+                              inputFormatters: [
+                                CpfCnpjFormatter(),
+                              ],
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'CPF não pode esta vazio';
+                                }
+                                return ValidatorsHelper.isValidCPF(value)
+                                    ? null
+                                    : 'CPF inválido';
+                              },
+                            ),
+                            const TextInformationExtends(text: 'Valor*'),
+                            TextFormField(
+                              controller: controller.valueController,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: 'R\$ 5.000,00',
+                                errorMaxLines: 3,
                               ),
-                              const TextInformationExtends(
-                                  text: 'Localização*'),
-                              CooInputButton(
-                                controller: controller.localizationController,
-                                iconData: UIcons.solidRounded.location_alt,
-                                onTap: () async {
-                                  await Routefly.push(
-                                    '/address',
-                                  );
-                                  addressController
-                                      .getAll(controller.addressEntity);
-                                },
+                              validator: controller.valueValidator,
+                              inputFormatters: [
+                                CurrencyFormatter(),
+                              ],
+                            ),
+                            const TextInformationExtends(text: 'Localização*'),
+                            CooInputButton(
+                              controller: controller.localizationController,
+                              iconData: UIcons.solidRounded.location_alt,
+                              onTap: () async {
+                                await Routefly.push(
+                                  '/address',
+                                );
+                                addressController
+                                    .getAll(controller.addressEntity);
+                              },
+                            ),
+                            const TextInformationExtends(
+                                text: 'Dados Bancarios'),
+                            CooInputButton(
+                              controller: controller.accountBankController,
+                              iconData: UIcons.solidRounded.bank,
+                              onTap: () async {
+                                await Routefly.push(
+                                  '/bank_account',
+                                );
+                                bankAccountController
+                                    .getAll(controller.bankAccountEntity);
+                              },
+                            ),
+                            const TextInformationExtends(
+                                text: 'Enviar arquivo*'),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: CooIconButton(
+                                icon: UIcons.regularStraight.clip,
+                                onTap: controller.pickFile,
                               ),
-                              const TextInformationExtends(
-                                  text: 'Dados Bancarios'),
-                              CooInputButton(
-                                controller: controller.accountBankController,
-                                iconData: UIcons.solidRounded.bank,
-                                onTap: () async {
-                                  await Routefly.push(
-                                    '/bank_account',
-                                  );
-                                  bankAccountController
-                                      .getAll(controller.bankAccountEntity);
-                                },
+                            ),
+                            if (controller.files.isNotEmpty)
+                              CooFilePreview(
+                                type: FilePreviewType.file,
+                                path: controller.files.first,
                               ),
-                              const TextInformationExtends(
-                                  text: 'Enviar arquivo*'),
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: CooIconButton(
-                                  icon: UIcons.regularStraight.clip,
-                                  onTap: controller.pickFile,
-                                ),
+                            const TextInformationExtends(
+                                text: 'Breve descrição'),
+                            TextFormField(
+                              controller: controller.descriptionController,
+                              maxLines: 8,
+                              decoration: const InputDecoration(
+                                hintText:
+                                    'Insira uma breve descrição sobre sua solicitação',
                               ),
-                              if (controller.files.isNotEmpty)
-                                CooFilePreview(
-                                  type: FilePreviewType.file,
-                                  path: controller.files.first,
-                                ),
-                              const TextInformationExtends(
-                                  text: 'Breve descrição'),
-                              TextFormField(
-                                controller: controller.descriptionController,
-                                maxLines: 8,
-                                decoration: const InputDecoration(
-                                  hintText:
-                                      'Insira uma breve descrição sobre sua solicitação',
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 10),
-                        CooButton.primary(
-                          label: state is LoadingState ? 'Aguarde' : 'Próximo',
-                          onPressed: controller.submiSolicitation,
-                          enable: state is! LoadingState,
-                          size: const Size(double.infinity, 60),
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(height: 10),
+                      CooButton.primary(
+                        label: state is LoadingState ? 'Aguarde' : 'Próximo',
+                        onPressed: controller.submiSolicitation,
+                        enable: state is! LoadingState,
+                        size: const Size(double.infinity, 60),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
                   ),
                 ),
-              ],
-            );
-          }),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
