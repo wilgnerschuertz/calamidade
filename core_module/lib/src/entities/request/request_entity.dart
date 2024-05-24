@@ -13,7 +13,7 @@ class RequestEntity extends Entity {
   final String financialAccount;
   final DateTime createdAt;
   final UserEntity user;
-  final RequestStatusEntity status;
+  final String status;
   final String helpType;
   final GodFather? godFather;
 
@@ -30,6 +30,6 @@ class RequestEntity extends Entity {
     required this.status,
     required this.helpType,
     required this.user,
-    required this.godFather,
+    this.godFather,
   }) : super(id);
 }

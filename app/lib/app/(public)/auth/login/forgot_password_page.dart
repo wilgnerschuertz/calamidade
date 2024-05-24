@@ -23,7 +23,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   void listener() {
     return switch (controller.value) {
-      SuccessState() => Routefly.navigate(routePaths.auth.resetPassword),
+      SuccessState() => Routefly.navigate(routePaths.auth.login.resetPassword),
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
       _ => null,
@@ -145,7 +145,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     // TODO: Precisa da entity do user que contém o email para conseguir enviar o mesmo.
                     // onPressed: () => controller.sendEmailPass(),
                     onPressed: () =>
-                        Routefly.navigate(routePaths.auth.resetPassword),
+                        Routefly.navigate(routePaths.auth.login.resetPassword),
 
                     size: const Size(double.infinity, 50),
                   ),

@@ -105,7 +105,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           InkWell(
                             onTap: () {
-                              Routefly.push(routePaths.auth.forgotPassword);
+                              Routefly.push(
+                                  routePaths.auth.login.forgotPassword);
                             },
                             child: Text(
                               'Esqueci minha senha',

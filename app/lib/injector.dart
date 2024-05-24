@@ -24,6 +24,9 @@ import 'package:coopartilhar/app/features/forgot_password/interactor/repositorie
 import 'package:coopartilhar/app/features/home/data/repositories/home_repository_impl.dart';
 import 'package:coopartilhar/app/features/home/interactor/controllers/home_controller.dart';
 import 'package:coopartilhar/app/features/home/interactor/repositories/i_home_repository.dart';
+import 'package:coopartilhar/app/features/manager_request/data/repositories/manager_request_repository_impl.dart';
+import 'package:coopartilhar/app/features/manager_request/interactor/controllers/manager_request_controller_impl.dart';
+import 'package:coopartilhar/app/features/manager_request/interactor/repositories/i_manager_request_repository.dart';
 import 'package:coopartilhar/app/features/onboarding/data/onboarding_repository_impl.dart';
 import 'package:coopartilhar/app/features/onboarding/interactor/controllers/onboarding_controller.dart';
 import 'package:coopartilhar/app/features/onboarding/interactor/interface/i_onboarding_repository.dart';
@@ -58,6 +61,7 @@ final injector = AutoInjector(
     injector.add<IOnboardingRepository>(OnboardingRepositoryImpl.new);
     injector.addSingleton<IAuthRepository>(AuthRepositoryImpl.new);
     injector.addLazySingleton<OnboardingController>(OnboardingController.new);
+
     injector.addLazySingleton<LoginControllerImpl>(LoginControllerImpl.new);
 
     injector.addLazySingleton<IAccidentRepository>(AccidentRepositoryImpl.new);
@@ -81,6 +85,11 @@ final injector = AutoInjector(
     injector.addLazySingleton<IResetPasswordRepository>(
         ResetPasswordRepositoryImpl.new);
     injector.addLazySingleton(ResetPasswordController.new);
+
+    injector.addSingleton<IManagerRequestRepository>(
+        ManagerRequestRepositoryImpl.new);
+    injector.addSingleton<ManagerRequestControllerImpl>(
+        ManagerRequestControllerImpl.new);
 
     injector.commit();
   },

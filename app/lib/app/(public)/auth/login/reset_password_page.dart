@@ -26,7 +26,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     return switch (controller.value) {
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
-      SuccessState() => Routefly.navigate(routePaths.auth.login),
+      SuccessState() => Routefly.navigate(routePaths.auth.login.path),
       _ => null,
     };
   }
@@ -64,7 +64,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           child: IconButton(
             icon: const Icon(Icons.chevron_left),
             onPressed: () {
-              Routefly.navigate(routePaths.auth.login);
+              Routefly.navigate(routePaths.auth.login.path);
             },
           ),
         ),
