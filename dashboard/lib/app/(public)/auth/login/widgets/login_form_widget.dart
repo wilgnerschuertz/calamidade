@@ -1,5 +1,6 @@
 import 'package:dashboard/app/features/auth/interactor/controllers/login_controller.dart';
 import 'package:dashboard/app/features/auth/interactor/states/login_states.dart';
+import 'package:dashboard/routes.dart';
 
 import 'package:flutter/material.dart';
 import 'package:design_system/design_system.dart';
@@ -30,7 +31,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
     return switch (controller.value) {
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
-      LoginSuccess() => Routefly.pushNavigate('/home/new_requests'),
+      LoginSuccess() => Routefly.pushNavigate(routePaths.home.newRequests),
       _ => null,
     };
   }

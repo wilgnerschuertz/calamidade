@@ -50,7 +50,7 @@ class AffiliatedPage extends StatelessWidget {
               ),
               TextButton(
                   onPressed: () {
-                    //Routefly.push(routePaths.auth.login);
+                    Routefly.push(routePaths.auth.login.path);
                   },
                   child: Text(
                     'Já tenho cadastro',

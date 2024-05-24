@@ -2,8 +2,8 @@ import 'package:coopartilhar/app/features/manager_request/interactor/entities/re
 import 'package:core_module/core_module.dart';
 
 class RequestListAdapter {
-  static RequestListEntity fromJson(Map<String, dynamic> json) {
-    return RequestListEntity(
+  static RequestManagerListEntity fromJson(Map<String, dynamic> json) {
+    return RequestManagerListEntity(
       forMe: (json['forMe']['data'] as List).isNotEmpty
           ? (json['forMe']['data'] as List).map((entity) {
               return RequestAdapter.fromJson(entity);

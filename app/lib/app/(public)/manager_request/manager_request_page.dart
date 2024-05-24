@@ -64,7 +64,9 @@ class _ManagerRequestPageState extends State<ManagerRequestPage>
         ),
         extendBody: true,
         bottomNavigationBar: CooNavigatorBar(
-          onClickCooBrand: () {},
+          onClickCooBrand: () {
+            Routefly.push(routePaths.home);
+          },
           onClickDonate: () {},
         ),
         body: Padding(

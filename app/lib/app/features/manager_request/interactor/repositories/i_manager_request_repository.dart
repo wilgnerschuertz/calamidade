@@ -2,5 +2,5 @@ import 'package:coopartilhar/app/features/manager_request/interactor/entities/re
 import 'package:core_module/core_module.dart';
 
 abstract class IManagerRequestRepository {
-  Future<Output<RequestListEntity>> getRequests();
+  Future<Output<RequestManagerListEntity>> getRequests();
 }

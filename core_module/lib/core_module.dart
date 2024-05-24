@@ -23,10 +23,7 @@ export 'src/client/client.dart';
 export 'src/controllers/controllers.dart';
 export 'src/entities/auth/user_entity.dart';
 export 'src/entities/entity.dart';
-export 'src/entities/request/god_father.dart';
-export 'src/entities/request/request_entity.dart';
-export 'src/entities/request/request_help_type.dart';
-export 'src/entities/request/request_status_entity.dart';
+export 'src/entities/request/request.dart';
 export 'src/errors/errors.dart';
 export 'src/file_picker/i_file_picker.dart';
 export 'src/helpers/currency_format_helper.dart';
@@ -47,7 +44,7 @@ export 'src/adapters/request/request_adapter.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {
-    injector.add<ICache>(SharedPreferencesImpl.new);
+    injector.addSingleton<ICache>(SharedPreferencesImpl.new);
     injector.add<Dio>(DioFactory.dio);
     injector.addSingleton<IRestClient>(RestClientDioImpl.new);
     injector.add<IFilePickerService>(FilePickerServiceImpl.new);

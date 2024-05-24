@@ -1,15 +1,21 @@
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/register/interactor/entities/register_entity.dart';
 import 'package:coopartilhar/app/features/register/interactor/repositories/i_register_repository.dart';
 import 'package:core_module/core_module.dart';
 import 'package:flutter/material.dart';
 
 class RegisterController<RegisterState> extends BaseController {
-  RegisterController({required this.repository}) : super(InitialState());
-  final IRegisterRepository repository;
+  RegisterController(
+    this.repository,
+    this._loginController,
+  ) : super(InitialState());
 
-  late final passwordController = TextEditingController();
-  late final repeatPasswordController = TextEditingController();
-  late final formKey = GlobalKey<FormState>();
+  final IRegisterRepository repository;
+  final LoginControllerImpl _loginController;
+
+  final passwordController = TextEditingController();
+  final repeatPasswordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   Future<void> register(UserEntity user) async {
     if (formKey.currentState!.validate()) {
@@ -26,10 +32,12 @@ class RegisterController<RegisterState> extends BaseController {
 
       final response = await repository.register(register: registerEntity);
 
-      response.fold(
-        (left) => update(ErrorState(exception: left)),
-        (right) => update(SuccessState<Unit>(data: right)),
-      );
+      response //
+          .mapAsync(_loginController.tokenStorage)
+          .fold(
+            (left) => update(ErrorState(exception: left)),
+            (right) => update(SuccessState<Unit>(data: right)),
+          );
     }
   }
 

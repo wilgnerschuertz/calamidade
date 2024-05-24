@@ -9,7 +9,7 @@ class ManagerRequestRepositoryImpl implements IManagerRequestRepository {
   const ManagerRequestRepositoryImpl(this.restClient);
 
   @override
-  Future<Output<RequestListEntity>> getRequests() async {
+  Future<Output<RequestManagerListEntity>> getRequests() async {
     try {
       final response = await restClient.get(RestClientRequest(
           path: '/core/v1/requests/list?page=1&limit=10&ordering=ASC'));
