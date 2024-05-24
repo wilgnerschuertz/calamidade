@@ -12,6 +12,14 @@ class AffiliatedPage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(UIcons.regularStraight.angle_small_left),
+          onPressed: () {
+            Routefly.pop(context);
+          },
+        ),
+      ),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -42,14 +50,14 @@ class AffiliatedPage extends StatelessWidget {
               ),
               TextButton(
                   onPressed: () {
-                    Routefly.push(routePaths.auth.login);
+                    //Routefly.push(routePaths.auth.login);
                   },
                   child: Text(
                     'Já tenho cadastro',
-                    style: textTheme.titleSmall?.copyWith(
-                        color: colors.primary,
-                        decoration: TextDecoration.underline,
-                        decorationColor: colors.primary),
+                    style: textTheme.displayMedium?.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: colors.primary),
                   )),
               const Spacer(),
               CooButton.primary(

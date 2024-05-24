@@ -1,3 +1,5 @@
+import 'package:coopartilhar/app/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
@@ -13,7 +15,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  final userController = injector.get<CheckAffiliatedController>();
+  final authController = injector.get<LoginControllerImpl>();
 
   UserEntity user = UserEntity.init();
 
@@ -21,13 +23,13 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     super.initState();
 
-    if (userController.state case SuccessState(:final data)) {
+    if (authController.state case SuccessState(:final data)) {
       setState(() {
         user = data as UserEntity;
       });
     }
 
-    Future.delayed(const Duration(milliseconds: 600), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       Routefly.navigate(routePaths.home);
     });
   }

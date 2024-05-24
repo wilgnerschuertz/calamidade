@@ -39,6 +39,11 @@ class RequestDetailsCard extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           RequestDetailsCardCreatedAtDate(createdAt: request.createdAt),
+          const SizedBox(height: 40.0),
+          // RequestDetailsCardSituation(
+          //   statusDetails: request.status,
+          //   description: request.description,
+          // ),
         ],
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:core_module/core_module.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,7 +9,11 @@ class SharedPreferencesImpl implements ICache {
     final prefs = await SharedPreferences.getInstance();
     final result = prefs.get(key);
 
-    return result;
+    try {
+      return jsonDecode(result as String);
+    } catch (e) {
+      return result;
+    }
   }
 
   @override
@@ -24,13 +30,20 @@ class SharedPreferencesImpl implements ICache {
         return await prefs.setDouble(params.key, params.value);
       case 'List<String>':
         return await prefs.setStringList(params.key, params.value);
+      default:
+        return await prefs.setString(params.key, jsonEncode(params.value));
     }
-    return false;
   }
 
   @override
   Future<bool> removeData(String key) async {
     final prefs = await SharedPreferences.getInstance();
     return await prefs.remove(key);
+  }
+
+  @override
+  Future<bool> clean() async {
+    final prefs = await SharedPreferences.getInstance();
+    return await prefs.clear();
   }
 }

@@ -2,6 +2,8 @@ import 'package:core_module/core_module.dart';
 
 final class AuthInitial implements InitialState {}
 
+final class AuthNotLogged implements BaseState {}
+
 final class AuthLoading implements LoadingState {}
 
 final class AuthError extends ErrorState {
