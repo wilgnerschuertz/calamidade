@@ -75,7 +75,7 @@ ThemeData lightTheme(BuildContext context) {
         grey: Color(0xffb6c5d1),
         lightGrey: Color(0xffF2F2F9),
         cardColor: Color(0xffF2F2F9),
-        borderColor: Color(0xffD3D3D3),
+        borderColor: Color(0xffB5B5CE),
         white: Color(0xffFFFFFF),
         success: Color(0xff00FF85),
         otherYellow: Color(0xffffc745),

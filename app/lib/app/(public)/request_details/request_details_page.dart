@@ -96,10 +96,10 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                               description: data.description,
                             ),
                             const SizedBox(height: 16.0),
-                            // RequestDetailsCardSituation(
-                            //   description: '',
-                            //   status: data.status,
-                            // ),
+                            RequestDetailsCardSituation(
+                              description: '',
+                              status: data.status,
+                            ),
                           ],
                         ),
                       ),

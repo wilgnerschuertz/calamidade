@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
 import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:core_module/core_module.dart';
@@ -28,7 +26,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
 
     final user = await getUser();
     if (user == null) {
-      return update(AuthNotLogged());
+      return update(AuthInitial());
     }
 
     update(AuthSuccess(data: user));
@@ -53,6 +51,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
   Future<UserEntity?> getUser() async {
     final userMap = await cache.getData(_kUserKey);
     if (userMap == null) return null;
+
     return UserAdapter.fromJson(userMap);
   }
 
@@ -75,7 +74,8 @@ class LoginControllerImpl extends BaseController<BaseState> {
       params: CacheParams(key: _kUserKey, value: UserAdapter.toJson(user)),
     );
 
-    update(AuthSuccess(data: user));
+    // TODO: Back-end não retorna os campos de nome e photo
+    update(AuthSuccess(data: session.user));
   }
 
   Future<String> getToken() {

@@ -49,8 +49,7 @@ class _CheckAffiliatedPageState extends State<CheckAffiliatedPage> {
         Alerts.showFailure(context, 'Error desconhecido, tente novamente.');
       }
     } else if (controller.value is SuccessState) {
-      setLoading(false);
-      Routefly.push(routePaths.auth.affiliated);
+      Routefly.navigate(routePaths.auth.affiliated);
     }
   }
 

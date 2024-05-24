@@ -80,7 +80,7 @@ class AuthInterceptor implements IClientInterceptor {
           return client.patch(request);
         }
       } catch (e) {
-        Routefly.navigate(routePaths.auth.login.path);
+        Routefly.navigate(routePaths.auth.login);
         return error;
       }
     }
