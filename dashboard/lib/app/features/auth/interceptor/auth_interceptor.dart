@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
-import 'package:coopartilhar/injector.dart';
-import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
+import 'package:dashboard/app/features/auth/interactor/controllers/login_controller.dart';
+import 'package:dashboard/injector.dart';
+import 'package:dashboard/routes.dart';
 import 'package:flutter/material.dart';
 
 class InterceptorConfig extends StatefulWidget {
@@ -37,7 +37,7 @@ class _InterceptorConfigState extends State<InterceptorConfig> {
 class AuthInterceptor implements IClientInterceptor {
   @override
   Future<RestClientRequest> onRequest(RestClientRequest request) async {
-    final token = await injector.get<LoginControllerImpl>().getToken();
+    final token = await injector.get<LoginController>().getToken();
     if (token.isNotEmpty) {
       request.headers?['Authorization'] = 'Bearer $token';
     }
@@ -53,7 +53,7 @@ class AuthInterceptor implements IClientInterceptor {
   FutureOr<RestClientHttpMessage> onError(RestClientException error) async {
     if (error.statusCode == 401) {
       final client = injector.get<IRestClient>();
-      final loginController = injector.get<LoginControllerImpl>();
+      final loginController = injector.get<LoginController>();
       final refreshToken = await loginController.getRefreshToken();
 
       try {

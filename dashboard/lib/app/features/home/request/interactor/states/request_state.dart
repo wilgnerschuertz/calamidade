@@ -10,7 +10,7 @@ class NewRequestsErrorState extends ErrorState {
   });
 }
 
-class NewRequestsSuccessState extends SuccessState<List<RequestEntity>> {
+class NewRequestsSuccessState extends SuccessState<RequestListEntity> {
   const NewRequestsSuccessState({
     required super.data,
     this.selectedId,
@@ -21,7 +21,7 @@ class NewRequestsSuccessState extends SuccessState<List<RequestEntity>> {
   final RequestEntity? lastItem;
 
   NewRequestsSuccessState copyWith({
-    List<RequestEntity>? data,
+    RequestListEntity? data,
     int? selectedId,
     RequestEntity? lastItem,
   }) {
