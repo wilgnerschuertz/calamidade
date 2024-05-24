@@ -1,4 +1,3 @@
-import 'package:core_module/core_module.dart';
 import 'package:dashboard/app/(public)/home/new_requests/widgets/new_requests_card.dart';
 import 'package:dashboard/app/features/home/request/interactor/controller/request_controller.dart';
 import 'package:dashboard/app/features/home/request/interactor/states/request_state.dart';
@@ -131,8 +130,7 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                           city: 'state.lastItem?.city',
                           phone: 'state.lastItem?.phone',
                           date: 'state.lastItem?.date',
-                          status: state.lastItem?.status ??
-                              RequestStatusEntity.analisys,
+                          status: '',
                           requestedIncome: ' state.lastItem?.requestedIncome',
                           isSelected: state.selectedId == state.lastItem?.id,
                           onTap: () {

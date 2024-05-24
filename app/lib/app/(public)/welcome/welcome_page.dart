@@ -1,6 +1,4 @@
-import 'package:coopartilhar/app/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
-import 'package:coopartilhar/app/features/check_affiliated/interactor/check_affiliated_controller.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';

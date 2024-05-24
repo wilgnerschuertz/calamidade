@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:coopartilhar/app/features/auth/interactor/repositories/i_auth_repository.dart';
 import 'package:coopartilhar/app/features/auth/interactor/states/auth_state.dart';
 import 'package:core_module/core_module.dart';

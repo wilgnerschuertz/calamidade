@@ -1,7 +1,6 @@
 import '../auth/user_entity.dart';
 import '../entity.dart';
 import 'god_father.dart';
-import 'request_status_entity.dart';
 
 class RequestEntity extends Entity {
   final String title;

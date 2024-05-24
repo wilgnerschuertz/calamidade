@@ -1,4 +1,3 @@
-import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +7,7 @@ class NewRequestsCard extends StatefulWidget {
   final String city;
   final String phone;
   final String date;
-  final RequestStatusEntity status;
+  final String status;
   final String requestedIncome;
   final VoidCallback? onTap;
   final bool isSelected;
@@ -31,20 +30,20 @@ class NewRequestsCard extends StatefulWidget {
 }
 
 class _NewRequestsCardState extends State<NewRequestsCard> {
-  StatusRequest get status {
-    switch (widget.status) {
-      case RequestStatusEntity.analisys:
-        return StatusRequest.analisys;
-      case RequestStatusEntity.accepted:
-        return StatusRequest.accepted;
-      case RequestStatusEntity.rejected:
-        return StatusRequest.rejected;
-      case RequestStatusEntity.concluded:
-        return StatusRequest.concluded;
-      default:
-        return StatusRequest.notDefined;
-    }
-  }
+  // StatusRequest get status {
+  //   switch (widget.status) {
+  //     case RequestStatusEntity.analisys:
+  //       return StatusRequest.analisys;
+  //     case RequestStatusEntity.accepted:
+  //       return StatusRequest.accepted;
+  //     case RequestStatusEntity.rejected:
+  //       return StatusRequest.rejected;
+  //     case RequestStatusEntity.concluded:
+  //       return StatusRequest.concluded;
+  //     default:
+  //       return StatusRequest.notDefined;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +71,9 @@ class _NewRequestsCardState extends State<NewRequestsCard> {
                   widget.title,
                   style: texts.titleLarge,
                 ),
-                StatusRequestTag(
-                  status: status,
-                ),
+                // StatusRequestTag(
+                //   status: status,
+                // ),
               ],
             ),
             Text(
