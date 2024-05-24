@@ -2,7 +2,7 @@ import 'package:coopartilhar/app/features/register/interactor/entities/register_
 import 'package:core_module/core_module.dart';
 
 abstract class IRegisterRepository {
-  Future<Output<Unit>> register({
+  Future<Output<SessionEntity>> register({
     required RegisterEntity register,
   });
 }
