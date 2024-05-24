@@ -35,10 +35,10 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
         valueListenable: controller,
         builder: (context, state, child) {
           if (state is NewRequestsInitialState) {
-            return Text('Inicial');
+            return const Text('Inicial');
           }
           if (state is NewRequestsLoadingState) {
-            return Text('Loading');
+            return const Text('Loading');
           }
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),

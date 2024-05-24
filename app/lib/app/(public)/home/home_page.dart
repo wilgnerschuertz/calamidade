@@ -2,7 +2,6 @@ import 'package:coopartilhar/app/(public)/home/widgets/coo_app_bar.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/coo_navigator_bar.dart';
 import 'package:coopartilhar/app/(public)/home/widgets/search_widget.dart';
 import 'package:coopartilhar/app/features/home/interactor/controllers/home_controller.dart';
-import 'package:coopartilhar/app/features/home/interactor/entities/request_list_entity.dart';
 import 'package:coopartilhar/injector.dart';
 import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
