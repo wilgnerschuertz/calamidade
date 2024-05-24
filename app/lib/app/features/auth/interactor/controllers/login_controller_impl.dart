@@ -55,7 +55,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
     return UserAdapter.fromJson(userMap);
   }
 
-  Future<void> tokenStorage(SessionEntity session) async {
+  Future<Unit> tokenStorage(SessionEntity session) async {
     final token = session.token;
     final refreshToken = session.refreshToken;
     final tokenExpires = session.tokenExpires;
@@ -76,6 +76,8 @@ class LoginControllerImpl extends BaseController<BaseState> {
 
     // TODO: Back-end não retorna os campos de nome e photo
     update(AuthSuccess(data: session.user));
+
+    return unit;
   }
 
   Future<String> getToken() {
