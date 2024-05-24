@@ -36,7 +36,7 @@ class RegisterController<RegisterState> extends BaseController {
           .mapAsync(_loginController.tokenStorage)
           .fold(
             (left) => update(ErrorState(exception: left)),
-            (right) => update(SuccessState<Unit>(data: right)),
+            (right) => update(SuccessState(data: right)),
           );
     }
   }

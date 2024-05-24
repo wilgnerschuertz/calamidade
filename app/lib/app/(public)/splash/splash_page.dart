@@ -37,7 +37,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void listener() async {
-    if (controller.state is AuthLoading) {
+    if (controller.state is AuthLoading || controller.state is AuthInitial) {
       return;
     }
 

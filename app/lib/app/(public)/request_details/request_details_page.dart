@@ -1,6 +1,6 @@
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card.dart';
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_description.dart';
-import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_card/request_details_card_situation.dart';
+
 import 'package:coopartilhar/app/(public)/request_details/widgets/request_details_page_header.dart';
 import 'package:coopartilhar/app/features/auth/interactor/controllers/login_controller_impl.dart';
 import 'package:coopartilhar/app/features/request_details/interactor/controllers/request_details_controller.dart';
@@ -96,10 +96,10 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                               description: data.description,
                             ),
                             const SizedBox(height: 16.0),
-                            RequestDetailsCardSituation(
-                              description: '',
-                              status: data.status,
-                            ),
+                            // RequestDetailsCardSituation(
+                            //   description: '',
+                            //   status: data.status,
+                            // ),
                           ],
                         ),
                       ),

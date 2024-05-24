@@ -1,7 +1,6 @@
 import '../auth/user_entity.dart';
 import '../entity.dart';
 import 'god_father.dart';
-import 'request_status_entity.dart';
 
 class RequestEntity extends Entity {
   final String title;
@@ -13,7 +12,7 @@ class RequestEntity extends Entity {
   final String financialAccount;
   final DateTime createdAt;
   final UserEntity user;
-  final RequestStatusEntity status;
+  final String status;
   final String helpType;
   final GodFather? godFather;
 
@@ -30,6 +29,6 @@ class RequestEntity extends Entity {
     required this.status,
     required this.helpType,
     required this.user,
-    required this.godFather,
+    this.godFather,
   }) : super(id);
 }

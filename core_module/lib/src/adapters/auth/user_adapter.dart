@@ -6,7 +6,7 @@ class UserAdapter {
       data['id'] ?? -1,
       name: data['name'] ?? '',
       email: data['email'] ?? '',
-      phone: data['phono'] ?? '',
+      phone: data['phone'] ?? '',
       document: data['document'] ?? '',
     );
   }
@@ -16,7 +16,8 @@ class UserAdapter {
       'id': user.id,
       'name': user.name,
       'email': user.email,
-      'phono': user.phone,
+      'phone': user.phone,
+      'document': user.document
     };
   }
 }

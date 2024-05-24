@@ -26,7 +26,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
 
     final user = await getUser();
     if (user == null) {
-      return update(AuthInitial());
+      return update(AuthNotLogged());
     }
 
     update(AuthSuccess(data: user));
@@ -51,11 +51,10 @@ class LoginControllerImpl extends BaseController<BaseState> {
   Future<UserEntity?> getUser() async {
     final userMap = await cache.getData(_kUserKey);
     if (userMap == null) return null;
-
     return UserAdapter.fromJson(userMap);
   }
 
-  Future<Unit> tokenStorage(SessionEntity session) async {
+  Future<void> tokenStorage(SessionEntity session) async {
     final token = session.token;
     final refreshToken = session.refreshToken;
     final tokenExpires = session.tokenExpires;
@@ -74,10 +73,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
       params: CacheParams(key: _kUserKey, value: UserAdapter.toJson(user)),
     );
 
-    // TODO: Back-end não retorna os campos de nome e photo
-    update(AuthSuccess(data: session.user));
-
-    return unit;
+    update(AuthSuccess(data: user));
   }
 
   Future<String> getToken() {

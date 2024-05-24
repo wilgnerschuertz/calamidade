@@ -1,7 +1,6 @@
 import 'package:core_module/core_module.dart';
 
 import 'god_father_adapter.dart';
-import 'request_user_adapter.dart';
 
 class RequestAdapter {
   static RequestEntity fromJson(Map<String, dynamic> map) {
@@ -15,9 +14,9 @@ class RequestAdapter {
       financialBank: map['financialBank'] ?? '',
       financialAgency: map['financialBank'] ?? '',
       financialAccount: map['financialAccount'] ?? '',
-      status: RequestStatusEntity.fromString(map['status'] ?? 'Não definido'),
-      helpType: map['helpType'] ?? '',
-      user: RequestUserAdapter.fromJson(map['user']),
+      status: map['status'],
+      helpType: map['helpType'],
+      user: UserAdapter.fromJson(map['user']),
       godFather: map['godFather'] != null
           ? GodFatherAdapter.fromJson(map['godFather'])
           : null,
