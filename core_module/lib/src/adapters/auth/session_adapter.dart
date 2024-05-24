@@ -13,6 +13,8 @@ class SessionAdapter {
   }
 
   static SessionEntity fromJson(Map<String, dynamic> data) {
+    // TODO: Back-end não retorna os campos de nome e photo
+
     return SessionEntity(
       data['id'] ?? -1,
       token: data['token'],

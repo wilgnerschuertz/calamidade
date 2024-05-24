@@ -15,9 +15,9 @@ class RequestAdapter {
       financialBank: map['financialBank'] ?? '',
       financialAgency: map['financialBank'] ?? '',
       financialAccount: map['financialAccount'] ?? '',
-      status: map['status'],
-      helpType: map['helpType'],
-      user: UserAdapter.fromJson(map['user']),
+      status: RequestStatusEntity.fromString(map['status'] ?? 'Não definido'),
+      helpType: map['helpType'] ?? '',
+      user: RequestUserAdapter.fromJson(map['user']),
       godFather: map['godFather'] != null
           ? GodFatherAdapter.fromJson(map['godFather'])
           : null,

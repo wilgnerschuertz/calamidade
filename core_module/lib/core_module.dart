@@ -44,7 +44,7 @@ export 'src/adapters/request/request_adapter.dart';
 
 final coreModule = AutoInjector(
   on: (injector) {
-    injector.add<ICache>(SharedPreferencesImpl.new);
+    injector.addSingleton<ICache>(SharedPreferencesImpl.new);
     injector.add<Dio>(DioFactory.dio);
     injector.addSingleton<IRestClient>(RestClientDioImpl.new);
     injector.add<IFilePickerService>(FilePickerServiceImpl.new);

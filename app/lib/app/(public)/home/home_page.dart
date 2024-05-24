@@ -45,9 +45,7 @@ class _HomePageState extends State<HomePage> {
         extendBody: true,
         bottomNavigationBar: CooNavigatorBar(
           onClickCooBrand: () {},
-          onClickDonate: () {
-            Routefly.navigate(routePaths.managerRequest);
-          },
+          onClickDonate: () {},
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -88,6 +86,8 @@ class _HomePageState extends State<HomePage> {
                                 },
                                 value: order.amount,
                                 title: order.title,
+
+                                /// TODO: back-end não retornar nome.
                                 helpedName: 'Test',
                                 localName: order.description,
                                 dateTime:
