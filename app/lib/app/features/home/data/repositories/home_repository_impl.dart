@@ -1,5 +1,4 @@
 import 'package:coopartilhar/app/features/home/data/adapters/request_list_adapter.dart';
-import 'package:coopartilhar/app/features/home/interactor/entities/request_list_entity.dart';
 import 'package:coopartilhar/app/features/home/interactor/repositories/i_home_repository.dart';
 import 'package:core_module/core_module.dart';
 

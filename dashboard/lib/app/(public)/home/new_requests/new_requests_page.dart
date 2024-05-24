@@ -21,8 +21,8 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
 
   @override
   void initState() {
-    super.initState();
     controller.fetchNewRequests();
+    super.initState();
   }
 
   @override
@@ -35,6 +35,12 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
       body: ValueListenableBuilder(
         valueListenable: controller,
         builder: (context, state, child) {
+          if (state is NewRequestsInitialState) {
+            return Text('Inicial');
+          }
+          if (state is NewRequestsLoadingState) {
+            return Text('Loading');
+          }
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             child: CustomScrollView(
@@ -91,7 +97,7 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                         ),
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
-                            final entity = state.data[index];
+                            final entity = state.data.requests[index];
 
                             return NewRequestsCard(
                               title: entity.title,
@@ -107,7 +113,7 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                               },
                             );
                           },
-                          childCount: state.data.length,
+                          childCount: state.data.requests.length,
                         ),
                       ),
                     ),
