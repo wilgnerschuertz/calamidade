@@ -54,7 +54,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
     return UserAdapter.fromJson(userMap);
   }
 
-  Future<void> tokenStorage(SessionEntity session) async {
+  Future<Unit> tokenStorage(SessionEntity session) async {
     final token = session.token;
     final refreshToken = session.refreshToken;
     final tokenExpires = session.tokenExpires;
@@ -74,6 +74,7 @@ class LoginControllerImpl extends BaseController<BaseState> {
     );
 
     update(AuthSuccess(data: user));
+    return unit;
   }
 
   Future<String> getToken() {
